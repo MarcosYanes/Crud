@@ -181,7 +181,7 @@ namespace CrudDesafio.View
             txtCpf.Text = "";
             txtValorLimite.Text = "0.00";
             txtCidade.Text = "";
-            //txtCep.Text = "";
+            txtCep.Text = "";
             txtRua.Text = "";
             txtBairro.Text = "";
             txtNumero.Text = "";
