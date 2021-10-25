@@ -81,11 +81,11 @@ namespace CrudDesafio.View
             }
 
 
-            //if (colaboradormodel.NomeColaborador == txtNomeColaborador.Text && colaboradormodel.DataNascimentoColaborador == txtDataNascimentoColaborador.Text && colaboradormodel.CpfColaborador == txtCpfColaborador.Text && colaboradormodel.SalarioColaborador == double.Parse(txtSalarioColaborador.Text) && colaboradormodel.ComissaoColaborador == txtComissaoColaborador.Text && colaboradormodel.CepColaborador == txtCepColaborador.Text && colaboradormodel.LogradouroColaborador == txtLogradouroColaborador.Text && colaboradormodel.CidadeColaborador == txtCidadeColaborador.Text && colaboradormodel.BairroColaborador == txtBairroColaborador.Text && colaboradormodel.NumeroColaborador == txtNumeroColaborador.Text && colaboradormodel.ComplementoColaborador == txtComplementoColaborador.Text && colaboradormodel.UfColaborador == txtUfColaborador.Text && colaboradormodel.TelefoneColaborador == txtTelefoneColaborador.Text && colaboradormodel.CelularColaborador == txtCelularColaborador.Text && colaboradormodel.EmailColaborador == txtEmailColaborador.Text && colaboradormodel.Banco == txtBanco.Text && colaboradormodel.Agencia == Convert.ToInt32(txtAgencia.Text) && colaboradormodel.Conta == Convert.ToInt32(txtConta) && colaboradormodel.TipoConta == txtTipoConta.Text && colaboradormodel.SexoColaborador == (rbMasculino.Checked ? "m" : "F"))
-            //{
-            //    MessageBox.Show("Voce precisa alterar um campo");
-            //    return;
-            //}
+            if (colaboradormodel.NomeColaborador == txtNomeColaborador.Text && colaboradormodel.DataNascimentoColaborador == txtDataNascimentoColaborador.Text && colaboradormodel.CpfColaborador == txtCpfColaborador.Text && colaboradormodel.SalarioColaborador == double.Parse(txtSalarioColaborador.Text) && colaboradormodel.ComissaoColaborador == txtComissaoColaborador.Text && colaboradormodel.CepColaborador == txtCepColaborador.Text && colaboradormodel.LogradouroColaborador == txtLogradouroColaborador.Text && colaboradormodel.CidadeColaborador == txtCidadeColaborador.Text && colaboradormodel.BairroColaborador == txtBairroColaborador.Text && colaboradormodel.NumeroColaborador == txtNumeroColaborador.Text && colaboradormodel.ComplementoColaborador == txtComplementoColaborador.Text && colaboradormodel.UfColaborador == txtUfColaborador.Text && colaboradormodel.TelefoneColaborador == txtTelefoneColaborador.Text && colaboradormodel.CelularColaborador == txtCelularColaborador.Text && colaboradormodel.EmailColaborador == txtEmailColaborador.Text && colaboradormodel.Banco == txtBanco.Text && colaboradormodel.TipoConta == txtTipoConta.Text && colaboradormodel.SexoColaborador == (rbMasculino.Checked ? "m" : "F") && colaboradormodel.Agencia == int.Parse(txtAgencia.Text) && colaboradormodel.Conta == int.Parse(txtConta.Text))
+            {
+                MessageBox.Show("Voce precisa alterar um campo");
+                return;
+            }
 
 
 
