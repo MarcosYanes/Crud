@@ -89,7 +89,7 @@ namespace CrudDesafio.View
             //    return;
             //}
 
-            if (clientemodel.Nome == txtNome.Text && clientemodel.DataNascimento == txtDataNascimento.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == txtTelefone.Text && clientemodel.Celular == txtCelular.Text && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == txtValorLimite.Text && clientemodel.Sexo == (rbMasculino.Checked?"m":"F"))
+            if (clientemodel.Nome == txtNome.Text && clientemodel.DataNascimento == txtDataNascimento.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == txtTelefone.Text && clientemodel.Celular == txtCelular.Text && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == txtValorLimite.Text && clientemodel.Sexo == (rbMasculino.Checked?"m":"F") && clientemodel.Cpf == txtCpf.Text)
             {
                 MessageBox.Show("Voce precisa alterar um campo");
                 return;
