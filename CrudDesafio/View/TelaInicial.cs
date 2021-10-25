@@ -63,5 +63,10 @@ namespace CrudDesafio.View
         {
 
         }
+
+        private void TelaInicial_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

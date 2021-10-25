@@ -79,10 +79,7 @@ namespace CrudDesafio.DAO
 
             try
             {
-                //if (clientemodel.Id == string.Empty)
-                //{
-                //    MessageBox.Show("Você precisa digitar um id");
-                //}
+               
 
                 sqlCon.Open();
 

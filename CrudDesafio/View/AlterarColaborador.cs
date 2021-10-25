@@ -81,7 +81,15 @@ namespace CrudDesafio.View
             }
 
 
-            if (colaboradormodel.NomeColaborador == txtNomeColaborador.Text && colaboradormodel.DataNascimentoColaborador == txtDataNascimentoColaborador.Text && colaboradormodel.CpfColaborador == txtCpfColaborador.Text && colaboradormodel.SalarioColaborador == double.Parse(txtSalarioColaborador.Text) && colaboradormodel.ComissaoColaborador == txtComissaoColaborador.Text && colaboradormodel.CepColaborador == txtCepColaborador.Text && colaboradormodel.LogradouroColaborador == txtLogradouroColaborador.Text && colaboradormodel.CidadeColaborador == txtCidadeColaborador.Text && colaboradormodel.BairroColaborador == txtBairroColaborador.Text && colaboradormodel.NumeroColaborador == txtNumeroColaborador.Text && colaboradormodel.ComplementoColaborador == txtComplementoColaborador.Text && colaboradormodel.UfColaborador == txtUfColaborador.Text && colaboradormodel.TelefoneColaborador == txtTelefoneColaborador.Text && colaboradormodel.CelularColaborador == txtCelularColaborador.Text && colaboradormodel.EmailColaborador == txtEmailColaborador.Text && colaboradormodel.Banco == txtBanco.Text && colaboradormodel.TipoConta == txtTipoConta.Text && colaboradormodel.SexoColaborador == (rbMasculino.Checked ? "m" : "F") && colaboradormodel.Agencia == int.Parse(txtAgencia.Text) && colaboradormodel.Conta == int.Parse(txtConta.Text))
+            if (colaboradormodel.NomeColaborador == txtNomeColaborador.Text && colaboradormodel.DataNascimentoColaborador == txtDataNascimentoColaborador.Text &&
+                colaboradormodel.CpfColaborador == txtCpfColaborador.Text && colaboradormodel.SalarioColaborador == double.Parse(txtSalarioColaborador.Text) && 
+                colaboradormodel.ComissaoColaborador == txtComissaoColaborador.Text && colaboradormodel.CepColaborador == txtCepColaborador.Text &&
+                colaboradormodel.LogradouroColaborador == txtLogradouroColaborador.Text && colaboradormodel.CidadeColaborador == txtCidadeColaborador.Text && 
+                colaboradormodel.BairroColaborador == txtBairroColaborador.Text && colaboradormodel.NumeroColaborador == txtNumeroColaborador.Text && 
+                colaboradormodel.ComplementoColaborador == txtComplementoColaborador.Text && colaboradormodel.UfColaborador == txtUfColaborador.Text &&
+                colaboradormodel.TelefoneColaborador == txtTelefoneColaborador.Text && colaboradormodel.CelularColaborador == txtCelularColaborador.Text && 
+                colaboradormodel.EmailColaborador == txtEmailColaborador.Text && colaboradormodel.Banco == txtBanco.Text && colaboradormodel.TipoConta == txtTipoConta.Text &&
+                colaboradormodel.SexoColaborador == (rbMasculino.Checked ? "m" : "F") && colaboradormodel.Agencia == int.Parse(txtAgencia.Text) && colaboradormodel.Conta == int.Parse(txtConta.Text))
             {
                 MessageBox.Show("Voce precisa alterar um campo");
                 return;
@@ -89,7 +97,7 @@ namespace CrudDesafio.View
 
 
 
-            colaboradormodel.NomeColaborador = txtNomeColaborador.Text;
+                colaboradormodel.NomeColaborador = txtNomeColaborador.Text;
                 if (rbMasculino.Checked == true)
                     colaboradormodel.SexoColaborador = "m";
                 else
@@ -108,10 +116,10 @@ namespace CrudDesafio.View
                 colaboradormodel.CelularColaborador = txtCelularColaborador.Text;
                 colaboradormodel.EmailColaborador = txtEmailColaborador.Text;
                 colaboradormodel.CpfColaborador = txtCpfColaborador.Text;
-            colaboradormodel.Banco = txtBanco.Text;
-            colaboradormodel.Agencia = Convert.ToInt32(txtAgencia.Text);
-            colaboradormodel.Conta = Convert.ToInt32(txtConta.Text);
-            colaboradormodel.TipoConta = txtTipoConta.Text;
+                colaboradormodel.Banco = txtBanco.Text;
+                colaboradormodel.Agencia = Convert.ToInt32(txtAgencia.Text);
+                colaboradormodel.Conta = Convert.ToInt32(txtConta.Text);
+                colaboradormodel.TipoConta = txtTipoConta.Text;
 
 
 
@@ -186,11 +194,7 @@ namespace CrudDesafio.View
             gridColaborador.DataSource = colaboradorcontroller.Listar();
         }
 
-        //private void btnLimpar_Click(object sender, EventArgs e)
-        //{
-            
-
-        //}
+        
 
         private void btnLimpar_Click_1(object sender, EventArgs e)
         {

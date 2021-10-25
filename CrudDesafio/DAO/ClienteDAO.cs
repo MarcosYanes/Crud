@@ -285,10 +285,6 @@ namespace CrudDesafio.DAO
                 }
             }
         }  
-        //public DataTable Listar()
-        //{
-        //    DataTable dt = new DataTable();
-        //    return dt;
-        //}
+        
     }
 }

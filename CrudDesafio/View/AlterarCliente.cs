@@ -83,13 +83,11 @@ namespace CrudDesafio.View
                 return;
             }
 
-            //if (txtNome.Text == clientemodel.Nome && txtValorLimite.Text == clientemodel.ValorLimite && txtCpf.Text == clientemodel.Cpf && txtSexo.Text == clientemodel.Sexo && txtDataNascimento.Text == clientemodel.DataNascimento && txtCidade.Text == clientemodel.Cidade && txtCidade.Text == clientemodel.Cep && txtRua.Text == clientemodel.Rua && txtBairro.Text == clientemodel.Bairro && txtNumero.Text == clientemodel.Numero && txtUf.Text == clientemodel.Uf && txtComplemento.Text == clientemodel.Complemento && txtTelefone.Text == clientemodel.Telefone && txtCelular.Text == clientemodel.Celular && txtEmail.Text == clientemodel.Email)
-            //{
-            //    MessageBox.Show("Você precisa Alterar algum campo");
-            //    return;
-            //}
+          
 
-            if (clientemodel.Nome == txtNome.Text && clientemodel.DataNascimento == txtDataNascimento.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == txtTelefone.Text && clientemodel.Celular == txtCelular.Text && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == txtValorLimite.Text && clientemodel.Sexo == (rbMasculino.Checked?"m":"F") && clientemodel.Cpf == txtCpf.Text)
+            if (clientemodel.Nome == txtNome.Text && clientemodel.DataNascimento == txtDataNascimento.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text 
+                && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == txtTelefone.Text 
+                && clientemodel.Celular == txtCelular.Text && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == txtValorLimite.Text && clientemodel.Sexo == (rbMasculino.Checked?"m":"F") && clientemodel.Cpf == txtCpf.Text)
             {
                 MessageBox.Show("Voce precisa alterar um campo");
                 return;
