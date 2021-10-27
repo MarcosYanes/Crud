@@ -19,6 +19,7 @@ namespace CrudDesafio.View
 
         ClienteController clientecontroller = new ClienteController();
         ClienteModel clientemodel = new ClienteModel();
+        
         public AlterarCliente()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace CrudDesafio.View
 
             clientemodel = clientecontroller.Buscar(Convert.ToInt32(txtBuscar.Text));
 
-            if (clientemodel.Id == 0)
+            if (clientemodel.IdCliente == 0)
             {
                 return;
             }

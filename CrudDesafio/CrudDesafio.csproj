@@ -56,6 +56,7 @@
     <Compile Include="Helpers\Conexao.cs" />
     <Compile Include="Model\ClienteModel.cs" />
     <Compile Include="Model\ColaboradorModel.cs" />
+    <Compile Include="Model\Usuario.cs" />
     <Compile Include="View\AlterarCliente.cs">
       <SubType>Form</SubType>
     </Compile>

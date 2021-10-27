@@ -20,11 +20,11 @@ namespace CrudDesafio.Controller
 
         }
 
-        public ClienteModel Buscar (int Id)
+        public ClienteModel Buscar (int IdCliente)
         {
            
 
-            return clientedao.Buscar(Id);
+            return clientedao.Buscar(IdCliente);
         }
 
         public List<ClienteModel> Listar()
@@ -42,8 +42,9 @@ namespace CrudDesafio.Controller
             clientedao.Excluir(clientemodel);
         }
 
-        
-        
-
+        internal ClienteModel Buscar(int v, object idCliente)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

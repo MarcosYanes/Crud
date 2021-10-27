@@ -35,25 +35,39 @@ namespace CrudDesafio.View
 
                 return;
             }
-            colaboradormodel.NomeColaborador = txtNomeColaborador.Text;
+            else if (txtAgencia.Text == string.Empty)
+            {
+                MessageBox.Show("Você Precisa digitar a Agência");
+
+                return;
+
+            }
+            else if (txtConta.Text == string.Empty)
+            {
+                MessageBox.Show("Você Precisa digitar a Conta");
+
+                return;
+
+            }
+            colaboradormodel.Nome = txtNomeColaborador.Text;
             if (rbMasculino.Checked == true)
-                colaboradormodel.SexoColaborador = "m";
+                colaboradormodel.Sexo = "m";
             else
-                colaboradormodel.SexoColaborador = "F";
-            colaboradormodel.DataNascimentoColaborador = txtDataNascimentoColaborador.Text;
+                colaboradormodel.Sexo = "F";
+            colaboradormodel.DataNascimento = txtDataNascimentoColaborador.Text;
             colaboradormodel.SalarioColaborador = double.Parse(txtSalarioColaborador.Text);
             colaboradormodel.ComissaoColaborador = txtComissaoColaborador.Text;
-            colaboradormodel.CepColaborador = txtCepColaborador.Text;
-            colaboradormodel.LogradouroColaborador = txtLogradouroColaborador.Text;
-            colaboradormodel.CidadeColaborador = txtCidadeColaborador.Text;
-            colaboradormodel.UfColaborador = txtUfColaborador.Text;
-            colaboradormodel.ComplementoColaborador = txtComplementoColaborador.Text;
-            colaboradormodel.BairroColaborador = txtBairroColaborador.Text;
-            colaboradormodel.NumeroColaborador = txtNumeroColaborador.Text;
-            colaboradormodel.TelefoneColaborador = txtTelefoneColaborador.Text;
-            colaboradormodel.CelularColaborador = txtCelularColaborador.Text;
-            colaboradormodel.EmailColaborador = txtEmailColaborador.Text;
-            colaboradormodel.CpfColaborador = txtCpfColaborador.Text;
+            colaboradormodel.Cep = txtCepColaborador.Text;
+            colaboradormodel.Rua = txtLogradouroColaborador.Text;
+            colaboradormodel.Cidade = txtCidadeColaborador.Text;
+            colaboradormodel.Uf = txtUfColaborador.Text;
+            colaboradormodel.Complemento = txtComplementoColaborador.Text;
+            colaboradormodel.Bairro = txtBairroColaborador.Text;
+            colaboradormodel.Numero = txtNumeroColaborador.Text;
+            colaboradormodel.Telefone = txtTelefoneColaborador.Text;
+            colaboradormodel.Celular = txtCelularColaborador.Text;
+            colaboradormodel.Email = txtEmailColaborador.Text;
+            colaboradormodel.Cpf = txtCpfColaborador.Text;
             colaboradormodel.Banco = txtBanco.Text;
             colaboradormodel.Agencia = Convert.ToInt32(txtAgencia.Text);
             colaboradormodel.Conta = Convert.ToInt32(txtConta.Text);

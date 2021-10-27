@@ -25,7 +25,7 @@ namespace CrudDesafio.DAO
 
             SqlCommand comando = new SqlCommand(strSql, sqlCon);
             
-            comando.Parameters.Add("@id", SqlDbType.Int).Value = clientemodel.Id;
+            comando.Parameters.Add("@id", SqlDbType.Int).Value = clientemodel.IdCliente;
             comando.Parameters.Add("@Nome", SqlDbType.VarChar).Value = clientemodel.Nome;
             comando.Parameters.Add("@sexo", SqlDbType.VarChar).Value = clientemodel.Sexo;
             comando.Parameters.Add("@DataNascimento", SqlDbType.VarChar).Value = clientemodel.DataNascimento;
@@ -66,7 +66,7 @@ namespace CrudDesafio.DAO
            
         }
 
-        internal ClienteModel Buscar(int Id)
+        internal ClienteModel Buscar(int IdCliente)
         {
 
             strSql = "select * from Cliente where Id=@Id";
@@ -74,7 +74,7 @@ namespace CrudDesafio.DAO
 
             SqlCommand comando = new SqlCommand(strSql, sqlCon);
 
-            comando.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+            comando.Parameters.Add("@Id", SqlDbType.Int).Value = IdCliente;
 
             var clientemodel = new ClienteModel();
 
@@ -94,7 +94,7 @@ namespace CrudDesafio.DAO
                 }
                 dr.Read();
                
-                 clientemodel.Id = Convert.ToInt32(dr["Id"]);
+                 clientemodel.IdCliente = Convert.ToInt32(dr["Id"]);
                  clientemodel.Nome = Convert.ToString(dr["Nome"]);
                  clientemodel.Sexo = Convert.ToString(dr["sexo"]);
                  clientemodel.DataNascimento = Convert.ToString(dr["DataNascimento"]);
@@ -147,7 +147,8 @@ namespace CrudDesafio.DAO
                 {
                     var clientemodel = new ClienteModel();
 
-                    clientemodel.Id = Convert.ToInt32(dr["Id"]);
+
+                    clientemodel.IdCliente = Convert.ToInt32(dr["Id"]);
                     clientemodel.Nome = Convert.ToString(dr["Nome"]);
                     clientemodel.Sexo = Convert.ToString(dr["sexo"]);
                     clientemodel.DataNascimento = Convert.ToString(dr["DataNascimento"]);
@@ -211,7 +212,7 @@ namespace CrudDesafio.DAO
 
             SqlCommand comando = new SqlCommand(strSql, sqlCon);
 
-            comando.Parameters.Add("Id", SqlDbType.Int).Value = clientemodel.Id;
+            comando.Parameters.Add("Id", SqlDbType.Int).Value = clientemodel.IdCliente;
             comando.Parameters.Add("@Nome", SqlDbType.VarChar).Value = clientemodel.Nome;
             comando.Parameters.Add("@sexo", SqlDbType.VarChar).Value = clientemodel.Sexo;
             comando.Parameters.Add("@DataNascimento", SqlDbType.VarChar).Value = clientemodel.DataNascimento;
@@ -268,7 +269,7 @@ namespace CrudDesafio.DAO
                 strSql = "delete from Cliente where Id=@Id";
                 sqlCon = new SqlConnection(strCon);
                 SqlCommand comando = new SqlCommand(strSql, sqlCon);
-                comando.Parameters.Add("@Id", SqlDbType.Int).Value = clienteModel.Id;
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = clienteModel.IdCliente;
                 try
                 {
                     sqlCon.Open();

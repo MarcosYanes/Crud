@@ -40,8 +40,8 @@ namespace CrudDesafio.View
             {
                 return;
             }
-            txtNomeColaborador.Text = colaboradormodel.NomeColaborador;
-            if (colaboradormodel.SexoColaborador == "m")
+            txtNomeColaborador.Text = colaboradormodel.Nome;
+            if (colaboradormodel.Sexo == "m")
             {
                 rbMasculino.Checked = true;
             }
@@ -49,21 +49,21 @@ namespace CrudDesafio.View
             {
                 rbFeminino.Checked = true;
             }
-            txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimentoColaborador;
-            txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimentoColaborador;
+            txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimento;
+           // txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimentoColaborador;
             txtSalarioColaborador.Text = colaboradormodel.SalarioColaborador.ToString();
             txtComissaoColaborador.Text = colaboradormodel.ComissaoColaborador;
-            txtCepColaborador.Text = colaboradormodel.CepColaborador;
-            txtLogradouroColaborador.Text = colaboradormodel.LogradouroColaborador;
-            txtCidadeColaborador.Text = colaboradormodel.CidadeColaborador;
-            txtUfColaborador.Text = colaboradormodel.UfColaborador;
-            txtComplementoColaborador.Text = colaboradormodel.ComplementoColaborador;
-            txtBairroColaborador.Text = colaboradormodel.BairroColaborador;
-            txtNumeroColaborador.Text = colaboradormodel.NumeroColaborador;
-            txtTelefoneColaborador.Text = colaboradormodel.TelefoneColaborador;
-            txtCelularColaborador.Text = colaboradormodel.CelularColaborador;
-            txtEmailColaborador.Text = colaboradormodel.EmailColaborador;
-            txtCpfColaborador.Text = colaboradormodel.CpfColaborador;
+            txtCepColaborador.Text = colaboradormodel.Cep;
+            txtLogradouroColaborador.Text = colaboradormodel.Rua;
+            txtCidadeColaborador.Text = colaboradormodel.Cidade;
+            txtUfColaborador.Text = colaboradormodel.Uf;
+            txtComplementoColaborador.Text = colaboradormodel.Complemento;
+            txtBairroColaborador.Text = colaboradormodel.Bairro;
+            txtNumeroColaborador.Text = colaboradormodel.Numero;
+            txtTelefoneColaborador.Text = colaboradormodel.Telefone;
+            txtCelularColaborador.Text = colaboradormodel.Celular;
+            txtEmailColaborador.Text = colaboradormodel.Email;
+            txtCpfColaborador.Text = colaboradormodel.Cpf;
             txtBanco.Text = colaboradormodel.Banco;
             txtAgencia.Text = colaboradormodel.Agencia.ToString();
             txtConta.Text = colaboradormodel.Conta.ToString();
@@ -81,41 +81,41 @@ namespace CrudDesafio.View
             }
 
 
-            if (colaboradormodel.NomeColaborador == txtNomeColaborador.Text && colaboradormodel.DataNascimentoColaborador == txtDataNascimentoColaborador.Text &&
-                colaboradormodel.CpfColaborador == txtCpfColaborador.Text && colaboradormodel.SalarioColaborador == double.Parse(txtSalarioColaborador.Text) && 
-                colaboradormodel.ComissaoColaborador == txtComissaoColaborador.Text && colaboradormodel.CepColaborador == txtCepColaborador.Text &&
-                colaboradormodel.LogradouroColaborador == txtLogradouroColaborador.Text && colaboradormodel.CidadeColaborador == txtCidadeColaborador.Text && 
-                colaboradormodel.BairroColaborador == txtBairroColaborador.Text && colaboradormodel.NumeroColaborador == txtNumeroColaborador.Text && 
-                colaboradormodel.ComplementoColaborador == txtComplementoColaborador.Text && colaboradormodel.UfColaborador == txtUfColaborador.Text &&
-                colaboradormodel.TelefoneColaborador == txtTelefoneColaborador.Text && colaboradormodel.CelularColaborador == txtCelularColaborador.Text && 
-                colaboradormodel.EmailColaborador == txtEmailColaborador.Text && colaboradormodel.Banco == txtBanco.Text && colaboradormodel.TipoConta == txtTipoConta.Text &&
-                colaboradormodel.SexoColaborador == (rbMasculino.Checked ? "m" : "F") && colaboradormodel.Agencia == int.Parse(txtAgencia.Text) && colaboradormodel.Conta == int.Parse(txtConta.Text))
-            {
-                MessageBox.Show("Voce precisa alterar um campo");
-                return;
-            }
+            //if (colaboradormodel.NomeColaborador == txtNomeColaborador.Text && colaboradormodel.DataNascimentoColaborador == txtDataNascimentoColaborador.Text &&
+            //    colaboradormodel.CpfColaborador == txtCpfColaborador.Text && colaboradormodel.SalarioColaborador == double.Parse(txtSalarioColaborador.Text) && 
+            //    colaboradormodel.ComissaoColaborador == txtComissaoColaborador.Text && colaboradormodel.CepColaborador == txtCepColaborador.Text &&
+            //    colaboradormodel.LogradouroColaborador == txtLogradouroColaborador.Text && colaboradormodel.CidadeColaborador == txtCidadeColaborador.Text && 
+            //    colaboradormodel.BairroColaborador == txtBairroColaborador.Text && colaboradormodel.NumeroColaborador == txtNumeroColaborador.Text && 
+            //    colaboradormodel.ComplementoColaborador == txtComplementoColaborador.Text && colaboradormodel.UfColaborador == txtUfColaborador.Text &&
+            //    colaboradormodel.TelefoneColaborador == txtTelefoneColaborador.Text && colaboradormodel.CelularColaborador == txtCelularColaborador.Text && 
+            //    colaboradormodel.EmailColaborador == txtEmailColaborador.Text && colaboradormodel.Banco == txtBanco.Text && colaboradormodel.TipoConta == txtTipoConta.Text &&
+            //    colaboradormodel.SexoColaborador == (rbMasculino.Checked ? "m" : "F") && colaboradormodel.Agencia == int.Parse(txtAgencia.Text) && colaboradormodel.Conta == int.Parse(txtConta.Text))
+            //{
+            //    MessageBox.Show("Voce precisa alterar um campo");
+            //    return;
+            //}
 
 
 
-                colaboradormodel.NomeColaborador = txtNomeColaborador.Text;
+                colaboradormodel.Nome = txtNomeColaborador.Text;
                 if (rbMasculino.Checked == true)
-                    colaboradormodel.SexoColaborador = "m";
+                    colaboradormodel.Sexo = "m";
                 else
-                    colaboradormodel.SexoColaborador = "F";
-                colaboradormodel.DataNascimentoColaborador = txtDataNascimentoColaborador.Text;
+                    colaboradormodel.Sexo = "F";
+                colaboradormodel.DataNascimento = txtDataNascimentoColaborador.Text;
                 colaboradormodel.SalarioColaborador = double.Parse(txtSalarioColaborador.Text);
                 colaboradormodel.ComissaoColaborador = txtComissaoColaborador.Text;
-                colaboradormodel.CepColaborador = txtCepColaborador.Text;
-                colaboradormodel.LogradouroColaborador = txtLogradouroColaborador.Text;
-                colaboradormodel.CidadeColaborador = txtCidadeColaborador.Text;
-                colaboradormodel.UfColaborador = txtUfColaborador.Text;
-                colaboradormodel.ComplementoColaborador = txtComplementoColaborador.Text;
-                colaboradormodel.BairroColaborador = txtBairroColaborador.Text;
-                colaboradormodel.NumeroColaborador = txtNumeroColaborador.Text;
-                colaboradormodel.TelefoneColaborador = txtTelefoneColaborador.Text;
-                colaboradormodel.CelularColaborador = txtCelularColaborador.Text;
-                colaboradormodel.EmailColaborador = txtEmailColaborador.Text;
-                colaboradormodel.CpfColaborador = txtCpfColaborador.Text;
+                colaboradormodel.Cep = txtCepColaborador.Text;
+                colaboradormodel.Rua = txtLogradouroColaborador.Text;
+                colaboradormodel.Cidade = txtCidadeColaborador.Text;
+                colaboradormodel.Uf = txtUfColaborador.Text;
+                colaboradormodel.Complemento = txtComplementoColaborador.Text;
+                colaboradormodel.Bairro = txtBairroColaborador.Text;
+                colaboradormodel.Numero = txtNumeroColaborador.Text;
+                colaboradormodel.Telefone = txtTelefoneColaborador.Text;
+                colaboradormodel.Celular = txtCelularColaborador.Text;
+                colaboradormodel.Email = txtEmailColaborador.Text;
+                colaboradormodel.Cpf = txtCpfColaborador.Text;
                 colaboradormodel.Banco = txtBanco.Text;
                 colaboradormodel.Agencia = Convert.ToInt32(txtAgencia.Text);
                 colaboradormodel.Conta = Convert.ToInt32(txtConta.Text);

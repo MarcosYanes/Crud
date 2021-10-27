@@ -37,11 +37,12 @@ namespace CrudDesafio.View
             // gridClientes
             // 
             this.gridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridClientes.Location = new System.Drawing.Point(25, 86);
+            this.gridClientes.Location = new System.Drawing.Point(19, 70);
+            this.gridClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gridClientes.Name = "gridClientes";
             this.gridClientes.RowHeadersWidth = 51;
             this.gridClientes.RowTemplate.Height = 24;
-            this.gridClientes.Size = new System.Drawing.Size(1156, 571);
+            this.gridClientes.Size = new System.Drawing.Size(867, 403);
             this.gridClientes.TabIndex = 0;
             this.gridClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClientes_CellContentClick);
             // 
@@ -49,19 +50,21 @@ namespace CrudDesafio.View
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(463, 24);
+            this.label1.Location = new System.Drawing.Point(347, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(269, 39);
+            this.label1.Size = new System.Drawing.Size(215, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Lista de Clientes";
             // 
             // ListarCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 820);
+            this.ClientSize = new System.Drawing.Size(895, 666);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gridClientes);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ListarCliente";
             this.Text = "ListarCliente";
             this.Load += new System.EventHandler(this.ListarCliente_Load);
