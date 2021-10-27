@@ -114,7 +114,7 @@ namespace CrudDesafio
 
         }
 
-        private bool Validar()
+        public bool Validar()
         {
             if (!new Regex(@"^[a-zA-Z]+").Match(txtNome.Text).Success)
             {

@@ -13,7 +13,7 @@ namespace CrudDesafio.DAO
     class ColaboradorDAO
     {
         SqlConnection sqlCon = null;
-        private string strCon = @"Data Source=DESKTOP-NQA0NEO\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
+        private string strCon = @"Data Source=LAPTOP-LQD3SOO7\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
         private string strSql = string.Empty;
 
         internal void Inserir(ColaboradorModel colaboradormodel)

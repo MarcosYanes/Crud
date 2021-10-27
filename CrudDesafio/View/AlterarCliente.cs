@@ -11,6 +11,7 @@ using CrudDesafio.Controller;
 using CrudDesafio.Model;
 using System.Configuration;
 using CrudDesafio.View;
+using System.Text.RegularExpressions;
 
 namespace CrudDesafio.View
 {
@@ -19,6 +20,7 @@ namespace CrudDesafio.View
 
         ClienteController clientecontroller = new ClienteController();
         ClienteModel clientemodel = new ClienteModel();
+        
         
         public AlterarCliente()
         {
@@ -94,32 +96,34 @@ namespace CrudDesafio.View
                 MessageBox.Show("Voce precisa alterar um campo");
                 return;
             }
-            
-                
-            
-
-            clientemodel.Nome = txtNome.Text;
 
 
-            if (rbMasculino.Checked == true)
-                clientemodel.Sexo = "m";
-            else
-                clientemodel.Sexo = "F";
-            clientemodel.DataNascimento = txtDataNascimento.Text;
-            clientemodel.Cpf = txtCpf.Text;
-            clientemodel.Cidade = txtCidade.Text;
-            clientemodel.Cep = txtCep.Text;
-            clientemodel.Rua = txtRua.Text;
-            clientemodel.Bairro = txtBairro.Text;
-            clientemodel.Numero = txtNumero.Text;
-            clientemodel.Uf = txtUf.Text;
-            clientemodel.Complemento = txtComplemento.Text;
-            clientemodel.Telefone = txtTelefone.Text;
-            clientemodel.Celular = txtCelular.Text;
-            clientemodel.Email = txtEmail.Text;
-            clientemodel.ValorLimite = txtValorLimite.Text;
+            if (Validar() == true)
+            {
 
-            clientecontroller.Alterar(clientemodel);
+                clientemodel.Nome = txtNome.Text;
+
+
+                if (rbMasculino.Checked == true)
+                    clientemodel.Sexo = "m";
+                else
+                    clientemodel.Sexo = "F";
+                clientemodel.DataNascimento = txtDataNascimento.Text;
+                clientemodel.Cpf = txtCpf.Text;
+                clientemodel.Cidade = txtCidade.Text;
+                clientemodel.Cep = txtCep.Text;
+                clientemodel.Rua = txtRua.Text;
+                clientemodel.Bairro = txtBairro.Text;
+                clientemodel.Numero = txtNumero.Text;
+                clientemodel.Uf = txtUf.Text;
+                clientemodel.Complemento = txtComplemento.Text;
+                clientemodel.Telefone = txtTelefone.Text;
+                clientemodel.Celular = txtCelular.Text;
+                clientemodel.Email = txtEmail.Text;
+                clientemodel.ValorLimite = txtValorLimite.Text;
+
+                clientecontroller.Alterar(clientemodel);
+            }
 
             //this.Close();
             txtNome.Text = "";
@@ -139,6 +143,70 @@ namespace CrudDesafio.View
             txtEmail.Text = "";
             txtBuscar.Text = "";
 
+        }
+
+        private bool Validar()
+        {
+            if (!new Regex(@"^[a-zA-Z]+").Match(txtNome.Text).Success)
+            {
+                MessageBox.Show("Nome inválido");
+
+                return false;
+            }
+            else if (!new Regex(@"[0-3][0-9][/][0-1][0-9][/][0-9]{4}").Match(txtDataNascimento.Text).Success)
+            {
+                MessageBox.Show("Data de Nascimento inválida");
+
+                return false;
+            }
+            else if (!new Regex(@"[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$").Match(txtCpf.Text.Replace(",", ".")).Success)
+            {
+                MessageBox.Show("CPF inválido");
+
+                return false;
+            }
+            else if (txtCidade.Text == string.Empty)
+            {
+                MessageBox.Show("Cidade inválida");
+
+                return false;
+            }
+            else if (!new Regex(@"[0-9]{5}[-][0-9]{3}$").Match(txtCep.Text.Replace(",", ".")).Success)
+            {
+                MessageBox.Show("Cep inválido");
+
+                return false;
+            }
+            else if (txtRua.Text == string.Empty)
+            {
+                MessageBox.Show(" Logradouro inválido");
+
+                return false;
+            }
+            else if (txtBairro.Text == string.Empty)
+            {
+                MessageBox.Show("Bairro inválido");
+
+                return false;
+            }
+            else if (txtNumero.Text == string.Empty)
+            {
+                MessageBox.Show("Número inválido");
+
+                return false;
+            }
+            else if (txtUf.Text == string.Empty)
+            {
+                MessageBox.Show("UF inválido");
+
+                return false;
+            }
+
+
+
+
+
+            return true;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
