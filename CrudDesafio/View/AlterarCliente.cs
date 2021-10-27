@@ -74,6 +74,7 @@ namespace CrudDesafio.View
         private void AlterarCliente_Load(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();
+            gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count - 1;
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)

@@ -187,6 +187,13 @@ namespace CrudDesafio.View
         private void AlterarColaborador_Load(object sender, EventArgs e)
         {
             gridColaborador.DataSource = colaboradorcontroller.Listar();
+            gridColaborador.DataSource = colaboradorcontroller.Listar();
+            gridColaborador.Columns["SalarioColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            gridColaborador.Columns["ComissaoColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            gridColaborador.Columns["Banco"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            gridColaborador.Columns["Agencia"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            gridColaborador.Columns["Conta"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            gridColaborador.Columns["TipoConta"].DisplayIndex = gridColaborador.Columns.Count - 1;
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
