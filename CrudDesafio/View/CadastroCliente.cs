@@ -44,13 +44,21 @@ namespace CrudDesafio
         {
             if (Validar() == true)
             {
+
+                if (!Validacoes.ValidarValorLimite(double.Parse(txtValorLimite.Text)))
+                {
+                    MessageBox.Show("O  Valor Limite de Compra  Não Pode Ser Negativo ");
+                    return;
+                }
                 clientemodel.Nome = txtNome.Text;
 
                 if (rbMasculino.Checked == true)
                     clientemodel.Sexo = "m";
                 else
                     clientemodel.Sexo = "F";
-                clientemodel.DataNascimento = txtDataNascimento.Text;
+
+               
+                clientemodel.DataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
                 clientemodel.Cpf = txtCpf.Text;
                 clientemodel.Cidade = txtCidade.Text;
                 clientemodel.Cep = txtCep.Text;
@@ -116,7 +124,7 @@ namespace CrudDesafio
 
         public bool Validar()
         {
-            if (!new Regex(@"^[a-zA-Z]+").Match(txtNome.Text).Success)
+            if (!Validacoes.ValidarNome(txtNome.Text))
             {
                 MessageBox.Show("Nome inválido");
 
@@ -128,19 +136,25 @@ namespace CrudDesafio
 
                 return false;
             }
-            else if (!new Regex(@"[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$").Match(txtCpf.Text.Replace(",", ".")).Success)
+            //else if (!new Regex(@"[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$").Match(txtCpf.Text.Replace(",", ".")).Success)
+            //{
+            //    MessageBox.Show("CPF inválido");
+
+            //    return false;
+            //}
+            else if (!Validacoes.ValidarCpf(txtCpf.Text.Replace(",", ".")))
             {
                 MessageBox.Show("CPF inválido");
 
                 return false;
             }
-            else if (txtCidade.Text == string.Empty)
+            else if (!Validacoes.ValidarNome(txtCidade.Text))
             {
                 MessageBox.Show("Cidade inválida");
 
                 return false;
             }
-            else if  (!new Regex(@"[0-9]{5}[-][0-9]{3}$").Match(txtCep.Text.Replace(",", ".")).Success)
+            else if  (!Validacoes.ValidarCep(txtCep.Text))
                 {
                 MessageBox.Show("Cep inválido");
 
@@ -167,6 +181,12 @@ namespace CrudDesafio
             else if (txtUf.Text == string.Empty)
             {
                 MessageBox.Show("UF inválido");
+
+                return false;
+            }
+            else if(txtValorLimite.Text == string.Empty)
+            {
+                MessageBox.Show("Valor limite inválido");
 
                 return false;
             }

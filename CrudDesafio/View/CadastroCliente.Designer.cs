@@ -344,7 +344,6 @@ namespace CrudDesafio
             this.txtValorLimite.Name = "txtValorLimite";
             this.txtValorLimite.Size = new System.Drawing.Size(95, 20);
             this.txtValorLimite.TabIndex = 2;
-            this.txtValorLimite.Text = "0.00";
             this.txtValorLimite.TextChanged += new System.EventHandler(this.txtValorLimite_TextChanged);
             // 
             // groupBox1
@@ -360,9 +359,9 @@ namespace CrudDesafio
             this.groupBox1.Controls.Add(this.rbFeminino);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Location = new System.Drawing.Point(24, 60);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(848, 86);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
@@ -370,7 +369,7 @@ namespace CrudDesafio
             // txtCpf
             // 
             this.txtCpf.Location = new System.Drawing.Point(72, 55);
-            this.txtCpf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCpf.Margin = new System.Windows.Forms.Padding(2);
             this.txtCpf.Mask = "000.000.000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(76, 20);
@@ -395,9 +394,9 @@ namespace CrudDesafio
             this.groupBox2.Controls.Add(this.txtRua);
             this.groupBox2.Controls.Add(this.txtUf);
             this.groupBox2.Location = new System.Drawing.Point(24, 162);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(848, 88);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
@@ -405,7 +404,7 @@ namespace CrudDesafio
             // txtCep
             // 
             this.txtCep.Location = new System.Drawing.Point(257, 15);
-            this.txtCep.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCep.Margin = new System.Windows.Forms.Padding(2);
             this.txtCep.Mask = "00000-000";
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(71, 20);
@@ -421,9 +420,9 @@ namespace CrudDesafio
             this.groupBox3.Controls.Add(this.txtEmail);
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Location = new System.Drawing.Point(24, 265);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(848, 81);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
@@ -434,9 +433,9 @@ namespace CrudDesafio
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.txtValorLimite);
             this.groupBox4.Location = new System.Drawing.Point(24, 358);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(848, 66);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;

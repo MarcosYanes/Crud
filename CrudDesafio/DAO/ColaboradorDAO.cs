@@ -13,7 +13,7 @@ namespace CrudDesafio.DAO
     class ColaboradorDAO
     {
         SqlConnection sqlCon = null;
-        private string strCon = @"Data Source=LAPTOP-LQD3SOO7\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
+        private string strCon = @"Data Source=DESKTOP-NQA0NEO\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
         private string strSql = string.Empty;
 
         internal void Inserir(ColaboradorModel colaboradormodel)
@@ -26,7 +26,7 @@ namespace CrudDesafio.DAO
             comando.Parameters.Add("@IdColaborador", SqlDbType.Int).Value = colaboradormodel.IdColaborador;
             comando.Parameters.Add("@NomeColaborador", SqlDbType.VarChar).Value = colaboradormodel.Nome;
             comando.Parameters.Add("@SexoColaborador", SqlDbType.VarChar).Value = colaboradormodel.Sexo;
-            comando.Parameters.Add("@DataNascimentoColaborador", SqlDbType.Char).Value = colaboradormodel.DataNascimento;
+            comando.Parameters.Add("@DataNascimentoColaborador", SqlDbType.DateTime).Value = colaboradormodel.DataNascimento;
             comando.Parameters.Add("@SalarioColaborador", SqlDbType.Decimal).Value = colaboradormodel.SalarioColaborador;
             comando.Parameters.Add("@ComissaoColaborador", SqlDbType.VarChar).Value = colaboradormodel.ComissaoColaborador;
             comando.Parameters.Add("@CepColaborador", SqlDbType.VarChar).Value = colaboradormodel.Cep;
@@ -50,20 +50,19 @@ namespace CrudDesafio.DAO
             {
                 sqlCon.Open();
                 comando.ExecuteNonQuery();
-
                 MessageBox.Show("Cadastro efetuado com sucesso");
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
             finally
             {
                 sqlCon.Close();
             }
         }
+
+       
 
         internal ColaboradorModel Buscar(int IdColaborador)
         {
@@ -93,7 +92,7 @@ namespace CrudDesafio.DAO
                 colaboradormodel.IdColaborador = Convert.ToInt32(dr["IdColaborador"]);
                 colaboradormodel.Nome = Convert.ToString(dr["NomeColaborador"]);
                 colaboradormodel.Sexo = Convert.ToString(dr["sexoColaborador"]);
-                colaboradormodel.DataNascimento = Convert.ToString(dr["DataNascimentoColaborador"]);
+                colaboradormodel.DataNascimento = Convert.ToDateTime(dr["DataNascimentoColaborador"]);
                 colaboradormodel.SalarioColaborador = Convert.ToDouble(dr["SalarioColaborador"]);
 
                 colaboradormodel.ComissaoColaborador = Convert.ToString(dr["ComissaoColaborador"]);
@@ -145,7 +144,7 @@ namespace CrudDesafio.DAO
             comando.Parameters.Add("IdColaborador", SqlDbType.Int).Value = colaboradormodel.IdColaborador;
             comando.Parameters.Add("@NomeColaborador", SqlDbType.VarChar).Value = colaboradormodel.Nome;
             comando.Parameters.Add("@SexoColaborador", SqlDbType.VarChar).Value = colaboradormodel.Sexo;
-            comando.Parameters.Add("@DataNascimentoColaborador", SqlDbType.VarChar).Value = colaboradormodel.DataNascimento;
+            comando.Parameters.Add("@DataNascimentoColaborador", SqlDbType.DateTime).Value = colaboradormodel.DataNascimento;
           
             comando.Parameters.Add("@SalarioColaborador", SqlDbType.Decimal).Value = colaboradormodel.SalarioColaborador;
             comando.Parameters.Add("@ComissaoColaborador", SqlDbType.VarChar).Value = colaboradormodel.ComissaoColaborador;
@@ -251,7 +250,7 @@ namespace CrudDesafio.DAO
                     colaboradormodel.IdColaborador = Convert.ToInt32(dr["IdColaborador"]);
                     colaboradormodel.Nome = Convert.ToString(dr["NomeColaborador"]);
                     colaboradormodel.Sexo = Convert.ToString(dr["SexoColaborador"]);
-                    colaboradormodel.DataNascimento = Convert.ToString(dr["DataNascimentoColaborador"]);
+                    colaboradormodel.DataNascimento = Convert.ToDateTime(dr["DataNascimentoColaborador"]);
                     colaboradormodel.SalarioColaborador = Convert.ToDouble(dr["SalarioColaborador"]);
                     colaboradormodel.ComissaoColaborador = Convert.ToString(dr["ComissaoColaborador"]);
                     colaboradormodel.Cep= Convert.ToString(dr["CepColaborador"]);

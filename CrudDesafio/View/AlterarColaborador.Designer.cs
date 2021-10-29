@@ -270,7 +270,7 @@ namespace CrudDesafio.View
             // txtCpfColaborador
             // 
             this.txtCpfColaborador.Location = new System.Drawing.Point(67, 58);
-            this.txtCpfColaborador.Mask = "000.000.000.00";
+            this.txtCpfColaborador.Mask = "000.000.000-00";
             this.txtCpfColaborador.Name = "txtCpfColaborador";
             this.txtCpfColaborador.Size = new System.Drawing.Size(100, 22);
             this.txtCpfColaborador.TabIndex = 10;
@@ -376,7 +376,6 @@ namespace CrudDesafio.View
             this.txtSalarioColaborador.Name = "txtSalarioColaborador";
             this.txtSalarioColaborador.Size = new System.Drawing.Size(67, 22);
             this.txtSalarioColaborador.TabIndex = 0;
-            this.txtSalarioColaborador.Text = "0,00";
             // 
             // label6
             // 

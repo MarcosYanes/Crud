@@ -31,18 +31,20 @@ namespace CrudDesafio.View
         {
             this.gridClientes = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // gridClientes
             // 
             this.gridClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridClientes.Location = new System.Drawing.Point(19, 70);
-            this.gridClientes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridClientes.Location = new System.Drawing.Point(166, 157);
+            this.gridClientes.Margin = new System.Windows.Forms.Padding(2);
             this.gridClientes.Name = "gridClientes";
             this.gridClientes.RowHeadersWidth = 51;
             this.gridClientes.RowTemplate.Height = 24;
-            this.gridClientes.Size = new System.Drawing.Size(867, 403);
+            this.gridClientes.Size = new System.Drawing.Size(565, 403);
             this.gridClientes.TabIndex = 0;
             this.gridClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridClientes_CellContentClick);
             // 
@@ -57,14 +59,33 @@ namespace CrudDesafio.View
             this.label1.TabIndex = 1;
             this.label1.Text = "Lista de Clientes";
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(353, 119);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(105, 20);
+            this.txtBuscar.TabIndex = 2;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(469, 117);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(80, 23);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // ListarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(895, 666);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gridClientes);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ListarCliente";
             this.Text = "ListarCliente";
             this.Load += new System.EventHandler(this.ListarCliente_Load);
@@ -78,5 +99,7 @@ namespace CrudDesafio.View
 
         private System.Windows.Forms.DataGridView gridClientes;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

@@ -31,7 +31,7 @@ namespace CrudDesafio.View
         private void ListarCliente_Load(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();
-            gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count-1;
+            //gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count-1;
         }
 
         private void gridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -39,6 +39,12 @@ namespace CrudDesafio.View
 
         }
 
-        
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            gridClientes.DataSource = clientecontroller.BuscarLista(txtBuscar.Text);
+            if(txtBuscar.Text == string.Empty){
+                gridClientes.DataSource = clientecontroller.Listar();
+            }
+        }
     }
 }

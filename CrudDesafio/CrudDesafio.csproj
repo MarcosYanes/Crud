@@ -54,9 +54,11 @@
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ColaboradorDAO.cs" />
     <Compile Include="Helpers\Conexao.cs" />
+    <Compile Include="Model\ClienteListagem.cs" />
     <Compile Include="Model\ClienteModel.cs" />
     <Compile Include="Model\ColaboradorModel.cs" />
     <Compile Include="Model\Usuario.cs" />
+    <Compile Include="Model\Validacoes.cs" />
     <Compile Include="View\AlterarCliente.cs">
       <SubType>Form</SubType>
     </Compile>

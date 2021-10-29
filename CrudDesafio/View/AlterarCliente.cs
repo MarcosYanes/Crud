@@ -56,7 +56,7 @@ namespace CrudDesafio.View
             {
                 rbFeminino.Checked = true;
             }
-            txtDataNascimento.Text = clientemodel.DataNascimento;
+            txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
             txtCpf.Text = clientemodel.Cpf;
             txtCidade.Text = clientemodel.Cidade;
             txtCep.Text = clientemodel.Cep;
@@ -76,7 +76,7 @@ namespace CrudDesafio.View
         private void AlterarCliente_Load(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();
-            gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count - 1;
+            //gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count - 1;
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -89,17 +89,26 @@ namespace CrudDesafio.View
 
           
 
-            if (clientemodel.Nome == txtNome.Text && clientemodel.DataNascimento == txtDataNascimento.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text 
-                && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == txtTelefone.Text 
-                && clientemodel.Celular == txtCelular.Text && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == txtValorLimite.Text && clientemodel.Sexo == (rbMasculino.Checked?"m":"F") && clientemodel.Cpf == txtCpf.Text)
-            {
-                MessageBox.Show("Voce precisa alterar um campo");
-                return;
-            }
+           
+
 
 
             if (Validar() == true)
             {
+                if (clientemodel.Nome == txtNome.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text
+               && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == txtTelefone.Text
+               && clientemodel.Celular == txtCelular.Text && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == txtValorLimite.Text && clientemodel.Sexo == (rbMasculino.Checked ? "m" : "F") && clientemodel.Cpf == txtCpf.Text && clientemodel.DataNascimento == Convert.ToDateTime(txtDataNascimento.Text))
+                {
+                    MessageBox.Show("Voce precisa alterar um campo");
+                    return;
+                }
+
+
+                if (!Validacoes.ValidarValorLimite(double.Parse(txtValorLimite.Text)))
+                {
+                    MessageBox.Show("O  Valor Limite de Compra  Não Pode Ser Negativo ");
+                    return;
+                }
 
                 clientemodel.Nome = txtNome.Text;
 
@@ -108,7 +117,7 @@ namespace CrudDesafio.View
                     clientemodel.Sexo = "m";
                 else
                     clientemodel.Sexo = "F";
-                clientemodel.DataNascimento = txtDataNascimento.Text;
+                clientemodel.DataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
                 clientemodel.Cpf = txtCpf.Text;
                 clientemodel.Cidade = txtCidade.Text;
                 clientemodel.Cep = txtCep.Text;
@@ -123,31 +132,33 @@ namespace CrudDesafio.View
                 clientemodel.ValorLimite = txtValorLimite.Text;
 
                 clientecontroller.Alterar(clientemodel);
+
+                txtNome.Text = "";
+                txtDataNascimento.Text = "";
+                txtSexo.Text = "";
+                txtCpf.Text = "";
+                txtValorLimite.Text = "0.00";
+                txtCidade.Text = "";
+                txtCep.Text = "";
+                txtRua.Text = "";
+                txtBairro.Text = "";
+                txtNumero.Text = "";
+                txtUf.Text = "";
+                txtComplemento.Text = "";
+                txtTelefone.Text = "";
+                txtCelular.Text = "";
+                txtEmail.Text = "";
+                txtBuscar.Text = "";
             }
 
-            //this.Close();
-            txtNome.Text = "";
-            txtDataNascimento.Text = "";
-            txtSexo.Text = "";
-            txtCpf.Text = "";
-            txtValorLimite.Text = "0.00";
-            txtCidade.Text = "";
-            txtCep.Text = "";
-            txtRua.Text = "";
-            txtBairro.Text = "";
-            txtNumero.Text = "";
-            txtUf.Text = "";
-            txtComplemento.Text = "";
-            txtTelefone.Text = "";
-            txtCelular.Text = "";
-            txtEmail.Text = "";
-            txtBuscar.Text = "";
+            
+           
 
         }
 
         private bool Validar()
         {
-            if (!new Regex(@"^[a-zA-Z]+").Match(txtNome.Text).Success)
+            if (!new Regex(@"^[a-zA-Z]+$").Match(txtNome.Text).Success)
             {
                 MessageBox.Show("Nome inválido");
 
@@ -198,6 +209,12 @@ namespace CrudDesafio.View
             else if (txtUf.Text == string.Empty)
             {
                 MessageBox.Show("UF inválido");
+
+                return false;
+            }
+            else if (txtValorLimite.Text == string.Empty)
+            {
+                MessageBox.Show("Valor limite inválido");
 
                 return false;
             }
