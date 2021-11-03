@@ -45,7 +45,7 @@ namespace CrudDesafio
             if (Validar() == true)
             {
 
-                if (!Validacoes.ValidarValorLimite(double.Parse(txtValorLimite.Text)))
+                if (!Validacoes.ValidarNumeroNegativo(double.Parse(txtValorLimite.Text)))
                 {
                     MessageBox.Show("O  Valor Limite de Compra  Não Pode Ser Negativo ");
                     return;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrudDesafio.Model
 {
-    class ClienteModel : Usuario
+    public class ClienteModel : Usuario
     {
        
         public int IdCliente { get; set; }

@@ -20,8 +20,7 @@ namespace CrudDesafio.View
 
         ClienteController clientecontroller = new ClienteController();
         ClienteModel clientemodel = new ClienteModel();
-        
-        
+
         public AlterarCliente()
         {
             InitializeComponent();
@@ -31,8 +30,41 @@ namespace CrudDesafio.View
         {
 
         }
+        public void obterDadosPara(ClienteModel cliente)
+        {
+            txtId.Enabled = false;
+            clientemodel = cliente;
+            txtId.Text = clientemodel.IdCliente.ToString();
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+            txtNome.Text = clientemodel.Nome;
+            txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
+            if (clientemodel.Sexo == "m")
+            {
+                rbMasculino.Checked = true;
+            }
+            else
+            {
+                rbFeminino.Checked = true;
+            }
+            txtCpf.Text = clientemodel.Cpf;
+            txtCidade.Text = clientemodel.Cidade;
+            txtCep.Text = clientemodel.Cep;
+            txtRua.Text = clientemodel.Rua;
+            txtBairro.Text = clientemodel.Bairro;
+            txtUf.Text = clientemodel.Uf;
+            txtComplemento.Text = clientemodel.Complemento;
+            txtTelefone.Text = clientemodel.Telefone;
+            txtCelular.Text = clientemodel.Celular;
+            txtEmail.Text = clientemodel.Email;
+            txtValorLimite.Text = clientemodel.ValorLimite;
+            txtNumero.Text = clientemodel.Numero;
+
+            
+
+
+        }
+        
+        public void btnBuscar_Click(object sender, EventArgs e)
         {
             if (txtBuscar.Text == string.Empty)
             {
@@ -56,6 +88,7 @@ namespace CrudDesafio.View
             {
                 rbFeminino.Checked = true;
             }
+            txtId.Text = clientemodel.IdCliente.ToString();
             txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
             txtCpf.Text = clientemodel.Cpf;
             txtCidade.Text = clientemodel.Cidade;
@@ -76,20 +109,21 @@ namespace CrudDesafio.View
         private void AlterarCliente_Load(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();
+            
             //gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count - 1;
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            if (txtBuscar.Text == string.Empty)
-            {
-                MessageBox.Show("Você precisa buscar o Id que deseja Alterar");
-                return;
-            }
+            //if (txtBuscar.Text == string.Empty)
+            //{
+            //    MessageBox.Show("Você precisa buscar o Id que deseja Alterar");
+            //    return;
+            //}
 
-          
 
-           
+
+
 
 
 
@@ -104,12 +138,13 @@ namespace CrudDesafio.View
                 }
 
 
-                if (!Validacoes.ValidarValorLimite(double.Parse(txtValorLimite.Text)))
+                if (!Validacoes.ValidarNumeroNegativo(double.Parse(txtValorLimite.Text)))
                 {
                     MessageBox.Show("O  Valor Limite de Compra  Não Pode Ser Negativo ");
                     return;
                 }
 
+                clientemodel.IdCliente = Convert.ToInt32(txtId.Text);
                 clientemodel.Nome = txtNome.Text;
 
 
@@ -137,7 +172,7 @@ namespace CrudDesafio.View
                 txtDataNascimento.Text = "";
                 txtSexo.Text = "";
                 txtCpf.Text = "";
-                txtValorLimite.Text = "0.00";
+                txtValorLimite.Text = "";
                 txtCidade.Text = "";
                 txtCep.Text = "";
                 txtRua.Text = "";
@@ -149,6 +184,7 @@ namespace CrudDesafio.View
                 txtCelular.Text = "";
                 txtEmail.Text = "";
                 txtBuscar.Text = "";
+                txtId.Text = "";
             }
 
             
@@ -158,7 +194,7 @@ namespace CrudDesafio.View
 
         private bool Validar()
         {
-            if (!new Regex(@"^[a-zA-Z]+$").Match(txtNome.Text).Success)
+            if (!new Regex(@"^[a-zA-Z\s]+$").Match(txtNome.Text).Success)
             {
                 MessageBox.Show("Nome inválido");
 
@@ -233,7 +269,9 @@ namespace CrudDesafio.View
                 MessageBox.Show("Você precisa buscar o Id que deseja  excluir");
                 return;
             }
+            
             clientecontroller.Excluir(clientemodel);
+
             txtNome.Text = "";
             txtDataNascimento.Text = "";
             txtSexo.Text = "";
@@ -264,7 +302,7 @@ namespace CrudDesafio.View
             txtDataNascimento.Text = "";
             
             txtCpf.Text = "";
-            txtValorLimite.Text = "0.00";
+            txtValorLimite.Text = "";
             txtCidade.Text = "";
             txtCep.Text = "";
             txtRua.Text = "";

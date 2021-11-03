@@ -22,7 +22,7 @@ namespace CrudDesafio.View
 
         ClienteController clientecontroller = new ClienteController();
         ClienteModel clientemodel = new ClienteModel();
-        private ClienteDAO clientedao = new ClienteDAO();
+        //private ClienteDAO clientedao = new ClienteDAO();
         public ListarCliente()
         {
             InitializeComponent();
@@ -32,19 +32,48 @@ namespace CrudDesafio.View
         {
             gridClientes.DataSource = clientecontroller.Listar();
             //gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count-1;
-        }
-
-        private void gridClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.BuscarLista(txtBuscar.Text);
-            if(txtBuscar.Text == string.Empty){
-                gridClientes.DataSource = clientecontroller.Listar();
-            }
+            
+        }
+
+        private void btnLimparFiltro_Click(object sender, EventArgs e)
+        {
+            gridClientes.DataSource = clientecontroller.Listar();
+        }
+
+
+
+      
+
+        private void gridClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = SelecionarClienteModel();
+            var cliente = clientecontroller.Buscar(id);
+            AlterarCliente alterarcliente = new AlterarCliente();
+            alterarcliente.Show();
+
+           alterarcliente.obterDadosPara(cliente);
+
+            alterarcliente.Show();
+
+
+
+        }
+
+        public int SelecionarClienteModel()
+        {
+            var id = Convert.ToInt32(gridClientes.SelectedRows[0].Cells[0].Value);
+            return id;
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            gridClientes.DataSource = clientecontroller.Listar();
         }
     }
 }

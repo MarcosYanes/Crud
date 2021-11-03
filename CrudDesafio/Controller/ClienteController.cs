@@ -9,7 +9,7 @@ using CrudDesafio.DAO;
 
 namespace CrudDesafio.Controller
 {
-    class ClienteController
+    public class ClienteController
     {
         private ClienteDAO clientedao = new ClienteDAO();
         

@@ -32,6 +32,12 @@ namespace CrudDesafio.View
         {
             if (Validar() == true)
             {
+                if (!Validacoes.ValidarNumeroNegativo(Convert.ToDouble(txtSalarioColaborador.Text)))
+                {
+                    MessageBox.Show("O  Sálario Não Pode Ser Um Valor Negativo ");
+                    return;
+                }
+
 
                 colaboradormodel.Nome = txtNomeColaborador.Text;
                 if (rbMasculino.Checked == true)
@@ -46,11 +52,7 @@ namespace CrudDesafio.View
                 
                 colaboradormodel.SalarioColaborador = double.Parse(txtSalarioColaborador.Text);
 
-                //if (!Validacoes.ValidarIdadeColaborador(int.Parse(txtComissaoColaborador.Text)))
-                //{
-                //    MessageBox.Show("Erro");
-                //    return;
-                //}
+               
                     colaboradormodel.ComissaoColaborador = txtComissaoColaborador.Text;
                 colaboradormodel.Cep = txtCepColaborador.Text;
                 colaboradormodel.Rua = txtLogradouroColaborador.Text;

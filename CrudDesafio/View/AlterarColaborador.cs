@@ -20,10 +20,46 @@ namespace CrudDesafio.View
 
         ColaboradorController colaboradorcontroller = new ColaboradorController();
         ColaboradorModel colaboradormodel = new ColaboradorModel();
+
         public AlterarColaborador()
         {
             InitializeComponent();
+        }
+        public AlterarColaborador(ColaboradorModel colaborador)
+        {
+
+            InitializeComponent();
            
+        }
+
+        public void obterDadosPara(ColaboradorModel colaborador)
+        {
+            txtId.Enabled = false;
+            colaboradormodel = colaborador;
+            txtId.Text = colaboradormodel.IdColaborador.ToString();
+
+            txtNomeColaborador.Text = colaboradormodel.Nome;
+            txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimento.ToString();
+            //txt.Text = colaboradormodel.Sexo;
+            txtCpfColaborador.Text = colaboradormodel.Cpf;
+            txtSalarioColaborador.Text = colaboradormodel.SalarioColaborador.ToString();
+            txtComissaoColaborador.Text = colaboradormodel.ComissaoColaborador;
+            txtCidadeColaborador.Text = colaboradormodel.Cidade;
+            txtCepColaborador.Text = colaboradormodel.Cep;
+            txtLogradouroColaborador.Text = colaboradormodel.Rua;
+            txtBairroColaborador.Text = colaboradormodel.Bairro;
+            txtUfColaborador.Text = colaboradormodel.Uf;
+            txtComplementoColaborador.Text = colaboradormodel.Complemento;
+            txtTelefoneColaborador.Text = colaboradormodel.Telefone;
+            txtCelularColaborador.Text = colaboradormodel.Celular;
+            txtEmailColaborador.Text = colaboradormodel.Email;
+            
+            txtNumeroColaborador.Text = colaboradormodel.Numero;
+            txtBanco.Text = colaboradormodel.Banco;
+            txtAgencia.Text = colaboradormodel.Agencia.ToString();
+            txtConta.Text = colaboradormodel.Conta.ToString();
+            txtTipoConta.Text = colaboradormodel.TipoConta;
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -50,6 +86,7 @@ namespace CrudDesafio.View
             {
                 rbFeminino.Checked = true;
             }
+            txtId.Text = colaboradormodel.IdColaborador.ToString();
             txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimento.ToString();
            // txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimentoColaborador;
             txtSalarioColaborador.Text = colaboradormodel.SalarioColaborador.ToString();
@@ -75,11 +112,11 @@ namespace CrudDesafio.View
         private void btnAlterar_Click(object sender, EventArgs e)
         {
 
-            if (txtBuscar.Text == string.Empty)
-            {
-                MessageBox.Show("Você precisa buscar o Id que deseja Alterar");
-                return;
-            }
+            //if (txtBuscar.Text == string.Empty)
+            //{
+            //    MessageBox.Show("Você precisa buscar o Id que deseja Alterar");
+            //    return;
+            //}
 
             double.TryParse(txtSalarioColaborador.Text, out double salario);
             int.TryParse(txtAgencia.Text, out int agencia);
@@ -103,7 +140,7 @@ namespace CrudDesafio.View
             if (Validar() == true)
             {
 
-                if (!Validacoes.ValidarValorLimite(salario))
+                if (!Validacoes.ValidarNumeroNegativo(salario))
                 {
                     MessageBox.Show("O  Sálario Não Pode Ser Um Valor Negativo ");
                     return;
@@ -159,6 +196,7 @@ namespace CrudDesafio.View
                 txtAgencia.Text = "";
                 txtConta.Text = "";
                 txtTipoConta.Text = "";
+                txtId.Text = "";
             }
 
 
@@ -271,7 +309,7 @@ namespace CrudDesafio.View
             txtNomeColaborador.Text = "";
             txtDataNascimentoColaborador.Text = "";
             txtCpfColaborador.Text = "";
-            txtSalarioColaborador.Text = "0.00";
+            txtSalarioColaborador.Text = "";
             txtComissaoColaborador.Text = "";
             txtCepColaborador.Text = "";
             txtLogradouroColaborador.Text = "";
@@ -294,13 +332,13 @@ namespace CrudDesafio.View
         private void AlterarColaborador_Load(object sender, EventArgs e)
         {
             gridColaborador.DataSource = colaboradorcontroller.Listar();
-            gridColaborador.DataSource = colaboradorcontroller.Listar();
-            gridColaborador.Columns["SalarioColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            gridColaborador.Columns["ComissaoColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            gridColaborador.Columns["Banco"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            gridColaborador.Columns["Agencia"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            gridColaborador.Columns["Conta"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            gridColaborador.Columns["TipoConta"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            //gridColaborador.DataSource = colaboradorcontroller.Listar();
+            //gridColaborador.Columns["SalarioColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            //gridColaborador.Columns["ComissaoColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            //gridColaborador.Columns["Banco"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            //gridColaborador.Columns["Agencia"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            //gridColaborador.Columns["Conta"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            //gridColaborador.Columns["TipoConta"].DisplayIndex = gridColaborador.Columns.Count - 1;
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -315,7 +353,7 @@ namespace CrudDesafio.View
             txtNomeColaborador.Text = "";
             txtDataNascimentoColaborador.Text = "";
             txtCpfColaborador.Text = "";
-            txtSalarioColaborador.Text = "0.00";
+            txtSalarioColaborador.Text = "";
             txtComissaoColaborador.Text = "";
             txtCepColaborador.Text = "";
             txtLogradouroColaborador.Text = "";

@@ -37,9 +37,15 @@ namespace CrudDesafio.Controller
             colaboradordao.Excluir(colaboradormodel);
         }
 
-        public List<ColaboradorModel> Listar()
+        public List<ColaboradorListagem> Listar()
         {
             return colaboradordao.Listar();
+        }
+
+        public List<ColaboradorListagem> BuscarLista(string Nome)
+        {
+            var lista = colaboradordao.BuscarLista(Nome);
+            return lista;
         }
 
 

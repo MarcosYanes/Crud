@@ -89,7 +89,7 @@ namespace CrudDesafio.View
             this.btnSalvar.BackColor = System.Drawing.Color.Lime;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.Location = new System.Drawing.Point(396, 432);
-            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(77, 34);
             this.btnSalvar.TabIndex = 2;
@@ -115,9 +115,9 @@ namespace CrudDesafio.View
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Location = new System.Drawing.Point(14, 251);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(857, 50);
             this.groupBox3.TabIndex = 36;
             this.groupBox3.TabStop = false;
@@ -135,7 +135,7 @@ namespace CrudDesafio.View
             // txtCelularColaborador
             // 
             this.txtCelularColaborador.Location = new System.Drawing.Point(230, 17);
-            this.txtCelularColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCelularColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtCelularColaborador.Mask = "(00)00000-0000";
             this.txtCelularColaborador.Name = "txtCelularColaborador";
             this.txtCelularColaborador.Size = new System.Drawing.Size(76, 20);
@@ -144,7 +144,7 @@ namespace CrudDesafio.View
             // txtEmailColaborador
             // 
             this.txtEmailColaborador.Location = new System.Drawing.Point(382, 16);
-            this.txtEmailColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmailColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmailColaborador.Name = "txtEmailColaborador";
             this.txtEmailColaborador.Size = new System.Drawing.Size(76, 20);
             this.txtEmailColaborador.TabIndex = 15;
@@ -152,7 +152,7 @@ namespace CrudDesafio.View
             // txtTelefoneColaborador
             // 
             this.txtTelefoneColaborador.Location = new System.Drawing.Point(78, 17);
-            this.txtTelefoneColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTelefoneColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtTelefoneColaborador.Mask = "0000-0000";
             this.txtTelefoneColaborador.Name = "txtTelefoneColaborador";
             this.txtTelefoneColaborador.Size = new System.Drawing.Size(76, 20);
@@ -196,9 +196,9 @@ namespace CrudDesafio.View
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtComplementoColaborador);
             this.groupBox2.Location = new System.Drawing.Point(14, 145);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(857, 88);
             this.groupBox2.TabIndex = 35;
             this.groupBox2.TabStop = false;
@@ -206,7 +206,7 @@ namespace CrudDesafio.View
             // txtCepColaborador
             // 
             this.txtCepColaborador.Location = new System.Drawing.Point(52, 15);
-            this.txtCepColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCepColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtCepColaborador.Mask = "00000-000";
             this.txtCepColaborador.Name = "txtCepColaborador";
             this.txtCepColaborador.Size = new System.Drawing.Size(76, 20);
@@ -215,7 +215,7 @@ namespace CrudDesafio.View
             // txtUfColaborador
             // 
             this.txtUfColaborador.Location = new System.Drawing.Point(250, 55);
-            this.txtUfColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUfColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtUfColaborador.Name = "txtUfColaborador";
             this.txtUfColaborador.Size = new System.Drawing.Size(20, 20);
             this.txtUfColaborador.TabIndex = 8;
@@ -233,7 +233,7 @@ namespace CrudDesafio.View
             // txtLogradouroColaborador
             // 
             this.txtLogradouroColaborador.Location = new System.Drawing.Point(250, 15);
-            this.txtLogradouroColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLogradouroColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtLogradouroColaborador.Name = "txtLogradouroColaborador";
             this.txtLogradouroColaborador.Size = new System.Drawing.Size(76, 20);
             this.txtLogradouroColaborador.TabIndex = 0;
@@ -241,7 +241,7 @@ namespace CrudDesafio.View
             // txtCidadeColaborador
             // 
             this.txtCidadeColaborador.Location = new System.Drawing.Point(410, 15);
-            this.txtCidadeColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCidadeColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtCidadeColaborador.Name = "txtCidadeColaborador";
             this.txtCidadeColaborador.Size = new System.Drawing.Size(76, 20);
             this.txtCidadeColaborador.TabIndex = 0;
@@ -249,7 +249,7 @@ namespace CrudDesafio.View
             // txtBairroColaborador
             // 
             this.txtBairroColaborador.Location = new System.Drawing.Point(563, 13);
-            this.txtBairroColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBairroColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtBairroColaborador.Name = "txtBairroColaborador";
             this.txtBairroColaborador.Size = new System.Drawing.Size(76, 20);
             this.txtBairroColaborador.TabIndex = 0;
@@ -257,7 +257,7 @@ namespace CrudDesafio.View
             // txtNumeroColaborador
             // 
             this.txtNumeroColaborador.Location = new System.Drawing.Point(720, 12);
-            this.txtNumeroColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumeroColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumeroColaborador.Name = "txtNumeroColaborador";
             this.txtNumeroColaborador.Size = new System.Drawing.Size(76, 20);
             this.txtNumeroColaborador.TabIndex = 0;
@@ -325,7 +325,7 @@ namespace CrudDesafio.View
             // txtComplementoColaborador
             // 
             this.txtComplementoColaborador.Location = new System.Drawing.Point(122, 55);
-            this.txtComplementoColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtComplementoColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtComplementoColaborador.Name = "txtComplementoColaborador";
             this.txtComplementoColaborador.Size = new System.Drawing.Size(76, 20);
             this.txtComplementoColaborador.TabIndex = 0;
@@ -347,9 +347,9 @@ namespace CrudDesafio.View
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtComissaoColaborador);
             this.groupBox1.Location = new System.Drawing.Point(14, 50);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(857, 76);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
@@ -357,7 +357,7 @@ namespace CrudDesafio.View
             // txtCpfColaborador
             // 
             this.txtCpfColaborador.Location = new System.Drawing.Point(50, 47);
-            this.txtCpfColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCpfColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtCpfColaborador.Mask = "000.000.000-00";
             this.txtCpfColaborador.Name = "txtCpfColaborador";
             this.txtCpfColaborador.Size = new System.Drawing.Size(76, 20);
@@ -366,7 +366,7 @@ namespace CrudDesafio.View
             // txtDataNascimentoColaborador
             // 
             this.txtDataNascimentoColaborador.Location = new System.Drawing.Point(505, 12);
-            this.txtDataNascimentoColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDataNascimentoColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtDataNascimentoColaborador.Mask = "00/00/0000";
             this.txtDataNascimentoColaborador.Name = "txtDataNascimentoColaborador";
             this.txtDataNascimentoColaborador.Size = new System.Drawing.Size(76, 20);
@@ -375,7 +375,7 @@ namespace CrudDesafio.View
             // txtNomeColaborador
             // 
             this.txtNomeColaborador.Location = new System.Drawing.Point(136, 13);
-            this.txtNomeColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNomeColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtNomeColaborador.Name = "txtNomeColaborador";
             this.txtNomeColaborador.Size = new System.Drawing.Size(194, 20);
             this.txtNomeColaborador.TabIndex = 0;
@@ -456,11 +456,10 @@ namespace CrudDesafio.View
             // txtSalarioColaborador
             // 
             this.txtSalarioColaborador.Location = new System.Drawing.Point(198, 46);
-            this.txtSalarioColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSalarioColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtSalarioColaborador.Name = "txtSalarioColaborador";
             this.txtSalarioColaborador.Size = new System.Drawing.Size(51, 20);
             this.txtSalarioColaborador.TabIndex = 0;
-            this.txtSalarioColaborador.Text = "0,00";
             // 
             // label6
             // 
@@ -475,7 +474,7 @@ namespace CrudDesafio.View
             // txtComissaoColaborador
             // 
             this.txtComissaoColaborador.Location = new System.Drawing.Point(344, 46);
-            this.txtComissaoColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtComissaoColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtComissaoColaborador.Name = "txtComissaoColaborador";
             this.txtComissaoColaborador.Size = new System.Drawing.Size(55, 20);
             this.txtComissaoColaborador.TabIndex = 0;
@@ -483,7 +482,7 @@ namespace CrudDesafio.View
             // txtBuscarColaborador
             // 
             this.txtBuscarColaborador.Location = new System.Drawing.Point(791, 61);
-            this.txtBuscarColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBuscarColaborador.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscarColaborador.Name = "txtBuscarColaborador";
             this.txtBuscarColaborador.Size = new System.Drawing.Size(69, 20);
             this.txtBuscarColaborador.TabIndex = 33;
@@ -501,9 +500,9 @@ namespace CrudDesafio.View
             this.groupBox4.Controls.Add(this.txtBanco);
             this.groupBox4.Controls.Add(this.label22);
             this.groupBox4.Location = new System.Drawing.Point(14, 326);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(854, 81);
             this.groupBox4.TabIndex = 48;
             this.groupBox4.TabStop = false;
@@ -522,7 +521,7 @@ namespace CrudDesafio.View
             // txtTipoConta
             // 
             this.txtTipoConta.Location = new System.Drawing.Point(567, 49);
-            this.txtTipoConta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTipoConta.Margin = new System.Windows.Forms.Padding(2);
             this.txtTipoConta.Name = "txtTipoConta";
             this.txtTipoConta.Size = new System.Drawing.Size(76, 20);
             this.txtTipoConta.TabIndex = 43;
@@ -541,7 +540,7 @@ namespace CrudDesafio.View
             // txtConta
             // 
             this.txtConta.Location = new System.Drawing.Point(201, 50);
-            this.txtConta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtConta.Margin = new System.Windows.Forms.Padding(2);
             this.txtConta.Name = "txtConta";
             this.txtConta.Size = new System.Drawing.Size(76, 20);
             this.txtConta.TabIndex = 44;
@@ -560,7 +559,7 @@ namespace CrudDesafio.View
             // txtAgencia
             // 
             this.txtAgencia.Location = new System.Drawing.Point(360, 50);
-            this.txtAgencia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAgencia.Margin = new System.Windows.Forms.Padding(2);
             this.txtAgencia.Name = "txtAgencia";
             this.txtAgencia.Size = new System.Drawing.Size(76, 20);
             this.txtAgencia.TabIndex = 45;
@@ -579,7 +578,7 @@ namespace CrudDesafio.View
             // txtBanco
             // 
             this.txtBanco.Location = new System.Drawing.Point(60, 51);
-            this.txtBanco.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBanco.Margin = new System.Windows.Forms.Padding(2);
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(76, 20);
             this.txtBanco.TabIndex = 46;
@@ -610,7 +609,7 @@ namespace CrudDesafio.View
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSalvar);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CadastroColaborador";
             this.Load += new System.EventHandler(this.CadastroColaborador_Load);
             this.groupBox3.ResumeLayout(false);

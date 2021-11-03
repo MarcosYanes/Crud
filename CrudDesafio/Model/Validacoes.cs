@@ -13,7 +13,7 @@ namespace CrudDesafio.Model
 
         public static bool ValidarNome(string nome) => new Regex(@"^[a-zA-Z\s]+$").Match(nome).Success;
 
-        public static bool ValidarValorLimite(double valor)
+        public static bool ValidarNumeroNegativo(double valor)
         {
             if (valor < 0)
             {

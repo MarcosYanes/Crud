@@ -19,7 +19,7 @@ namespace CrudDesafio.DAO
 
 
         SqlConnection conexao = null;
-        private string strCon = @"Data Source=DESKTOP-NQA0NEO\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
+        private string strCon = @"Data Source=LAPTOP-LQD3SOO7\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
         private string strSql = string.Empty;
 
         internal void Inserir(ClienteModel clientemodel)
@@ -53,10 +53,10 @@ namespace CrudDesafio.DAO
 
             strSql = @"select Id as IdCliente, sexo, Nome, ValorLimite, DataNascimento, Cpf, Cidade, Cep, Rua, Bairro, Numero,
                     Uf, Complemento, Telefone, Celular, Email  from Cliente where Id=@Id";
-            
+
             try
             {
-                using(conexao = new SqlConnection(strCon))
+                using (conexao = new SqlConnection(strCon))
                 {
                     conexao.Open();
 
@@ -70,8 +70,70 @@ namespace CrudDesafio.DAO
 
             return new ClienteModel();
 
-            
+
         }
+
+        // internal ClienteModel Buscar(int IdCliente)
+        //{
+
+        //    strSql = "select * from Cliente where Id=@Id";
+        //    conexao = new SqlConnection(strCon);
+
+        //    SqlCommand comando = new SqlCommand(strSql, conexao);
+
+        //    comando.Parameters.Add("@Id", SqlDbType.Int).Value = IdCliente;
+
+        //    var clientemodel = new ClienteModel();
+
+        //    try
+        //    {
+        //        //if (clientemodel.Id == string.Empty)
+        //        //{
+        //        //    MessageBox.Show("Você precisa digitar um id");
+        //        //}
+
+        //        conexao.Open();
+
+        //        SqlDataReader dr = comando.ExecuteReader();
+        //        if (dr.HasRows == false)
+        //        {
+        //            throw new Exception("Id não cadastrado");
+        //        }
+        //        dr.Read();
+
+        //         clientemodel.IdCliente = Convert.ToInt32(dr["Id"]);
+        //         clientemodel.Nome = Convert.ToString(dr["Nome"]);
+        //         clientemodel.Sexo = Convert.ToString(dr["sexo"]);
+        //         clientemodel.DataNascimento = Convert.ToDateTime(dr["DataNascimento"]);
+        //        clientemodel.Cpf = Convert.ToString(dr["Cpf"]);
+        //        clientemodel.Cidade = Convert.ToString(dr["Cidade"]);
+        //        clientemodel.Cep = Convert.ToString(dr["Cep"]);
+        //        clientemodel.Rua = Convert.ToString(dr["Rua"]);
+        //        clientemodel.Bairro = Convert.ToString(dr["Bairro"]);
+        //        clientemodel.Numero = Convert.ToString(dr["Numero"]);
+        //        clientemodel.Uf = Convert.ToString(dr["Uf"]);
+        //        clientemodel.Complemento = Convert.ToString(dr["Complemento"]);
+        //        clientemodel.Telefone = Convert.ToString(dr["Telefone"]);
+        //        clientemodel.Celular = Convert.ToString(dr["Celular"]);
+        //        clientemodel.Email = Convert.ToString(dr["Email"]);
+        //        clientemodel.ValorLimite = Convert.ToString(dr["ValorLimite"]);
+
+
+
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        conexao.Close();
+        //    }
+
+        //    return clientemodel;
+        //}
 
         internal  List<ClienteListagem> Listar()
         {
@@ -225,24 +287,35 @@ namespace CrudDesafio.DAO
 
         internal void Excluir(ClienteModel clientemodel)
         {
-            strSql = "delete from Cliente where Id=@IdCliente";
-
-            try
+            if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
-                using (conexao = new SqlConnection(strCon))
+                MessageBox.Show("Operação cancelada");
+
+            }
+            else
+            {
+
+                strSql = "delete from Cliente where Id=@IdCliente";
+
+                try
                 {
-                    conexao.Open();
 
-                    conexao.Execute(strSql, clientemodel);
+                    using (conexao = new SqlConnection(strCon))
+                    {
+                        conexao.Open();
+
+                        conexao.Execute(strSql, clientemodel);
+                    }
+                    MessageBox.Show("Cliente Deletado  com Sucesso");
+
+
                 }
-                MessageBox.Show("Cliente Deletado  com Sucesso");
-
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
         
     }

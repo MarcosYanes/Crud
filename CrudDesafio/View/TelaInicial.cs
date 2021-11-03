@@ -7,14 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrudDesafio.Controller;
+using CrudDesafio.Model;
 
 namespace CrudDesafio.View
 {
     public partial class TelaInicial : Form
     {
+        private  ClienteModel _cliente = new ClienteModel();
         public TelaInicial()
         {
             InitializeComponent();
+        }
+        public TelaInicial(ClienteModel cliente)
+        {
+            InitializeComponent();
+            cliente = _cliente;
+
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using CrudDesafio.Model;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,7 @@ namespace CrudDesafio.DAO
     class ColaboradorDAO
     {
         SqlConnection sqlCon = null;
-        private string strCon = @"Data Source=DESKTOP-NQA0NEO\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
+        private string strCon = @"Data Source=LAPTOP-LQD3SOO7\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
         private string strSql = string.Empty;
 
         internal void Inserir(ColaboradorModel colaboradormodel)
@@ -62,7 +63,7 @@ namespace CrudDesafio.DAO
             }
         }
 
-       
+
 
         internal ColaboradorModel Buscar(int IdColaborador)
         {
@@ -78,7 +79,7 @@ namespace CrudDesafio.DAO
 
             try
             {
-               
+
 
                 sqlCon.Open();
 
@@ -133,9 +134,9 @@ namespace CrudDesafio.DAO
         internal void Alterar(ColaboradorModel colaboradormodel)
         {
             strSql = @"update Colaborador set NomeColaborador=@NomeColaborador, SexoColaborador=@SexoColaborador, DataNascimentoColaborador=@DataNascimentoColaborador, SalarioColaborador=@SalarioColaborador, ComissaoColaborador=@ComissaoColaborador, CepColaborador=@CepColaborador, LogradouroColaborador=@LogradouroColaborador, CidadeColaborador=@CidadeColaborador, UfColaborador=@UfColaborador, ComplementoColaborador=@ComplementoColaborador, BairroColaborador=@BairroColaborador, NumeroColaborador=@NumeroColaborador, TelefoneColaborador=@TelefoneColaborador, CelularColaborador=@CelularColaborador, EmailColaborador=@EmailColaborador, CpfColaborador=@CpfColaborador, Banco=@Banco, Agencia=@Agencia, Conta=@Conta, TipoConta=@TipoConta  where IdColaborador=@IdColaborador";
-                        
-                         
-                        
+
+
+
             //strSql = "update Cliente set Nome=@Nome, sexo=@sexo, DataNascimento=@DataNascimento, Cpf=@Cpf, Cidade=@Cidade, Cep=@Cep, Rua=@Rua, Bairro=Bairro, Numero=@Numero, Uf=Uf, Complemento=@Complemento, Telefone=@Telefone, Celular=@Celular, Email=@Email, ValorLimite=@ValorLimite";
             sqlCon = new SqlConnection(strCon);
 
@@ -145,7 +146,7 @@ namespace CrudDesafio.DAO
             comando.Parameters.Add("@NomeColaborador", SqlDbType.VarChar).Value = colaboradormodel.Nome;
             comando.Parameters.Add("@SexoColaborador", SqlDbType.VarChar).Value = colaboradormodel.Sexo;
             comando.Parameters.Add("@DataNascimentoColaborador", SqlDbType.DateTime).Value = colaboradormodel.DataNascimento;
-          
+
             comando.Parameters.Add("@SalarioColaborador", SqlDbType.Decimal).Value = colaboradormodel.SalarioColaborador;
             comando.Parameters.Add("@ComissaoColaborador", SqlDbType.VarChar).Value = colaboradormodel.ComissaoColaborador;
             comando.Parameters.Add("@CepColaborador", SqlDbType.VarChar).Value = colaboradormodel.Cep;
@@ -153,7 +154,7 @@ namespace CrudDesafio.DAO
             //comando.Parameters.Add("")
             //comando.Parameters.Add("@Cpf", SqlDbType.VarChar).Value = clientemodel.Cpf;
             comando.Parameters.Add("@CidadeColaborador", SqlDbType.VarChar).Value = colaboradormodel.Cidade;
-            
+
             comando.Parameters.Add("@UfColaborador", SqlDbType.VarChar).Value = colaboradormodel.Uf;
             comando.Parameters.Add("@ComplementoColaborador", SqlDbType.VarChar).Value = colaboradormodel.Complemento;
             comando.Parameters.Add("@BairroColaborador", SqlDbType.VarChar).Value = colaboradormodel.Bairro;
@@ -200,6 +201,29 @@ namespace CrudDesafio.DAO
 
         }
 
+        internal List<ColaboradorListagem> Listar()
+        {
+
+            strSql = @"select IdColaborador as IdColaborador, NomeColaborador, SexoColaborador, DataNascimentoColaborador, CidadeColaborador, SalarioColaborador, ComissaoColaborador from Colaborador";
+
+            try
+            {
+                using (sqlCon = new SqlConnection(strCon))
+                {
+                    sqlCon.Open();
+                    return sqlCon.Query<ColaboradorListagem>(strSql).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            return new List<ColaboradorListagem>().ToList();
+
+        }
+
         internal void Excluir(ColaboradorModel colaboradormodel)
         {
             if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
@@ -229,66 +253,90 @@ namespace CrudDesafio.DAO
             }
         }
 
-        internal List<ColaboradorModel> Listar()
+        //internal List<ColaboradorModel> Listar()
+        //{
+        //    strSql = "select * from Colaborador";
+        //    sqlCon = new SqlConnection(strCon);
+
+        //    SqlCommand comando = new SqlCommand(strSql, sqlCon);
+
+        //    var lista = new List<ColaboradorModel>();
+        //    try
+        //    {
+
+        //        sqlCon.Open();
+
+        //        SqlDataReader dr = comando.ExecuteReader();
+        //        while (dr.Read())
+        //        {
+        //            var colaboradormodel = new ColaboradorModel();
+
+        //            colaboradormodel.IdColaborador = Convert.ToInt32(dr["IdColaborador"]);
+        //            colaboradormodel.Nome = Convert.ToString(dr["NomeColaborador"]);
+        //            colaboradormodel.Sexo = Convert.ToString(dr["SexoColaborador"]);
+        //            colaboradormodel.DataNascimento = Convert.ToDateTime(dr["DataNascimentoColaborador"]);
+        //            colaboradormodel.SalarioColaborador = Convert.ToDouble(dr["SalarioColaborador"]);
+        //            colaboradormodel.ComissaoColaborador = Convert.ToString(dr["ComissaoColaborador"]);
+        //            colaboradormodel.Cep = Convert.ToString(dr["CepColaborador"]);
+        //            colaboradormodel.Rua = Convert.ToString(dr["LogradouroColaborador"]);
+        //            colaboradormodel.Cidade = Convert.ToString(dr["CidadeColaborador"]);
+        //            colaboradormodel.Uf = Convert.ToString(dr["UfColaborador"]);
+        //            colaboradormodel.Complemento = Convert.ToString(dr["ComplementoColaborador"]);
+        //            colaboradormodel.Bairro = Convert.ToString(dr["BairroColaborador"]);
+        //            colaboradormodel.Numero = Convert.ToString(dr["NumeroColaborador"]);
+        //            colaboradormodel.Telefone = Convert.ToString(dr["TelefoneColaborador"]);
+        //            colaboradormodel.Celular = Convert.ToString(dr["CelularColaborador"]);
+        //            colaboradormodel.Email = Convert.ToString(dr["EmailColaborador"]);
+        //            colaboradormodel.Cpf = Convert.ToString(dr["CpfColaborador"]);
+        //            colaboradormodel.Banco = Convert.ToString(dr["Banco"]);
+        //            colaboradormodel.Agencia = Convert.ToInt32(dr["Agencia"]);
+        //            colaboradormodel.Conta = Convert.ToInt32(dr["Conta"]);
+        //            colaboradormodel.TipoConta = Convert.ToString(dr["TipoConta"]);
+
+        //            lista.Add(colaboradormodel);
+        //        }
+
+        //        dr.Close();
+
+
+
+
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        sqlCon.Close();
+        //    }
+        //    return lista;
+
+
+        //}
+
+        internal List<ColaboradorListagem> BuscarLista(string Nome)
         {
-            strSql = "select * from Colaborador";
-            sqlCon = new SqlConnection(strCon);
+            strSql = @"select IdColaborador, NomeColaborador, SexoColaborador, DataNascimentoColaborador, CidadeColaborador, SalarioColaborador, ComissaoColaborador from Colaborador where NomeColaborador=@NomeColaborador";
 
-            SqlCommand comando = new SqlCommand(strSql, sqlCon);
+            var parametros = new DynamicParameters();
+            parametros.Add("@NomeColaborador", Nome, System.Data.DbType.String);
 
-            var lista = new List<ColaboradorModel>();
             try
             {
-
-                sqlCon.Open();
-
-                SqlDataReader dr = comando.ExecuteReader();
-                while (dr.Read())
+                using (sqlCon = new SqlConnection(strCon))
                 {
-                    var colaboradormodel = new ColaboradorModel();
-
-                    colaboradormodel.IdColaborador = Convert.ToInt32(dr["IdColaborador"]);
-                    colaboradormodel.Nome = Convert.ToString(dr["NomeColaborador"]);
-                    colaboradormodel.Sexo = Convert.ToString(dr["SexoColaborador"]);
-                    colaboradormodel.DataNascimento = Convert.ToDateTime(dr["DataNascimentoColaborador"]);
-                    colaboradormodel.SalarioColaborador = Convert.ToDouble(dr["SalarioColaborador"]);
-                    colaboradormodel.ComissaoColaborador = Convert.ToString(dr["ComissaoColaborador"]);
-                    colaboradormodel.Cep= Convert.ToString(dr["CepColaborador"]);
-                    colaboradormodel.Rua = Convert.ToString(dr["LogradouroColaborador"]);
-                    colaboradormodel.Cidade = Convert.ToString(dr["CidadeColaborador"]);
-                    colaboradormodel.Uf = Convert.ToString(dr["UfColaborador"]);
-                    colaboradormodel.Complemento = Convert.ToString(dr["ComplementoColaborador"]);
-                    colaboradormodel.Bairro = Convert.ToString(dr["BairroColaborador"]);
-                    colaboradormodel.Numero = Convert.ToString(dr["NumeroColaborador"]);
-                    colaboradormodel.Telefone = Convert.ToString(dr["TelefoneColaborador"]);
-                    colaboradormodel.Celular = Convert.ToString(dr["CelularColaborador"]);
-                    colaboradormodel.Email = Convert.ToString(dr["EmailColaborador"]);
-                    colaboradormodel.Cpf = Convert.ToString(dr["CpfColaborador"]);
-                    colaboradormodel.Banco = Convert.ToString(dr["Banco"]);
-                    colaboradormodel.Agencia = Convert.ToInt32(dr["Agencia"]);
-                    colaboradormodel.Conta = Convert.ToInt32(dr["Conta"]);
-                    colaboradormodel.TipoConta = Convert.ToString(dr["TipoConta"]);
-
-                    lista.Add(colaboradormodel);
+                    sqlCon.Open();
+                    return sqlCon.Query<ColaboradorListagem>(strSql, parametros).ToList();
                 }
-
-                dr.Close();
-
-
-
-
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                sqlCon.Close();
-            }
-            return lista;
+            return new List<ColaboradorListagem>().ToList();
 
 
         }
