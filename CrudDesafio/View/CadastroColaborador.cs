@@ -30,30 +30,20 @@ namespace CrudDesafio.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            double.TryParse(txtSalarioColaborador.Text, out double salario);
+
             if (Validar() == true)
             {
-                if (!Validacoes.ValidarNumeroNegativo(Convert.ToDouble(txtSalarioColaborador.Text)))
-                {
-                    MessageBox.Show("O  Sálario Não Pode Ser Um Valor Negativo ");
-                    return;
-                }
-
-
+             
                 colaboradormodel.Nome = txtNomeColaborador.Text;
                 if (rbMasculino.Checked == true)
                     colaboradormodel.Sexo = "m";
                 else
                     colaboradormodel.Sexo = "F";
 
-               
-               
                 colaboradormodel.DataNascimento = Convert.ToDateTime(txtDataNascimentoColaborador.Text);
-                
-                
-                colaboradormodel.SalarioColaborador = double.Parse(txtSalarioColaborador.Text);
-
-               
-                    colaboradormodel.ComissaoColaborador = txtComissaoColaborador.Text;
+                colaboradormodel.Salario = salario;
+                colaboradormodel.Comissao = txtComissaoColaborador.Text;
                 colaboradormodel.Cep = txtCepColaborador.Text;
                 colaboradormodel.Rua = txtLogradouroColaborador.Text;
                 colaboradormodel.Cidade = txtCidadeColaborador.Text;
@@ -79,8 +69,18 @@ namespace CrudDesafio.View
 
         }
 
+        
+
         public bool Validar()
         {
+            
+
+            if (Validacoes.ValidarString(txtSalarioColaborador.Text))
+            {
+                MessageBox.Show("Salário Inválido!");
+                return false;
+            }
+
             if (!Validacoes.ValidarNome(txtNomeColaborador.Text))
             {
                 MessageBox.Show("Nome inválido");
@@ -166,7 +166,8 @@ namespace CrudDesafio.View
                 return false;
 
             }
-           
+            
+
 
 
 

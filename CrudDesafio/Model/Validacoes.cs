@@ -19,10 +19,18 @@ namespace CrudDesafio.Model
             {
                 return false;
             }
+            
+            
             return true;
         }
 
+        public static bool ValidarString(string valor) =>
+           new Regex(@"^[a-zA-ZÀ-úÀ-ÿ-1-9\s]+$").Match(valor).Success;
+
+
+
         public static bool ValidarCpf(string cpf) => new Regex(@"^[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$").Match(cpf).Success;
+       
         public static bool ValidarCep(string cep) => new Regex(@"[0-9]{5}[-][0-9]{3}$").Match(cep).Success;
 
         //public static bool ValidarDataNascimento(string datanascimento) => new Regex(@"^[0-3][0-9][/][0-1][0-9][/][0-9]{4}$").Match(datanascimento).Success;

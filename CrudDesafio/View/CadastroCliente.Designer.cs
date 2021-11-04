@@ -58,13 +58,13 @@ namespace CrudDesafio
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtValorLimite = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtCep = new System.Windows.Forms.MaskedTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtValorLimite = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -338,14 +338,6 @@ namespace CrudDesafio
             this.label9.Text = "Valor Limite De Compra";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // txtValorLimite
-            // 
-            this.txtValorLimite.Location = new System.Drawing.Point(196, 18);
-            this.txtValorLimite.Name = "txtValorLimite";
-            this.txtValorLimite.Size = new System.Drawing.Size(95, 20);
-            this.txtValorLimite.TabIndex = 2;
-            this.txtValorLimite.TextChanged += new System.EventHandler(this.txtValorLimite_TextChanged);
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -430,8 +422,8 @@ namespace CrudDesafio
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.txtValorLimite);
+            this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Location = new System.Drawing.Point(24, 358);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
@@ -439,6 +431,13 @@ namespace CrudDesafio
             this.groupBox4.Size = new System.Drawing.Size(848, 66);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
+            // 
+            // txtValorLimite
+            // 
+            this.txtValorLimite.Location = new System.Drawing.Point(210, 14);
+            this.txtValorLimite.Name = "txtValorLimite";
+            this.txtValorLimite.Size = new System.Drawing.Size(76, 20);
+            this.txtValorLimite.TabIndex = 2;
             // 
             // CadastroCliente
             // 
@@ -496,13 +495,13 @@ namespace CrudDesafio
         private System.Windows.Forms.MaskedTextBox txtCelular;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtValorLimite;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.MaskedTextBox txtCpf;
         private System.Windows.Forms.MaskedTextBox txtCep;
+        private System.Windows.Forms.TextBox txtValorLimite;
     }
 }
 

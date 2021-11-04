@@ -10,8 +10,8 @@ namespace CrudDesafio.Model
     {
         public int IdColaborador { get; set; }
        
-        public double SalarioColaborador { get; set; }
-        public string ComissaoColaborador { get; set; }
+        public double Salario { get; set; }
+        public string Comissao { get; set; }
         
         public string Banco { get; set; }
         public int Agencia { get; set; }

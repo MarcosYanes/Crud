@@ -72,6 +72,7 @@ namespace CrudDesafio.View
 
                 return;
             }
+           
 
             clientemodel = clientecontroller.Buscar(Convert.ToInt32(txtBuscar.Text));
 
@@ -264,12 +265,12 @@ namespace CrudDesafio.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (txtBuscar.Text == string.Empty)
+            if (txtId.Text == string.Empty)
             {
-                MessageBox.Show("Você precisa buscar o Id que deseja  excluir");
+                
                 return;
             }
-            
+
             clientecontroller.Excluir(clientemodel);
 
             txtNome.Text = "";
@@ -288,6 +289,7 @@ namespace CrudDesafio.View
             txtCelular.Text = "";
             txtEmail.Text = "";
             txtBuscar.Text = "";
+            txtId.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -314,6 +316,7 @@ namespace CrudDesafio.View
             txtCelular.Text = "";
             txtEmail.Text = "";
             txtBuscar.Text = "";
+            txtId.Text = "";
         }
     }
 }

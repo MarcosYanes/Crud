@@ -42,14 +42,20 @@ namespace CrudDesafio
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            
+
             if (Validar() == true)
             {
+                
 
                 if (!Validacoes.ValidarNumeroNegativo(double.Parse(txtValorLimite.Text)))
                 {
                     MessageBox.Show("O  Valor Limite de Compra  Não Pode Ser Negativo ");
                     return;
                 }
+
+
+
                 clientemodel.Nome = txtNome.Text;
 
                 if (rbMasculino.Checked == true)
@@ -190,11 +196,18 @@ namespace CrudDesafio
 
                 return false;
             }
-            
-          
-           
-       
-           
+            //else if (double.TryParse(txtValorLimite.Text, out double _))
+            //{
+            //    MessageBox.Show("Erro");
+            //    return false;
+            //}
+
+
+
+
+
+
+
             return true;
         }
 

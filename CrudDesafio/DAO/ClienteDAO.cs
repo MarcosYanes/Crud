@@ -1,12 +1,10 @@
-﻿using CrudDesafio.Model;
+﻿using CrudDesafio.Helpers;
+using CrudDesafio.Model;
 using Dapper;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CrudDesafio.DAO
@@ -19,23 +17,36 @@ namespace CrudDesafio.DAO
 
 
         SqlConnection conexao = null;
-        private string strCon = @"Data Source=LAPTOP-LQD3SOO7\SQLEXPRESS;Initial Catalog=CrudDesafio;Integrated Security=True";
+        private string strCon = Conexao.connectionString;
         private string strSql = string.Empty;
 
         internal void Inserir(ClienteModel clientemodel)
         {
-            strSql = @"insert into Cliente (Nome,sexo,DataNascimento,Cpf,Cidade,Cep,Rua,Bairro,
-                    Numero,Uf,Complemento,Telefone,Celular,Email,ValorLimite) 
-                    values(@Nome,@Sexo,@DataNascimento,@Cpf,@Cidade,@Cep,@Rua,@Bairro,
-                    @Numero,@Uf,@Complemento,@Telefone,@Celular,@Email,@ValorLimite)";
+            
+            var insertUsuario = "insert into Usuario(Nome, Sexo, DataNascimento, Cpf, Cidade, Cep, Rua, Bairro, Numero, Uf, Complemento, Telefone, Celular, Email)output inserted.Id values (@Nome, @Sexo, @DataNascimento, @Cpf, @Cidade, @Cep, @Rua, @Bairro, @Numero, @Uf, @Complemento, @Telefone, @Celular, @Email)";
+            var insertCliente = "insert into Cliente(Id, ValorLimite)output inserted.IdCliente values(@Id, @ValorLimite)";
 
             try
             {
                 using (conexao = new SqlConnection(strCon))
+
+
                 {
                     conexao.Open();
 
-                    conexao.Execute(strSql, clientemodel);
+                    using (var transacao = conexao.BeginTransaction())
+                    {
+                        int id = conexao.ExecuteScalar<int>(insertUsuario, clientemodel, transacao);
+
+                        clientemodel.Id = id;
+                        int idcliente = conexao.ExecuteScalar<int>(insertCliente, clientemodel, transacao);
+
+                        transacao.Commit();
+                        
+                        
+
+                        // conexao.Execute(strSql, clientemodel);
+                    }
                 }
                 MessageBox.Show("Cadastro Efetuado com Sucesso");
 
@@ -48,11 +59,12 @@ namespace CrudDesafio.DAO
 
         }
 
-        internal ClienteModel Buscar(int IdCliente)
+        internal ClienteModel Buscar(int idCliente)
         {
 
-            strSql = @"select Id as IdCliente, sexo, Nome, ValorLimite, DataNascimento, Cpf, Cidade, Cep, Rua, Bairro, Numero,
-                    Uf, Complemento, Telefone, Celular, Email  from Cliente where Id=@Id";
+            strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
+inner join Cliente c on u.Id = c.Id where IdCliente=@IdCliente";
 
             try
             {
@@ -60,7 +72,7 @@ namespace CrudDesafio.DAO
                 {
                     conexao.Open();
 
-                    return conexao.Query<ClienteModel>(strSql, new { Id = IdCliente }).First();
+                    return conexao.Query<ClienteModel>(strSql, new { IdCliente = idCliente }).First();
                 }
             }
             catch (Exception ex)
@@ -73,72 +85,12 @@ namespace CrudDesafio.DAO
 
         }
 
-        // internal ClienteModel Buscar(int IdCliente)
-        //{
-
-        //    strSql = "select * from Cliente where Id=@Id";
-        //    conexao = new SqlConnection(strCon);
-
-        //    SqlCommand comando = new SqlCommand(strSql, conexao);
-
-        //    comando.Parameters.Add("@Id", SqlDbType.Int).Value = IdCliente;
-
-        //    var clientemodel = new ClienteModel();
-
-        //    try
-        //    {
-        //        //if (clientemodel.Id == string.Empty)
-        //        //{
-        //        //    MessageBox.Show("Você precisa digitar um id");
-        //        //}
-
-        //        conexao.Open();
-
-        //        SqlDataReader dr = comando.ExecuteReader();
-        //        if (dr.HasRows == false)
-        //        {
-        //            throw new Exception("Id não cadastrado");
-        //        }
-        //        dr.Read();
-
-        //         clientemodel.IdCliente = Convert.ToInt32(dr["Id"]);
-        //         clientemodel.Nome = Convert.ToString(dr["Nome"]);
-        //         clientemodel.Sexo = Convert.ToString(dr["sexo"]);
-        //         clientemodel.DataNascimento = Convert.ToDateTime(dr["DataNascimento"]);
-        //        clientemodel.Cpf = Convert.ToString(dr["Cpf"]);
-        //        clientemodel.Cidade = Convert.ToString(dr["Cidade"]);
-        //        clientemodel.Cep = Convert.ToString(dr["Cep"]);
-        //        clientemodel.Rua = Convert.ToString(dr["Rua"]);
-        //        clientemodel.Bairro = Convert.ToString(dr["Bairro"]);
-        //        clientemodel.Numero = Convert.ToString(dr["Numero"]);
-        //        clientemodel.Uf = Convert.ToString(dr["Uf"]);
-        //        clientemodel.Complemento = Convert.ToString(dr["Complemento"]);
-        //        clientemodel.Telefone = Convert.ToString(dr["Telefone"]);
-        //        clientemodel.Celular = Convert.ToString(dr["Celular"]);
-        //        clientemodel.Email = Convert.ToString(dr["Email"]);
-        //        clientemodel.ValorLimite = Convert.ToString(dr["ValorLimite"]);
-
-
-
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conexao.Close();
-        //    }
-
-        //    return clientemodel;
-        //}
+        
 
         internal  List<ClienteListagem> Listar()
         {
             
-            strSql = @"select Id as IdCliente, Nome, Sexo, DataNascimento, Cidade from Cliente";
+            strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Cliente c on u.Id = c.Id";
             
             try
             {
@@ -160,8 +112,11 @@ namespace CrudDesafio.DAO
 
         internal  List<ClienteListagem> BuscarLista(string Nome)
         {
-            strSql = @"select Id as IdCliente, Nome, Sexo, DataNascimento, Cidade from cliente where Nome=@Nome";
-            
+            strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
+inner join Cliente c on u.Id = c.Id where Nome like @Nome + '%'";
+            //strSql = @"select Id as IdCliente, Nome, Sexo, DataNascimento, Cidade from cliente where Nome like @Nome + '%'";
+
             var parametros = new DynamicParameters();
             parametros.Add("@Nome", Nome, System.Data.DbType.String);
 
@@ -183,70 +138,13 @@ namespace CrudDesafio.DAO
         }
 
 
-        //internal List<ClienteModel> Listar()
-        //{
-        //    strSql = "select * from Cliente";
-        //    conexao = new SqlConnection(strCon);
-
-        //    SqlCommand comando = new SqlCommand(strSql, conexao);
-
-        //    var lista = new List<ClienteModel>();
-        //    try
-        //    {
-
-        //        conexao.Open();
-
-        //        SqlDataReader dr = comando.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            var clientemodel = new ClienteModel();
-
-
-        //            clientemodel.IdCliente = Convert.ToInt32(dr["Id"]);
-        //            clientemodel.Nome = Convert.ToString(dr["Nome"]);
-        //            clientemodel.Sexo = Convert.ToString(dr["sexo"]);
-        //            clientemodel.DataNascimento = Convert.ToDateTime(dr["DataNascimento"]);
-        //            clientemodel.Cpf = Convert.ToString(dr["Cpf"]);
-        //            clientemodel.Cidade = Convert.ToString(dr["Cidade"]);
-        //            clientemodel.Cep = Convert.ToString(dr["Cep"]);
-        //            clientemodel.Rua = Convert.ToString(dr["Rua"]);
-        //            clientemodel.Bairro = Convert.ToString(dr["Bairro"]);
-        //            clientemodel.Numero = Convert.ToString(dr["Numero"]);
-        //            clientemodel.Uf = Convert.ToString(dr["Uf"]);
-        //            clientemodel.Complemento = Convert.ToString(dr["Complemento"]);
-        //            clientemodel.Telefone = Convert.ToString(dr["Telefone"]);
-        //            clientemodel.Celular = Convert.ToString(dr["Celular"]);
-        //            clientemodel.Email = Convert.ToString(dr["Email"]);
-        //            clientemodel.ValorLimite = Convert.ToString(dr["ValorLimite"]);
-        //            lista.Add(clientemodel);
-        //        }
-
-        //        dr.Close();
-
-
-
-
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conexao.Close();
-        //    }
-        //    return lista;
-
-
-        //}
+       
 
 
 
         internal void Alterar(ClienteModel clientemodel)
         {
-            strSql = @"update Cliente set
+            var updateUsuario = @"update Usuario set
                         Nome=@Nome, 
                         sexo=@sexo, 
                         DataNascimento=@DataNascimento, 
@@ -260,19 +158,37 @@ namespace CrudDesafio.DAO
                         Complemento=@Complemento, 
                         Telefone=@Telefone, 
                         Celular=@Celular, 
-                        Email=@Email, 
-                        ValorLimite=@ValorLimite 
-                        where Id=@IdCliente";
+                        Email=@Email
+                        
+                        where Id=@Id";
+
+            var updateCliente = @"update Cliente set ValorLimite=@ValorLimite where Id=@Id";
+
+           
 
             try
             {
                 using (conexao = new SqlConnection(strCon))
+
+
                 {
                     conexao.Open();
 
-                    conexao.Execute(strSql, clientemodel);
+                    using (var transacao = conexao.BeginTransaction())
+                    {
+
+
+                        conexao.Execute(updateUsuario, clientemodel, transacao);
+                        conexao.Execute(updateCliente, clientemodel, transacao);
+
+                        transacao.Commit();
+
+
+
+                        // conexao.Execute(strSql, clientemodel);
+                    }
                 }
-                MessageBox.Show("Cliente Alterado com Sucesso");
+                MessageBox.Show("Cadastro Alterado com Sucesso");
 
 
             }
@@ -295,18 +211,34 @@ namespace CrudDesafio.DAO
             else
             {
 
-                strSql = "delete from Cliente where Id=@IdCliente";
+                var deletecliente = "delete from Cliente where Id=@Id";
+                var deleteusuario = "delete from Usuario where Id=@Id";
 
                 try
                 {
 
                     using (conexao = new SqlConnection(strCon))
+
+
                     {
                         conexao.Open();
 
-                        conexao.Execute(strSql, clientemodel);
+                        using (var transacao = conexao.BeginTransaction())
+                        {
+
+
+                            conexao.Execute(deletecliente, new { Id = clientemodel.Id }, transacao);
+                            conexao.Execute(deleteusuario, new { Id = clientemodel.Id }, transacao);
+                            
+
+                            transacao.Commit();
+
+
+
+                            // conexao.Execute(strSql, clientemodel);
+                        }
                     }
-                    MessageBox.Show("Cliente Deletado  com Sucesso");
+                    MessageBox.Show("Cliente deletado com sucesso");
 
 
                 }

@@ -9,12 +9,12 @@ namespace CrudDesafio.Model
     public class ColaboradorListagem 
     {
         public int IdColaborador { get; set; }
-        public string NomeColaborador { get; set; }
-        public string SexoColaborador { get; set; }
-        public DateTime DataNascimentoColaborador { get; set; }
-        public string CidadeColaborador { get; set; }
+        public string Nome { get; set; }
+        public string Sexo { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public string Cidade { get; set; }
 
-        public double SalarioColaborador { get; set; }
-        public string ComissaoColaborador { get; set; }
+        public double Salario { get; set; }
+        public string Comissao { get; set; }
     }
 }

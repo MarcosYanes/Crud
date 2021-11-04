@@ -42,8 +42,8 @@ namespace CrudDesafio.View
             txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimento.ToString();
             //txt.Text = colaboradormodel.Sexo;
             txtCpfColaborador.Text = colaboradormodel.Cpf;
-            txtSalarioColaborador.Text = colaboradormodel.SalarioColaborador.ToString();
-            txtComissaoColaborador.Text = colaboradormodel.ComissaoColaborador;
+            txtSalarioColaborador.Text = colaboradormodel.Salario.ToString();
+            txtComissaoColaborador.Text = colaboradormodel.Comissao;
             txtCidadeColaborador.Text = colaboradormodel.Cidade;
             txtCepColaborador.Text = colaboradormodel.Cep;
             txtLogradouroColaborador.Text = colaboradormodel.Rua;
@@ -89,8 +89,8 @@ namespace CrudDesafio.View
             txtId.Text = colaboradormodel.IdColaborador.ToString();
             txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimento.ToString();
            // txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimentoColaborador;
-            txtSalarioColaborador.Text = colaboradormodel.SalarioColaborador.ToString();
-            txtComissaoColaborador.Text = colaboradormodel.ComissaoColaborador;
+            txtSalarioColaborador.Text = colaboradormodel.Salario.ToString();
+            txtComissaoColaborador.Text = colaboradormodel.Comissao;
             txtCepColaborador.Text = colaboradormodel.Cep;
             txtLogradouroColaborador.Text = colaboradormodel.Rua;
             txtCidadeColaborador.Text = colaboradormodel.Cidade;
@@ -123,8 +123,8 @@ namespace CrudDesafio.View
             int.TryParse(txtConta.Text, out int conta);
 
             if (colaboradormodel.Nome == txtNomeColaborador.Text && colaboradormodel.DataNascimento == Convert.ToDateTime(txtDataNascimentoColaborador.Text) &&
-                colaboradormodel.Cpf == txtCpfColaborador.Text && colaboradormodel.SalarioColaborador == salario &&
-                colaboradormodel.ComissaoColaborador == txtComissaoColaborador.Text && colaboradormodel.Cep == txtCepColaborador.Text &&
+                colaboradormodel.Cpf == txtCpfColaborador.Text && colaboradormodel.Salario == salario &&
+                colaboradormodel.Comissao == txtComissaoColaborador.Text && colaboradormodel.Cep == txtCepColaborador.Text &&
                 colaboradormodel.Rua == txtLogradouroColaborador.Text && colaboradormodel.Cidade == txtCidadeColaborador.Text &&
                 colaboradormodel.Bairro == txtBairroColaborador.Text && colaboradormodel.Numero == txtNumeroColaborador.Text &&
                 colaboradormodel.Complemento == txtComplementoColaborador.Text && colaboradormodel.Uf == txtUfColaborador.Text &&
@@ -151,8 +151,8 @@ namespace CrudDesafio.View
                 else
                     colaboradormodel.Sexo = "F";
                 colaboradormodel.DataNascimento = Convert.ToDateTime(txtDataNascimentoColaborador.Text);
-                colaboradormodel.SalarioColaborador = salario;
-                colaboradormodel.ComissaoColaborador = txtComissaoColaborador.Text;
+                colaboradormodel.Salario = salario;
+                colaboradormodel.Comissao= txtComissaoColaborador.Text;
                 colaboradormodel.Cep = txtCepColaborador.Text;
                 colaboradormodel.Rua = txtLogradouroColaborador.Text;
                 colaboradormodel.Cidade = txtCidadeColaborador.Text;
@@ -299,11 +299,12 @@ namespace CrudDesafio.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (txtBuscar.Text == string.Empty)
+            if (txtId.Text == string.Empty)
             {
-                MessageBox.Show("Você precisa buscar o Id que deseja  excluir");
+
                 return;
             }
+
             colaboradorcontroller.Excluir(colaboradormodel);
 
             txtNomeColaborador.Text = "";
@@ -327,6 +328,7 @@ namespace CrudDesafio.View
             txtAgencia.Text = "";
             txtConta.Text = "";
             txtTipoConta.Text = "";
+            txtId.Text = "";
         }
 
         private void AlterarColaborador_Load(object sender, EventArgs e)
@@ -371,6 +373,7 @@ namespace CrudDesafio.View
             txtAgencia.Text = "";
             txtConta.Text = "";
             txtTipoConta.Text = "";
+            txtId.Text = "";
 
         }
     }
