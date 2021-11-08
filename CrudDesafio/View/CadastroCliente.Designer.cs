@@ -336,7 +336,6 @@ namespace CrudDesafio
             this.label9.Size = new System.Drawing.Size(177, 20);
             this.label9.TabIndex = 1;
             this.label9.Text = "Valor Limite De Compra";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // groupBox1
             // 

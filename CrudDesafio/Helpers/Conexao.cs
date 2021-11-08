@@ -2,6 +2,6 @@
 {
     public static class Conexao
     {
-        public static readonly string connectionString = @"Data Source=desktop-nqa0neo\sqlexpress;Initial Catalog=CrudDesafio2;Integrated Security=True";
+        public static readonly string connectionString = @"Data Source=DESKTOP-53RBIVD\SQLEXPRESS;Initial Catalog=CrudDesafio2;Integrated Security=True";
     }
 }

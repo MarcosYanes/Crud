@@ -57,7 +57,7 @@ namespace CrudDesafio.View
             AlterarCliente alterarcliente = new AlterarCliente();
             alterarcliente.Show();
 
-           alterarcliente.obterDadosPara(cliente);
+           alterarcliente.CarregarDadosParaAlteracao(cliente);
 
             alterarcliente.Show();
 

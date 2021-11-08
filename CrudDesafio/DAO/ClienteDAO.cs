@@ -48,7 +48,7 @@ namespace CrudDesafio.DAO
                         // conexao.Execute(strSql, clientemodel);
                     }
                 }
-                MessageBox.Show("Cadastro Efetuado com Sucesso");
+                
 
 
             }
@@ -63,8 +63,8 @@ namespace CrudDesafio.DAO
         {
 
             strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
-u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
-inner join Cliente c on u.Id = c.Id where IdCliente=@IdCliente";
+            u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
+            inner join Cliente c on u.Id = c.Id where IdCliente=@IdCliente";
 
             try
             {
@@ -113,8 +113,8 @@ inner join Cliente c on u.Id = c.Id where IdCliente=@IdCliente";
         internal  List<ClienteListagem> BuscarLista(string Nome)
         {
             strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
-u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
-inner join Cliente c on u.Id = c.Id where Nome like @Nome + '%'";
+            u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
+            inner join Cliente c on u.Id = c.Id where Nome like @Nome + '%'";
             //strSql = @"select Id as IdCliente, Nome, Sexo, DataNascimento, Cidade from cliente where Nome like @Nome + '%'";
 
             var parametros = new DynamicParameters();
@@ -188,7 +188,7 @@ inner join Cliente c on u.Id = c.Id where Nome like @Nome + '%'";
                         // conexao.Execute(strSql, clientemodel);
                     }
                 }
-                MessageBox.Show("Cadastro Alterado com Sucesso");
+               
 
 
             }
@@ -238,7 +238,7 @@ inner join Cliente c on u.Id = c.Id where Nome like @Nome + '%'";
                             // conexao.Execute(strSql, clientemodel);
                         }
                     }
-                    MessageBox.Show("Cliente deletado com sucesso");
+                   
 
 
                 }

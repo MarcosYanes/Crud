@@ -13,19 +13,20 @@ namespace CrudDesafio.Model
 
         public static bool ValidarNome(string nome) => new Regex(@"^[a-zA-Z\s]+$").Match(nome).Success;
 
-        public static bool ValidarNumeroNegativo(double valor)
-        {
-            if (valor < 0)
-            {
-                return false;
-            }
-            
-            
-            return true;
-        }
+      
 
-        public static bool ValidarString(string valor) =>
-           new Regex(@"^[a-zA-ZÀ-úÀ-ÿ-1-9\s]+$").Match(valor).Success;
+        public static bool ValidarParaQueSejaNumero(string valor) =>
+           new Regex(@"^[0-90.0-9.00,0-9,0\s]+$").Match(valor).Success;
+
+        public static bool ValidarNumeroDoEndereco(string valor) =>
+           new Regex(@"^[0-9\s]+$").Match(valor).Success;
+
+
+        public static bool ValidarConta(string valor) =>
+             new Regex(@"^[a-zA-ZÀ-úÀ-ÿ\s]+$").Match(valor).Success;
+
+        public static bool ValidarUf(string valor) =>
+             new Regex(@"^[a-zA-Z]{2}$").Match(valor).Success;
 
 
 
@@ -33,6 +34,10 @@ namespace CrudDesafio.Model
        
         public static bool ValidarCep(string cep) => new Regex(@"[0-9]{5}[-][0-9]{3}$").Match(cep).Success;
 
-        //public static bool ValidarDataNascimento(string datanascimento) => new Regex(@"^[0-3][0-9][/][0-1][0-9][/][0-9]{4}$").Match(datanascimento).Success;
+        public static bool ValidarBusca(string valor) =>
+          new Regex(@"^[0-9\s]+$").Match(valor).Success;
+
+
+        public static bool ValidarDataNascimento(string datanascimento) => new Regex(@"^[0-3][0-9][/][0-1][0-9][/][0-9]{4}$").Match(datanascimento).Success;
     }
 }

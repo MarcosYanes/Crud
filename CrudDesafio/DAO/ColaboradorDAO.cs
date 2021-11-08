@@ -44,7 +44,7 @@ namespace CrudDesafio.DAO
                         // conexao.Execute(strSql, clientemodel);
                     }
                 }
-                MessageBox.Show("Cadastro Efetuado com Sucesso");
+               
 
 
             }
@@ -59,8 +59,8 @@ namespace CrudDesafio.DAO
         {
 
             strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
-u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
-inner join Colaborador c on u.Id = c.Id where IdColaborador=@IdColaborador";
+            u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
+            inner join Colaborador c on u.Id = c.Id where IdColaborador=@IdColaborador";
 
             try
             {
@@ -127,7 +127,7 @@ inner join Colaborador c on u.Id = c.Id where IdColaborador=@IdColaborador";
                         
                     }
                 }
-                MessageBox.Show("Cadastro Alterado com Sucesso");
+                
 
 
             }
@@ -205,7 +205,7 @@ inner join Colaborador c on u.Id = c.Id where IdColaborador=@IdColaborador";
                             // conexao.Execute(strSql, clientemodel);
                         }
                     }
-                    MessageBox.Show("Colaborador deletado com sucesso");
+                   
 
 
                 }
@@ -217,36 +217,7 @@ inner join Colaborador c on u.Id = c.Id where IdColaborador=@IdColaborador";
 
         }
 
-        //internal void Excluir(ColaboradorModel colaboradormodel)
-        //{
-        //    if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-        //    {
-        //        MessageBox.Show("Operação cancelada");
-        //    }
-        //    else
-        //    {
-        //        strSql = "delete from Colaborador where IdColaborador=@IdColaborador";
-        //        conexao = new SqlConnection(strCon);
-        //        SqlCommand comando = new SqlCommand(strSql, conexao);
-        //        comando.Parameters.Add("@IdColaborador", SqlDbType.Int).Value = colaboradormodel.IdColaborador;
-        //        try
-        //        {
-        //            conexao.Open();
-        //            comando.ExecuteNonQuery();
-        //            MessageBox.Show("Colaborador deletado com sucesso");
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            conexao.Close();
-        //        }
-        //    }
-        //}
-
-
+       
 
         internal List<ColaboradorListagem> BuscarLista(string Nome)
         {

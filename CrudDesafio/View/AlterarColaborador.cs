@@ -24,15 +24,16 @@ namespace CrudDesafio.View
         public AlterarColaborador()
         {
             InitializeComponent();
+            txtId.Enabled = false;
         }
-        public AlterarColaborador(ColaboradorModel colaborador)
-        {
+        //public AlterarColaborador(ColaboradorModel colaborador)
+        //{
 
-            InitializeComponent();
+        //    InitializeComponent();
            
-        }
+        //}
 
-        public void obterDadosPara(ColaboradorModel colaborador)
+        public void CarregarDadosParaAlteracao(ColaboradorModel colaborador)
         {
             txtId.Enabled = false;
             colaboradormodel = colaborador;
@@ -40,6 +41,14 @@ namespace CrudDesafio.View
 
             txtNomeColaborador.Text = colaboradormodel.Nome;
             txtDataNascimentoColaborador.Text = colaboradormodel.DataNascimento.ToString();
+            if (colaboradormodel.Sexo == "m")
+            {
+                rbMasculino.Checked = true;
+            }
+            else
+            {
+                rbFeminino.Checked = true;
+            }
             //txt.Text = colaboradormodel.Sexo;
             txtCpfColaborador.Text = colaboradormodel.Cpf;
             txtSalarioColaborador.Text = colaboradormodel.Salario.ToString();
@@ -68,6 +77,11 @@ namespace CrudDesafio.View
             {
                 MessageBox.Show("Você precisa digitar um id");
 
+                return;
+            }
+            if (!Validacoes.ValidarBusca(txtBuscar.Text))
+            {
+                MessageBox.Show("Busca Inválida ! ");
                 return;
             }
 
@@ -112,11 +126,11 @@ namespace CrudDesafio.View
         private void btnAlterar_Click(object sender, EventArgs e)
         {
 
-            //if (txtBuscar.Text == string.Empty)
-            //{
-            //    MessageBox.Show("Você precisa buscar o Id que deseja Alterar");
-            //    return;
-            //}
+            if (txtId.Text == string.Empty)
+            {
+
+                return;
+            }
 
             double.TryParse(txtSalarioColaborador.Text, out double salario);
             int.TryParse(txtAgencia.Text, out int agencia);
@@ -139,12 +153,7 @@ namespace CrudDesafio.View
 
             if (Validar() == true)
             {
-
-                if (!Validacoes.ValidarNumeroNegativo(salario))
-                {
-                    MessageBox.Show("O  Sálario Não Pode Ser Um Valor Negativo ");
-                    return;
-                }
+                               
                 colaboradormodel.Nome = txtNomeColaborador.Text;
                 if (rbMasculino.Checked == true)
                     colaboradormodel.Sexo = "m";
@@ -173,6 +182,7 @@ namespace CrudDesafio.View
 
 
                 colaboradorcontroller.Alterar(colaboradormodel);
+                MessageBox.Show("Cadastro Alterado com Sucesso");
 
 
                 txtNomeColaborador.Text = "";
@@ -197,6 +207,7 @@ namespace CrudDesafio.View
                 txtConta.Text = "";
                 txtTipoConta.Text = "";
                 txtId.Text = "";
+                gridColaborador.DataSource = colaboradorcontroller.Listar();
             }
 
 
@@ -204,31 +215,39 @@ namespace CrudDesafio.View
 
         public bool Validar()
         {
-            if (!new Regex(@"^[a-zA-Z]+$").Match(txtNomeColaborador.Text).Success)
+
+
+            if (!Validacoes.ValidarParaQueSejaNumero(txtSalarioColaborador.Text))
+            {
+                MessageBox.Show("Salário Inválido!");
+                return false;
+            }
+
+            else if (!Validacoes.ValidarNome(txtNomeColaborador.Text))
             {
                 MessageBox.Show("Nome inválido");
 
                 return false;
             }
-            else if (!new Regex(@"[0-3][0-9][/][0-1][0-9][/][0-9]{4}").Match(txtDataNascimentoColaborador.Text).Success)
+            else if (!Validacoes.ValidarDataNascimento(txtDataNascimentoColaborador.Text))
             {
                 MessageBox.Show("Data de Nascimento inválida");
 
                 return false;
             }
-            else if (!new Regex(@"[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$").Match(txtCpfColaborador.Text.Replace(",", ".")).Success)
+            else if (!Validacoes.ValidarCpf(txtCpfColaborador.Text.Replace(",", ".")))
             {
                 MessageBox.Show("CPF inválido");
 
                 return false;
             }
-            else if (txtCidadeColaborador.Text == string.Empty)
+            else if (!Validacoes.ValidarNome(txtCidadeColaborador.Text))
             {
                 MessageBox.Show("Cidade inválida");
 
                 return false;
             }
-            else if (!new Regex(@"[0-9]{5}[-][0-9]{3}$").Match(txtCepColaborador.Text.Replace(",", ".")).Success)
+            else if (!Validacoes.ValidarCep(txtCepColaborador.Text))
             {
                 MessageBox.Show("Cep inválido");
 
@@ -246,13 +265,13 @@ namespace CrudDesafio.View
 
                 return false;
             }
-            else if (txtNumeroColaborador.Text == string.Empty)
+            else if (!Validacoes.ValidarNumeroDoEndereco(txtNumeroColaborador.Text))
             {
                 MessageBox.Show("Número inválido");
 
                 return false;
             }
-            else if (txtUfColaborador.Text == string.Empty)
+            else if (!Validacoes.ValidarUf(txtUfColaborador.Text))
             {
                 MessageBox.Show("UF inválido");
 
@@ -278,20 +297,27 @@ namespace CrudDesafio.View
                 MessageBox.Show("Banco Inválido");
                 return false;
             }
-            else if (txtTipoConta.Text == string.Empty)
+            else if (!Validacoes.ValidarConta(txtTipoConta.Text))
             {
                 MessageBox.Show("Tipo de conta inválida");
                 return false;
             }
-            else if(txtSalarioColaborador.Text == string.Empty)
+            else if (txtSalarioColaborador.Text == string.Empty)
             {
-                MessageBox.Show("Sálario inválido");
+                MessageBox.Show("Salario Inválido");
                 return false;
 
             }
-
-
-
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtAgencia.Text))
+            {
+                MessageBox.Show("Agência inválida!");
+                return false;
+            }
+            else if (Validacoes.ValidarConta(txtConta.Text))
+            {
+                MessageBox.Show("Conta Inválida !");
+                return false;
+            }
 
 
             return true;
@@ -306,6 +332,7 @@ namespace CrudDesafio.View
             }
 
             colaboradorcontroller.Excluir(colaboradormodel);
+            MessageBox.Show("Colaborador deletado com sucesso");
 
             txtNomeColaborador.Text = "";
             txtDataNascimentoColaborador.Text = "";
@@ -329,6 +356,7 @@ namespace CrudDesafio.View
             txtConta.Text = "";
             txtTipoConta.Text = "";
             txtId.Text = "";
+            gridColaborador.DataSource = colaboradorcontroller.Listar();
         }
 
         private void AlterarColaborador_Load(object sender, EventArgs e)
@@ -343,10 +371,7 @@ namespace CrudDesafio.View
             //gridColaborador.Columns["TipoConta"].DisplayIndex = gridColaborador.Columns.Count - 1;
         }
 
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-            gridColaborador.DataSource = colaboradorcontroller.Listar();
-        }
+       
 
         
 

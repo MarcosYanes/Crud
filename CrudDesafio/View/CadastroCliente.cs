@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CrudDesafio.Controller;
+﻿using CrudDesafio.Controller;
 using CrudDesafio.Model;
-using System.Configuration;
-using CrudDesafio.View;
+using System;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace CrudDesafio
 {
     public partial class CadastroCliente : Form
-
     {
-        
         ClienteController clientecontroller = new ClienteController();
         ClienteModel clientemodel = new ClienteModel();
         public CadastroCliente()
@@ -30,8 +20,6 @@ namespace CrudDesafio
         private void CadastroCliente_Load(object sender, EventArgs e)
         {
             txtNome.Focus();
-
-
         }
 
         private void cadastrarColaboradoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -40,21 +28,14 @@ namespace CrudDesafio
             //add.ShowDialog();
         }
 
+        
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            
-
             if (Validar() == true)
             {
-                
 
-                if (!Validacoes.ValidarNumeroNegativo(double.Parse(txtValorLimite.Text)))
-                {
-                    MessageBox.Show("O  Valor Limite de Compra  Não Pode Ser Negativo ");
-                    return;
-                }
-
-
+               
 
                 clientemodel.Nome = txtNome.Text;
 
@@ -62,10 +43,9 @@ namespace CrudDesafio
                     clientemodel.Sexo = "m";
                 else
                     clientemodel.Sexo = "F";
-
                
                 clientemodel.DataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
-                clientemodel.Cpf = txtCpf.Text;
+                clientemodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpf.Text);
                 clientemodel.Cidade = txtCidade.Text;
                 clientemodel.Cep = txtCep.Text;
                 clientemodel.Rua = txtRua.Text;
@@ -76,56 +56,14 @@ namespace CrudDesafio
                 clientemodel.Telefone = txtTelefone.Text;
                 clientemodel.Celular = txtCelular.Text;
                 clientemodel.Email = txtEmail.Text;
-                clientemodel.ValorLimite = txtValorLimite.Text;
+                clientemodel.ValorLimite = double.Parse(txtValorLimite.Text);
 
                 clientecontroller.Inserir(clientemodel);
+                MessageBox.Show("Cadastro Efetuado com Sucesso");
                 this.Close();
             }
 
-            //txtNome.Text = "";
-            //txtDataNascimento.Text = "";
-            //txtCpf.Text = "";
-            //txtCep.Text = "";
-            //txtCidade.Text = "";
-            //txtRua.Text = "";
-            //txtBairro.Text = "";
-            //txtNumero.Text = "";
-            //txtUf.Text = "";
-            //txtComplemento.Text = "";
-            //txtTelefone.Text = "";
-            //txtCelular.Text = "";
-            //txtEmail.Text = "";
-
             
-            
-        }
-
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-        private void fECHARToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Application.Exit();
-            //this.Close();
-        }
-
-        private void txtValorLimite_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
         }
 
         public bool Validar()
@@ -136,7 +74,7 @@ namespace CrudDesafio
 
                 return false ;
             }
-            else if (!new Regex(@"[0-3][0-9][/][0-1][0-9][/][0-9]{4}").Match(txtDataNascimento.Text).Success)
+            else if (!Validacoes.ValidarDataNascimento(txtDataNascimento.Text))
             {
                 MessageBox.Show("Data de Nascimento inválida");
 
@@ -178,13 +116,13 @@ namespace CrudDesafio
 
                 return false;
             }
-            else if (txtNumero.Text == string.Empty)
+            else if (!Validacoes.ValidarNumeroDoEndereco(txtNumero.Text))
             {
                 MessageBox.Show("Número inválido");
 
                 return false;
             }
-            else if (txtUf.Text == string.Empty)
+            else if (!Validacoes.ValidarUf(txtUf.Text))
             {
                 MessageBox.Show("UF inválido");
 
@@ -196,24 +134,23 @@ namespace CrudDesafio
 
                 return false;
             }
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtValorLimite.Text))
+            {
+                MessageBox.Show("Valor Limite Inválido!");
+
+                return false;
+
+            }
             //else if (double.TryParse(txtValorLimite.Text, out double _))
             //{
             //    MessageBox.Show("Erro");
             //    return false;
             //}
-
-
-
-
-
-
-
             return true;
         }
 
         private void txtCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-
         }
     }
 }

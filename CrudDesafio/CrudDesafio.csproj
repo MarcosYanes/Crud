@@ -58,6 +58,7 @@
     <Compile Include="Model\ClienteModel.cs" />
     <Compile Include="Model\ColaboradorListagem.cs" />
     <Compile Include="Model\ColaboradorModel.cs" />
+    <Compile Include="Model\Funcoes.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Validacoes.cs" />
     <Compile Include="View\AlterarCliente.cs">

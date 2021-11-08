@@ -53,7 +53,7 @@ namespace CrudDesafio.View
             AlterarColaborador alterarcolaborador = new AlterarColaborador();
             alterarcolaborador.Show();
 
-            alterarcolaborador.obterDadosPara(colaborador);
+            alterarcolaborador.CarregarDadosParaAlteracao(colaborador);
 
             alterarcolaborador.Show();
 
