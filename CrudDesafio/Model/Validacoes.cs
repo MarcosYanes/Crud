@@ -39,5 +39,8 @@ namespace CrudDesafio.Model
 
 
         public static bool ValidarDataNascimento(string datanascimento) => new Regex(@"^[0-3][0-9][/][0-1][0-9][/][0-9]{4}$").Match(datanascimento).Success;
+
+        public static bool ValidarEmail(string valor) =>
+            new Regex(@"^[a-zA-Z0-9._-]+[@][a-z]+[.]([a-zA-Z]{2,3})+$").Match(valor).Success;
     }
 }

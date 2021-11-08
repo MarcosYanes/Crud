@@ -52,10 +52,10 @@ namespace CrudDesafio.View
                 colaboradormodel.Complemento = txtComplementoColaborador.Text;
                 colaboradormodel.Bairro = txtBairroColaborador.Text;
                 colaboradormodel.Numero = txtNumeroColaborador.Text;
-                colaboradormodel.Telefone = txtTelefoneColaborador.Text;
-                colaboradormodel.Celular = txtCelularColaborador.Text;
+                colaboradormodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefoneColaborador.Text);
+                colaboradormodel.Celular = Funcoes.ObterSomenteNumeros(txtCelularColaborador.Text);
                 colaboradormodel.Email = txtEmailColaborador.Text;
-                colaboradormodel.Cpf = txtCpfColaborador.Text;
+                colaboradormodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text);
                 colaboradormodel.Banco = txtBanco.Text;
                 colaboradormodel.Agencia = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtAgencia.Text));
                 colaboradormodel.Conta = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtConta.Text)); 
@@ -176,6 +176,17 @@ namespace CrudDesafio.View
              else if (Validacoes.ValidarConta(txtConta.Text))
             {
                 MessageBox.Show("Conta Inválida !");
+                return false;
+            }
+            else if (!Validacoes.ValidarEmail(txtEmailColaborador.Text))
+            {
+                MessageBox.Show("Email Inválido ");
+
+                return false;
+            }
+            else if (Funcoes.ObterSomenteNumeros(txtCelularColaborador.Text) == string.Empty && Funcoes.ObterSomenteNumeros(txtTelefoneColaborador.Text) == string.Empty)
+            {
+                MessageBox.Show("Informe Algum Meio De Comunicação(Celular ou Telefone)");
                 return false;
             }
 

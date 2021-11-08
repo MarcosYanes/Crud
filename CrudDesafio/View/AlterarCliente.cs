@@ -54,8 +54,8 @@ namespace CrudDesafio.View
             txtBairro.Text = clientemodel.Bairro;
             txtUf.Text = clientemodel.Uf;
             txtComplemento.Text = clientemodel.Complemento;
-            txtTelefone.Text = clientemodel.Telefone;
-            txtCelular.Text = clientemodel.Celular;
+            txtTelefone.Text = Funcoes.ObterSomenteNumeros(clientemodel.Telefone);
+            txtCelular.Text = Funcoes.ObterSomenteNumeros(clientemodel.Celular);
             txtEmail.Text = clientemodel.Email;
             txtValorLimite.Text = clientemodel.ValorLimite.ToString();
             txtNumero.Text = clientemodel.Numero;
@@ -105,8 +105,8 @@ namespace CrudDesafio.View
             txtNumero.Text = clientemodel.Numero;
             txtUf.Text = clientemodel.Uf;
             txtComplemento.Text = clientemodel.Complemento;
-            txtTelefone.Text = clientemodel.Telefone;
-            txtCelular.Text = clientemodel.Celular;
+            txtTelefone.Text = Funcoes.ObterSomenteNumeros(clientemodel.Telefone);
+            txtCelular.Text = Funcoes.ObterSomenteNumeros(clientemodel.Celular);
             txtEmail.Text = clientemodel.Email;
             txtValorLimite.Text = clientemodel.ValorLimite.ToString();
 
@@ -131,8 +131,8 @@ namespace CrudDesafio.View
             if (Validar() == true)
             {
                 if (clientemodel.Nome == txtNome.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text
-               && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == txtTelefone.Text
-               && clientemodel.Celular == txtCelular.Text && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == double.Parse(txtValorLimite.Text) && clientemodel.Sexo == (rbMasculino.Checked ? "m" : "F") && clientemodel.Cpf == txtCpf.Text && clientemodel.DataNascimento == Convert.ToDateTime(txtDataNascimento.Text))
+               && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == Funcoes.ObterSomenteNumeros(txtTelefone.Text)
+               && clientemodel.Celular == Funcoes.ObterSomenteNumeros(txtCelular.Text) && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == double.Parse(txtValorLimite.Text) && clientemodel.Sexo == (rbMasculino.Checked ? "m" : "F") && clientemodel.Cpf == Funcoes.ObterSomenteNumeros(txtCpf.Text) && clientemodel.DataNascimento == Convert.ToDateTime(txtDataNascimento.Text))
                 {
                     MessageBox.Show("Voce precisa alterar um campo");
                     return;
@@ -154,7 +154,7 @@ namespace CrudDesafio.View
                 else
                     clientemodel.Sexo = "F";
                 clientemodel.DataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
-                clientemodel.Cpf = txtCpf.Text;
+                clientemodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpf.Text);
                 clientemodel.Cidade = txtCidade.Text;
                 clientemodel.Cep = txtCep.Text;
                 clientemodel.Rua = txtRua.Text;
@@ -162,8 +162,8 @@ namespace CrudDesafio.View
                 clientemodel.Numero = txtNumero.Text;
                 clientemodel.Uf = txtUf.Text;
                 clientemodel.Complemento = txtComplemento.Text;
-                clientemodel.Telefone = txtTelefone.Text;
-                clientemodel.Celular = txtCelular.Text;
+                clientemodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefone.Text);
+                clientemodel.Celular = Funcoes.ObterSomenteNumeros(txtCelular.Text);
                 clientemodel.Email = txtEmail.Text;
                 clientemodel.ValorLimite = double.Parse(txtValorLimite.Text);
 
@@ -272,7 +272,18 @@ namespace CrudDesafio.View
                 MessageBox.Show("Você precisa informar o Número para contato ");
                 return false;
             }
-            
+            else if (!Validacoes.ValidarEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email Inválido ");
+
+                return false;
+            }
+            else if (Funcoes.ObterSomenteNumeros(txtCelular.Text) == string.Empty && Funcoes.ObterSomenteNumeros(txtTelefone.Text) == string.Empty)
+            {
+                MessageBox.Show("Informe Algum Meio De Comunicação(Celular ou Telefone)");
+                return false;
+            }
+
             return true;
         }
 

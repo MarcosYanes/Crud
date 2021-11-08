@@ -50,7 +50,7 @@ namespace CrudDesafio.View
                 rbFeminino.Checked = true;
             }
             //txt.Text = colaboradormodel.Sexo;
-            txtCpfColaborador.Text = colaboradormodel.Cpf;
+            txtCpfColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Cpf);
             txtSalarioColaborador.Text = colaboradormodel.Salario.ToString();
             txtComissaoColaborador.Text = colaboradormodel.Comissao;
             txtCidadeColaborador.Text = colaboradormodel.Cidade;
@@ -59,8 +59,8 @@ namespace CrudDesafio.View
             txtBairroColaborador.Text = colaboradormodel.Bairro;
             txtUfColaborador.Text = colaboradormodel.Uf;
             txtComplementoColaborador.Text = colaboradormodel.Complemento;
-            txtTelefoneColaborador.Text = colaboradormodel.Telefone;
-            txtCelularColaborador.Text = colaboradormodel.Celular;
+            txtTelefoneColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Telefone);
+            txtCelularColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Celular);
             txtEmailColaborador.Text = colaboradormodel.Email;
             
             txtNumeroColaborador.Text = colaboradormodel.Numero;
@@ -112,10 +112,10 @@ namespace CrudDesafio.View
             txtComplementoColaborador.Text = colaboradormodel.Complemento;
             txtBairroColaborador.Text = colaboradormodel.Bairro;
             txtNumeroColaborador.Text = colaboradormodel.Numero;
-            txtTelefoneColaborador.Text = colaboradormodel.Telefone;
-            txtCelularColaborador.Text = colaboradormodel.Celular;
+            txtTelefoneColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Telefone);
+            txtCelularColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Celular);
             txtEmailColaborador.Text = colaboradormodel.Email;
-            txtCpfColaborador.Text = colaboradormodel.Cpf;
+            txtCpfColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Cpf);
             txtBanco.Text = colaboradormodel.Banco;
             txtAgencia.Text = colaboradormodel.Agencia.ToString();
             txtConta.Text = colaboradormodel.Conta.ToString();
@@ -137,12 +137,12 @@ namespace CrudDesafio.View
             int.TryParse(txtConta.Text, out int conta);
 
             if (colaboradormodel.Nome == txtNomeColaborador.Text && colaboradormodel.DataNascimento == Convert.ToDateTime(txtDataNascimentoColaborador.Text) &&
-                colaboradormodel.Cpf == txtCpfColaborador.Text && colaboradormodel.Salario == salario &&
+                colaboradormodel.Cpf == Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text) && colaboradormodel.Salario == salario &&
                 colaboradormodel.Comissao == txtComissaoColaborador.Text && colaboradormodel.Cep == txtCepColaborador.Text &&
                 colaboradormodel.Rua == txtLogradouroColaborador.Text && colaboradormodel.Cidade == txtCidadeColaborador.Text &&
                 colaboradormodel.Bairro == txtBairroColaborador.Text && colaboradormodel.Numero == txtNumeroColaborador.Text &&
                 colaboradormodel.Complemento == txtComplementoColaborador.Text && colaboradormodel.Uf == txtUfColaborador.Text &&
-                colaboradormodel.Telefone == txtTelefoneColaborador.Text && colaboradormodel.Celular == txtCelularColaborador.Text &&
+                colaboradormodel.Telefone == Funcoes.ObterSomenteNumeros(txtTelefoneColaborador.Text) && colaboradormodel.Celular == Funcoes.ObterSomenteNumeros(txtCelularColaborador.Text) &&
                 colaboradormodel.Email == txtEmailColaborador.Text && colaboradormodel.Banco == txtBanco.Text && colaboradormodel.TipoConta == txtTipoConta.Text &&
                 colaboradormodel.Sexo == (rbMasculino.Checked ? "m" : "F") && colaboradormodel.Agencia == agencia && colaboradormodel.Conta == conta)
             {
@@ -169,13 +169,13 @@ namespace CrudDesafio.View
                 colaboradormodel.Complemento = txtComplementoColaborador.Text;
                 colaboradormodel.Bairro = txtBairroColaborador.Text;
                 colaboradormodel.Numero = txtNumeroColaborador.Text;
-                colaboradormodel.Telefone = txtTelefoneColaborador.Text;
-                colaboradormodel.Celular = txtCelularColaborador.Text;
+                colaboradormodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefoneColaborador.Text);
+                colaboradormodel.Celular = Funcoes.ObterSomenteNumeros(txtCelularColaborador.Text);
                 colaboradormodel.Email = txtEmailColaborador.Text;
-                colaboradormodel.Cpf = txtCpfColaborador.Text;
+                colaboradormodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text);
                 colaboradormodel.Banco = txtBanco.Text;
-                colaboradormodel.Agencia = agencia;
-                colaboradormodel.Conta = conta;
+                colaboradormodel.Agencia = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtAgencia.Text));
+                colaboradormodel.Conta = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtConta.Text));
                 colaboradormodel.TipoConta = txtTipoConta.Text;
 
 
@@ -318,6 +318,19 @@ namespace CrudDesafio.View
                 MessageBox.Show("Conta Inválida !");
                 return false;
             }
+            else if (!Validacoes.ValidarEmail(txtEmailColaborador.Text))
+            {
+                MessageBox.Show("Email Inválido ");
+
+                return false;
+            }
+            else if(Funcoes.ObterSomenteNumeros(txtCelularColaborador.Text) == string.Empty && Funcoes.ObterSomenteNumeros(txtTelefoneColaborador.Text)== string.Empty)
+            {
+                MessageBox.Show("Informe Algum Meio De Comunicação(Celular ou Telefone)");
+                return false;
+            }
+
+           
 
 
             return true;

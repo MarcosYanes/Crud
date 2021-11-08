@@ -53,8 +53,8 @@ namespace CrudDesafio
                 clientemodel.Numero = txtNumero.Text;
                 clientemodel.Uf = txtUf.Text;
                 clientemodel.Complemento = txtComplemento.Text;
-                clientemodel.Telefone = txtTelefone.Text;
-                clientemodel.Celular = txtCelular.Text;
+                clientemodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefone.Text);
+                clientemodel.Celular = Funcoes.ObterSomenteNumeros(txtCelular.Text);
                 clientemodel.Email = txtEmail.Text;
                 clientemodel.ValorLimite = double.Parse(txtValorLimite.Text);
 
@@ -80,12 +80,7 @@ namespace CrudDesafio
 
                 return false;
             }
-            //else if (!new Regex(@"[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}$").Match(txtCpf.Text.Replace(",", ".")).Success)
-            //{
-            //    MessageBox.Show("CPF inválido");
-
-            //    return false;
-            //}
+            
             else if (!Validacoes.ValidarCpf(txtCpf.Text.Replace(",", ".")))
             {
                 MessageBox.Show("CPF inválido");
@@ -141,11 +136,18 @@ namespace CrudDesafio
                 return false;
 
             }
-            //else if (double.TryParse(txtValorLimite.Text, out double _))
-            //{
-            //    MessageBox.Show("Erro");
-            //    return false;
-            //}
+            else if (!Validacoes.ValidarEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email Inválido ");
+
+                return false;
+            }
+            else if (Funcoes.ObterSomenteNumeros(txtCelular.Text) == string.Empty && Funcoes.ObterSomenteNumeros(txtTelefone.Text) == string.Empty)
+            {
+                MessageBox.Show("Informe Algum Meio De Comunicação(Celular ou Telefone)");
+                return false;
+            }
+
             return true;
         }
 
