@@ -12,6 +12,7 @@ using CrudDesafio.Model;
 using System.Configuration;
 using CrudDesafio.View;
 using System.Text.RegularExpressions;
+using CrudDesafio.ValueObject;
 
 namespace CrudDesafio.View
 {
@@ -47,7 +48,7 @@ namespace CrudDesafio.View
             {
                 rbFeminino.Checked = true;
             }
-            txtCpf.Text = clientemodel.Cpf;
+            txtCpf.Text = clientemodel.Cpf.ToString();
             txtCidade.Text = clientemodel.Cidade;
             txtCep.Text = clientemodel.Cep;
             txtRua.Text = clientemodel.Rua;
@@ -97,7 +98,7 @@ namespace CrudDesafio.View
             }
             txtId.Text = clientemodel.IdCliente.ToString();
             txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
-            txtCpf.Text = clientemodel.Cpf;
+            txtCpf.Text = clientemodel.Cpf.ToString();
             txtCidade.Text = clientemodel.Cidade;
             txtCep.Text = clientemodel.Cep;
             txtRua.Text = clientemodel.Rua;
@@ -132,7 +133,7 @@ namespace CrudDesafio.View
             {
                 if (clientemodel.Nome == txtNome.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text
                && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == Funcoes.ObterSomenteNumeros(txtTelefone.Text)
-               && clientemodel.Celular == Funcoes.ObterSomenteNumeros(txtCelular.Text) && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == double.Parse(txtValorLimite.Text) && clientemodel.Sexo == (rbMasculino.Checked ? "m" : "F") && clientemodel.Cpf == Funcoes.ObterSomenteNumeros(txtCpf.Text) && clientemodel.DataNascimento == Convert.ToDateTime(txtDataNascimento.Text))
+               && clientemodel.Celular == Funcoes.ObterSomenteNumeros(txtCelular.Text) && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == double.Parse(txtValorLimite.Text) && clientemodel.Sexo == (rbMasculino.Checked ? "m" : "F") && clientemodel.Cpf.ToString() == Funcoes.ObterSomenteNumeros(txtCpf.Text) && clientemodel.DataNascimento == Convert.ToDateTime(txtDataNascimento.Text))
                 {
                     MessageBox.Show("Voce precisa alterar um campo");
                     return;

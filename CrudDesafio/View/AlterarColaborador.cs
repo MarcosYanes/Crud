@@ -12,6 +12,7 @@ using CrudDesafio.Model;
 using System.Configuration;
 using CrudDesafio.View;
 using System.Text.RegularExpressions;
+using CrudDesafio.ValueObject;
 
 namespace CrudDesafio.View
 {
@@ -50,7 +51,7 @@ namespace CrudDesafio.View
                 rbFeminino.Checked = true;
             }
             //txt.Text = colaboradormodel.Sexo;
-            txtCpfColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Cpf);
+            txtCpfColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Cpf.ToString());
             txtSalarioColaborador.Text = colaboradormodel.Salario.ToString();
             txtComissaoColaborador.Text = colaboradormodel.Comissao;
             txtCidadeColaborador.Text = colaboradormodel.Cidade;
@@ -115,7 +116,7 @@ namespace CrudDesafio.View
             txtTelefoneColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Telefone);
             txtCelularColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Celular);
             txtEmailColaborador.Text = colaboradormodel.Email;
-            txtCpfColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Cpf);
+            txtCpfColaborador.Text = Funcoes.ObterSomenteNumeros(colaboradormodel.Cpf.ToString());
             txtBanco.Text = colaboradormodel.Banco;
             txtAgencia.Text = colaboradormodel.Agencia.ToString();
             txtConta.Text = colaboradormodel.Conta.ToString();
@@ -137,7 +138,7 @@ namespace CrudDesafio.View
             int.TryParse(txtConta.Text, out int conta);
 
             if (colaboradormodel.Nome == txtNomeColaborador.Text && colaboradormodel.DataNascimento == Convert.ToDateTime(txtDataNascimentoColaborador.Text) &&
-                colaboradormodel.Cpf == Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text) && colaboradormodel.Salario == salario &&
+                colaboradormodel.Cpf.ToString() == Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text) && colaboradormodel.Salario == salario &&
                 colaboradormodel.Comissao == txtComissaoColaborador.Text && colaboradormodel.Cep == txtCepColaborador.Text &&
                 colaboradormodel.Rua == txtLogradouroColaborador.Text && colaboradormodel.Cidade == txtCidadeColaborador.Text &&
                 colaboradormodel.Bairro == txtBairroColaborador.Text && colaboradormodel.Numero == txtNumeroColaborador.Text &&

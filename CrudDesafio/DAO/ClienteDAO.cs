@@ -36,7 +36,23 @@ namespace CrudDesafio.DAO
 
                     using (var transacao = conexao.BeginTransaction())
                     {
-                        int id = conexao.ExecuteScalar<int>(insertUsuario, clientemodel, transacao);
+                        int id = conexao.ExecuteScalar<int>(insertUsuario, new { 
+                            Id = clientemodel.Id,
+                            Nome = clientemodel.Nome,
+                            DataNascimento = clientemodel.DataNascimento,
+                            Sexo = clientemodel.Sexo,
+                            Cpf = clientemodel.Cpf.ObterSomenteNumeros(),
+                            Cidade = clientemodel.Cidade,
+                            Cep = clientemodel.Cep,
+                            Rua = clientemodel.Rua,
+                            Bairro = clientemodel.Bairro,
+                            Numero = clientemodel.Numero,
+                            Uf = clientemodel.Uf,
+                            Complemento = clientemodel.Complemento,
+                            Telefone = clientemodel.Telefone,
+                            Celular = clientemodel.Celular,
+                            Email = clientemodel.Email,
+                        }, transacao);
 
                         clientemodel.Id = id;
                         int idcliente = conexao.ExecuteScalar<int>(insertCliente, clientemodel, transacao);
@@ -178,7 +194,23 @@ namespace CrudDesafio.DAO
                     {
 
 
-                        conexao.Execute(updateUsuario, clientemodel, transacao);
+                        conexao.Execute(updateUsuario, new {
+                            Id = clientemodel.Id,
+                            Nome = clientemodel.Nome,
+                            DataNascimento = clientemodel.DataNascimento,
+                            Sexo = clientemodel.Sexo,
+                            Cpf = clientemodel.Cpf.ObterSomenteNumeros(),
+                            Cidade = clientemodel.Cidade,
+                            Cep = clientemodel.Cep,
+                            Rua = clientemodel.Rua,
+                            Bairro = clientemodel.Bairro,
+                            Numero = clientemodel.Numero,
+                            Uf = clientemodel.Uf,
+                            Complemento = clientemodel.Complemento,
+                            Telefone = clientemodel.Telefone,
+                            Celular = clientemodel.Celular,
+                            Email = clientemodel.Email,
+                        }, transacao);
                         conexao.Execute(updateCliente, clientemodel, transacao);
 
                         transacao.Commit();

@@ -32,7 +32,23 @@ namespace CrudDesafio.DAO
 
                     using (var transacao = conexao.BeginTransaction())
                     {
-                        int id = conexao.ExecuteScalar<int>(insertUsuario, colaboradormodel, transacao);
+                        int id = conexao.ExecuteScalar<int>(insertUsuario, new {
+                            Id = colaboradormodel.Id,
+                            Nome = colaboradormodel.Nome,
+                            DataNascimento = colaboradormodel.DataNascimento,
+                            Sexo = colaboradormodel.Sexo,
+                            Cpf = colaboradormodel.Cpf.ObterSomenteNumeros(),
+                            Cidade = colaboradormodel.Cidade,
+                            Cep = colaboradormodel.Cep,
+                            Rua = colaboradormodel.Rua,
+                            Bairro = colaboradormodel.Bairro,
+                            Numero = colaboradormodel.Numero,
+                            Uf = colaboradormodel.Uf,
+                            Complemento = colaboradormodel.Complemento,
+                            Telefone = colaboradormodel.Telefone,
+                            Celular = colaboradormodel.Celular,
+                            Email = colaboradormodel.Email,
+                        }, transacao);
 
                         colaboradormodel.Id = id;
                         int idcolaborador = conexao.ExecuteScalar<int>(insertColaborador, colaboradormodel, transacao);
@@ -117,7 +133,24 @@ namespace CrudDesafio.DAO
                     {
 
 
-                        conexao.Execute(updateUsuario, colaboradormodel, transacao);
+                        conexao.Execute(updateUsuario, new
+                        {
+                            Id = colaboradormodel.Id,
+                            Nome = colaboradormodel.Nome,
+                            DataNascimento = colaboradormodel.DataNascimento,
+                            Sexo = colaboradormodel.Sexo,
+                            Cpf = colaboradormodel.Cpf.ObterSomenteNumeros(),
+                            Cidade = colaboradormodel.Cidade,
+                            Cep = colaboradormodel.Cep,
+                            Rua = colaboradormodel.Rua,
+                            Bairro = colaboradormodel.Bairro,
+                            Numero = colaboradormodel.Numero,
+                            Uf = colaboradormodel.Uf,
+                            Complemento = colaboradormodel.Complemento,
+                            Telefone = colaboradormodel.Telefone,
+                            Celular = colaboradormodel.Celular,
+                            Email = colaboradormodel.Email,
+                        }, transacao);
                         conexao.Execute(updateColaborador, colaboradormodel, transacao);
 
                         transacao.Commit();

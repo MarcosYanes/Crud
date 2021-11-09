@@ -61,6 +61,7 @@
     <Compile Include="Model\Funcoes.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Validacoes.cs" />
+    <Compile Include="ValueObject\Cpf.cs" />
     <Compile Include="View\AlterarCliente.cs">
       <SubType>Form</SubType>
     </Compile>

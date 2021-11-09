@@ -62,7 +62,10 @@ namespace CrudDesafio
                 MessageBox.Show("Cadastro Efetuado com Sucesso");
                 this.Close();
             }
-
+            //else
+            //{
+            //    MessageBox.Show("Campos Incorretos!");
+            //}
             
         }
 
