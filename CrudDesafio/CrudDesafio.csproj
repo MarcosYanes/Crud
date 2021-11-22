@@ -51,14 +51,22 @@
   <ItemGroup>
     <Compile Include="Controller\ClienteController.cs" />
     <Compile Include="Controller\ColaboradorController.cs" />
+    <Compile Include="Controller\PedidoController.cs" />
+    <Compile Include="Controller\ProdutoController.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ColaboradorDAO.cs" />
+    <Compile Include="DAO\PedidoDAO.cs" />
+    <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="Helpers\Conexao.cs" />
+    <Compile Include="Model\CarrinhoProduto.cs" />
     <Compile Include="Model\ClienteListagem.cs" />
     <Compile Include="Model\ClienteModel.cs" />
     <Compile Include="Model\ColaboradorListagem.cs" />
     <Compile Include="Model\ColaboradorModel.cs" />
     <Compile Include="Model\Funcoes.cs" />
+    <Compile Include="Model\PedidoListagem.cs" />
+    <Compile Include="Model\PedidoModel.cs" />
+    <Compile Include="Model\ProdutoModel.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Validacoes.cs" />
     <Compile Include="ValueObject\Cpf.cs" />
@@ -74,6 +82,12 @@
     <Compile Include="View\AlterarColaborador.Designer.cs">
       <DependentUpon>AlterarColaborador.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AlterarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AlterarProduto.Designer.cs">
+      <DependentUpon>AlterarProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CadastroCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +102,36 @@
     <Compile Include="View\CadastroColaborador.Designer.cs">
       <DependentUpon>CadastroColaborador.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CadastroProduto.Designer.cs">
+      <DependentUpon>CadastroProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConsultarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConsultarPedido.Designer.cs">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EscolherCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EscolherCliente.Designer.cs">
+      <DependentUpon>EscolherCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EscolherColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EscolherColaborador.Designer.cs">
+      <DependentUpon>EscolherColaborador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EscolherProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EscolherProduto.Designer.cs">
+      <DependentUpon>EscolherProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ListarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +144,24 @@
     <Compile Include="View\ListarColaborador.Designer.cs">
       <DependentUpon>ListarColaborador.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ListarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ListarPedido.Designer.cs">
+      <DependentUpon>ListarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ListarProduto.Designer.cs">
+      <DependentUpon>ListarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Pedido.Designer.cs">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AlterarColaborador.resx">
       <DependentUpon>AlterarColaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AlterarProduto.resx">
+      <DependentUpon>AlterarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CadastroCliente.resx">
       <DependentUpon>CadastroCliente.cs</DependentUpon>
@@ -127,11 +192,35 @@
     <EmbeddedResource Include="View\CadastroColaborador.resx">
       <DependentUpon>CadastroColaborador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\CadastroProduto.resx">
+      <DependentUpon>CadastroProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ConsultarPedido.resx">
+      <DependentUpon>ConsultarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscolherCliente.resx">
+      <DependentUpon>EscolherCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscolherColaborador.resx">
+      <DependentUpon>EscolherColaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EscolherProduto.resx">
+      <DependentUpon>EscolherProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ListarCliente.resx">
       <DependentUpon>ListarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ListarColaborador.resx">
       <DependentUpon>ListarColaborador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListarPedido.resx">
+      <DependentUpon>ListarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ListarProduto.resx">
+      <DependentUpon>ListarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Pedido.resx">
+      <DependentUpon>Pedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>

@@ -77,5 +77,35 @@ namespace CrudDesafio.View
         {
 
         }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CadastroProduto cadastroproduto = new CadastroProduto();
+            cadastroproduto.ShowDialog();
+        }
+
+        private void produtoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ListarProduto listarproduto = new ListarProduto();
+            listarproduto.ShowDialog();
+        }
+
+        private void produtoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            AlterarProduto alterarproduto = new AlterarProduto();
+            alterarproduto.Show();
+        }
+
+        private void compraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Pedido pedido = new Pedido();
+            pedido.ShowDialog();
+        }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListarPedido listarpedido = new ListarPedido();
+            listarpedido.Show();
+        }
     }
 }

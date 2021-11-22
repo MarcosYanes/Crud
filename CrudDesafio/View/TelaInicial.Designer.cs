@@ -33,12 +33,17 @@ namespace CrudDesafio.View
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +54,8 @@ namespace CrudDesafio.View
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrarToolStripMenuItem,
             this.listarToolStripMenuItem,
-            this.alterarToolStripMenuItem});
+            this.alterarToolStripMenuItem,
+            this.compraToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -61,7 +67,8 @@ namespace CrudDesafio.View
             // 
             this.cadastrarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clienteToolStripMenuItem,
-            this.colaboradorToolStripMenuItem});
+            this.colaboradorToolStripMenuItem,
+            this.produtoToolStripMenuItem});
             this.cadastrarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(89, 25);
@@ -82,11 +89,20 @@ namespace CrudDesafio.View
             this.colaboradorToolStripMenuItem.Text = "Colaborador";
             this.colaboradorToolStripMenuItem.Click += new System.EventHandler(this.colaboradorToolStripMenuItem_Click);
             // 
+            // produtoToolStripMenuItem
+            // 
+            this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.produtoToolStripMenuItem.Text = "Produto";
+            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
+            // 
             // listarToolStripMenuItem
             // 
             this.listarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clienteToolStripMenuItem1,
-            this.colaboradorToolStripMenuItem1});
+            this.colaboradorToolStripMenuItem1,
+            this.produtoToolStripMenuItem1,
+            this.pedidoToolStripMenuItem});
             this.listarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(60, 25);
@@ -95,22 +111,37 @@ namespace CrudDesafio.View
             // clienteToolStripMenuItem1
             // 
             this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(167, 26);
+            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
             this.clienteToolStripMenuItem1.Text = "Cliente";
             this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
             // colaboradorToolStripMenuItem1
             // 
             this.colaboradorToolStripMenuItem1.Name = "colaboradorToolStripMenuItem1";
-            this.colaboradorToolStripMenuItem1.Size = new System.Drawing.Size(167, 26);
+            this.colaboradorToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
             this.colaboradorToolStripMenuItem1.Text = "Colaborador";
             this.colaboradorToolStripMenuItem1.Click += new System.EventHandler(this.colaboradorToolStripMenuItem1_Click);
+            // 
+            // produtoToolStripMenuItem1
+            // 
+            this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(180, 26);
+            this.produtoToolStripMenuItem1.Text = "Produto";
+            this.produtoToolStripMenuItem1.Click += new System.EventHandler(this.produtoToolStripMenuItem1_Click);
+            // 
+            // pedidoToolStripMenuItem
+            // 
+            this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
+            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.pedidoToolStripMenuItem.Text = "Pedido";
+            this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
             // 
             // alterarToolStripMenuItem
             // 
             this.alterarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clienteToolStripMenuItem2,
-            this.colaboradorToolStripMenuItem2});
+            this.colaboradorToolStripMenuItem2,
+            this.produtoToolStripMenuItem2});
             this.alterarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.alterarToolStripMenuItem.Name = "alterarToolStripMenuItem";
             this.alterarToolStripMenuItem.Size = new System.Drawing.Size(120, 25);
@@ -120,16 +151,30 @@ namespace CrudDesafio.View
             // clienteToolStripMenuItem2
             // 
             this.clienteToolStripMenuItem2.Name = "clienteToolStripMenuItem2";
-            this.clienteToolStripMenuItem2.Size = new System.Drawing.Size(180, 26);
+            this.clienteToolStripMenuItem2.Size = new System.Drawing.Size(167, 26);
             this.clienteToolStripMenuItem2.Text = "Cliente";
             this.clienteToolStripMenuItem2.Click += new System.EventHandler(this.clienteToolStripMenuItem2_Click);
             // 
             // colaboradorToolStripMenuItem2
             // 
             this.colaboradorToolStripMenuItem2.Name = "colaboradorToolStripMenuItem2";
-            this.colaboradorToolStripMenuItem2.Size = new System.Drawing.Size(180, 26);
+            this.colaboradorToolStripMenuItem2.Size = new System.Drawing.Size(167, 26);
             this.colaboradorToolStripMenuItem2.Text = "Colaborador";
             this.colaboradorToolStripMenuItem2.Click += new System.EventHandler(this.colaboradorToolStripMenuItem2_Click);
+            // 
+            // produtoToolStripMenuItem2
+            // 
+            this.produtoToolStripMenuItem2.Name = "produtoToolStripMenuItem2";
+            this.produtoToolStripMenuItem2.Size = new System.Drawing.Size(167, 26);
+            this.produtoToolStripMenuItem2.Text = "Produto";
+            this.produtoToolStripMenuItem2.Click += new System.EventHandler(this.produtoToolStripMenuItem2_Click);
+            // 
+            // compraToolStripMenuItem
+            // 
+            this.compraToolStripMenuItem.Name = "compraToolStripMenuItem";
+            this.compraToolStripMenuItem.Size = new System.Drawing.Size(62, 25);
+            this.compraToolStripMenuItem.Text = "Compra";
+            this.compraToolStripMenuItem.Click += new System.EventHandler(this.compraToolStripMenuItem_Click);
             // 
             // TelaInicial
             // 
@@ -161,5 +206,10 @@ namespace CrudDesafio.View
         private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem colaboradorToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidoToolStripMenuItem;
     }
 }

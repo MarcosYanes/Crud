@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CrudDesafio.Controller;
+﻿using CrudDesafio.Controller;
 using CrudDesafio.Model;
-using System.Configuration;
-using CrudDesafio.View;
-using System.Text.RegularExpressions;
-using CrudDesafio.ValueObject;
+using System;
+using System.Windows.Forms;
+
 
 namespace CrudDesafio.View
 {
@@ -21,6 +11,7 @@ namespace CrudDesafio.View
 
         ClienteController clientecontroller = new ClienteController();
         ClienteModel clientemodel = new ClienteModel();
+        
 
         public AlterarCliente()
         {
@@ -28,10 +19,6 @@ namespace CrudDesafio.View
             txtId.Enabled = false;
         }
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         public void CarregarDadosParaAlteracao(ClienteModel cliente)
         {
             txtId.Enabled = false;
@@ -60,59 +47,8 @@ namespace CrudDesafio.View
             txtEmail.Text = clientemodel.Email;
             txtValorLimite.Text = clientemodel.ValorLimite.ToString();
             txtNumero.Text = clientemodel.Numero;
-
-            
-
-
         }
         
-        public void btnBuscar_Click(object sender, EventArgs e)
-        {
-            if (txtBuscar.Text == string.Empty)
-            {
-                MessageBox.Show("Você precisa digitar um id");
-
-                return;
-            }
-            if (!Validacoes.ValidarBusca(txtBuscar.Text))
-            {
-                MessageBox.Show("Busca Inválida ! ");
-                return;
-            }
-           
-
-            clientemodel = clientecontroller.Buscar(Convert.ToInt32(txtBuscar.Text));
-
-            if (clientemodel.IdCliente == 0)
-            {
-                return;
-            }
-            txtNome.Text = clientemodel.Nome;
-            if (clientemodel.Sexo == "m")
-            {
-                rbMasculino.Checked = true;
-            }
-            else
-            {
-                rbFeminino.Checked = true;
-            }
-            txtId.Text = clientemodel.IdCliente.ToString();
-            txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
-            txtCpf.Text = clientemodel.Cpf.ToString();
-            txtCidade.Text = clientemodel.Cidade;
-            txtCep.Text = clientemodel.Cep;
-            txtRua.Text = clientemodel.Rua;
-            txtBairro.Text = clientemodel.Bairro;
-            txtNumero.Text = clientemodel.Numero;
-            txtUf.Text = clientemodel.Uf;
-            txtComplemento.Text = clientemodel.Complemento;
-            txtTelefone.Text = Funcoes.ObterSomenteNumeros(clientemodel.Telefone);
-            txtCelular.Text = Funcoes.ObterSomenteNumeros(clientemodel.Celular);
-            txtEmail.Text = clientemodel.Email;
-            txtValorLimite.Text = clientemodel.ValorLimite.ToString();
-
-            
-        }
 
         private void AlterarCliente_Load(object sender, EventArgs e)
         {
@@ -171,31 +107,12 @@ namespace CrudDesafio.View
                 clientecontroller.Alterar(clientemodel);
                 MessageBox.Show("Cadastro Alterado com Sucesso");
 
-                txtNome.Text = "";
-                txtDataNascimento.Text = "";
-                txtSexo.Text = "";
-                txtCpf.Text = "";
-                txtValorLimite.Text = "";
-                txtCidade.Text = "";
-                txtCep.Text = "";
-                txtRua.Text = "";
-                txtBairro.Text = "";
-                txtNumero.Text = "";
-                txtUf.Text = "";
-                txtComplemento.Text = "";
-                txtTelefone.Text = "";
-                txtCelular.Text = "";
-                txtEmail.Text = "";
-                txtBuscar.Text = "";
-                txtId.Text = "";
+                limparTextBoxes(groupBox1.Controls);
+                limparTextBoxes(groupBox2.Controls);
+                limparTextBoxes(groupBox3.Controls);
+                limparTextBoxes(groupBox4.Controls);
                 gridClientes.DataSource = clientecontroller.Listar();
-
-
             }
-
-            
-           
-
         }
 
         public bool Validar()
@@ -288,9 +205,7 @@ namespace CrudDesafio.View
             return true;
         }
 
-        
-
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void BtnExcluir_Click(object sender, EventArgs e)
         {
             if (txtId.Text == string.Empty)
             {
@@ -301,48 +216,138 @@ namespace CrudDesafio.View
             clientecontroller.Excluir(clientemodel);
             MessageBox.Show("Cliente deletado com sucesso");
 
-            txtNome.Text = "";
-            txtDataNascimento.Text = "";
-            txtSexo.Text = "";
-            txtCpf.Text = "";
-            txtValorLimite.Text = "";
-            txtCidade.Text = "";
-            txtCep.Text = "";
-            txtRua.Text = "";
-            txtBairro.Text = "";
-            txtNumero.Text = "";
-            txtUf.Text = "";
-            txtComplemento.Text = "";
-            txtTelefone.Text = "";
-            txtCelular.Text = "";
-            txtEmail.Text = "";
-            txtBuscar.Text = "";
-            txtId.Text = "";
+            limparTextBoxes(groupBox1.Controls);
+            limparTextBoxes(groupBox2.Controls);
+            limparTextBoxes(groupBox3.Controls);
+            limparTextBoxes(groupBox4.Controls);
+
             gridClientes.DataSource = clientecontroller.Listar();
         }
 
-        
-
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            txtNome.Text = "";
-            txtDataNascimento.Text = "";
-            
-            txtCpf.Text = "";
-            txtValorLimite.Text = "";
-            txtCidade.Text = "";
-            txtCep.Text = "";
-            txtRua.Text = "";
-            txtBairro.Text = "";
-            txtNumero.Text = "";
-            txtUf.Text = "";
-            txtComplemento.Text = "";
-            txtTelefone.Text = "";
-            txtCelular.Text = "";
-            txtEmail.Text = "";
-            txtBuscar.Text = "";
-            txtId.Text = "";
+            limparTextBoxes(groupBox1.Controls);
+            limparTextBoxes(groupBox2.Controls);
+            limparTextBoxes(groupBox3.Controls);
+            limparTextBoxes(groupBox4.Controls);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void limparTextBoxes(Control.ControlCollection controles)
+        {
+            //Faz um laço para todos os controles passados no parâmetro
+            foreach (Control ctrl in controles)
+            {
+                //Se o contorle for um TextBox...
+                if (ctrl is TextBox)
+                {
+                    ((TextBox)(ctrl)).Text = string.Empty;
+                }
+                if (ctrl is MaskedTextBox)
+                {
+                    ((MaskedTextBox)(ctrl)).Text = string.Empty;
+                }
+            }
+        }
+
+        //private void btnBuscar_Click_1(object sender, EventArgs e)
+        //{
+        //    if (txtBuscar.Text == string.Empty)
+        //    {
+        //        MessageBox.Show("Você precisa digitar um id");
+
+        //        return;
+        //    }
+        //    if (!Validacoes.ValidarBusca(txtBuscar.Text))
+        //    {
+        //        MessageBox.Show("Busca Inválida ! ");
+        //        return;
+        //    }
+
+
+        //    clientemodel = clientecontroller.Buscar(Convert.ToInt32(txtBuscar.Text));
+
+        //    if (clientemodel.IdCliente == 0)
+        //    {
+        //        return;
+        //    }
+        //    txtNome.Text = clientemodel.Nome;
+        //    if (clientemodel.Sexo == "m")
+        //    {
+        //        rbMasculino.Checked = true;
+        //    }
+        //    else
+        //    {
+        //        rbFeminino.Checked = true;
+        //    }
+        //    txtId.Text = clientemodel.IdCliente.ToString();
+        //    txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
+        //    txtCpf.Text = Funcoes.ObterSomenteNumeros(clientemodel.Cpf.ToString());
+        //    txtCidade.Text = clientemodel.Cidade;
+        //    txtCep.Text = clientemodel.Cep;
+        //    txtRua.Text = clientemodel.Rua;
+        //    txtBairro.Text = clientemodel.Bairro;
+        //    txtNumero.Text = clientemodel.Numero;
+        //    txtUf.Text = clientemodel.Uf;
+        //    txtComplemento.Text = clientemodel.Complemento;
+        //    txtTelefone.Text = Funcoes.ObterSomenteNumeros(clientemodel.Telefone);
+        //    txtCelular.Text = Funcoes.ObterSomenteNumeros(clientemodel.Celular);
+        //    txtEmail.Text = clientemodel.Email;
+        //    txtValorLimite.Text = clientemodel.ValorLimite.ToString();
+
+
+        //}
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (txtBuscar.Text == string.Empty)
+            {
+                MessageBox.Show("Você precisa digitar um id");
+
+                return;
+            }
+            if (!Validacoes.ValidarBusca(txtBuscar.Text))
+            {
+                MessageBox.Show("Busca Inválida ! ");
+                return;
+            }
+
+
+            clientemodel = clientecontroller.Buscar(Convert.ToInt32(txtBuscar.Text));
+
+            if (clientemodel.IdCliente == 0)
+            {
+                return;
+            }
+            txtNome.Text = clientemodel.Nome;
+            if (clientemodel.Sexo == "m")
+            {
+                rbMasculino.Checked = true;
+            }
+            else
+            {
+                rbFeminino.Checked = true;
+            }
+            txtId.Text = clientemodel.IdCliente.ToString();
+            txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
+            txtCpf.Text = Funcoes.ObterSomenteNumeros(clientemodel.Cpf.ToString());
+            txtCidade.Text = clientemodel.Cidade;
+            txtCep.Text = clientemodel.Cep;
+            txtRua.Text = clientemodel.Rua;
+            txtBairro.Text = clientemodel.Bairro;
+            txtNumero.Text = clientemodel.Numero;
+            txtUf.Text = clientemodel.Uf;
+            txtComplemento.Text = clientemodel.Complemento;
+            txtTelefone.Text = Funcoes.ObterSomenteNumeros(clientemodel.Telefone);
+            txtCelular.Text = Funcoes.ObterSomenteNumeros(clientemodel.Celular);
+            txtEmail.Text = clientemodel.Email;
+            txtValorLimite.Text = clientemodel.ValorLimite.ToString();
+        }
+
+       
     }
 }
