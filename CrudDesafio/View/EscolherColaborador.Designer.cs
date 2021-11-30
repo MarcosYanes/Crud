@@ -37,20 +37,22 @@ namespace CrudDesafio.View
             // gridColaborador
             // 
             this.gridColaborador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridColaborador.Location = new System.Drawing.Point(160, 78);
+            this.gridColaborador.Location = new System.Drawing.Point(63, 78);
             this.gridColaborador.Name = "gridColaborador";
             this.gridColaborador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridColaborador.Size = new System.Drawing.Size(461, 257);
+            this.gridColaborador.Size = new System.Drawing.Size(673, 257);
             this.gridColaborador.TabIndex = 0;
             // 
             // btnAdicionarColaborador
             // 
-            this.btnAdicionarColaborador.Location = new System.Drawing.Point(340, 378);
+            this.btnAdicionarColaborador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
+            this.btnAdicionarColaborador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionarColaborador.Location = new System.Drawing.Point(358, 377);
             this.btnAdicionarColaborador.Name = "btnAdicionarColaborador";
             this.btnAdicionarColaborador.Size = new System.Drawing.Size(75, 23);
             this.btnAdicionarColaborador.TabIndex = 1;
             this.btnAdicionarColaborador.Text = "Adicionar";
-            this.btnAdicionarColaborador.UseVisualStyleBackColor = true;
+            this.btnAdicionarColaborador.UseVisualStyleBackColor = false;
             this.btnAdicionarColaborador.Click += new System.EventHandler(this.btnAdicionarColaborador_Click);
             // 
             // EscolherColaborador

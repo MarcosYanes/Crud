@@ -38,7 +38,7 @@ namespace CrudDesafio.View
             colaboradormodel = colaboradorcontroller.Buscar(id);
             //Pedido pedido = new Pedido();
 
-            this.Dispose();
+            this.Close();
         }
     }
 }

@@ -16,15 +16,15 @@ namespace TesteUnidade
             Assert.AreEqual(Validacoes.ValidarNome(texto), esperado);
         }
 
-        [TestMethod]
-        public void Teste_se_valorLimite_e_maior_que_0()
-        {
-            var valor = 20;
+        //[TestMethod]
+        //public void Teste_se_valorLimite_e_maior_que_0()
+        //{
+        //    var valor = 20;
             
             
-            var resultado = Validacoes.ValidarValorLimite(valor);
-            Assert.IsTrue(resultado);
-        }
+        //    var resultado = Validacoes.ValidarValorLimite(valor);
+        //    Assert.IsTrue(resultado);
+        //}
 
         [TestMethod]
         public void Teste_se_cpf_e_valido()
@@ -44,23 +44,35 @@ namespace TesteUnidade
         [TestMethod]
         public void Teste_se_cep_e_valido(string texto, bool esperado)
         {
-            
-
-
-            
+                       
            Assert.AreEqual(Validacoes.ValidarCep(texto), esperado);
         }
 
-        //[DataTestMethod]
-        //[DataRow(new DateTime(2001, 05, 06), false)]
-        //public void Teste_se_data_nascimento_e_valida()
-        //{
-        //    var data = "10/09/1999";
+        [DataTestMethod]
+        [DataRow("157", true)]
+        [DataRow("aa", false)]
+        [DataRow("1a", false)]
+        [TestMethod]
+        public void Validar_se_e_numero(string x, bool esperado)
+        {
+            
+            Assert.AreEqual(Validacoes.ValidarParaQueSejaNumero(x), esperado);
+        }
 
 
-        //    var resultado = Validacoes.ValidarDataNascimento(data);
-        //    Assert.IsTrue(resultado);
-        //}
+        [DataTestMethod]
+        [DataRow("157", true)]
+        [DataRow("aa", false)]
+        [DataRow("-1", false)]
+        [DataRow("140a", false)]
+        [TestMethod]
+        public void Validar_se_e_numero_Positivo(string x, bool esperado)
+        {
+
+            Assert.AreEqual(Validacoes.ValidarNumeroPositivo(x), esperado);
+        }
+
+
 
 
     }

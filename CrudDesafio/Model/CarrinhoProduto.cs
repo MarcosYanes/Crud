@@ -2,11 +2,12 @@
 {
     public class CarrinhoProduto
     {
-       // public int IdCarrinho { get; set; }
+       public int IdPedido_produto { get; set; }
         public int IdPedido { get; set; }
 
         public int IdProduto { get; set; }
         public string NomeProduto { get; set; }
+        public double PrecoDeCusto { get; set; }
         public double PrecoVenda { get; set; }
 
         public double Desconto { get; set; }
@@ -20,9 +21,10 @@
         {
             get => (PrecoVenda * Quantidade) - Desconto;
         }
-        public CarrinhoProduto()
-        {
-            Quantidade = 1;
-        }
+        public double Lucro { get => (Total - (PrecoDeCusto * Quantidade) - Desconto); }
+        //public CarrinhoProduto()
+        //{
+        //    Quantidade = 1;
+        //}
     }
 }

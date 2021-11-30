@@ -30,6 +30,10 @@ namespace CrudDesafio.Controller
         {
             return produtodao.Listar();
         }
+        public List<ProdutoModel> ListarAtivos()
+        {
+            return produtodao.ListarAtivos();
+        }
 
         public List<ProdutoModel> BuscarLista(string NomeProduto)
         {
@@ -39,10 +43,13 @@ namespace CrudDesafio.Controller
 
         public ProdutoModel Buscar(int Id)
         {
-
-
             return produtodao.Buscar(Id);
         }
+
+        //public CarrinhoProduto BuscarCarrinhoProduto(int Id)
+        //{
+        //    return produtodao.BuscarCarrinhoProduto(Id);
+        //}
 
 
 

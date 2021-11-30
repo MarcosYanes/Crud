@@ -46,17 +46,35 @@ namespace CrudDesafio.View
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            produtomodel.IdProduto = Convert.ToInt32(txtIdProduto.Text);
-            produtomodel.NomeProduto = txtNomeProduto.Text;
-            produtomodel.CodigoDeBarra = txtCodigoDeBarra.Text;
-            produtomodel.PrecoDeCusto = double.Parse(txtPrecoDeCusto.Text);
-            produtomodel.PrecoDeVenda = double.Parse(txtPrecoDeVenda.Text);
-            produtomodel.Estoque = int.Parse(txtEstoque.Text);
-            produtomodel.Ativo = cbSim.Checked;
+            if (txtIdProduto.Text == string.Empty)
+            {
+                return;
+            }
 
-            produtomodel.Fabricante = txtFabricante.Text;
+            if (Validar() == true)
+            {
+                if(produtomodel.NomeProduto == txtNomeProduto.Text && produtomodel.CodigoDeBarra == txtCodigoDeBarra.Text && 
+                    produtomodel.PrecoDeCusto == double.Parse(txtPrecoDeCusto.Text)&& produtomodel.PrecoDeVenda == double.Parse(txtPrecoDeVenda.Text) &&
+                    produtomodel.Estoque == int.Parse(txtEstoque.Text) && produtomodel.Fabricante == txtFabricante.Text)
+                {
+                    MessageBox.Show("Você precisa alterar algum campo ");
+                    return;
+                }
+               
+                produtomodel.IdProduto = Convert.ToInt32(txtIdProduto.Text);
+                produtomodel.NomeProduto = txtNomeProduto.Text;
+                produtomodel.CodigoDeBarra = txtCodigoDeBarra.Text;
+                produtomodel.PrecoDeCusto = double.Parse(txtPrecoDeCusto.Text);
+                produtomodel.PrecoDeVenda = double.Parse(txtPrecoDeVenda.Text);
+                produtomodel.Estoque = int.Parse(txtEstoque.Text);
+                produtomodel.Ativo = cbSim.Checked;
 
-            produtocontroller.Alterar(produtomodel);
+                produtomodel.Fabricante = txtFabricante.Text;
+
+                produtocontroller.Alterar(produtomodel);
+                MessageBox.Show("Produto Alterado com Sucesso");
+                LimparCampos();
+            }
         }
 
         private void AlterarProduto_Load(object sender, EventArgs e)
@@ -70,6 +88,12 @@ namespace CrudDesafio.View
             {
                 MessageBox.Show("Você precisa digitar um id");
 
+                return;
+            }
+           
+            if (!Validacoes.ValidarBusca(txtBusca.Text))
+            {
+                MessageBox.Show("Busca Inválida ! ");
                 return;
             }
 
@@ -86,8 +110,6 @@ namespace CrudDesafio.View
             txtCodigoDeBarra.Text = produtomodel.CodigoDeBarra;
             txtEstoque.Text = produtomodel.Estoque.ToString();
             cbSim.Checked = produtomodel.Ativo;
-
-
             txtFabricante.Text = produtomodel.Fabricante;
 
 
@@ -117,7 +139,56 @@ namespace CrudDesafio.View
             }
         }
 
-                
-            
+        public bool Validar()
+        {
+            if (!Validacoes.ValidarNomeProduto(txtNomeProduto.Text))
+            {
+                MessageBox.Show("Nome inválido");
+
+                return false;
+            }
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtPrecoDeCusto.Text.Replace(".", ",")))
+            {
+                MessageBox.Show("Preço de custo inválido !");
+                return false;
+            }
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtPrecoDeVenda.Text.Replace(".", ",")))
+            {
+                MessageBox.Show("Preço de venda inválido !");
+                return false;
+            }
+            else if (!Validacoes.ValidarNumeroPositivo(txtEstoque.Text))
+            {
+                MessageBox.Show("Estoque inválido !");
+                return false;
+            }
+            else if (!Validacoes.ValidarNumeroPositivo(txtCodigoDeBarra.Text))
+            {
+                MessageBox.Show("Código de barra inváido !");
+                return false;
+            }
+            else if (txtFabricante.Text == string.Empty)
+            {
+                MessageBox.Show("Fabricante Inválido !");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void LimparCampos()
+        {
+            txtIdProduto.Text = "";
+            txtNomeProduto.Text = "";
+            txtPrecoDeVenda.Text = "";
+            txtPrecoDeCusto.Text = "";
+            txtCodigoDeBarra.Text = "";
+            txtEstoque.Text = "";
+            cbSim.Checked = false;
+            txtFabricante.Text = "";
+        }
+
+
+
     }
 }

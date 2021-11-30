@@ -98,8 +98,9 @@ namespace CrudDesafio.View
 
         private void compraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pedido pedido = new Pedido();
-            pedido.ShowDialog();
+
+            PedidoController pedidocontroller = new PedidoController();
+            pedidocontroller.AbrirFormDePedido();
         }
 
         private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)

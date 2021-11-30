@@ -49,11 +49,20 @@ namespace CrudDesafio.View
         {
             var id = SelecionarPedidoModel();
             var pedido = pedidocontroller.Buscar(id);
-            ConsultarPedido consultarpedido = new ConsultarPedido();
-            consultarpedido.Show();
-            consultarpedido.CarregarDados(pedido);
+            ConsultarPedido consultarpedido = new ConsultarPedido(pedido);
+            consultarpedido.Show();         
 
             //this.Dispose();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            gridPedidos.DataSource = pedidocontroller.BuscarLista(txtBuscar.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gridPedidos.DataSource = pedidocontroller.Listar();
         }
     }
 }

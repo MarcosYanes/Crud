@@ -383,3 +383,204 @@ E:\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CopyComplete
 E:\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
 E:\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb
 C:\Users\marco\Desktop\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+C:\Users\marco\Desktop\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe.config
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.pdb
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.dll
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.xml
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.AssemblyReference.cache
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarCliente.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarColaborador.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarProduto.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.CadastroCliente.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Properties.Resources.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroColaborador.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroProduto.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherCliente.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherColaborador.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherProduto.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarCliente.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarColaborador.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
+F:\Atualizado\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb
+D:\backup desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe.config
+D:\backup desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe
+D:\backup desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.pdb
+D:\backup desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.dll
+D:\backup desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.xml
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.AssemblyReference.cache
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarCliente.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarColaborador.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarProduto.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.CadastroCliente.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Properties.Resources.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroColaborador.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroProduto.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherCliente.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherColaborador.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherProduto.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarCliente.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarColaborador.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CopyComplete
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
+D:\backup desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe.config
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.pdb
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.dll
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.xml
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.AssemblyReference.cache
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarCliente.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarColaborador.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarProduto.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.CadastroCliente.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Properties.Resources.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroColaborador.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroProduto.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherCliente.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherColaborador.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherProduto.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarCliente.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarColaborador.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
+C:\Nova pasta\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe.config
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.pdb
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.dll
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.xml
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.AssemblyReference.cache
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarCliente.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarColaborador.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarProduto.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.CadastroCliente.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Properties.Resources.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroColaborador.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroProduto.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherCliente.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherColaborador.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherProduto.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarCliente.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarColaborador.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CopyComplete
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
+E:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe.config
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.pdb
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.dll
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.xml
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.AssemblyReference.cache
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarCliente.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarColaborador.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarProduto.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.CadastroCliente.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Properties.Resources.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroColaborador.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroProduto.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherCliente.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherColaborador.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherProduto.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarCliente.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarColaborador.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
+C:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe.config
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.pdb
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.dll
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.xml
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.AssemblyReference.cache
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarCliente.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarColaborador.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarProduto.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.CadastroCliente.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Properties.Resources.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroColaborador.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroProduto.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherCliente.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherColaborador.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherProduto.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarCliente.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarColaborador.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb
+F:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CopyComplete
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe.config
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.exe
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\CrudDesafio.pdb
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.dll
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\bin\Debug\Dapper.xml
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.AssemblyReference.cache
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarCliente.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarColaborador.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.AlterarProduto.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.CadastroCliente.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Properties.Resources.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroColaborador.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.CadastroProduto.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ConsultarPedido.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherCliente.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherColaborador.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.EscolherProduto.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarCliente.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarColaborador.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CopyComplete
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.exe
+D:\Final\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.pdb

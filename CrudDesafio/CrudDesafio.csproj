@@ -57,6 +57,7 @@
     <Compile Include="DAO\ColaboradorDAO.cs" />
     <Compile Include="DAO\PedidoDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
+    <Compile Include="DGVPrinter.cs" />
     <Compile Include="Helpers\Conexao.cs" />
     <Compile Include="Model\CarrinhoProduto.cs" />
     <Compile Include="Model\ClienteListagem.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Model\ColaboradorListagem.cs" />
     <Compile Include="Model\ColaboradorModel.cs" />
     <Compile Include="Model\Funcoes.cs" />
+    <Compile Include="Model\NotaFiscalModel.cs" />
     <Compile Include="Model\PedidoListagem.cs" />
     <Compile Include="Model\PedidoModel.cs" />
     <Compile Include="Model\ProdutoModel.cs" />
@@ -162,6 +164,12 @@
     <Compile Include="View\Pedido.Designer.cs">
       <DependentUpon>Pedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\PedidoAlterar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PedidoAlterar.Designer.cs">
+      <DependentUpon>PedidoAlterar.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PedidoAlterar.resx">
+      <DependentUpon>PedidoAlterar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TelaInicial.resx">
       <DependentUpon>TelaInicial.cs</DependentUpon>

@@ -12,7 +12,7 @@ namespace CrudDesafio.Model
     {
         public static  string ObterSomenteNumeros(string valor)
         {
-            var valor2 = new string((from c in valor where char.IsDigit(c) select c).ToArray());
+            var valor2 = new string((from c in valor where char.IsDigit(c) || c == ',' select c).ToArray());
             return valor2;
 
         }

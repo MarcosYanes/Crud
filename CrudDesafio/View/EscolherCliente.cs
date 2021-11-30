@@ -33,7 +33,7 @@ namespace CrudDesafio.View
             clientemodel = clientecontroller.Buscar(id);
             //Pedido pedido = new Pedido();
 
-            this.Dispose();
+            this.Close();
         }
 
         public int SelecionarClienteModel()

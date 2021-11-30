@@ -37,20 +37,22 @@ namespace CrudDesafio.View
             // gridCliente
             // 
             this.gridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCliente.Location = new System.Drawing.Point(99, 81);
+            this.gridCliente.Location = new System.Drawing.Point(63, 81);
             this.gridCliente.Name = "gridCliente";
             this.gridCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCliente.Size = new System.Drawing.Size(587, 236);
+            this.gridCliente.Size = new System.Drawing.Size(673, 236);
             this.gridCliente.TabIndex = 0;
             // 
             // txtAdicionar
             // 
+            this.txtAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
+            this.txtAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtAdicionar.Location = new System.Drawing.Point(360, 364);
             this.txtAdicionar.Name = "txtAdicionar";
             this.txtAdicionar.Size = new System.Drawing.Size(75, 23);
             this.txtAdicionar.TabIndex = 1;
             this.txtAdicionar.Text = "Adicionar";
-            this.txtAdicionar.UseVisualStyleBackColor = true;
+            this.txtAdicionar.UseVisualStyleBackColor = false;
             this.txtAdicionar.Click += new System.EventHandler(this.txtAdicionar_Click);
             // 
             // EscolherCliente

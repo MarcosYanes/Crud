@@ -76,11 +76,7 @@ namespace CrudDesafio.View
                 }
 
 
-                //if (!Validacoes.ValidarNumeroNegativo(double.Parse(txtValorLimite.Text)))
-                //{
-                //    MessageBox.Show("O  Valor Limite de Compra  Não Pode Ser Negativo ");
-                //    return;
-                //}
+              
 
                 clientemodel.IdCliente = Convert.ToInt32(txtId.Text);
                 clientemodel.Nome = txtNome.Text;
@@ -254,53 +250,7 @@ namespace CrudDesafio.View
             }
         }
 
-        //private void btnBuscar_Click_1(object sender, EventArgs e)
-        //{
-        //    if (txtBuscar.Text == string.Empty)
-        //    {
-        //        MessageBox.Show("Você precisa digitar um id");
-
-        //        return;
-        //    }
-        //    if (!Validacoes.ValidarBusca(txtBuscar.Text))
-        //    {
-        //        MessageBox.Show("Busca Inválida ! ");
-        //        return;
-        //    }
-
-
-        //    clientemodel = clientecontroller.Buscar(Convert.ToInt32(txtBuscar.Text));
-
-        //    if (clientemodel.IdCliente == 0)
-        //    {
-        //        return;
-        //    }
-        //    txtNome.Text = clientemodel.Nome;
-        //    if (clientemodel.Sexo == "m")
-        //    {
-        //        rbMasculino.Checked = true;
-        //    }
-        //    else
-        //    {
-        //        rbFeminino.Checked = true;
-        //    }
-        //    txtId.Text = clientemodel.IdCliente.ToString();
-        //    txtDataNascimento.Text = clientemodel.DataNascimento.ToString();
-        //    txtCpf.Text = Funcoes.ObterSomenteNumeros(clientemodel.Cpf.ToString());
-        //    txtCidade.Text = clientemodel.Cidade;
-        //    txtCep.Text = clientemodel.Cep;
-        //    txtRua.Text = clientemodel.Rua;
-        //    txtBairro.Text = clientemodel.Bairro;
-        //    txtNumero.Text = clientemodel.Numero;
-        //    txtUf.Text = clientemodel.Uf;
-        //    txtComplemento.Text = clientemodel.Complemento;
-        //    txtTelefone.Text = Funcoes.ObterSomenteNumeros(clientemodel.Telefone);
-        //    txtCelular.Text = Funcoes.ObterSomenteNumeros(clientemodel.Celular);
-        //    txtEmail.Text = clientemodel.Email;
-        //    txtValorLimite.Text = clientemodel.ValorLimite.ToString();
-
-
-        //}
+       
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -348,6 +298,6 @@ namespace CrudDesafio.View
             txtValorLimite.Text = clientemodel.ValorLimite.ToString();
         }
 
-       
+      
     }
 }

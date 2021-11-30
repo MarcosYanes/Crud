@@ -28,7 +28,7 @@ namespace CrudDesafio.DAO
 
                     conexao.Execute(strSql, produtomodel);
                 }
-                MessageBox.Show("Cadastro Efetuado com Sucesso");
+                
 
 
             }
@@ -43,6 +43,29 @@ namespace CrudDesafio.DAO
         {
             // List<ProdutoModel> teste = new List<ProdutoModel>();
             strSql = @"select IdProduto, NomeProduto, PrecoDeVenda, PrecoDeCusto, Estoque, Ativo, Fabricante, CodigoDeBarra from Produto";
+
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+
+                    return conexao.Query<ProdutoModel>(strSql).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return new List<ProdutoModel>().ToList();
+
+        }
+
+        internal List<ProdutoModel> ListarAtivos()
+        {
+            // List<ProdutoModel> teste = new List<ProdutoModel>();
+            strSql = @"select IdProduto, NomeProduto, PrecoDeVenda, PrecoDeCusto, Estoque, Ativo,  Fabricante, CodigoDeBarra from Produto where Ativo=1";
 
             try
             {
@@ -87,7 +110,9 @@ namespace CrudDesafio.DAO
 
         }
 
+
         internal ProdutoModel Buscar(int id)
+
         {
 
             strSql = @"select IdProduto, NomeProduto, PrecoDeVenda, PrecoDeCusto, Estoque, Ativo, Fabricante, CodigoDeBarra
@@ -112,8 +137,29 @@ from Produto where IdProduto=@IdProduto";
 
         }
 
-    
+        //internal CarrinhoProduto BuscarCarrinhoProduto(int id)
+        //{
 
+        //    strSql = @"select IdProduto, NomeProduto, PrecoVenda, Quantidade, Desconto from  ";
+
+        //    try
+        //    {
+        //        using (conexao = new SqlConnection(strCon))
+        //        {
+        //            conexao.Open();
+
+        //            return conexao.Query<CarrinhoProduto>(strSql, new { IdProduto = id }).First();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+
+        //    return new CarrinhoProduto();
+
+
+        //}
 
 
         internal void Alterar(ProdutoModel produtomodel)
@@ -137,7 +183,7 @@ from Produto where IdProduto=@IdProduto";
 
                     conexao.Execute(strSql, produtomodel);
                 }
-                MessageBox.Show("Cliente Alterado com Sucesso");
+                
 
 
             }

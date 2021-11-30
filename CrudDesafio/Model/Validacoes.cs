@@ -12,8 +12,9 @@ namespace CrudDesafio.Model
     {
 
         public static bool ValidarNome(string nome) => new Regex(@"^[a-zA-Z\s]+$").Match(nome).Success;
+        public static bool ValidarNomeProduto(string nome) => new Regex(@"^[a-zA-Z0-9\s]+$").Match(nome).Success;
 
-      
+
 
         public static bool ValidarParaQueSejaNumero(string valor) =>
            new Regex(@"^[0-90.0-9.00,0-9,0\s]+$").Match(valor).Success;
@@ -35,6 +36,9 @@ namespace CrudDesafio.Model
         public static bool ValidarCep(string cep) => new Regex(@"[0-9]{5}[-][0-9]{3}$").Match(cep).Success;
 
         public static bool ValidarBusca(string valor) =>
+          new Regex(@"^[0-9\s]+$").Match(valor).Success;
+
+        public static bool ValidarNumeroPositivo(string valor) =>
           new Regex(@"^[0-9\s]+$").Match(valor).Success;
 
 

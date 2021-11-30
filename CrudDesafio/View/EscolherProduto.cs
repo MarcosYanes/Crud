@@ -25,7 +25,7 @@ namespace CrudDesafio.View
 
         private void EscolherProduto_Load(object sender, EventArgs e)
         {
-            GridProduto.DataSource = produtocontroller.Listar();
+            GridProduto.DataSource = produtocontroller.ListarAtivos();
         }
 
         public int SelecionarProdutoModel()
@@ -41,7 +41,8 @@ namespace CrudDesafio.View
             produtomodel = produtocontroller.Buscar(id);
             //Pedido pedido = new Pedido();
 
-            this.Dispose();
+            
+            this.Close();
 
             //pedido.Show();
         }
@@ -54,7 +55,8 @@ namespace CrudDesafio.View
             produtomodel = produtocontroller.Buscar(id);
             //Pedido pedido = new Pedido();
 
-            this.Dispose();
+            //this.Dispose();
+            this.Close();
 
 
         }

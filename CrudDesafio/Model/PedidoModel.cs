@@ -10,10 +10,13 @@ namespace CrudDesafio.Model
         {
             Produtos = new List<CarrinhoProduto>();
         }
+        
         public int IdPedido { get; set; }
         public int IdCliente { get; set; }
         public int IdColaborador { get; set; }
-        
+        public string NomeCliente { get; set; }
+        public string NomeColaborador { get; set; }
+
         public string FormaPagamento { get; set; }
         public double TotalBruto { get => Produtos.Sum(x => x.Total); }
         public double TotalDeDesconto { get => Produtos.Sum(x => x.Desconto); }
@@ -22,6 +25,8 @@ namespace CrudDesafio.Model
         //        ; 
         //}
         public double TotalLiquido { get => Produtos.Sum(x=>x.PrecoLiquido); }
+        public double Lucro { get => Produtos.Sum(x => x.Lucro); }
+        public bool Status { get; set; }
 
         public List<CarrinhoProduto> Produtos { get; set; }
 

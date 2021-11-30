@@ -9,5 +9,8 @@
         public double TotalBruto { get; set; }
         public double TotalDeDesconto { get; set; }
         public double TotalLiquido { get; set; }
+        public double  Lucro { get; set; }
+        public bool Status { get; set; }
+
     }
 }

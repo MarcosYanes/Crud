@@ -18,20 +18,21 @@ namespace CrudDesafio.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            produtomodel.NomeProduto = txtNomeProduto.Text;
-            produtomodel.PrecoDeCusto = double.Parse(txtPrecoDeCusto.Text);
-            produtomodel.PrecoDeVenda = double.Parse(txtPrecoDeVenda.Text);
-            produtomodel.Estoque = int.Parse(txtEstoque.Text);
-            produtomodel.Fabricante = txtFabricante.Text;
-            
-            
+            if (Validar() == true)
+            {
+                produtomodel.NomeProduto = txtNomeProduto.Text;
+                produtomodel.PrecoDeCusto = double.Parse(txtPrecoDeCusto.Text.Replace(".", ","));
+                produtomodel.PrecoDeVenda = double.Parse(txtPrecoDeVenda.Text.Replace(".", ","));
+                produtomodel.Estoque = int.Parse(txtEstoque.Text);
+                produtomodel.Fabricante = txtFabricante.Text;
                 produtomodel.Ativo = cbSim.Checked;
-            
-                                
-                            
-           produtomodel.CodigoDeBarra = txtCodigoDeBarra.Text;
+                produtomodel.CodigoDeBarra = txtCodigoDeBarra.Text;
 
-            produtocontroller.Inserir(produtomodel);
+                produtocontroller.Inserir(produtomodel);
+                MessageBox.Show("Cadastro Efetuado com Sucesso");
+                this.Close();
+            }
+            
 
         }
 
@@ -39,7 +40,44 @@ namespace CrudDesafio.View
         {
 
         }
+        
+        public bool Validar()
+        {
+            if (!Validacoes.ValidarNomeProduto(txtNomeProduto.Text))
+            {
+                MessageBox.Show("Nome inválido");
 
-       
+                return false;
+            }         
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtPrecoDeCusto.Text.Replace(".", ",")))
+            {
+                MessageBox.Show("Preço de custo inválido !");
+                return false;
+            }
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtPrecoDeVenda.Text.Replace(".", ",")))
+            {
+                MessageBox.Show("Preço de venda inválido !");
+                return false;
+            }
+            else if (!Validacoes.ValidarNumeroPositivo(txtEstoque.Text))
+            {
+                MessageBox.Show("Estoque inválido !");
+                return false;
+            }
+            else if (!Validacoes.ValidarNumeroPositivo(txtCodigoDeBarra.Text))
+            {
+                MessageBox.Show("Código de barra inváido !");
+                return false;
+            }
+            else if(txtFabricante.Text == string.Empty)
+            {
+                MessageBox.Show("Fabricante Inválido !");
+                return false;
+            }
+
+            return true;
+        }
+
+
     }
 }
