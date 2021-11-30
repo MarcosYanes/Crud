@@ -75,20 +75,21 @@ namespace CrudDesafio.View
 
         public bool Validar()
         {
-           
 
-             if (!Validacoes.ValidarParaQueSejaNumero(txtSalarioColaborador.Text))
-            {
-                MessageBox.Show("Salário Inválido!");
-                return false;
-            }
 
-            else if (!Validacoes.ValidarNome(txtNomeColaborador.Text))
+             if (!Validacoes.ValidarNome(txtNomeColaborador.Text))
             {
                 MessageBox.Show("Nome inválido");
 
                 return false;
             }
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtSalarioColaborador.Text))
+            {
+                MessageBox.Show("Salário Inválido!");
+                return false;
+            }
+
+           
             else if (!Validacoes.ValidarDataNascimento(txtDataNascimentoColaborador.Text))
             {
                 MessageBox.Show("Data de Nascimento inválida");

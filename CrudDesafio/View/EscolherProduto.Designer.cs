@@ -38,8 +38,9 @@ namespace CrudDesafio.View
             // 
             this.GridProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridProduto.Location = new System.Drawing.Point(42, 89);
-            this.GridProduto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridProduto.Margin = new System.Windows.Forms.Padding(2);
             this.GridProduto.Name = "GridProduto";
+            this.GridProduto.ReadOnly = true;
             this.GridProduto.RowHeadersWidth = 51;
             this.GridProduto.RowTemplate.Height = 24;
             this.GridProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -52,7 +53,7 @@ namespace CrudDesafio.View
             this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Location = new System.Drawing.Point(282, 302);
-            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(72, 23);
             this.btnAdicionar.TabIndex = 1;
@@ -67,7 +68,7 @@ namespace CrudDesafio.View
             this.ClientSize = new System.Drawing.Size(653, 366);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.GridProduto);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EscolherProduto";
             this.Text = "EscolherProduto";
             this.Load += new System.EventHandler(this.EscolherProduto_Load);

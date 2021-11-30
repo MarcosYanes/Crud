@@ -127,11 +127,18 @@ namespace CrudDesafio.View
         {
         }
 
-      
+        
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if(txtIdProduto.Text == string.Empty)
+
+            //if ()
+            //{
+            //    MessageBox.Show("Erro");
+            //    return;
+            //}
+
+            if (txtIdProduto.Text == string.Empty)
             {
                 MessageBox.Show("Escolha um produto");
                 return;
@@ -149,6 +156,8 @@ namespace CrudDesafio.View
                 PrecoVenda = double.Parse(Funcoes.ObterSomenteNumeros(txtPrecoVenda.Text)),
                 Desconto = double.Parse(txtDesconto.Text),
                 Quantidade = Convert.ToInt32(txtQuantidade.Text),
+
+                
             };
 
 
@@ -226,6 +235,8 @@ namespace CrudDesafio.View
 
         private void gridCarrinho_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            txtDesconto.Enabled = true;
+            txtQuantidade.Enabled = true;
              var id = SelecionarProduto();
              var produtoDoCarrinho = SelecionarProdutoDoCarrinho(id);
 

@@ -39,6 +39,7 @@ namespace CrudDesafio.View
             this.gridColaborador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridColaborador.Location = new System.Drawing.Point(63, 78);
             this.gridColaborador.Name = "gridColaborador";
+            this.gridColaborador.ReadOnly = true;
             this.gridColaborador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridColaborador.Size = new System.Drawing.Size(673, 257);
             this.gridColaborador.TabIndex = 0;

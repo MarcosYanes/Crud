@@ -11,8 +11,8 @@ namespace CrudDesafio.Model
     public static class Validacoes
     {
 
-        public static bool ValidarNome(string nome) => new Regex(@"^[a-zA-Z\s]+$").Match(nome).Success;
-        public static bool ValidarNomeProduto(string nome) => new Regex(@"^[a-zA-Z0-9\s]+$").Match(nome).Success;
+        public static bool ValidarNome(string nome) => new Regex(@"^[a-zA-ZÀ-úÀ-ÿ\s]+$").Match(nome).Success;
+        public static bool ValidarNomeProduto(string nome) => new Regex(@"^[a-zA-ZÀ-úÀ-ÿ/*0-9*/\s]+$").Match(nome).Success;
 
 
 

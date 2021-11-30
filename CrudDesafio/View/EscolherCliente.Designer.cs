@@ -39,6 +39,7 @@ namespace CrudDesafio.View
             this.gridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCliente.Location = new System.Drawing.Point(63, 81);
             this.gridCliente.Name = "gridCliente";
+            this.gridCliente.ReadOnly = true;
             this.gridCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCliente.Size = new System.Drawing.Size(673, 236);
             this.gridCliente.TabIndex = 0;
