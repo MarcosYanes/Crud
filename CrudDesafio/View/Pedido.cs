@@ -5,6 +5,8 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
 
 namespace CrudDesafio.View
 {
@@ -16,11 +18,8 @@ namespace CrudDesafio.View
         private ProdutoModel produtomodel = new ProdutoModel();
         private PedidoModel _pedido;
         private ProdutoController produtoController = new ProdutoController();
-        public CarrinhoProduto carrinhoProduto = new CarrinhoProduto();
+        public CarrinhoProduto carrinhoProduto = new CarrinhoProduto();                   
         
-              
-        
-
         public Pedido(PedidoModel pedidoModel)
         {
             InitializeComponent();
@@ -29,16 +28,11 @@ namespace CrudDesafio.View
             clientemodel.IdCliente = pedidoModel.IdCliente;
             clientemodel.Nome = pedidoModel.NomeCliente;
             colaboradormodel.Nome = pedidoModel.NomeColaborador;
+            
             colaboradormodel.IdColaborador = pedidoModel.IdColaborador;
             btnSalvar.Enabled = false;
             txtQuantidade.Enabled = false;
             txtDesconto.Enabled = false;
-
-
-
-
-
-
         }
 
         
@@ -59,23 +53,19 @@ namespace CrudDesafio.View
             txtIdProduto.Text = produtomodel.IdProduto.ToString();
             txtNomeProduto.Text = produtomodel.NomeProduto;
             txtPrecoVenda.Text = produtomodel.PrecoDeVenda.ToString("c");
-            txtPrecoDeCusto.Text = produtomodel.PrecoDeCusto.ToString("c");
-           
-            
+            txtPrecoDeCusto.Text = produtomodel.PrecoDeCusto.ToString("c");                    
             
         }
 
         private void Pedido_Load(object sender, EventArgs e)
-        {
-            
+        {            
             if (_pedido.IdPedido != 0)
             {
                 
                 btnSalvar.Enabled = true;
                 CarregarDadosParaAlteracao(_pedido);
                 AtualizarGrid();
-            }
-                
+            }                
         }
 
         private void BtnSelecionarCliente_Click(object sender, EventArgs e)
@@ -88,6 +78,8 @@ namespace CrudDesafio.View
 
         public void CarregarCliente()
         {
+            if(clientemodel.ValidarDataAniversario())
+                MessageBox.Show($"Parabéns {clientemodel.Nome}, Hoje é seu aniversário", "Parabéns");
             txtIdCliente.Text = clientemodel.IdCliente.ToString();
             txtNomeCliente.Text = clientemodel.Nome;
         }
@@ -109,9 +101,7 @@ namespace CrudDesafio.View
         
 
         private void CalcularCusto()
-        {
-                    
-
+        {                   
                 int quantidade = Convert.ToInt32(txtQuantidade.Value);
                 double precoVenda = Convert.ToDouble(Funcoes.ObterSomenteNumeros(txtPrecoVenda.Text));
                 double desconto = Convert.ToDouble(txtDesconto.Value);
@@ -119,7 +109,6 @@ namespace CrudDesafio.View
 
                 txtTotal.Text = ((precoVenda * quantidade) - desconto).ToString("c");
             
-
         }
 
 
@@ -127,37 +116,55 @@ namespace CrudDesafio.View
         {
         }
 
-        
-
-        private void btnAdicionar_Click(object sender, EventArgs e)
+        public  bool ValidarCamposAntesDeAdicionarOsProdutos()
         {
-
-            //if ()
-            //{
-            //    MessageBox.Show("Erro");
-            //    return;
-            //}
-
             if (txtIdProduto.Text == string.Empty)
             {
                 MessageBox.Show("Escolha um produto");
-                return;
+                return false;
+            }
+            else if (txtQuantidade.Text.Equals("") || txtTotal.Text == string.Empty)
+            {
+                MessageBox.Show("Campo Quantidade deve ser preenchido");
+                return false;
+            }
+            else if(txtQuantidade.Text == "0")
+            {
+                MessageBox.Show("Quantidade não pode ser 0");
+                return false;
             }
             
+            
+            
+            return true;
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            double.TryParse(txtDesconto.Text, out double desconto);
             btnSalvar.Enabled = true;
+            if (ValidarCamposAntesDeAdicionarOsProdutos()==false)
+            {
+                return;
+            }
+            double PrecoVenda = Convert.ToDouble(Funcoes.ObterSomenteNumeros(txtPrecoVenda.Text));
+            if (((double)txtDesconto.Value > PrecoVenda))
+            {
+                MessageBox.Show("Desconto não pode ser maior que o valor do produto !");
+                return;
+            }
 
             var produto = new CarrinhoProduto()
             {
-                
                 IdPedido = _pedido.IdPedido,
                 IdProduto = int.Parse(txtIdProduto.Text),
                 NomeProduto = txtNomeProduto.Text,
                 PrecoDeCusto = double.Parse(Funcoes.ObterSomenteNumeros(txtPrecoDeCusto.Text)),
                 PrecoVenda = double.Parse(Funcoes.ObterSomenteNumeros(txtPrecoVenda.Text)),
-                Desconto = double.Parse(txtDesconto.Text),
+                //Desconto = double.Parse(txtDesconto.Text),
+                Desconto = desconto,
                 Quantidade = Convert.ToInt32(txtQuantidade.Text),
-
-                
+                               
             };
 
 
@@ -174,24 +181,14 @@ namespace CrudDesafio.View
                 _pedido.Produtos[indice].Quantidade = Convert.ToInt32(txtQuantidade.Value);
                 _pedido.Produtos[indice].Desconto = Convert.ToDouble(txtDesconto.Value);
                // _pedido.Produtos[indice].PrecoDeCusto = Convert.ToDouble(txtPrecoDeCusto.Text);
-            }
-
-            
-
-           
+            }                      
+                       
             AtualizarGrid();
             CalcularTotaisPedido();
-                     
-            
-
-            txtIdProduto.Text = "";
-            txtNomeProduto.Text = "";
-            txtTotal.Text = "";
-            txtPrecoVenda.Text = "0";
-            txtDesconto.Value = 0;
-            txtQuantidade.Value = 0;
-            txtPrecoDeCusto.Text = "";
+            LimparTextBox();      
+                       
         }
+        
         
 
         private void CalcularTotaisPedido()
@@ -199,32 +196,21 @@ namespace CrudDesafio.View
             txtTotalBruto.Text = _pedido.TotalBruto.ToString("c");
             txtTotalDesconto.Text = _pedido.TotalDeDesconto.ToString("c");
             txtTotalLiquido.Text = _pedido.TotalLiquido.ToString("c");
-            txtLucro.Text = _pedido.Lucro.ToString();
-            
-            //txtTotalBruto.Text = _pedido.Produtos.Sum(x => x.TotalBruto).ToString();
-            //txtTotalDesconto.Text = _pedido.Produtos.Sum(x => x.Desconto).ToString();
-
-            //double TotalBruto = double.Parse(txtTotalBruto.Text);
-            //double TotalDesconto = double.Parse(txtTotalDesconto.Text);
-            //double Total = TotalBruto - TotalDesconto;
-            //txtTotalLiquido.Text = Total.ToString();
-
-           
+            txtLucro.Text = _pedido.Lucro.ToString();                                       
 
         }
-
         private void AtualizarGrid()
         {
             gridCarrinho.DataSource = null;
             gridCarrinho.DataSource = _pedido.Produtos;
-            gridCarrinho.Columns["IdPedido_produto"].Visible = false;
-            gridCarrinho.Columns["IdPedido"].Visible = false;
-            gridCarrinho.Columns["IdProduto"].Visible = false;
-            gridCarrinho.Columns["Lucro"].Visible = false;
-            gridCarrinho.Columns["PrecoDeCusto"].Visible = false;
-            gridCarrinho.Columns["NomeProduto"].HeaderText = "Nome do Produto";
-            gridCarrinho.Columns["PrecoVenda"].HeaderText = "Preço";
-            gridCarrinho.Columns["PrecoLiquido"].HeaderText = "Total Pago";
+            gridCarrinho.Columns["idpedido_produto"].Visible = false;
+            gridCarrinho.Columns["idpedido"].Visible = false;
+            gridCarrinho.Columns["idproduto"].Visible = false;
+            gridCarrinho.Columns["lucro"].Visible = false;
+            gridCarrinho.Columns["precodecusto"].Visible = false;
+            gridCarrinho.Columns["nomeproduto"].HeaderText = "nome do produto";
+            gridCarrinho.Columns["precovenda"].HeaderText = "preço";
+            gridCarrinho.Columns["precoliquido"].HeaderText = "total pago";
         }
 
         public int SelecionarProduto()
@@ -294,21 +280,17 @@ namespace CrudDesafio.View
 
         private void txtDesconto_ValueChanged(object sender, EventArgs e)
         {
+           
             CalcularCusto();
         }
 
         private void txtQuantidade_KeyUp(object sender, KeyEventArgs e)
-        {
-            //if (!Validacoes.ValidarNumeroPositivo(txtQuantidade.Value.ToString()))
-            //{
-            //    MessageBox.Show("campo inválido");
-            //    return;
-            //}
+        {            
             CalcularCusto();
         }
 
         private void txtDesconto_KeyUp(object sender, KeyEventArgs e)
-        {
+        {            
             CalcularCusto();
         }
 
@@ -353,19 +335,40 @@ namespace CrudDesafio.View
 
                   
                 }
-                
+                //enviar email
+                SmtpClient cliente = new SmtpClient();
+                NetworkCredential credenciais = new NetworkCredential();
+                cliente.Host = "smtp.gmail.com";
+                cliente.Port = 587;
+                cliente.EnableSsl = true;
+                cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
+                cliente.UseDefaultCredentials = false;
 
-                DGVPrinter printer = new DGVPrinter();
-                printer.Title = "Augusto Fashion";
-                //printer.SubTitle = "";
-                printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-                printer.PageNumbers = true;
-                printer.PageNumberInHeader = false;
-                printer.PorportionalColumns = true;
-                printer.HeaderCellAlignment = StringAlignment.Near;
-                printer.Footer = "Desconto:" + txtTotalDesconto.Text + "% \r\n" + "Total : " + txtTotalLiquido.Text;
-                printer.FooterSpacing = 15;
-                printer.PrintDataGridView(gridCarrinho);
+                credenciais.UserName = "marcosjose.moraes1999";
+                credenciais.Password = "";
+
+                cliente.Credentials = credenciais;
+                MailMessage mensagem = new MailMessage();
+                mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
+                mensagem.Subject = "Titulo da Mensagem";
+                mensagem.Body = "Esta é a mensagem de texto do email de teste";
+                mensagem.To.Add("marcosjose.moraes1999@gmail.com");
+
+                cliente.Send(mensagem);
+
+                // IMPRIMIR NOTA
+                //DGVPrinter printer = new DGVPrinter();
+                //printer.Title = "Augusto Fashion";
+                ////printer.SubTitle = "";
+                //printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                //printer.PageNumbers = true;
+                //printer.PageNumberInHeader = false;
+                //printer.PorportionalColumns = true;
+                //printer.HeaderCellAlignment = StringAlignment.Near;
+                //printer.Footer = "Desconto:" + txtTotalDesconto.Text + "% \r\n" + "Total : " + txtTotalLiquido.Text;
+                //printer.FooterSpacing = 15;
+                //printer.PrintDataGridView(gridCarrinho);
+                MessageBox.Show("Email Enviado Com Sucesso");
                 this.Close();
             }
 
@@ -415,7 +418,19 @@ namespace CrudDesafio.View
             clientemodel.Id = pedido.IdCliente;
             colaboradormodel.Id = pedido.IdColaborador;
         }
+        public void LimparTextBox()
+        {
+            txtIdProduto.Text = "";
+            txtNomeProduto.Text = "";
+            txtTotal.Text = "";
+            txtPrecoVenda.Text = "0";
+            txtDesconto.Value = 0;
+            txtQuantidade.Value = 0;
+            txtPrecoDeCusto.Text = "";
+            txtTotalBrutoProduto.Text = "";
+            txtTotal.Text = "";
+        }
 
-       
+
     }
 }

@@ -24,6 +24,11 @@ namespace CrudDesafio.Model
         public string Telefone { get; set; }
         public string Celular { get; set; }
         public string Email { get; set; }
+
+        public bool ValidarDataAniversario()
+        {
+            return DataNascimento.Day.Equals(DateTime.Today.Day) && DataNascimento.Month.Equals(DateTime.Today.Month);
+        }
     }
 
    

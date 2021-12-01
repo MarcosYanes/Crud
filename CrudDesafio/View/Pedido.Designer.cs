@@ -193,9 +193,9 @@ namespace CrudDesafio.View
             this.groupBox2.Controls.Add(this.txtIdColaborador);
             this.groupBox2.Controls.Add(this.txtNomeColaborador);
             this.groupBox2.Location = new System.Drawing.Point(312, 21);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(671, 49);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
@@ -291,9 +291,9 @@ namespace CrudDesafio.View
             this.groupBox3.Controls.Add(this.txtTotalBruto);
             this.groupBox3.Controls.Add(this.txtFormaPagamento);
             this.groupBox3.Location = new System.Drawing.Point(312, 416);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(673, 65);
             this.groupBox3.TabIndex = 42;
             this.groupBox3.TabStop = false;
@@ -406,7 +406,7 @@ namespace CrudDesafio.View
             // txtPrecoDeCusto
             // 
             this.txtPrecoDeCusto.Location = new System.Drawing.Point(124, 113);
-            this.txtPrecoDeCusto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecoDeCusto.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecoDeCusto.Name = "txtPrecoDeCusto";
             this.txtPrecoDeCusto.ReadOnly = true;
             this.txtPrecoDeCusto.Size = new System.Drawing.Size(120, 20);
@@ -425,7 +425,7 @@ namespace CrudDesafio.View
             // txtLucro
             // 
             this.txtLucro.Location = new System.Drawing.Point(13, 481);
-            this.txtLucro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLucro.Margin = new System.Windows.Forms.Padding(2);
             this.txtLucro.Name = "txtLucro";
             this.txtLucro.ReadOnly = true;
             this.txtLucro.Size = new System.Drawing.Size(100, 20);
@@ -542,9 +542,9 @@ namespace CrudDesafio.View
             this.groupBox4.Controls.Add(this.txtTotalBrutoProduto);
             this.groupBox4.Controls.Add(this.btnAdicionar);
             this.groupBox4.Location = new System.Drawing.Point(32, 21);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(256, 515);
             this.groupBox4.TabIndex = 43;
             this.groupBox4.TabStop = false;
@@ -617,9 +617,9 @@ namespace CrudDesafio.View
             this.groupBox1.Controls.Add(this.Nome);
             this.groupBox1.Controls.Add(this.txtIdCliente);
             this.groupBox1.Location = new System.Drawing.Point(312, 74);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(671, 57);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
