@@ -9,7 +9,9 @@ namespace CrudDesafio.Model
         public PedidoModel()
         {
             Produtos = new List<CarrinhoProduto>();
+            Cliente = new ClienteModel();
         }
+       
         
         public int IdPedido { get; set; }
         public int IdCliente { get; set; }
@@ -27,6 +29,7 @@ namespace CrudDesafio.Model
         public double TotalLiquido { get => Produtos.Sum(x=>x.PrecoLiquido); }
         public double Lucro { get => Produtos.Sum(x => x.Lucro); }
         public bool Status { get; set; }
+        public ClienteModel Cliente { get; set; }
 
         public List<CarrinhoProduto> Produtos { get; set; }
 

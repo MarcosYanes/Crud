@@ -28,6 +28,7 @@ namespace CrudDesafio.View
             clientemodel.IdCliente = pedidoModel.IdCliente;
             clientemodel.Nome = pedidoModel.NomeCliente;
             colaboradormodel.Nome = pedidoModel.NomeColaborador;
+            //var email = clientemodel.Email;
             
             colaboradormodel.IdColaborador = pedidoModel.IdColaborador;
             btnSalvar.Enabled = false;
@@ -80,6 +81,7 @@ namespace CrudDesafio.View
         {
             if(clientemodel.ValidarDataAniversario())
                 MessageBox.Show($"Parabéns {clientemodel.Nome}, Hoje é seu aniversário", "Parabéns");
+            //var Email = clientemodel.Email;
             txtIdCliente.Text = clientemodel.IdCliente.ToString();
             txtNomeCliente.Text = clientemodel.Nome;
         }
@@ -345,14 +347,17 @@ namespace CrudDesafio.View
                 cliente.UseDefaultCredentials = false;
 
                 credenciais.UserName = "marcosjose.moraes1999";
+                
                 credenciais.Password = "";
+                
 
                 cliente.Credentials = credenciais;
                 MailMessage mensagem = new MailMessage();
                 mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
-                mensagem.Subject = "Titulo da Mensagem";
+                mensagem.Subject = "Augustu's Fashion";
                 mensagem.Body = "Esta é a mensagem de texto do email de teste";
-                mensagem.To.Add("marcosjose.moraes1999@gmail.com");
+                mensagem.Body = $"Lista de pedido {gridCarrinho.DataSource = _pedido.Produtos}";
+                mensagem.To.Add(clientemodel.Email);
 
                 cliente.Send(mensagem);
 

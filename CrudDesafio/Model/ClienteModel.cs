@@ -14,9 +14,6 @@ namespace CrudDesafio.Model
         public double ValorLimite { get; set; }
 
         
-
-
-
     }
 
     

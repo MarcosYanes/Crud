@@ -18,8 +18,10 @@ namespace CrudDesafio.View
             InitializeComponent();
            
             _pedido = pedido;
+            
             clienteModel.Nome = _pedido.NomeCliente;
             colaboradorModel.Nome = _pedido.NomeCliente;
+            
 
             
         }

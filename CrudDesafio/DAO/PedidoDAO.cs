@@ -217,7 +217,7 @@ namespace CrudDesafio.DAO
         internal PedidoModel Buscar(int idPedido)
         {
 
-            var selecionarPedidoSql = @"select p.IdPedido, p.IdCliente, u.Nome as NomeCliente, u2.Nome as NomeColaborador, p.IdColaborador, p.FormaPagamento, p.TotalBruto, p.TotalDeDesconto, p.Status,
+            var selecionarPedidoSql = @"select p.IdPedido, p.IdCliente, u.Nome as NomeCliente, u.Email, u2.Nome as NomeColaborador, p.IdColaborador, p.FormaPagamento, p.TotalBruto, p.TotalDeDesconto, p.Status,
             p.TotalLiquido from Pedido p 
             inner join Cliente c on p.IdCliente = c.IdCliente inner join Colaborador co  on p.IdColaborador = co.IdColaborador inner join Usuario u on u.Id = c.Id inner join Usuario u2 on u2.Id = co.Id
             where IdPedido=@IdPedido";
