@@ -17,6 +17,10 @@
         {
             get => PrecoVenda * Quantidade;
         }
+        public double TotalPrecoCusto
+        {
+            get => PrecoDeCusto * Quantidade;
+        }
         public double PrecoLiquido
         {
             get => (PrecoVenda * Quantidade) - Desconto;

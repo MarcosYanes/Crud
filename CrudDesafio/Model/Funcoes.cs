@@ -16,6 +16,12 @@ namespace CrudDesafio.Model
             return valor2;
 
         }
+        public static string ObterTotalLiquido(string valor)
+        {
+            var valor2 = new string((from c in valor where char.IsDigit(c) || c == ','|| c== '.' select c).ToArray());
+            return valor2;
+
+        }
 
         //public static void LimparTextBoxes(Control.ControlCollection controles)
         //{
@@ -26,12 +32,12 @@ namespace CrudDesafio.Model
         //        if (ctrl is TextBox)
         //        {
         //            ((TextBox)(ctrl)).Text = String.Empty;
-                   
+
 
         //        }
         //    }
-            
-            
+
+
         //}
     }
 }

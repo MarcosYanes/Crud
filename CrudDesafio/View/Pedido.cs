@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 
 namespace CrudDesafio.View
 {
@@ -168,6 +169,7 @@ namespace CrudDesafio.View
                 Quantidade = Convert.ToInt32(txtQuantidade.Text),
                                
             };
+            
 
 
             var produtoJaInserido = SelecionarProdutoDoCarrinho(produto.IdProduto);
@@ -198,7 +200,8 @@ namespace CrudDesafio.View
             txtTotalBruto.Text = _pedido.TotalBruto.ToString("c");
             txtTotalDesconto.Text = _pedido.TotalDeDesconto.ToString("c");
             txtTotalLiquido.Text = _pedido.TotalLiquido.ToString("c");
-            txtLucro.Text = _pedido.Lucro.ToString();                                       
+            txtLucro.Text = _pedido.Lucro.ToString();   
+            
 
         }
         private void AtualizarGrid()
@@ -302,9 +305,28 @@ namespace CrudDesafio.View
             
 
         }
+        public string ConstruirCorpoDoEmail()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine($"Olá {clientemodel.Nome}, sua compra no valor de R${_pedido.TotalLiquido} reais foi registrada");
+             
+            foreach (var produto in _pedido.Produtos)
+            {
+                 builder.AppendLine($"\nNome: {produto.NomeProduto} |" + $" Quantidade: {produto.Quantidade}");
+            }
+             
+               builder.AppendLine("Augustu's Fashion agradece sua preferência, volte sempre !");
+            return builder.ToString();
+        }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            //double valor = Convert.ToDouble(Funcoes.ObterTotalLiquido(txtTotalLiquido.Text));
+            //if (valor > clientemodel.ValorLimite)
+            //{
+            //    MessageBox.Show("Erro");
+            //    return;
+            //}
             if (Validar())
             {
                 if(_pedido.Produtos.Count == 0)
@@ -316,6 +338,7 @@ namespace CrudDesafio.View
                 _pedido.IdCliente = clientemodel.IdCliente;
                 _pedido.IdColaborador = colaboradormodel.IdColaborador;
                 _pedido.FormaPagamento = txtFormaPagamento.Text;
+                
 
                 if (_pedido.IdPedido != 0)
                 {
@@ -331,6 +354,7 @@ namespace CrudDesafio.View
                         MessageBox.Show("Escolha um Produto!");
                         return ;
                     }
+                    _pedido.DataInicial = DateTime.Now;
                     pedidoController.Inserir(_pedido);
                     
                     MessageBox.Show("Cadastro Efetuado com Sucesso");
@@ -346,8 +370,7 @@ namespace CrudDesafio.View
                 cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
                 cliente.UseDefaultCredentials = false;
 
-                credenciais.UserName = "marcosjose.moraes1999";
-                
+                credenciais.UserName = "marcosjose.moraes1999";                
                 credenciais.Password = "";
                 
 
@@ -355,8 +378,8 @@ namespace CrudDesafio.View
                 MailMessage mensagem = new MailMessage();
                 mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
                 mensagem.Subject = "Augustu's Fashion";
-                mensagem.Body = "Esta é a mensagem de texto do email de teste";
-                mensagem.Body = $"Lista de pedido {gridCarrinho.DataSource = _pedido.Produtos}";
+                mensagem.Body = ConstruirCorpoDoEmail();
+                
                 mensagem.To.Add(clientemodel.Email);
 
                 cliente.Send(mensagem);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CrudDesafio.Model
@@ -29,6 +30,7 @@ namespace CrudDesafio.Model
         public double TotalLiquido { get => Produtos.Sum(x=>x.PrecoLiquido); }
         public double Lucro { get => Produtos.Sum(x => x.Lucro); }
         public bool Status { get; set; }
+        public DateTime DataInicial { get; set; }
         public ClienteModel Cliente { get; set; }
 
         public List<CarrinhoProduto> Produtos { get; set; }

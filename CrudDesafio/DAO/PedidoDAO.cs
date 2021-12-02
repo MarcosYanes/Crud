@@ -18,8 +18,8 @@ namespace CrudDesafio.DAO
 
         public void Inserir(PedidoModel pedidomodel)
         {
-            var InsertPedido = @"insert into Pedido (IdCliente, IdColaborador, FormaPagamento, TotalBruto, TotalDeDesconto, TotalLiquido, Lucro) output inserted.IdPedido values (@IdCliente, 
-            @IdColaborador, @FormaPagamento, @TotalBruto, @TotalDeDesconto, @TotalLiquido, @Lucro)";
+            var InsertPedido = @"insert into Pedido (IdCliente, IdColaborador, FormaPagamento, TotalBruto, TotalDeDesconto, TotalLiquido, Lucro, DataInicial) output inserted.IdPedido values (@IdCliente, 
+            @IdColaborador, @FormaPagamento, @TotalBruto, @TotalDeDesconto, @TotalLiquido, @Lucro, @DataInicial)";
 
             var InsertPedido_Produto = @"insert into Pedido_Produto (IdPedido, IdProduto, PrecoDeCusto, PrecoDeVenda, PrecoLiquido, Quantidade, Desconto, Total, Lucro)
             values (@IdPedido, @IdProduto, @PrecoDeCusto, @PrecoVenda, @PrecoLiquido, @Quantidade, @Desconto, @Total, @Lucro)";
@@ -92,13 +92,13 @@ namespace CrudDesafio.DAO
 
         public void Alterar(PedidoModel pedidomodel)
         {
-            var UpdatePedido = @"update Pedido set IdCliente=@IdCliente, IdColaborador=@IdColaborador, FormaPagamento=@FormaPagamento, TotalBruto=@TotalBruto, TotalDeDesconto=@TotalDeDesconto, TotalLiquido=@TotalLiquido where IdPedido=@IdPedido";
+            var UpdatePedido = @"update Pedido set IdCliente=@IdCliente, IdColaborador=@IdColaborador, FormaPagamento=@FormaPagamento, TotalBruto=@TotalBruto, TotalDeDesconto=@TotalDeDesconto, TotalLiquido=@TotalLiquido, Lucro=@Lucro where IdPedido=@IdPedido";
 
 
-            var UpdatePedido_Produto = @"update Pedido_Produto set IdProduto=@IdProduto, PrecoDeVenda=@PrecoVenda, PrecoLiquido=@PrecoLiquido, Quantidade=@Quantidade, Desconto=@Desconto, Total=@Total where IdPedido_Produto=@IdPedido_Produto";
+            var UpdatePedido_Produto = @"update Pedido_Produto set IdProduto=@IdProduto, PrecoDeVenda=@PrecoVenda, PrecoLiquido=@PrecoLiquido, Quantidade=@Quantidade, Desconto=@Desconto, Total=@Total, Lucro=@Lucro where IdPedido_Produto=@IdPedido_Produto";
 
-            var InsertPedido_Produto = @"insert into Pedido_Produto (IdPedido, IdProduto, PrecoDeVenda, PrecoLiquido, Quantidade, Desconto, Total)
-            values (@IdPedido, @IdProduto, @PrecoVenda, @PrecoLiquido, @Quantidade, @Desconto, @Total)";
+            var InsertPedido_Produto = @"insert into Pedido_Produto (IdPedido, IdProduto, PrecoDeVenda, PrecoLiquido, Quantidade, Desconto, Total, Lucro)
+            values (@IdPedido, @IdProduto, @PrecoVenda, @PrecoLiquido, @Quantidade, @Desconto, @Total, @Lucro)";
 
             var SelecionarEstoque = @"select IdProduto, Quantidade from Pedido_produto where IdPedido=@IdPedido";
 
