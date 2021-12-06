@@ -183,8 +183,34 @@ namespace CrudDesafio.DAO
             return new List<PedidoListagem>().ToList();
 
         }
+        internal List<RelatorioVendasModel> ListarRelatorioVendas()
+        {
 
-       
+            selecionarPedidoSql = @"select p.IdProduto, p.NomeProduto, SUM(pp.Quantidade) as 'Quantidade', SUM(pp.Total) as 'total', SUM(pp.Desconto) as 'Desconto', SUM(pp.PrecoLiquido) as 'PrecoLiquido',
+            SUM(pp.Lucro) as 'Lucro', SUM(pp.PrecoDeCusto * pp.Quantidade) as 'PrecoDeCusto' from 
+            Pedido_produto pp 
+            inner join Produto p on pp.IdProduto = p.IdProduto 
+            group by p.IdProduto, p.NomeProduto";
+
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+                    return conexao.Query<RelatorioVendasModel>(selecionarPedidoSql).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            return new List<RelatorioVendasModel>().ToList();
+
+        }
+
+
 
         internal List<PedidoListagem> BuscarLista(string Nome)
         {

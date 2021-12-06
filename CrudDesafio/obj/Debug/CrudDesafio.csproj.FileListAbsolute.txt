@@ -641,3 +641,4 @@ C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.csproj.Co
 C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.csproj.CopyComplete
 C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.exe
 C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.pdb
+C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.View.RelatorioProdutos.resources
