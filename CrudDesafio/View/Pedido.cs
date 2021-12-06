@@ -371,7 +371,7 @@ namespace CrudDesafio.View
                 cliente.UseDefaultCredentials = false;
 
                 credenciais.UserName = "marcosjose.moraes1999";                
-                credenciais.Password = "";
+                credenciais.Password = "marcosjose123@";
                 
 
                 cliente.Credentials = credenciais;
@@ -379,23 +379,24 @@ namespace CrudDesafio.View
                 mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
                 mensagem.Subject = "Augustu's Fashion";
                 mensagem.Body = ConstruirCorpoDoEmail();
+                mensagem.IsBodyHtml = true;
                 
                 mensagem.To.Add(clientemodel.Email);
 
                 cliente.Send(mensagem);
 
-                // IMPRIMIR NOTA
-                //DGVPrinter printer = new DGVPrinter();
-                //printer.Title = "Augusto Fashion";
-                ////printer.SubTitle = "";
-                //printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-                //printer.PageNumbers = true;
-                //printer.PageNumberInHeader = false;
-                //printer.PorportionalColumns = true;
-                //printer.HeaderCellAlignment = StringAlignment.Near;
-                //printer.Footer = "Desconto:" + txtTotalDesconto.Text + "% \r\n" + "Total : " + txtTotalLiquido.Text;
-                //printer.FooterSpacing = 15;
-                //printer.PrintDataGridView(gridCarrinho);
+                //IMPRIMIR NOTA
+                DGVPrinter printer = new DGVPrinter();
+                printer.Title = "Augusto Fashion";
+                //printer.SubTitle = "";
+                printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+                printer.PageNumbers = true;
+                printer.PageNumberInHeader = false;
+                printer.PorportionalColumns = true;
+                printer.HeaderCellAlignment = StringAlignment.Near;
+                printer.Footer = "Desconto:" + txtTotalDesconto.Text + "% \r\n" + "Total : " + txtTotalLiquido.Text;
+                printer.FooterSpacing = 15;
+                printer.PrintDataGridView(gridCarrinho);
                 MessageBox.Show("Email Enviado Com Sucesso");
                 this.Close();
             }
