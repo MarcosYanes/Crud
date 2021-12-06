@@ -2,6 +2,8 @@
 {
     public class CarrinhoProduto
     {
+
+
        public int IdPedido_produto { get; set; }
         public int IdPedido { get; set; }
 

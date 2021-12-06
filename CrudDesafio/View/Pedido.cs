@@ -321,12 +321,8 @@ namespace CrudDesafio.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //double valor = Convert.ToDouble(Funcoes.ObterTotalLiquido(txtTotalLiquido.Text));
-            //if (valor > clientemodel.ValorLimite)
-            //{
-            //    MessageBox.Show("Erro");
-            //    return;
-            //}
+            
+           
             if (Validar())
             {
                 if(_pedido.Produtos.Count == 0)
@@ -354,6 +350,7 @@ namespace CrudDesafio.View
                         MessageBox.Show("Escolha um Produto!");
                         return ;
                     }
+                    
                     _pedido.DataInicial = DateTime.Now;
                     pedidoController.Inserir(_pedido);
                     
@@ -408,7 +405,16 @@ namespace CrudDesafio.View
 
         public bool Validar()
         {
-            if (clientemodel.IdCliente == 0)
+            if (txtFormaPagamento.Text == "A Prazo")
+            {
+                double valor = Convert.ToDouble(Funcoes.ObterTotalLiquido(txtTotalLiquido.Text));
+                if (valor > clientemodel.ValorLimite)
+                {
+                    MessageBox.Show("Essa venda não pode ser realizada, pois o valor ultrapassa o limite de compras a prazo do cliente");
+                    return false;
+                }
+            }
+            else if (clientemodel.IdCliente == 0)
             {
                 MessageBox.Show("Cliente inválido"); 
                 return false;

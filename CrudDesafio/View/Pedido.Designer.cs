@@ -205,7 +205,8 @@ namespace CrudDesafio.View
             this.txtFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtFormaPagamento.FormattingEnabled = true;
             this.txtFormaPagamento.Items.AddRange(new object[] {
-            "A vista",
+            "A Vista",
+            "A Prazo",
             "Cartão de Crédito",
             "Cartão de Débito"});
             this.txtFormaPagamento.Location = new System.Drawing.Point(25, 29);

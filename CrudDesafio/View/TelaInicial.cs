@@ -108,5 +108,11 @@ namespace CrudDesafio.View
             ListarPedido listarpedido = new ListarPedido();
             listarpedido.Show();
         }
+
+        private void relatórioDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RelatorioProdutos relatorio = new RelatorioProdutos();
+            relatorio.Show();
+        }
     }
 }
