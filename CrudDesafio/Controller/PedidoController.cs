@@ -53,6 +53,11 @@ namespace CrudDesafio.Controller
             var lista = pedidodao.BuscarRelatorio(NomeProduto, Nome, DataInicial, DataFinal);
             return lista;
         }
+        public List<RelatorioClienteModel> FiltrarRelatorioCliente(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top)
+        {
+            var lista = pedidodao.FiltrarRelatorioClientes(Nome, DataInicial, DataFinal, OrdenarPor, Crescente , Top);
+            return lista;
+        }
 
         public PedidoModel Buscar(int idPedido)
         {

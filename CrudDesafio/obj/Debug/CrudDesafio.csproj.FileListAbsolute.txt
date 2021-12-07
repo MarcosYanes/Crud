@@ -644,3 +644,4 @@ C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.pdb
 C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.View.RelatorioProdutos.resources
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.RelatorioProdutos.resources
 C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.View.RelatorioCliente.resources
+C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.RelatorioCliente.resources

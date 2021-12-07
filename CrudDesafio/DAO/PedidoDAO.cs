@@ -156,9 +156,6 @@ namespace CrudDesafio.DAO
 
         }
 
-
-
-
         internal List<PedidoListagem> Listar()
         {
 
@@ -215,10 +212,12 @@ namespace CrudDesafio.DAO
         internal List<RelatorioClienteModel> ListarRelatorioClientes()
         {
 
-            selecionarPedidoSql = @"select c.IdCliente, u.Nome,count(pp.IdPedido) as IdPedido , SUM(pp.Quantidade) AS 'Quantidade de produtos', SUM(p.TotalBruto)as 'TotalBruto',
-SUM(p.TotalDeDesconto) as 'TotalDeDesconto', SUM(p.TotalLiquido) as 'TotalLiquido' from Cliente c inner join Pedido p on p.IdCliente = c.IdCliente inner join Pedido_produto pp on 
-pp.IdPedido = p.IdPedido 
-inner  join Usuario u on u.Id = c.Id group by c.IdCliente, u.Nome ";
+            selecionarPedidoSql = @"select c.IdCliente, u.Nome,count(pp.IdPedido) as IdPedido , SUM(pp.Quantidade) AS
+            'Quantidade de produtos', SUM(p.TotalBruto)as 'TotalBruto',
+            SUM(p.TotalDeDesconto) as 'TotalDeDesconto', SUM(p.TotalLiquido) as 'TotalLiquido' from Cliente c 
+            inner join Pedido p on p.IdCliente = c.IdCliente inner join Pedido_produto pp on 
+            pp.IdPedido = p.IdPedido 
+            inner  join Usuario u on u.Id = c.Id group by c.IdCliente, u.Nome ";
 
 
 
@@ -239,17 +238,66 @@ inner  join Usuario u on u.Id = c.Id group by c.IdCliente, u.Nome ";
             return new List<RelatorioClienteModel>().ToList();
 
         }
+        internal List<RelatorioClienteModel> FiltrarRelatorioClientes(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top)
+        {
+            selecionarPedidoSql = @"Select";
+            if (Top != 0)
+            {
+                selecionarPedidoSql += @" top(@Top)";
+            }
+
+            selecionarPedidoSql += @"  c.IdCliente, u.Nome, count(pp.IdPedido) as IdPedido, SUM(pp.Quantidade) AS
+            'Quantidade de produtos', SUM(p.TotalBruto) as 'TotalBruto',
+            SUM(p.TotalDeDesconto) as 'TotalDeDesconto', SUM(p.TotalLiquido) as 'TotalLiquido' from Cliente c 
+            inner join Pedido p on p.IdCliente = c.IdCliente inner join Pedido_produto pp on 
+            pp.IdPedido = p.IdPedido 
+            inner  join Usuario u on u.Id = c.Id
+            where u.Nome like @Nome and Cast (DataInicial as Date) between @DataInicial and @DataFinal group by c.IdCliente, u.Nome ";
+
+            var parametros = new DynamicParameters();
+            parametros.Add("@Nome", Nome + '%', System.Data.DbType.String);
+            parametros.Add("@DataInicial", DataInicial.Date, System.Data.DbType.String);
+            parametros.Add("@DataFinal", DataFinal.Date, System.Data.DbType.String);
+            parametros.Add("@Top", Top, System.Data.DbType.Int32);
+
+
+
+            if (OrdenarPor == 0)
+                selecionarPedidoSql += "order by Count(pp.IdPedido)";
+            else if (OrdenarPor == 1)
+                selecionarPedidoSql += "order by SUM(p.TotalBruto)";
+            else if(OrdenarPor == 2)
+                selecionarPedidoSql += "order by SUM(p.TotalDeDesconto)";
+            else if(OrdenarPor == 3)
+                selecionarPedidoSql += "order by SUM(p.TotalLiquido)";
+
+            if(Crescente == 1)
+                selecionarPedidoSql += " desc";
+
+
+
+
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+                    return conexao.Query<RelatorioClienteModel>(selecionarPedidoSql, parametros).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            return new List<RelatorioClienteModel>().ToList();
+
+        }
 
 
         internal List<RelatorioVendasModel> BuscarRelatorio(string NomeProduto, string Nome, DateTime DataInicial, DateTime DataFinal)
-        {
-            
-
-            //selecionarPedidoSql = @"select p.IdProduto, p.NomeProduto, SUM(pp.Quantidade) as 'Quantidade', SUM(pp.Total) as 'total', SUM(pp.Desconto) as 'Desconto', SUM(pp.PrecoLiquido) as 'PrecoLiquido',
-            //SUM(pp.Lucro) as 'Lucro', SUM(pp.PrecoDeCusto * pp.Quantidade) as 'PrecoDeCusto' from 
-            //Pedido_produto pp 
-            //inner join Produto p on pp.IdProduto = p.IdProduto where p.NomeProduto like @NomeProduto + '%'
-            //group by p.IdProduto, p.NomeProduto";
+        {                              
 
             selecionarPedidoSql = @"select  p.IdProduto, p.NomeProduto,   SUM(pp.Quantidade) as 'Quantidade', SUM(pp.Total) as 'total', SUM(pp.Desconto) as 'Desconto', SUM(pp.PrecoLiquido) as 'PrecoLiquido',
             SUM(pp.Lucro) as 'Lucro', SUM(pp.PrecoDeCusto * pp.Quantidade) as 'PrecoDeCusto', (SUM(pp.PrecoLiquido)- SUM(pp.PrecoDeCusto* pp.Quantidade))/SUM(pp.PrecoDeCusto* pp.Quantidade)*100 as 'Lucro em %'from
@@ -257,8 +305,6 @@ inner  join Usuario u on u.Id = c.Id group by c.IdCliente, u.Nome ";
             inner join Pedido_produto pp on pp.IdProduto = p.IdProduto inner join Pedido pedido on pp.IdPedido = pedido.IdPedido inner join  Cliente c on pedido.IdCliente = c.IdCliente inner join Usuario u on u.Id = c.Id  
             where p.NomeProduto like @NomeProduto  and u.Nome like @Nome  and Cast (DataInicial as Date) between @DataInicial and @DataFinal
             group by p.IdProduto, p.NomeProduto";
-
-
 
             var parametros = new DynamicParameters();
             parametros.Add("@NomeProduto", NomeProduto + '%',  System.Data.DbType.String);
@@ -283,8 +329,6 @@ inner  join Usuario u on u.Id = c.Id group by c.IdCliente, u.Nome ";
             return new List<RelatorioVendasModel>().ToList();
 
         }
-
-
 
         internal List<PedidoListagem> BuscarLista(string Nome)
         {

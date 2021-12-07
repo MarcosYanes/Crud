@@ -28,5 +28,18 @@ namespace CrudDesafio.View
             gridRelatorioClientes.Columns["TotalLiquido"].HeaderText = "Total Líquido";
             gridRelatorioClientes.Columns["TotalDeDesconto"].HeaderText = "Total De Desconto";
         }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+           
+            if (txtTop.Text == "")
+            {
+                txtTop.Text = "0";
+                
+            }
+            gridRelatorioClientes.DataSource = pedidocontroller.FiltrarRelatorioCliente(txtBuscarCliente.Text, dtpDataInical.Value,
+                dtpDataFinal.Value, cbOrdenarPor.SelectedIndex, cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text)) ;
+                        
+        }
     }
 }
