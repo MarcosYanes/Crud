@@ -212,6 +212,35 @@ namespace CrudDesafio.DAO
 
         }
 
+        internal List<RelatorioClienteModel> ListarRelatorioClientes()
+        {
+
+            selecionarPedidoSql = @"select c.IdCliente, u.Nome,count(pp.IdPedido) as IdPedido , SUM(pp.Quantidade) AS 'Quantidade de produtos', SUM(p.TotalBruto)as 'TotalBruto',
+SUM(p.TotalDeDesconto) as 'TotalDeDesconto', SUM(p.TotalLiquido) as 'TotalLiquido' from Cliente c inner join Pedido p on p.IdCliente = c.IdCliente inner join Pedido_produto pp on 
+pp.IdPedido = p.IdPedido 
+inner  join Usuario u on u.Id = c.Id group by c.IdCliente, u.Nome ";
+
+
+
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+                    return conexao.Query<RelatorioClienteModel>(selecionarPedidoSql).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            return new List<RelatorioClienteModel>().ToList();
+
+        }
+
+
         internal List<RelatorioVendasModel> BuscarRelatorio(string NomeProduto, string Nome, DateTime DataInicial, DateTime DataFinal)
         {
             

@@ -114,5 +114,11 @@ namespace CrudDesafio.View
             RelatorioProdutos relatorio = new RelatorioProdutos();
             relatorio.Show();
         }
+
+        private void relatorioDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RelatorioCliente relatoriocliente = new RelatorioCliente();
+            relatoriocliente.Show();
+        }
     }
 }

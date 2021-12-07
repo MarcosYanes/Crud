@@ -36,8 +36,12 @@ namespace CrudDesafio.Controller
         {
             return pedidodao.ListarRelatorioVendas();
         }
+        public List<RelatorioClienteModel> ListarRelatorioClientes()
+        {
+            return pedidodao.ListarRelatorioClientes();
+        }
 
-        
+
         public List<PedidoListagem> BuscarLista(string Nome)
           {
             var lista = pedidodao.BuscarLista(Nome);

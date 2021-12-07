@@ -39,12 +39,13 @@ namespace CrudDesafio.View
             this.colaboradorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.colaboradorToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.compraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioDeProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatorioDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,7 +105,8 @@ namespace CrudDesafio.View
             this.colaboradorToolStripMenuItem1,
             this.produtoToolStripMenuItem1,
             this.pedidoToolStripMenuItem,
-            this.relatórioDeProdutosToolStripMenuItem});
+            this.relatórioDeProdutosToolStripMenuItem,
+            this.relatorioDeClientesToolStripMenuItem});
             this.listarToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
             this.listarToolStripMenuItem.Size = new System.Drawing.Size(72, 32);
@@ -137,6 +139,13 @@ namespace CrudDesafio.View
             this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(289, 32);
             this.pedidoToolStripMenuItem.Text = "Pedido";
             this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
+            // 
+            // relatórioDeProdutosToolStripMenuItem
+            // 
+            this.relatórioDeProdutosToolStripMenuItem.Name = "relatórioDeProdutosToolStripMenuItem";
+            this.relatórioDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(289, 32);
+            this.relatórioDeProdutosToolStripMenuItem.Text = "Relatório de Produtos";
+            this.relatórioDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.relatórioDeProdutosToolStripMenuItem_Click);
             // 
             // alterarToolStripMenuItem
             // 
@@ -179,12 +188,12 @@ namespace CrudDesafio.View
             this.compraToolStripMenuItem.Text = "Venda";
             this.compraToolStripMenuItem.Click += new System.EventHandler(this.compraToolStripMenuItem_Click);
             // 
-            // relatórioDeProdutosToolStripMenuItem
+            // relatorioDeClientesToolStripMenuItem
             // 
-            this.relatórioDeProdutosToolStripMenuItem.Name = "relatórioDeProdutosToolStripMenuItem";
-            this.relatórioDeProdutosToolStripMenuItem.Size = new System.Drawing.Size(289, 32);
-            this.relatórioDeProdutosToolStripMenuItem.Text = "Relatório de Produtos";
-            this.relatórioDeProdutosToolStripMenuItem.Click += new System.EventHandler(this.relatórioDeProdutosToolStripMenuItem_Click);
+            this.relatorioDeClientesToolStripMenuItem.Name = "relatorioDeClientesToolStripMenuItem";
+            this.relatorioDeClientesToolStripMenuItem.Size = new System.Drawing.Size(289, 32);
+            this.relatorioDeClientesToolStripMenuItem.Text = "Relatório de Clientes";
+            this.relatorioDeClientesToolStripMenuItem.Click += new System.EventHandler(this.relatorioDeClientesToolStripMenuItem_Click);
             // 
             // TelaInicial
             // 
@@ -223,5 +232,6 @@ namespace CrudDesafio.View
         private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatórioDeProdutosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatorioDeClientesToolStripMenuItem;
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="Model\PedidoListagem.cs" />
     <Compile Include="Model\PedidoModel.cs" />
     <Compile Include="Model\ProdutoModel.cs" />
+    <Compile Include="Model\RelatorioClienteModel.cs" />
     <Compile Include="Model\RelatorioVendasModel.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Validacoes.cs" />
@@ -171,6 +172,12 @@
     <Compile Include="View\PedidoAlterar.Designer.cs">
       <DependentUpon>PedidoAlterar.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\RelatorioCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\RelatorioCliente.Designer.cs">
+      <DependentUpon>RelatorioCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\RelatorioProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PedidoAlterar.resx">
       <DependentUpon>PedidoAlterar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RelatorioCliente.resx">
+      <DependentUpon>RelatorioCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\RelatorioProdutos.resx">
       <DependentUpon>RelatorioProdutos.cs</DependentUpon>
