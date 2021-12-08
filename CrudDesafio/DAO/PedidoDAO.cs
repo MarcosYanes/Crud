@@ -238,7 +238,7 @@ namespace CrudDesafio.DAO
             return new List<RelatorioClienteModel>().ToList();
 
         }
-        internal List<RelatorioClienteModel> FiltrarRelatorioClientes(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top)
+        internal List<RelatorioClienteModel> FiltrarRelatorioClientes(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top, double MaiorQue)
         {
             selecionarPedidoSql = @"Select";
             if (Top != 0)
@@ -259,20 +259,51 @@ namespace CrudDesafio.DAO
             parametros.Add("@DataInicial", DataInicial.Date, System.Data.DbType.String);
             parametros.Add("@DataFinal", DataFinal.Date, System.Data.DbType.String);
             parametros.Add("@Top", Top, System.Data.DbType.Int32);
+            parametros.Add("@MaiorQue", MaiorQue, System.Data.DbType.String);
 
 
+            if (MaiorQue != 0 && OrdenarPor == 0)
+            {
+                selecionarPedidoSql += "having Count(pp.IdPedido)>@MaiorQue  ";
+            }
+            else if(MaiorQue != 0 && OrdenarPor == 1)
+            {
+                selecionarPedidoSql += "having SUM(p.TotalBruto)>@MaiorQue  ";
+            }
+            else if(MaiorQue != 0 && OrdenarPor == 2)
+            {
+                selecionarPedidoSql += "having SUM(p.TotalDeDesconto)>@MaiorQue ";
+            }
+            else if (MaiorQue != 0 && OrdenarPor == 3)
+            {
+                selecionarPedidoSql += "having SUM(p.TotalLiquido)>@MaiorQue  ";
+            }
+            
+            
 
-            if (OrdenarPor == 0)
-                selecionarPedidoSql += "order by Count(pp.IdPedido)";
-            else if (OrdenarPor == 1)
-                selecionarPedidoSql += "order by SUM(p.TotalBruto)";
-            else if(OrdenarPor == 2)
-                selecionarPedidoSql += "order by SUM(p.TotalDeDesconto)";
-            else if(OrdenarPor == 3)
-                selecionarPedidoSql += "order by SUM(p.TotalLiquido)";
+                if (OrdenarPor == 0)
+                {
+                    selecionarPedidoSql += "order by Count(pp.IdPedido)";
+                }
+                else if (OrdenarPor == 1)
+                {
+                    selecionarPedidoSql += "order by SUM(p.TotalBruto)";
+                }
+                else if (OrdenarPor == 2)
+                {
+                    selecionarPedidoSql += "order by SUM(p.TotalDeDesconto)";
+                }
+                else if (OrdenarPor == 3)
+                {
+                    selecionarPedidoSql += "order by SUM(p.TotalLiquido)";
+                }
+            
+           
 
-            if(Crescente == 1)
+            if (Crescente == 1)
+            {
                 selecionarPedidoSql += " desc";
+            }
 
 
 

@@ -1,4 +1,5 @@
 ﻿using CrudDesafio.Controller;
+using CrudDesafio.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,8 +38,22 @@ namespace CrudDesafio.View
                 txtTop.Text = "0";
                 
             }
+            else if (!Validacoes.ValidarNumeroPositivo(txtTop.Text))
+            {
+                MessageBox.Show("Digite apenas Números Positivos");
+                return;
+            }
+            if(txtMaiorQue.Text == "")
+            {
+                txtMaiorQue.Text = "0.0";
+            }
+            else if (!Validacoes.ValidarParaQueSejaNumero(txtMaiorQue.Text))
+            {
+                MessageBox.Show("Digite apenas Números");
+                return;
+            }
             gridRelatorioClientes.DataSource = pedidocontroller.FiltrarRelatorioCliente(txtBuscarCliente.Text, dtpDataInical.Value,
-                dtpDataFinal.Value, cbOrdenarPor.SelectedIndex, cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text)) ;
+                dtpDataFinal.Value, cbOrdenarPor.SelectedIndex, cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text), Convert.ToDouble(txtMaiorQue.Text.Replace(",", "."))) ;
                         
         }
     }

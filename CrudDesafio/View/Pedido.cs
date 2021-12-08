@@ -359,28 +359,28 @@ namespace CrudDesafio.View
                   
                 }
                 //enviar email
-                SmtpClient cliente = new SmtpClient();
-                NetworkCredential credenciais = new NetworkCredential();
-                cliente.Host = "smtp.gmail.com";
-                cliente.Port = 587;
-                cliente.EnableSsl = true;
-                cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
-                cliente.UseDefaultCredentials = false;
+                //SmtpClient cliente = new SmtpClient();
+                //NetworkCredential credenciais = new NetworkCredential();
+                //cliente.Host = "smtp.gmail.com";
+                //cliente.Port = 587;
+                //cliente.EnableSsl = true;
+                //cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //cliente.UseDefaultCredentials = false;
 
-                credenciais.UserName = "marcosjose.moraes1999";                
-                credenciais.Password = "marcosjose123@";
+                //credenciais.UserName = "marcosjose.moraes1999";                
+                //credenciais.Password = "marcosjose123@";
                 
 
-                cliente.Credentials = credenciais;
-                MailMessage mensagem = new MailMessage();
-                mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
-                mensagem.Subject = "Augustu's Fashion";
-                mensagem.Body = ConstruirCorpoDoEmail();
-                mensagem.IsBodyHtml = true;
+                //cliente.Credentials = credenciais;
+                //MailMessage mensagem = new MailMessage();
+                //mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
+                //mensagem.Subject = "Augustu's Fashion";
+                //mensagem.Body = ConstruirCorpoDoEmail();
+                //mensagem.IsBodyHtml = true;
                 
-                mensagem.To.Add(clientemodel.Email);
+                //mensagem.To.Add(clientemodel.Email);
 
-                cliente.Send(mensagem);
+                //cliente.Send(mensagem);
 
                 //IMPRIMIR NOTA
                 DGVPrinter printer = new DGVPrinter();

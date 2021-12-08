@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CrudDesafio.DAO;
 using CrudDesafio.Model;
-using System.Data.SqlClient;
-using CrudDesafio.DAO;
 using CrudDesafio.View;
+using System;
+using System.Collections.Generic;
 
 namespace CrudDesafio.Controller
 {
 
-    
+
     public class PedidoController
     {
         private PedidoDAO pedidodao = new PedidoDAO();
@@ -53,9 +49,9 @@ namespace CrudDesafio.Controller
             var lista = pedidodao.BuscarRelatorio(NomeProduto, Nome, DataInicial, DataFinal);
             return lista;
         }
-        public List<RelatorioClienteModel> FiltrarRelatorioCliente(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top)
+        public List<RelatorioClienteModel> FiltrarRelatorioCliente(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top, double MaiorQue)
         {
-            var lista = pedidodao.FiltrarRelatorioClientes(Nome, DataInicial, DataFinal, OrdenarPor, Crescente , Top);
+            var lista = pedidodao.FiltrarRelatorioClientes(Nome, DataInicial, DataFinal, OrdenarPor, Crescente , Top, MaiorQue);
             return lista;
         }
 
