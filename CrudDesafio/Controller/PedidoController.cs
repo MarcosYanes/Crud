@@ -49,9 +49,9 @@ namespace CrudDesafio.Controller
             var lista = pedidodao.BuscarRelatorio(NomeProduto, Nome, DataInicial, DataFinal);
             return lista;
         }
-        public List<RelatorioClienteModel> FiltrarRelatorioCliente(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top, double MaiorQue)
+        public List<RelatorioClienteModel> FiltrarRelatorioCliente(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top, double MaiorQue, int OrdenarMaiorQue, int Operador)
         {
-            var lista = pedidodao.FiltrarRelatorioClientes(Nome, DataInicial, DataFinal, OrdenarPor, Crescente , Top, MaiorQue);
+            var lista = pedidodao.FiltrarRelatorioClientes(Nome, DataInicial, DataFinal, OrdenarPor, Crescente , Top, MaiorQue, OrdenarMaiorQue, Operador);
             return lista;
         }
 

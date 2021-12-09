@@ -22,7 +22,10 @@ namespace CrudDesafio.View
 
         private void RelatorioCliente_Load(object sender, EventArgs e)
         {
-
+            cbOperador.SelectedIndex = 0;
+            cbOrdenarPor.SelectedIndex = 0;
+            cbCrescente.SelectedIndex = 0;
+            cbOrdenarMaiorQue.SelectedIndex = 0;
             gridRelatorioClientes.DataSource = pedidocontroller.ListarRelatorioClientes();
             gridRelatorioClientes.Columns["IdPedido"].HeaderText = "Quantidade De Venda";
             gridRelatorioClientes.Columns["TotalBruto"].HeaderText = "Total Bruto";
@@ -53,7 +56,7 @@ namespace CrudDesafio.View
                 return;
             }
             gridRelatorioClientes.DataSource = pedidocontroller.FiltrarRelatorioCliente(txtBuscarCliente.Text, dtpDataInical.Value,
-                dtpDataFinal.Value, cbOrdenarPor.SelectedIndex, cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text), Convert.ToDouble(txtMaiorQue.Text.Replace(",", "."))) ;
+                dtpDataFinal.Value, cbOrdenarPor.SelectedIndex, cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text), Convert.ToDouble(txtMaiorQue.Text.Replace(",", ".")), cbOrdenarMaiorQue.SelectedIndex, cbOperador.SelectedIndex) ;
                         
         }
     }
