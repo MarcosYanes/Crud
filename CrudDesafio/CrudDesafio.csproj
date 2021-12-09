@@ -55,6 +55,7 @@
     <Compile Include="Controller\ProdutoController.cs" />
     <Compile Include="DAO\ClienteDAO.cs" />
     <Compile Include="DAO\ColaboradorDAO.cs" />
+    <Compile Include="DAO\FiltrosRelatorio.cs" />
     <Compile Include="DAO\PedidoDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DGVPrinter.cs" />

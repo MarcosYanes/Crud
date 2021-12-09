@@ -238,7 +238,7 @@ namespace CrudDesafio.DAO
             return new List<RelatorioClienteModel>().ToList();
 
         }
-        internal List<RelatorioClienteModel> FiltrarRelatorioClientes(string Nome, DateTime DataInicial, DateTime DataFinal, int OrdenarPor, int Crescente, int Top, double MaiorQue, int OrdenarMaiorQue, int Operador)
+        internal List<RelatorioClienteModel> FiltrarRelatorioClientes(string Nome, DateTime DataInicial, DateTime DataFinal,  int Crescente, int Top, double MaiorQue, FiltrosRelatorio Filtro)
         {
             
             selecionarPedidoSql = @"Select";
@@ -260,74 +260,10 @@ namespace CrudDesafio.DAO
             parametros.Add("@DataInicial", DataInicial.Date, System.Data.DbType.String);
             parametros.Add("@DataFinal", DataFinal.Date, System.Data.DbType.String);
             parametros.Add("@Top", Top, System.Data.DbType.Int32);
-            parametros.Add("@MaiorQue", MaiorQue, System.Data.DbType.String);
-
-
-            if (MaiorQue != 0 && OrdenarMaiorQue == 0)
-            {
-                if (Operador == 0)
-                {
-                    selecionarPedidoSql += "having Count(pp.IdPedido)>@MaiorQue  ";
-                }
-                else
-                {
-                    selecionarPedidoSql += "having Count(pp.IdPedido)<@MaiorQue  ";
-                }
-
-            }
-            else if(MaiorQue != 0 && OrdenarMaiorQue == 1)
-            {
-                if (Operador == 0)
-                {
-                    selecionarPedidoSql += "having SUM(p.TotalBruto)>@MaiorQue  ";
-                }
-                else
-                {
-                    selecionarPedidoSql += "having SUM(p.TotalBruto)<@MaiorQue  ";
-                }
-            }
-            else if(MaiorQue != 0 && OrdenarMaiorQue == 2)
-            {
-                if (Operador == 0)
-                {
-                    selecionarPedidoSql += "having SUM(p.TotalDeDesconto)>@MaiorQue ";
-                }
-                else
-                {
-                    selecionarPedidoSql += "having SUM(p.TotalDeDesconto)<@MaiorQue ";
-                }
-            }
-            else if (MaiorQue != 0 && OrdenarMaiorQue == 3)
-            {
-                if(Operador == 0)
-                {
-                    selecionarPedidoSql += "having SUM(p.TotalLiquido)>@MaiorQue  ";
-                }
-                else
-                {
-                    selecionarPedidoSql += "having SUM(p.TotalLiquido)<@MaiorQue  ";
-                }
-                
-            }
-            
-            
-
-                if (OrdenarPor == 0)
-                {
-                    selecionarPedidoSql += "order by Count(pp.IdPedido)";
-                }
-                else if (OrdenarPor == 1)
-                {
-                    selecionarPedidoSql += "order by SUM(p.TotalBruto)";
-                }
-                else if (OrdenarPor == 2)
-                {
-                    selecionarPedidoSql += "order by SUM(p.TotalDeDesconto)";
-                }
-                else if (OrdenarPor == 3)
-                {
-                    selecionarPedidoSql += "order by SUM(p.TotalLiquido)";
-                }
+            parametros.Add("@MaiorQue", MaiorQue, System.Data.DbType.String);                     
+                                     
+            selecionarPedidoSql += $"{Filtro.Filtragem()} {Filtro.Operadores()} @MaiorQue  ";
+            selecionarPedidoSql += $"{Filtro.FiltragemParaOrdenar()}";                    
             
            
 

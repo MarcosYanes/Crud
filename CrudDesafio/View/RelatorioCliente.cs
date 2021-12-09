@@ -1,4 +1,5 @@
 ﻿using CrudDesafio.Controller;
+using CrudDesafio.DAO;
 using CrudDesafio.Model;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace CrudDesafio.View
     public partial class RelatorioCliente : Form
     {
         PedidoController pedidocontroller = new PedidoController();
+        FiltrosRelatorio filtro = new FiltrosRelatorio();
         public RelatorioCliente()
         {
             InitializeComponent();
@@ -35,29 +37,49 @@ namespace CrudDesafio.View
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
+            ValidarTextBox();
            
+            if (Validar() == false)
+            {
+                return;
+            }           
+         
+            filtro.OrdenarMaiorQue = cbOrdenarMaiorQue.SelectedIndex;
+            filtro.Operador = cbOperador.SelectedIndex;
+            filtro.OrdenarPor = cbOrdenarPor.SelectedIndex;
+            gridRelatorioClientes.DataSource = pedidocontroller.FiltrarRelatorioCliente(txtBuscarCliente.Text, dtpDataInical.Value,
+                dtpDataFinal.Value,  cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text), Convert.ToDouble(txtMaiorQue.Text.Replace(",", ".")), filtro) ;
+                        
+        }
+        public void ValidarTextBox()
+        {
             if (txtTop.Text == "")
             {
                 txtTop.Text = "0";
-                
+
             }
-            else if (!Validacoes.ValidarNumeroPositivo(txtTop.Text))
-            {
-                MessageBox.Show("Digite apenas Números Positivos");
-                return;
-            }
-            if(txtMaiorQue.Text == "")
+
+            if (txtMaiorQue.Text == "")
             {
                 txtMaiorQue.Text = "0.0";
             }
+        }
+
+        public bool Validar()
+        {
+           
+            if (!Validacoes.ValidarNumeroPositivo(txtTop.Text))
+            {
+                MessageBox.Show("Digite Apenas Números Positivos");
+                return false;
+            }
             else if (!Validacoes.ValidarParaQueSejaNumero(txtMaiorQue.Text))
             {
-                MessageBox.Show("Digite apenas Números");
-                return;
+                MessageBox.Show("Digite Apenas Números Positivos ");
+                return false;
             }
-            gridRelatorioClientes.DataSource = pedidocontroller.FiltrarRelatorioCliente(txtBuscarCliente.Text, dtpDataInical.Value,
-                dtpDataFinal.Value, cbOrdenarPor.SelectedIndex, cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text), Convert.ToDouble(txtMaiorQue.Text.Replace(",", ".")), cbOrdenarMaiorQue.SelectedIndex, cbOperador.SelectedIndex) ;
-                        
+            return true;
+
         }
     }
 }
