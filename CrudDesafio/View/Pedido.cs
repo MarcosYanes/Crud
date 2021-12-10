@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Collections.Generic;
 
 namespace CrudDesafio.View
 {
@@ -213,9 +214,9 @@ namespace CrudDesafio.View
             gridCarrinho.Columns["idproduto"].Visible = false;
             gridCarrinho.Columns["lucro"].Visible = false;
             gridCarrinho.Columns["precodecusto"].Visible = false;
-            gridCarrinho.Columns["nomeproduto"].HeaderText = "nome do produto";
-            gridCarrinho.Columns["precovenda"].HeaderText = "preço";
-            gridCarrinho.Columns["precoliquido"].HeaderText = "total pago";
+            gridCarrinho.Columns["nomeproduto"].HeaderText = "Nome do Produto";
+            gridCarrinho.Columns["precovenda"].HeaderText = "Preço";
+            gridCarrinho.Columns["precoliquido"].HeaderText = "Total Pago";
         }
 
         public int SelecionarProduto()
@@ -285,7 +286,7 @@ namespace CrudDesafio.View
 
         private void txtDesconto_ValueChanged(object sender, EventArgs e)
         {
-           
+            
             CalcularCusto();
         }
 
@@ -295,7 +296,8 @@ namespace CrudDesafio.View
         }
 
         private void txtDesconto_KeyUp(object sender, KeyEventArgs e)
-        {            
+        {
+            
             CalcularCusto();
         }
 
@@ -305,19 +307,7 @@ namespace CrudDesafio.View
             
 
         }
-        public string ConstruirCorpoDoEmail()
-        {
-            var builder = new StringBuilder();
-            builder.AppendLine($"Olá {clientemodel.Nome}, sua compra no valor de R${_pedido.TotalLiquido} reais foi registrada");
-             
-            foreach (var produto in _pedido.Produtos)
-            {
-                 builder.AppendLine($"\nNome: {produto.NomeProduto} |" + $" Quantidade: {produto.Quantidade}");
-            }
-             
-               builder.AppendLine("Augustu's Fashion agradece sua preferência, volte sempre !");
-            return builder.ToString();
-        }
+        
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -327,7 +317,7 @@ namespace CrudDesafio.View
             {
                 if(_pedido.Produtos.Count == 0)
                 {
-                    MessageBox.Show("Impossível Finalizar Um Pedido Sem Escolher Um Produto!");
+                    MessageBox.Show("Não é possível Finalizar Um Pedido Sem Escolher Um Produto!");
                     return;
                 }
 
@@ -358,43 +348,9 @@ namespace CrudDesafio.View
 
                   
                 }
-                //enviar email
-                //SmtpClient cliente = new SmtpClient();
-                //NetworkCredential credenciais = new NetworkCredential();
-                //cliente.Host = "smtp.gmail.com";
-                //cliente.Port = 587;
-                //cliente.EnableSsl = true;
-                //cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
-                //cliente.UseDefaultCredentials = false;
-
-                //credenciais.UserName = "marcosjose.moraes1999";                
-                //credenciais.Password = "marcosjose123@";
+                EnviarEmail();
+                Imprimir();                
                 
-
-                //cliente.Credentials = credenciais;
-                //MailMessage mensagem = new MailMessage();
-                //mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
-                //mensagem.Subject = "Augustu's Fashion";
-                //mensagem.Body = ConstruirCorpoDoEmail();
-                //mensagem.IsBodyHtml = true;
-                
-                //mensagem.To.Add(clientemodel.Email);
-
-                //cliente.Send(mensagem);
-
-                //IMPRIMIR NOTA
-                DGVPrinter printer = new DGVPrinter();
-                printer.Title = "Augusto Fashion";
-                //printer.SubTitle = "";
-                printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-                printer.PageNumbers = true;
-                printer.PageNumberInHeader = false;
-                printer.PorportionalColumns = true;
-                printer.HeaderCellAlignment = StringAlignment.Near;
-                printer.Footer = "Desconto:" + txtTotalDesconto.Text + "% \r\n" + "Total : " + txtTotalLiquido.Text;
-                printer.FooterSpacing = 15;
-                printer.PrintDataGridView(gridCarrinho);
-                MessageBox.Show("Email Enviado Com Sucesso");
                 this.Close();
             }
 
@@ -465,6 +421,81 @@ namespace CrudDesafio.View
             txtTotalBrutoProduto.Text = "";
             txtTotal.Text = "";
         }
+        public void Imprimir()
+        {
+            //IMPRIMIR NOTA
+            DGVPrinter printer = new DGVPrinter();
+            printer.Title = "Augusto Fashion";
+            //printer.SubTitle = "";
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = "Desconto:" + txtTotalDesconto.Text + " \r\n" + "Total : " + txtTotalLiquido.Text;
+            printer.FooterSpacing = 15;
+            printer.PrintDataGridView(gridCarrinho);
+        }
+
+        public void EnviarEmail()
+        {            
+            SmtpClient cliente = new SmtpClient();
+            NetworkCredential credenciais = new NetworkCredential();
+            cliente.Host = "smtp.gmail.com";
+            cliente.Port = 587;
+            cliente.EnableSsl = true;
+            cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
+            cliente.UseDefaultCredentials = false;
+
+            credenciais.UserName = "marcosjose.moraes1999";
+            credenciais.Password = "";
+
+
+            cliente.Credentials = credenciais;
+            MailMessage mensagem = new MailMessage();
+            mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
+            mensagem.Subject = "Augustu's Fashion";
+            mensagem.IsBodyHtml = true;
+            mensagem.Body = ConstruirCorpoDoEmail();
+
+
+            mensagem.To.Add(clientemodel.Email);
+
+            cliente.Send(mensagem);
+            MessageBox.Show("Email enviado com sucesso");
+        }
+        public string ConstruirCorpoDoEmail()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine($"<strong>Olá {clientemodel.Nome}, sua compra no valor de R${_pedido.TotalLiquido} reais foi registrada </strong><br><br>");
+            builder.AppendLine("<table border =\"1\"><tr><th> Nome</th> <th> Quantidade</th> <th> Total De Desconto </th> <th> Total Liquido </th></tr>");
+
+            foreach (var produto in _pedido.Produtos)
+            {
+                builder.AppendLine($"<tr><td> {produto.NomeProduto}</td> <td> {produto.Quantidade}</td><td> {produto.Desconto.ToString("c")}</td><td> {produto.Total.ToString("c")}</td></tr>");
+
+            }
+            builder.AppendLine("</table>");
+
+            builder.AppendLine(" Augustu's Fashion agradece sua preferência, volte sempre ! \n");
+            return builder.ToString();
+        }
+
+        //private void textBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        //{
+
+        //    if (ValidarCampoSeENumero())
+        //        textBox1.Text = decimal.Parse(textBox1.Text).ToString("n2");
+        //    else
+        //        textBox1.Text = decimal.Zero.ToString("n2");
+
+        //}
+        //private bool ValidarCampoSeENumero()
+        //{
+        //    decimal numero;
+        //    return decimal.TryParse(textBox1.Text, out numero);
+        //}
+
 
 
     }

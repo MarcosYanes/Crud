@@ -41,6 +41,7 @@ namespace CrudDesafio.View
             this.btnBuscarData = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnLimparFiltro = new System.Windows.Forms.Button();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridRelatorioProdutos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@ namespace CrudDesafio.View
             this.gridRelatorioProdutos.Name = "gridRelatorioProdutos";
             this.gridRelatorioProdutos.RowHeadersWidth = 51;
             this.gridRelatorioProdutos.RowTemplate.Height = 24;
-            this.gridRelatorioProdutos.Size = new System.Drawing.Size(736, 209);
+            this.gridRelatorioProdutos.Size = new System.Drawing.Size(736, 176);
             this.gridRelatorioProdutos.TabIndex = 0;
             this.gridRelatorioProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -159,11 +160,19 @@ namespace CrudDesafio.View
             this.btnLimparFiltro.UseVisualStyleBackColor = true;
             this.btnLimparFiltro.Click += new System.EventHandler(this.btnLimparFiltro_Click);
             // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Location = new System.Drawing.Point(32, 397);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantidade.TabIndex = 10;
+            // 
             // RelatorioProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.btnLimparFiltro);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpDataFinal);
@@ -200,5 +209,6 @@ namespace CrudDesafio.View
         private System.Windows.Forms.Button btnBuscarData;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLimparFiltro;
+        private System.Windows.Forms.TextBox txtQuantidade;
     }
 }

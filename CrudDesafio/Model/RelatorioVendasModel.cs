@@ -8,6 +8,11 @@ namespace CrudDesafio.Model
 {
    public  class RelatorioVendasModel
     {
+        //public RelatorioVendasModel()
+        //{
+        //    Pedido = new PedidoModel();
+        //}
+
        
         public string NomeProduto { get; set; }
         public int Quantidade { get; set; }
@@ -17,8 +22,10 @@ namespace CrudDesafio.Model
         public double PrecoDeCusto { get; set; }
         public double Lucro { get; set; }
         public double LucroEmPorcentagem { get => (PrecoLiquido - PrecoDeCusto) / PrecoDeCusto * 100; }
+        //public PedidoModel Pedido { get; set; }
+        //public int TotalizadorQuantidade { get => Pedido.Produtos.Sum(x => x.Quantidade); }
 
-        
+
 
 
 

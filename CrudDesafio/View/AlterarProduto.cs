@@ -55,7 +55,7 @@ namespace CrudDesafio.View
             {
                 if(produtomodel.NomeProduto == txtNomeProduto.Text && produtomodel.CodigoDeBarra == txtCodigoDeBarra.Text && 
                     produtomodel.PrecoDeCusto == double.Parse(txtPrecoDeCusto.Text)&& produtomodel.PrecoDeVenda == double.Parse(txtPrecoDeVenda.Text) &&
-                    produtomodel.Estoque == int.Parse(txtEstoque.Text) && produtomodel.Fabricante == txtFabricante.Text)
+                    produtomodel.Estoque == int.Parse(txtEstoque.Text) && produtomodel.Fabricante == txtFabricante.Text && produtomodel.Ativo == cbSim.Checked)
                 {
                     MessageBox.Show("Você precisa alterar algum campo ");
                     return;

@@ -55,7 +55,7 @@ namespace CrudDesafio.View
             // 
             // txtCodigoDeBarra
             // 
-            this.txtCodigoDeBarra.Location = new System.Drawing.Point(646, 58);
+            this.txtCodigoDeBarra.Location = new System.Drawing.Point(644, 26);
             this.txtCodigoDeBarra.Name = "txtCodigoDeBarra";
             this.txtCodigoDeBarra.Size = new System.Drawing.Size(100, 20);
             this.txtCodigoDeBarra.TabIndex = 29;
@@ -64,7 +64,7 @@ namespace CrudDesafio.View
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(520, 58);
+            this.label7.Location = new System.Drawing.Point(518, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 17);
             this.label7.TabIndex = 28;
@@ -91,7 +91,7 @@ namespace CrudDesafio.View
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(520, 23);
+            this.label5.Location = new System.Drawing.Point(518, 65);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 17);
             this.label5.TabIndex = 22;
@@ -231,7 +231,7 @@ namespace CrudDesafio.View
             // cbSim
             // 
             this.cbSim.AutoSize = true;
-            this.cbSim.Location = new System.Drawing.Point(568, 24);
+            this.cbSim.Location = new System.Drawing.Point(566, 66);
             this.cbSim.Name = "cbSim";
             this.cbSim.Size = new System.Drawing.Size(43, 17);
             this.cbSim.TabIndex = 34;
@@ -257,9 +257,9 @@ namespace CrudDesafio.View
             this.groupBox1.Controls.Add(this.txtEstoque);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(18, 80);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(759, 157);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;

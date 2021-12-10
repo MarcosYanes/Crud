@@ -431,6 +431,7 @@ namespace CrudDesafio.View
             this.txtLucro.ReadOnly = true;
             this.txtLucro.Size = new System.Drawing.Size(100, 20);
             this.txtLucro.TabIndex = 38;
+            this.txtLucro.Visible = false;
             // 
             // label17
             // 
@@ -472,6 +473,7 @@ namespace CrudDesafio.View
             this.Lucro.Size = new System.Drawing.Size(44, 17);
             this.Lucro.TabIndex = 39;
             this.Lucro.Text = "Lucro";
+            this.Lucro.Visible = false;
             // 
             // label13
             // 
