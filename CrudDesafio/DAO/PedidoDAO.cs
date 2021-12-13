@@ -16,8 +16,9 @@ namespace CrudDesafio.DAO
         private string strCon = Conexao.connectionString;
         private string selecionarPedidoSql = string.Empty;
 
-        public void Inserir(PedidoModel pedidomodel)
+        public void Inserir(PedidoModel pedidomodel, int Pagamento)
         {
+            
             var InsertPedido = @"insert into Pedido (IdCliente, IdColaborador, FormaPagamento, TotalBruto, TotalDeDesconto, TotalLiquido, Lucro, DataInicial) output inserted.IdPedido values (@IdCliente, 
             @IdColaborador, @FormaPagamento, @TotalBruto, @TotalDeDesconto, @TotalLiquido, @Lucro, @DataInicial)";
 
@@ -26,30 +27,43 @@ namespace CrudDesafio.DAO
 
             var  AlterarEstoque = @"update Produto set Estoque -= @Quantidade where IdProduto = @IdProduto";
 
-            try
-            {
-                using (conexao = new SqlConnection(strCon))
+
+
+          
+
+
+                try
                 {
-                    conexao.Open();
-                    using (var transacao = conexao.BeginTransaction())
+                    using (conexao = new SqlConnection(strCon))
                     {
+                        conexao.Open();
+                        using (var transacao = conexao.BeginTransaction())
+                        {
+                    
                         var idPedido = conexao.ExecuteScalar<int>(InsertPedido, pedidomodel, transacao);
 
-                        foreach (var produto in pedidomodel.Produtos)
+                            foreach (var produto in pedidomodel.Produtos)
+                            {
+
+                                produto.IdPedido = idPedido;
+                                conexao.Execute(InsertPedido_Produto, produto, transacao);
+                                conexao.Execute(AlterarEstoque, produto, transacao);
+                               
+                            }
+                        if (Pagamento == 1)
                         {
-                            
-                            produto.IdPedido = idPedido;
-                            conexao.Execute(InsertPedido_Produto, produto, transacao);
-                            conexao.Execute(AlterarEstoque, produto, transacao);
+                            var AlterarLimite = @"update Cliente set ValorLimite -= @TotalLiquido where IdCliente = @IdCliente ";
+                            conexao.Execute(AlterarLimite, pedidomodel, transacao);
                         }
                         transacao.Commit();
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            
 
 
         }
@@ -90,7 +104,7 @@ namespace CrudDesafio.DAO
 
         }
 
-        public void Alterar(PedidoModel pedidomodel)
+        public void Alterar(PedidoModel pedidomodel, int Pagamento)
         {
             var UpdatePedido = @"update Pedido set IdCliente=@IdCliente, IdColaborador=@IdColaborador, FormaPagamento=@FormaPagamento, TotalBruto=@TotalBruto, TotalDeDesconto=@TotalDeDesconto, TotalLiquido=@TotalLiquido, Lucro=@Lucro where IdPedido=@IdPedido";
 
@@ -143,7 +157,16 @@ namespace CrudDesafio.DAO
                                 conexao.Execute(UpdatePedido_Produto, produto, transacao);
                                 conexao.Execute(AlterarEstoque, produto, transacao);
                             }
+
                         }
+                        if (Pagamento == 1)
+                        {
+                            var EstornarLimite = @"update Cliente set ValorLimite += @TotalLiquido where IdCliente = @IdCliente";
+                            conexao.Execute(EstornarLimite, pedidomodel, transacao);
+                            var AlterarLimite = @"update Cliente set ValorLimite -= @TotalLiquido where IdCliente = @IdCliente ";
+                            conexao.Execute(AlterarLimite, pedidomodel, transacao);
+                        }
+
                         transacao.Commit();
                     }
                 }

@@ -59,9 +59,10 @@ namespace CrudDesafio.View
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 55);
+            this.label1.Location = new System.Drawing.Point(41, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "IdCliente";
             // 
@@ -69,59 +70,66 @@ namespace CrudDesafio.View
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(31, 86);
+            this.label2.Location = new System.Drawing.Point(41, 106);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 17);
+            this.label2.Size = new System.Drawing.Size(113, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "IdColaborador";
             // 
             // txtIdCliente
             // 
-            this.txtIdCliente.Location = new System.Drawing.Point(134, 53);
+            this.txtIdCliente.Location = new System.Drawing.Point(179, 65);
+            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.ReadOnly = true;
-            this.txtIdCliente.Size = new System.Drawing.Size(24, 20);
+            this.txtIdCliente.Size = new System.Drawing.Size(132, 22);
             this.txtIdCliente.TabIndex = 1;
             // 
             // txtIdColaborador
             // 
-            this.txtIdColaborador.Location = new System.Drawing.Point(134, 85);
+            this.txtIdColaborador.Location = new System.Drawing.Point(179, 105);
+            this.txtIdColaborador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdColaborador.Name = "txtIdColaborador";
             this.txtIdColaborador.ReadOnly = true;
-            this.txtIdColaborador.Size = new System.Drawing.Size(100, 20);
+            this.txtIdColaborador.Size = new System.Drawing.Size(132, 22);
             this.txtIdColaborador.TabIndex = 1;
             // 
             // gridPedidos
             // 
             this.gridPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridPedidos.Location = new System.Drawing.Point(32, 161);
+            this.gridPedidos.Location = new System.Drawing.Point(43, 198);
+            this.gridPedidos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridPedidos.Name = "gridPedidos";
             this.gridPedidos.RowHeadersWidth = 51;
-            this.gridPedidos.Size = new System.Drawing.Size(442, 167);
+            this.gridPedidos.Size = new System.Drawing.Size(589, 206);
             this.gridPedidos.TabIndex = 2;
             // 
             // txtTotalLiquido
             // 
-            this.txtTotalLiquido.Location = new System.Drawing.Point(650, 240);
+            this.txtTotalLiquido.Location = new System.Drawing.Point(867, 295);
+            this.txtTotalLiquido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTotalLiquido.Name = "txtTotalLiquido";
             this.txtTotalLiquido.ReadOnly = true;
-            this.txtTotalLiquido.Size = new System.Drawing.Size(120, 20);
+            this.txtTotalLiquido.Size = new System.Drawing.Size(159, 22);
             this.txtTotalLiquido.TabIndex = 27;
             // 
             // txtTotalDesconto
             // 
-            this.txtTotalDesconto.Location = new System.Drawing.Point(650, 215);
+            this.txtTotalDesconto.Location = new System.Drawing.Point(867, 265);
+            this.txtTotalDesconto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTotalDesconto.Name = "txtTotalDesconto";
             this.txtTotalDesconto.ReadOnly = true;
-            this.txtTotalDesconto.Size = new System.Drawing.Size(120, 20);
+            this.txtTotalDesconto.Size = new System.Drawing.Size(159, 22);
             this.txtTotalDesconto.TabIndex = 28;
             // 
             // txtTotalBruto
             // 
-            this.txtTotalBruto.Location = new System.Drawing.Point(650, 191);
+            this.txtTotalBruto.Location = new System.Drawing.Point(867, 235);
+            this.txtTotalBruto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTotalBruto.Name = "txtTotalBruto";
             this.txtTotalBruto.ReadOnly = true;
-            this.txtTotalBruto.Size = new System.Drawing.Size(120, 20);
+            this.txtTotalBruto.Size = new System.Drawing.Size(159, 22);
             this.txtTotalBruto.TabIndex = 29;
             this.txtTotalBruto.Text = "0";
             // 
@@ -129,9 +137,10 @@ namespace CrudDesafio.View
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(520, 240);
+            this.label10.Location = new System.Drawing.Point(693, 295);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 17);
+            this.label10.Size = new System.Drawing.Size(105, 20);
             this.label10.TabIndex = 23;
             this.label10.Text = "Total Liquido";
             // 
@@ -139,9 +148,10 @@ namespace CrudDesafio.View
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(520, 215);
+            this.label9.Location = new System.Drawing.Point(693, 265);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(126, 17);
+            this.label9.Size = new System.Drawing.Size(150, 20);
             this.label9.TabIndex = 24;
             this.label9.Text = "Total De Desconto";
             // 
@@ -149,9 +159,10 @@ namespace CrudDesafio.View
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(520, 191);
+            this.label8.Location = new System.Drawing.Point(693, 235);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 17);
+            this.label8.Size = new System.Drawing.Size(92, 20);
             this.label8.TabIndex = 25;
             this.label8.Text = "Total Bruto";
             // 
@@ -159,9 +170,10 @@ namespace CrudDesafio.View
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(520, 161);
+            this.label3.Location = new System.Drawing.Point(693, 198);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 17);
+            this.label3.Size = new System.Drawing.Size(141, 20);
             this.label3.TabIndex = 26;
             this.label3.Text = "FormaPagamento";
             // 
@@ -169,18 +181,20 @@ namespace CrudDesafio.View
             // 
             this.IdPedido.AutoSize = true;
             this.IdPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IdPedido.Location = new System.Drawing.Point(31, 20);
+            this.IdPedido.Location = new System.Drawing.Point(41, 25);
+            this.IdPedido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.IdPedido.Name = "IdPedido";
-            this.IdPedido.Size = new System.Drawing.Size(63, 17);
+            this.IdPedido.Size = new System.Drawing.Size(73, 20);
             this.IdPedido.TabIndex = 0;
             this.IdPedido.Text = "IdPedido";
             // 
             // txtIdPedido
             // 
-            this.txtIdPedido.Location = new System.Drawing.Point(134, 19);
+            this.txtIdPedido.Location = new System.Drawing.Point(179, 23);
+            this.txtIdPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdPedido.Name = "txtIdPedido";
             this.txtIdPedido.ReadOnly = true;
-            this.txtIdPedido.Size = new System.Drawing.Size(24, 20);
+            this.txtIdPedido.Size = new System.Drawing.Size(132, 22);
             this.txtIdPedido.TabIndex = 1;
             // 
             // btnAlterar
@@ -188,9 +202,10 @@ namespace CrudDesafio.View
             this.btnAlterar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
             this.btnAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Location = new System.Drawing.Point(32, 362);
+            this.btnAlterar.Location = new System.Drawing.Point(43, 446);
+            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(75, 31);
+            this.btnAlterar.Size = new System.Drawing.Size(100, 38);
             this.btnAlterar.TabIndex = 31;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
@@ -198,27 +213,30 @@ namespace CrudDesafio.View
             // 
             // txtNomeCliente
             // 
-            this.txtNomeCliente.Location = new System.Drawing.Point(398, 53);
+            this.txtNomeCliente.Location = new System.Drawing.Point(531, 65);
+            this.txtNomeCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.ReadOnly = true;
-            this.txtNomeCliente.Size = new System.Drawing.Size(100, 20);
+            this.txtNomeCliente.Size = new System.Drawing.Size(132, 22);
             this.txtNomeCliente.TabIndex = 32;
             // 
             // txtNomeColaborador
             // 
-            this.txtNomeColaborador.Location = new System.Drawing.Point(398, 84);
+            this.txtNomeColaborador.Location = new System.Drawing.Point(531, 103);
+            this.txtNomeColaborador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNomeColaborador.Name = "txtNomeColaborador";
             this.txtNomeColaborador.ReadOnly = true;
-            this.txtNomeColaborador.Size = new System.Drawing.Size(100, 20);
+            this.txtNomeColaborador.Size = new System.Drawing.Size(132, 22);
             this.txtNomeColaborador.TabIndex = 32;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(268, 55);
+            this.label4.Location = new System.Drawing.Point(357, 68);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 33;
             this.label4.Text = "Nome Cliente";
             // 
@@ -226,29 +244,29 @@ namespace CrudDesafio.View
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(268, 86);
+            this.label5.Location = new System.Drawing.Point(357, 106);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 17);
+            this.label5.Size = new System.Drawing.Size(149, 20);
             this.label5.TabIndex = 33;
             this.label5.Text = "Nome Colaborador";
             // 
             // txtLucro
             // 
-            this.txtLucro.Location = new System.Drawing.Point(650, 262);
-            this.txtLucro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLucro.Location = new System.Drawing.Point(867, 322);
+            this.txtLucro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLucro.Name = "txtLucro";
             this.txtLucro.ReadOnly = true;
-            this.txtLucro.Size = new System.Drawing.Size(120, 20);
+            this.txtLucro.Size = new System.Drawing.Size(159, 22);
             this.txtLucro.TabIndex = 34;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(520, 262);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(693, 322);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 17);
+            this.label6.Size = new System.Drawing.Size(52, 20);
             this.label6.TabIndex = 35;
             this.label6.Text = "Lucro";
             // 
@@ -257,9 +275,10 @@ namespace CrudDesafio.View
             this.btnInativar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.btnInativar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInativar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInativar.Location = new System.Drawing.Point(146, 362);
+            this.btnInativar.Location = new System.Drawing.Point(195, 446);
+            this.btnInativar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInativar.Name = "btnInativar";
-            this.btnInativar.Size = new System.Drawing.Size(92, 30);
+            this.btnInativar.Size = new System.Drawing.Size(123, 37);
             this.btnInativar.TabIndex = 36;
             this.btnInativar.Text = "Inativar";
             this.btnInativar.UseVisualStyleBackColor = false;
@@ -267,19 +286,19 @@ namespace CrudDesafio.View
             // 
             // txtFormaPagamento
             // 
-            this.txtFormaPagamento.Location = new System.Drawing.Point(650, 161);
-            this.txtFormaPagamento.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFormaPagamento.Location = new System.Drawing.Point(867, 198);
+            this.txtFormaPagamento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFormaPagamento.Name = "txtFormaPagamento";
             this.txtFormaPagamento.ReadOnly = true;
-            this.txtFormaPagamento.Size = new System.Drawing.Size(120, 20);
+            this.txtFormaPagamento.Size = new System.Drawing.Size(159, 22);
             this.txtFormaPagamento.TabIndex = 37;
             // 
             // ConsultarPedido
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.txtFormaPagamento);
             this.Controls.Add(this.btnInativar);
             this.Controls.Add(this.label6);
@@ -303,6 +322,7 @@ namespace CrudDesafio.View
             this.Controls.Add(this.label2);
             this.Controls.Add(this.IdPedido);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ConsultarPedido";
             this.Text = "ConsultarPedido";
             this.Load += new System.EventHandler(this.ConsultarPedido_Load);

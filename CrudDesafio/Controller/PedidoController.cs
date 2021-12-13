@@ -12,15 +12,15 @@ namespace CrudDesafio.Controller
     {
         private PedidoDAO pedidodao = new PedidoDAO();
 
-        public void Inserir(PedidoModel pedidomodel)
+        public void Inserir(PedidoModel pedidomodel, int Pagamento)
         {
-            pedidodao.Inserir(pedidomodel);
+            pedidodao.Inserir(pedidomodel, Pagamento);
 
 
         }
-        public void Alterar (PedidoModel pedidomodel)
+        public void Alterar (PedidoModel pedidomodel, int Pagamento)
         {
-            pedidodao.Alterar(pedidomodel);
+            pedidodao.Alterar(pedidomodel, Pagamento);
         }
 
         public List<PedidoListagem> Listar()
