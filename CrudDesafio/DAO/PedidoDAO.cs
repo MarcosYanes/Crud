@@ -52,7 +52,7 @@ namespace CrudDesafio.DAO
                             }
                         if (Pagamento == 1)
                         {
-                            var AlterarLimite = @"update Cliente set ValorLimite -= @TotalLiquido where IdCliente = @IdCliente ";
+                            var AlterarLimite = @"update Cliente set LimiteRestante -= @TotalLiquido where IdCliente = @IdCliente ";
                             conexao.Execute(AlterarLimite, pedidomodel, transacao);
                         }
                         transacao.Commit();
@@ -111,8 +111,8 @@ namespace CrudDesafio.DAO
 
             var UpdatePedido_Produto = @"update Pedido_Produto set IdProduto=@IdProduto, PrecoDeVenda=@PrecoVenda, PrecoLiquido=@PrecoLiquido, Quantidade=@Quantidade, Desconto=@Desconto, Total=@Total, Lucro=@Lucro where IdPedido_Produto=@IdPedido_Produto";
 
-            var InsertPedido_Produto = @"insert into Pedido_Produto (IdPedido, IdProduto, PrecoDeVenda, PrecoLiquido, Quantidade, Desconto, Total, Lucro)
-            values (@IdPedido, @IdProduto, @PrecoVenda, @PrecoLiquido, @Quantidade, @Desconto, @Total, @Lucro)";
+            var InsertPedido_Produto = @"insert into Pedido_Produto (IdPedido, IdProduto, PrecoDeVenda, PrecoLiquido, Quantidade, Desconto, Total, Lucro, PrecoDeCusto)
+            values (@IdPedido, @IdProduto, @PrecoVenda, @PrecoLiquido, @Quantidade, @Desconto, @Total, @Lucro, @PrecoDeCusto)";
 
             var SelecionarEstoque = @"select IdProduto, Quantidade from Pedido_produto where IdPedido=@IdPedido";
 
@@ -128,6 +128,7 @@ namespace CrudDesafio.DAO
                     conexao.Open();
                     using (var transacao = conexao.BeginTransaction())
                     {
+                        
                         conexao.Execute(UpdatePedido, pedidomodel, transacao);
 
                         //Estornar estoques dos produtos
@@ -137,11 +138,10 @@ namespace CrudDesafio.DAO
                         foreach (var produto in produtoantigo)
                         {                                               
                                                             
-                           conexao.Execute(somarEstoque, produto, transacao);
+                           conexao.Execute(somarEstoque, produto, transacao);                                                      
                             
-                            
-                        }                                         
-
+                        }                    
+                        
 
                         foreach (var produto in pedidomodel.Produtos)
                         {
@@ -150,6 +150,7 @@ namespace CrudDesafio.DAO
                                 produto.IdPedido = pedidomodel.IdPedido;
                                 conexao.Execute(InsertPedido_Produto, produto, transacao);
                                 conexao.Execute(AlterarEstoque, produto, transacao);
+                               
                             }
                             else
                             {                               
@@ -159,11 +160,13 @@ namespace CrudDesafio.DAO
                             }
 
                         }
+
                         if (Pagamento == 1)
                         {
-                            var EstornarLimite = @"update Cliente set ValorLimite += @TotalLiquido where IdCliente = @IdCliente";
-                            conexao.Execute(EstornarLimite, pedidomodel, transacao);
-                            var AlterarLimite = @"update Cliente set ValorLimite -= @TotalLiquido where IdCliente = @IdCliente ";
+                     
+                            var AlterarLimite = @"update Cliente 
+                            set LimiteRestante = (LimiteRestante + @TotalPreAlteracao) - @TotalLiquido
+                            where IdCliente = @IdCliente ";
                             conexao.Execute(AlterarLimite, pedidomodel, transacao);
                         }
 
@@ -177,6 +180,45 @@ namespace CrudDesafio.DAO
             }
 
 
+        }
+
+        internal void DeletarProdutosDoCarrinho(CarrinhoProduto produto)
+        {
+            if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                MessageBox.Show("Operação cancelada");
+
+            }
+            else
+            {
+                var deleteProduto_Pedido = "delete from Pedido_produto where IdPedido_produto = @IdPedido_produto";
+                var somarEstoque = @"update Produto set Estoque += @Quantidade where IdProduto = @IdProduto";
+
+
+                try
+                {
+                    using (conexao = new SqlConnection(strCon))
+
+                    {
+                        conexao.Open();
+
+                        using (var transacao = conexao.BeginTransaction())
+                        {
+                            conexao.Execute(somarEstoque, new { Quantidade = produto.Quantidade, IdProduto = produto.IdProduto }, transacao);
+                            conexao.Execute(deleteProduto_Pedido, new {IdPedido_produto = produto.IdPedido_produto}, transacao);
+                            
+                            transacao.Commit();                            
+                        }
+                    }
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         internal List<PedidoListagem> Listar()

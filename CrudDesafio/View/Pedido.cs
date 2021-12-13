@@ -21,6 +21,7 @@ namespace CrudDesafio.View
         private PedidoModel _pedido;
         private ProdutoController produtoController = new ProdutoController();
         public CarrinhoProduto carrinhoProduto = new CarrinhoProduto();
+        public ClienteController clientecontroller = new ClienteController();
 
         public Pedido(PedidoModel pedidoModel)
         {
@@ -31,6 +32,9 @@ namespace CrudDesafio.View
             clientemodel.Nome = pedidoModel.NomeCliente;
             colaboradormodel.Nome = pedidoModel.NomeColaborador;                   
             colaboradormodel.IdColaborador = pedidoModel.IdColaborador;
+            
+
+
             btnSalvar.Enabled = false;
             txtQuantidade.Enabled = false;
             txtDesconto.Enabled = false;
@@ -62,11 +66,12 @@ namespace CrudDesafio.View
         {
             if (_pedido.IdPedido != 0)
             {
-
+                _pedido.TotalPreAlteracao = _pedido.TotalLiquido;
                 btnSalvar.Enabled = true;
                 
                 CarregarDadosParaAlteracao(_pedido);
-                AtualizarGrid();
+                AtualizarGrid();                
+                
             }
         }
 
@@ -87,8 +92,7 @@ namespace CrudDesafio.View
             //var Email = clientemodel.Email;
             txtIdCliente.Text = clientemodel.IdCliente.ToString();
             txtNomeCliente.Text = clientemodel.Nome;
-            var valorLimite = clientemodel.ValorLimite;
-            
+            var valorLimite = clientemodel.ValorLimite;            
 
         }
         public bool CarregarValorLimite()
@@ -287,7 +291,10 @@ namespace CrudDesafio.View
                 return;
             }
             var index = gridCarrinho.SelectedRows[0].Index;
-
+            if( _pedido.Produtos[index].IdPedido_produto != 0)
+            {
+                 pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
+            }
             _pedido.Produtos.RemoveAt(index);
             AtualizarGrid();
             CalcularTotaisPedido();
@@ -366,7 +373,7 @@ namespace CrudDesafio.View
 
 
                 }
-                //EnviarEmail();
+                EnviarEmail();
                 Imprimir();
 
                 this.Close();
@@ -429,7 +436,9 @@ namespace CrudDesafio.View
             
             clientemodel.Id = pedido.IdCliente;
             colaboradormodel.Id = pedido.IdColaborador;
-            
+            clientemodel = clientecontroller.Buscar(pedido.IdCliente);
+
+
         }
         public void LimparTextBox()
         {

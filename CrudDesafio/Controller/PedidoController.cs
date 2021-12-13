@@ -12,6 +12,7 @@ namespace CrudDesafio.Controller
     {
         private PedidoDAO pedidodao = new PedidoDAO();
 
+
         public void Inserir(PedidoModel pedidomodel, int Pagamento)
         {
             pedidodao.Inserir(pedidomodel, Pagamento);
@@ -23,6 +24,10 @@ namespace CrudDesafio.Controller
             pedidodao.Alterar(pedidomodel, Pagamento);
         }
 
+        public void DeletarProdutoCarrinho(CarrinhoProduto produto)
+        {
+            pedidodao.DeletarProdutosDoCarrinho(produto);
+        }
         public List<PedidoListagem> Listar()
         {
             return pedidodao.Listar();

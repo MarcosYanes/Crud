@@ -12,6 +12,7 @@ namespace CrudDesafio.Model
         public int IdCliente { get; set; }
         
         public double ValorLimite { get; set; }
+        public double LimiteRestante { get; set; }
 
         
     }

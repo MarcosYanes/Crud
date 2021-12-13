@@ -25,7 +25,7 @@ namespace CrudDesafio.DAO
             
             var insertUsuario = "insert into Usuario(Nome, Sexo, DataNascimento, Cpf, Cidade, Cep, Rua, Bairro, Numero, Uf, Complemento, Telefone, Celular, Email)output inserted.Id values " +
                 "(@Nome, @Sexo, @DataNascimento, @Cpf, @Cidade, @Cep, @Rua, @Bairro, @Numero, @Uf, @Complemento, @Telefone, @Celular, @Email)";
-            var insertCliente = "insert into Cliente(Id, ValorLimite)output inserted.IdCliente values(@Id, @ValorLimite)";
+            var insertCliente = "insert into Cliente(Id, ValorLimite, LimiteRestante)output inserted.IdCliente values(@Id, @ValorLimite, @LimiteRestante)";
 
             try
             {
@@ -56,6 +56,7 @@ namespace CrudDesafio.DAO
                         }, transacao);
 
                         clientemodel.Id = id;
+                        clientemodel.LimiteRestante = clientemodel.ValorLimite;
                         int idcliente = conexao.ExecuteScalar<int>(insertCliente, clientemodel, transacao);
 
                         transacao.Commit();
@@ -79,7 +80,7 @@ namespace CrudDesafio.DAO
         internal ClienteModel Buscar(int idCliente)
         {
 
-            strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
             u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
             inner join Cliente c on u.Id = c.Id where IdCliente=@IdCliente";
 
@@ -179,9 +180,9 @@ namespace CrudDesafio.DAO
                         
                         where Id=@Id";
 
-            var updateCliente = @"update Cliente set ValorLimite=@ValorLimite where Id=@Id";
+            var updateCliente = @"update Cliente set ValorLimite=@ValorLimite, LimiteRestante=@LimiteRestante where Id=@Id";
+            var valorAcumulado = clientemodel.ValorLimite - clientemodel.LimiteRestante;
 
-           
 
             try
             {
@@ -212,6 +213,7 @@ namespace CrudDesafio.DAO
                             Celular = clientemodel.Celular,
                             Email = clientemodel.Email,
                         }, transacao);
+                        clientemodel.LimiteRestante = clientemodel.LimiteRestante + valorAcumulado;
                         conexao.Execute(updateCliente, clientemodel, transacao);
 
                         transacao.Commit();
@@ -243,7 +245,6 @@ namespace CrudDesafio.DAO
             }
             else
             {
-
                 var deletecliente = "delete from Cliente where Id=@Id";
                 var deleteusuario = "delete from Usuario where Id=@Id";
 
