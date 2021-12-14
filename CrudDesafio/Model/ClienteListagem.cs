@@ -13,5 +13,8 @@ namespace CrudDesafio.Model
         public string Sexo { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Cidade { get; set; }
+        public double ValorLimite { get; set; }
+        public double LimiteRestante { get; set; }
+
     }
 }

@@ -18,6 +18,7 @@ namespace CrudDesafio.View
         PedidoController pedidocontroller = new PedidoController();
        private  RelatorioVendasModel _relatorioVenda = new RelatorioVendasModel();
         CarrinhoProduto produtos = new CarrinhoProduto();
+        ClienteModel clientemodel = new ClienteModel();
         public RelatorioProdutos()
         {
             InitializeComponent();
@@ -48,11 +49,19 @@ namespace CrudDesafio.View
             gridRelatorioProdutos.DataSource = pedidocontroller.BuscarRelatorio(txtBuscarPorProduto.Text, txtBuscaPorCliente.Text, dtpDataInicial.Value, dtpDataFinal.Value);
         }
 
-        private void btnLimparFiltro_Click(object sender, EventArgs e)
+      
+
+        private void btnProcurar_Click(object sender, EventArgs e)
         {
-            gridRelatorioProdutos.DataSource = pedidocontroller.ListarRelatorioVendas();
+            EscolherCliente escolhercliente = new EscolherCliente();
+            escolhercliente.ShowDialog();
+            clientemodel = escolhercliente.clientemodel;
+            CarregarCliente();
         }
 
-       
+        public void CarregarCliente()
+        {
+            txtBuscaPorCliente.Text = clientemodel.Nome;
+        }
     }
 }

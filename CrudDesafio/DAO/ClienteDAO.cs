@@ -108,7 +108,7 @@ namespace CrudDesafio.DAO
         internal  List<ClienteListagem> Listar()
         {
             
-            strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Cliente c on u.Id = c.Id";
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Cliente c on u.Id = c.Id";
             
             try
             {
