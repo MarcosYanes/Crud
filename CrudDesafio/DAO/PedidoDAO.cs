@@ -248,11 +248,11 @@ namespace CrudDesafio.DAO
         internal List<RelatorioVendasModel> ListarRelatorioVendas()
         {
 
-            selecionarPedidoSql = @"select p.IdProduto, p.NomeProduto, SUM(pp.Quantidade) as 'Quantidade', SUM(pp.Total) as 'total', SUM(pp.Desconto) as 'Desconto', SUM(pp.PrecoLiquido) as 'PrecoLiquido',
+            selecionarPedidoSql = @"select p.IdProduto, p.NomeProduto, p.Ativo,  SUM(pp.Quantidade) as 'Quantidade', SUM(pp.Total) as 'total', SUM(pp.Desconto) as 'Desconto', SUM(pp.PrecoLiquido) as 'PrecoLiquido',
             SUM(pp.Lucro) as 'Lucro', SUM(pp.PrecoDeCusto * pp.Quantidade) as 'PrecoDeCusto' from 
             Pedido_produto pp 
-            inner join Produto p on pp.IdProduto = p.IdProduto 
-            group by p.IdProduto, p.NomeProduto";
+            inner join Produto p on pp.IdProduto = p.IdProduto inner join Pedido pedido on pedido.IdPedido = pp.IdPedido where p.Ativo = 1 and pedido.Status = 1 
+            group by p.IdProduto, p.NomeProduto, p.Ativo";
 
 
 
@@ -362,12 +362,12 @@ namespace CrudDesafio.DAO
         internal List<RelatorioVendasModel> BuscarRelatorio(string NomeProduto, string Nome, DateTime DataInicial, DateTime DataFinal)
         {                              
 
-            selecionarPedidoSql = @"select  p.IdProduto, p.NomeProduto,   SUM(pp.Quantidade) as 'Quantidade', SUM(pp.Total) as 'total', SUM(pp.Desconto) as 'Desconto', SUM(pp.PrecoLiquido) as 'PrecoLiquido',
+            selecionarPedidoSql = @"select  p.IdProduto, p.NomeProduto, p.Ativo,  SUM(pp.Quantidade) as 'Quantidade', SUM(pp.Total) as 'total', SUM(pp.Desconto) as 'Desconto', SUM(pp.PrecoLiquido) as 'PrecoLiquido',
             SUM(pp.Lucro) as 'Lucro', SUM(pp.PrecoDeCusto * pp.Quantidade) as 'PrecoDeCusto', (SUM(pp.PrecoLiquido)- SUM(pp.PrecoDeCusto* pp.Quantidade))/SUM(pp.PrecoDeCusto* pp.Quantidade)*100 as 'Lucro em %'from
             Produto p
             inner join Pedido_produto pp on pp.IdProduto = p.IdProduto inner join Pedido pedido on pp.IdPedido = pedido.IdPedido inner join  Cliente c on pedido.IdCliente = c.IdCliente inner join Usuario u on u.Id = c.Id  
-            where p.NomeProduto like @NomeProduto  and u.Nome like @Nome  and Cast (DataInicial as Date) between @DataInicial and @DataFinal
-            group by p.IdProduto, p.NomeProduto";
+            where p.Ativo = 1 and pedido.Status = 1 and p.NomeProduto like @NomeProduto  and u.Nome like @Nome  and Cast (DataInicial as Date) between @DataInicial and @DataFinal
+            group by p.IdProduto, p.NomeProduto, p.Ativo";
 
             var parametros = new DynamicParameters();
             parametros.Add("@NomeProduto", NomeProduto + '%',  System.Data.DbType.String);

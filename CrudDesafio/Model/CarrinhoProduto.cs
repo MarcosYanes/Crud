@@ -25,6 +25,9 @@
             get => (PrecoVenda * Quantidade) - Desconto;
         }
         public double Lucro { get => (Total - (PrecoDeCusto * Quantidade) - Desconto); }
+
+        public bool Ativo { get; set; }
+
         //public CarrinhoProduto()
         //{
         //    Quantidade = 1;

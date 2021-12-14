@@ -16,13 +16,12 @@ namespace CrudDesafio.View
     public partial class RelatorioProdutos : Form
     {
         PedidoController pedidocontroller = new PedidoController();
-       private  RelatorioVendasModel _relatorioVenda = new RelatorioVendasModel();
-        CarrinhoProduto produtos = new CarrinhoProduto();
+        private List<RelatorioVendasModel> _relatorioVenda;
+        PedidoModel pedidomodel = new PedidoModel();
         ClienteModel clientemodel = new ClienteModel();
         public RelatorioProdutos()
         {
-            InitializeComponent();
-            
+            InitializeComponent();           
            
             
         }
@@ -33,23 +32,20 @@ namespace CrudDesafio.View
         }
 
         private void RelatorioProdutos_Load(object sender, EventArgs e)
-        {
-            gridRelatorioProdutos.DataSource = pedidocontroller.ListarRelatorioVendas();
-            
+        {         
+           
         }
-
-        private void CarregarDados(PedidoModel pedido)
-        {
-            
-            txtQuantidade.Text = _relatorioVenda.TotalizadorQuantidade.ToString();
-        }
+        private void CalcularRelatorioProdutos()
+        {            
+            txtQuantidade.Text = _relatorioVenda.Sum(x => x.Quantidade).ToString();
+        }      
 
         private void btnBuscarPorProduto_Click_1(object sender, EventArgs e)
         {
-            gridRelatorioProdutos.DataSource = pedidocontroller.BuscarRelatorio(txtBuscarPorProduto.Text, txtBuscaPorCliente.Text, dtpDataInicial.Value, dtpDataFinal.Value);
-        }
-
-      
+            _relatorioVenda = pedidocontroller.BuscarRelatorio(txtBuscarPorProduto.Text, txtBuscaPorCliente.Text, dtpDataInicial.Value, dtpDataFinal.Value);
+            gridRelatorioProdutos.DataSource = _relatorioVenda;
+            CalcularRelatorioProdutos();
+        }     
 
         private void btnProcurar_Click(object sender, EventArgs e)
         {
