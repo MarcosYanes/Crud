@@ -80,7 +80,7 @@ namespace CrudDesafio.DAO
         internal ClienteModel Buscar(int idCliente)
         {
 
-            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante,  c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
             u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
             inner join Cliente c on u.Id = c.Id where IdCliente=@IdCliente";
 
@@ -162,6 +162,7 @@ namespace CrudDesafio.DAO
 
         internal void Alterar(ClienteModel clientemodel)
         {
+            
             var updateUsuario = @"update Usuario set
                         Nome=@Nome, 
                         sexo=@sexo, 
@@ -181,7 +182,10 @@ namespace CrudDesafio.DAO
                         where Id=@Id";
 
             var updateCliente = @"update Cliente set ValorLimite=@ValorLimite, LimiteRestante=@LimiteRestante where Id=@Id";
-            var valorAcumulado = clientemodel.ValorLimite - clientemodel.LimiteRestante;
+            var valorLimite = @"update Cliente 
+                            set LimiteRestante = (ValorLimite - @ValorLimitePreAlteracao) + LimiteRestante
+                            where IdCliente = @IdCliente ";
+            //var valorAcumulado = clientemodel.ValorLimite - clientemodel.ValorLimitePreAlteracao;
 
 
             try
@@ -213,8 +217,10 @@ namespace CrudDesafio.DAO
                             Celular = clientemodel.Celular,
                             Email = clientemodel.Email,
                         }, transacao);
-                        clientemodel.LimiteRestante = clientemodel.LimiteRestante + valorAcumulado;
+                        //clientemodel.LimiteRestante = clientemodel.LimiteRestante + valorAcumulado;
                         conexao.Execute(updateCliente, clientemodel, transacao);
+                        conexao.Execute(valorLimite, clientemodel, transacao);
+                        
 
                         transacao.Commit();
 

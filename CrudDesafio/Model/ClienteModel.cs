@@ -13,6 +13,7 @@ namespace CrudDesafio.Model
         
         public double ValorLimite { get; set; }
         public double LimiteRestante { get; set; }
+        public double ValorLimitePreAlteracao { get; set; }
 
         
     }

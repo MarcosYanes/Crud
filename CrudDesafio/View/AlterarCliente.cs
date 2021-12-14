@@ -47,12 +47,20 @@ namespace CrudDesafio.View
             txtEmail.Text = clientemodel.Email;
             txtValorLimite.Text = clientemodel.ValorLimite.ToString();
             txtNumero.Text = clientemodel.Numero;
+            clientemodel.ValorLimitePreAlteracao = clientemodel.ValorLimite;
+
         }
+
+
         
 
         private void AlterarCliente_Load(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();
+            if (clientemodel.IdCliente != 0)
+            {
+                CarregarDadosParaAlteracao(clientemodel);
+            }
             
             //gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count - 1;
         }
