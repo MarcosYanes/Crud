@@ -17,6 +17,7 @@ namespace CrudDesafio.View
     {
         PedidoController pedidocontroller = new PedidoController();
         FiltrosRelatorio filtro = new FiltrosRelatorio();
+        private List<RelatorioClienteModel> _relatorioCliente;
         public RelatorioCliente()
         {
             InitializeComponent();
@@ -28,28 +29,29 @@ namespace CrudDesafio.View
             cbOrdenarPor.SelectedIndex = 0;
             cbCrescente.SelectedIndex = 0;
             cbOrdenarMaiorQue.SelectedIndex = 0;
-            gridRelatorioClientes.DataSource = pedidocontroller.ListarRelatorioClientes();
-            gridRelatorioClientes.Columns["IdPedido"].HeaderText = "Quantidade De Venda";
-            gridRelatorioClientes.Columns["TotalBruto"].HeaderText = "Total Bruto";
-            gridRelatorioClientes.Columns["TotalLiquido"].HeaderText = "Total Líquido";
-            gridRelatorioClientes.Columns["TotalDeDesconto"].HeaderText = "Total De Desconto";
+            
+            
+           
         }
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             ValidarTextBox();
-           
+
             if (Validar() == false)
             {
                 return;
-            }           
-         
+            }
+
             filtro.OrdenarMaiorQue = cbOrdenarMaiorQue.SelectedIndex;
             filtro.Operador = cbOperador.SelectedIndex;
             filtro.OrdenarPor = cbOrdenarPor.SelectedIndex;
-            gridRelatorioClientes.DataSource = pedidocontroller.FiltrarRelatorioCliente(txtBuscarCliente.Text, dtpDataInical.Value,
-                dtpDataFinal.Value,  cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text), Convert.ToDouble(txtMaiorQue.Text.Replace(",", ".")), filtro) ;
-                        
+            _relatorioCliente = pedidocontroller.FiltrarRelatorioCliente(txtBuscarCliente.Text, dtpDataInical.Value,
+                dtpDataFinal.Value, cbCrescente.SelectedIndex, Convert.ToInt32(txtTop.Text), Convert.ToDouble(txtMaiorQue.Text.Replace(",", ".")), filtro);
+            gridRelatorioClientes.DataSource = _relatorioCliente;
+            CalcularRelatorioVendaCliente();
+         
+
         }
         public void ValidarTextBox()
         {
@@ -67,7 +69,7 @@ namespace CrudDesafio.View
 
         public bool Validar()
         {
-           
+
             if (!Validacoes.ValidarNumeroPositivo(txtTop.Text))
             {
                 MessageBox.Show("Digite Apenas Números Positivos");
@@ -82,6 +84,21 @@ namespace CrudDesafio.View
 
         }
 
-        
+        public void CalcularRelatorioVendaCliente()
+        {
+            txtQuantidadeVenda.Text = _relatorioCliente.Sum(x => x.IdPedido).ToString("c");
+            txtTotalBruto.Text = _relatorioCliente.Sum(x => x.TotalBruto).ToString("c");
+            txtTotalBruto.Text = _relatorioCliente.Sum(x => x.TotalBruto).ToString("c");
+            txtTotalDesconto.Text = _relatorioCliente.Sum(x => x.TotalDeDesconto).ToString("c");
+            txtTotalLiquido.Text = _relatorioCliente.Sum(x => x.TotalLiquido).ToString("c");
+
+            gridRelatorioClientes.Columns["IdPedido"].HeaderText = "Quantidade De Venda";
+            gridRelatorioClientes.Columns["TotalBruto"].HeaderText = "Total Bruto";
+            gridRelatorioClientes.Columns["TotalLiquido"].HeaderText = "Total Líquido";
+            gridRelatorioClientes.Columns["TotalDeDesconto"].HeaderText = "Total De Desconto";
+
+        }
+
+
     }
 }

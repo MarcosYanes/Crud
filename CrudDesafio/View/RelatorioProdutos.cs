@@ -33,11 +33,16 @@ namespace CrudDesafio.View
 
         private void RelatorioProdutos_Load(object sender, EventArgs e)
         {         
-           
+            
         }
         private void CalcularRelatorioProdutos()
         {            
             txtQuantidade.Text = _relatorioVenda.Sum(x => x.Quantidade).ToString();
+            txtTotalBruto.Text = _relatorioVenda.Sum(x => x.Total).ToString("c");
+            txtDesconto.Text = _relatorioVenda.Sum(x => x.Desconto).ToString("c");
+            txtPrecoDeCusto.Text = _relatorioVenda.Sum(x => x.PrecoDeCusto).ToString("c");
+            txtPrecoLiquido.Text = _relatorioVenda.Sum(x => x.PrecoLiquido).ToString("c");
+            txtLucro.Text = _relatorioVenda.Sum(x => x.Lucro).ToString("c");
         }      
 
         private void btnBuscarPorProduto_Click_1(object sender, EventArgs e)

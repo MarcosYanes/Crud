@@ -54,6 +54,14 @@ namespace CrudDesafio.View
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtTotalBruto = new System.Windows.Forms.TextBox();
+            this.txtQuantidadeVenda = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtTotalDesconto = new System.Windows.Forms.TextBox();
+            this.txtTotalLiquido = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridRelatorioClientes)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -75,7 +83,7 @@ namespace CrudDesafio.View
             this.gridRelatorioClientes.RowHeadersWidth = 51;
             this.gridRelatorioClientes.RowTemplate.Height = 24;
             this.gridRelatorioClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridRelatorioClientes.Size = new System.Drawing.Size(716, 332);
+            this.gridRelatorioClientes.Size = new System.Drawing.Size(716, 260);
             this.gridRelatorioClientes.TabIndex = 0;
             // 
             // txtBuscarCliente
@@ -335,12 +343,88 @@ namespace CrudDesafio.View
             this.label8.TabIndex = 6;
             this.label8.Text = "Filtros";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(28, 407);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Total Bruto";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(249, 371);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 17);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Total De Desconto";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(249, 405);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(90, 17);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Total Líquido";
+            // 
+            // txtTotalBruto
+            // 
+            this.txtTotalBruto.Location = new System.Drawing.Point(116, 404);
+            this.txtTotalBruto.Name = "txtTotalBruto";
+            this.txtTotalBruto.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalBruto.TabIndex = 16;
+            // 
+            // txtQuantidadeVenda
+            // 
+            this.txtQuantidadeVenda.Location = new System.Drawing.Point(116, 370);
+            this.txtQuantidadeVenda.Name = "txtQuantidadeVenda";
+            this.txtQuantidadeVenda.Size = new System.Drawing.Size(100, 20);
+            this.txtQuantidadeVenda.TabIndex = 17;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(28, 371);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(82, 17);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Quantidade";
+            // 
+            // txtTotalDesconto
+            // 
+            this.txtTotalDesconto.Location = new System.Drawing.Point(381, 370);
+            this.txtTotalDesconto.Name = "txtTotalDesconto";
+            this.txtTotalDesconto.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalDesconto.TabIndex = 18;
+            // 
+            // txtTotalLiquido
+            // 
+            this.txtTotalLiquido.Location = new System.Drawing.Point(381, 404);
+            this.txtTotalLiquido.Name = "txtTotalLiquido";
+            this.txtTotalLiquido.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalLiquido.TabIndex = 19;
+            // 
             // RelatorioCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1070, 450);
+            this.Controls.Add(this.txtTotalLiquido);
+            this.Controls.Add(this.txtTotalDesconto);
+            this.Controls.Add(this.txtQuantidadeVenda);
+            this.Controls.Add(this.txtTotalBruto);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.gridRelatorioClientes);
@@ -393,5 +477,13 @@ namespace CrudDesafio.View
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtTotalBruto;
+        private System.Windows.Forms.TextBox txtQuantidadeVenda;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtTotalDesconto;
+        private System.Windows.Forms.TextBox txtTotalLiquido;
     }
 }

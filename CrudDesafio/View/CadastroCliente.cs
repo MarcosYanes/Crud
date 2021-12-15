@@ -14,28 +14,18 @@ namespace CrudDesafio
         public CadastroCliente()
         {
             InitializeComponent();
-            txtNome.Focus();
+            
         }
 
         private void CadastroCliente_Load(object sender, EventArgs e)
         {
-            txtNome.Focus();
-        }
-
-        private void cadastrarColaboradoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //CadastroColaborador add = new CadastroColaborador();
-            //add.ShowDialog();
-        }
-
-        
+            
+        }                
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (Validar() == true)
-            {
-
-               
+            {              
 
                 clientemodel.Nome = txtNome.Text;
 

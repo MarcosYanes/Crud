@@ -518,6 +518,11 @@ namespace CrudDesafio.View
             CalcularCusto();
         }
 
+        private void gridCarrinho_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
         //private void textBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         //{
 
