@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Collections.Generic;
+using CrudDesafio.Helpers;
 
 namespace CrudDesafio.View
 {
@@ -17,10 +18,10 @@ namespace CrudDesafio.View
         private ClienteModel clientemodel = new ClienteModel();
         private ColaboradorModel colaboradormodel = new ColaboradorModel();
         private PedidoController pedidoController = new PedidoController();
-        private ProdutoModel produtomodel = new ProdutoModel();
+        private ProdutoModel produtomodel;
         private PedidoModel _pedido;
         private ProdutoController produtoController = new ProdutoController();
-        public CarrinhoProduto carrinhoProduto = new CarrinhoProduto();
+        public CarrinhoProduto carrinhoProduto;
         public ClienteController clientecontroller = new ClienteController();
 
         public Pedido(PedidoModel pedidoModel)
@@ -68,7 +69,8 @@ namespace CrudDesafio.View
             {
                 _pedido.TotalPreAlteracao = _pedido.TotalLiquido;
                 btnSalvar.Enabled = true;
-                
+                var carrinho = _pedido.Produtos;
+
                 CarregarDadosParaAlteracao(_pedido);
                 AtualizarGrid();                
                 
@@ -171,6 +173,12 @@ namespace CrudDesafio.View
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            
+            if (produtomodel.Estoque < txtQuantidade.Value)
+            {
+                MessageBox.Show("Quantidade No Estoque Indisponível");
+                return;
+            }
             if (!Validacoes.ValidarParaQueSejaNumero(txtDesconto.Text))
             {
                 MessageBox.Show("Desconto Inválido ");
@@ -270,6 +278,8 @@ namespace CrudDesafio.View
 
         private void CarregarProdutoDoCarrinho(CarrinhoProduto produtoDoCarrinho)
         {
+            produtomodel = produtoController.Buscar(produtoDoCarrinho.IdProduto);
+            produtomodel.Estoque += produtoDoCarrinho.Quantidade;
             txtIdProduto.Text = produtoDoCarrinho.IdProduto.ToString();
             txtNomeProduto.Text = produtoDoCarrinho.NomeProduto;
             txtPrecoDeCusto.Text = produtoDoCarrinho.PrecoDeCusto.ToString();
@@ -290,10 +300,15 @@ namespace CrudDesafio.View
                 MessageBox.Show("Não Tem Mais Itens Para Remover");
                 return;
             }
-            var index = gridCarrinho.SelectedRows[0].Index;
-            if( _pedido.Produtos[index].IdPedido_produto != 0)
+            if(_pedido.Produtos.Count == 1)
             {
-                 pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
+                MessageBox.Show("Escolha um produto antes de remover");
+                return;
+            }
+            var index = gridCarrinho.SelectedRows[0].Index;
+            if (_pedido.Produtos[index].IdPedido_produto != 0)
+            {
+                pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
             }
             _pedido.Produtos.RemoveAt(index);
             AtualizarGrid();
@@ -337,9 +352,11 @@ namespace CrudDesafio.View
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
+          
 
             if (Validar())
             {
+                
                 if (_pedido.Produtos.Count == 0)
                 {
                     MessageBox.Show("Não é possível Finalizar Um Pedido Sem Escolher Um Produto!");
@@ -353,9 +370,14 @@ namespace CrudDesafio.View
 
                 if (_pedido.IdPedido != 0)
                 {
-
+                    //var index = gridCarrinho.SelectedRows[0].Index;
+                    //if (_pedido.Produtos[index].IdPedido_produto != 0)
+                    //{
+                    //    pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
+                    //}
 
                     pedidoController.Alterar(_pedido, txtFormaPagamento.SelectedIndex);
+                   
                     MessageBox.Show("Cadastro Alterado com Sucesso");
                 }
                 else
@@ -367,7 +389,7 @@ namespace CrudDesafio.View
                     }
 
                     _pedido.DataInicial = DateTime.Now;
-                    pedidoController.Inserir(_pedido, txtFormaPagamento.SelectedIndex);
+                    pedidoController.Inserir(_pedido, txtFormaPagamento.SelectedIndex, produtomodel );
 
                     MessageBox.Show("Cadastro Efetuado com Sucesso");
 
@@ -421,7 +443,9 @@ namespace CrudDesafio.View
 
         public void CarregarDadosParaAlteracao(PedidoModel pedido)
         {
+            
             gridCarrinho.DataSource = pedido.Produtos;
+            
 
             //txtIdPedido.Text = pedido.IdPedido.ToString();
             txtIdCliente.Text = pedido.IdCliente.ToString();
@@ -470,30 +494,38 @@ namespace CrudDesafio.View
 
         public void EnviarEmail()
         {
-            SmtpClient cliente = new SmtpClient();
-            NetworkCredential credenciais = new NetworkCredential();
-            cliente.Host = "smtp.gmail.com";
-            cliente.Port = 587;
-            cliente.EnableSsl = true;
-            cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
-            cliente.UseDefaultCredentials = false;
+            if (MessageBox.Show("Deseja Enviar E-mail ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+               
 
-            credenciais.UserName = "marcosjose.moraes1999";
-            credenciais.Password = "";
+            }
+            else
+            {
+                SmtpClient cliente = new SmtpClient();
+                NetworkCredential credenciais = new NetworkCredential();
+                cliente.Host = "smtp.gmail.com";
+                cliente.Port = 587;
+                cliente.EnableSsl = true;
+                cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
+                cliente.UseDefaultCredentials = false;
+
+                credenciais.UserName = "marcosjose.moraes1999";
+                credenciais.Password = Conexao.senha;
 
 
-            cliente.Credentials = credenciais;
-            MailMessage mensagem = new MailMessage();
-            mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
-            mensagem.Subject = "Augustu's Fashion";
-            mensagem.IsBodyHtml = true;
-            mensagem.Body = ConstruirCorpoDoEmail();
+                cliente.Credentials = credenciais;
+                MailMessage mensagem = new MailMessage();
+                mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
+                mensagem.Subject = "Augustu's Fashion";
+                mensagem.IsBodyHtml = true;
+                mensagem.Body = ConstruirCorpoDoEmail();
 
 
-            mensagem.To.Add(clientemodel.Email);
+                mensagem.To.Add(clientemodel.Email);
 
-            cliente.Send(mensagem);
-            MessageBox.Show("Email enviado com sucesso");
+                cliente.Send(mensagem);
+                MessageBox.Show("Email enviado com sucesso");
+            }
         }
         public string ConstruirCorpoDoEmail()
         {

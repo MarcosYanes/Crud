@@ -16,7 +16,7 @@ namespace CrudDesafio.DAO
         private string strCon = Conexao.connectionString;
         private string selecionarPedidoSql = string.Empty;
 
-        public void Inserir(PedidoModel pedidomodel, int Pagamento)
+        public void Inserir(PedidoModel pedidomodel, int Pagamento, ProdutoModel produtomodel)
         {
             
             var InsertPedido = @"insert into Pedido (IdCliente, IdColaborador, FormaPagamento, TotalBruto, TotalDeDesconto, TotalLiquido, Lucro, DataInicial) output inserted.IdPedido values (@IdCliente, 
@@ -47,13 +47,18 @@ namespace CrudDesafio.DAO
 
                                 produto.IdPedido = idPedido;
                                 conexao.Execute(InsertPedido_Produto, produto, transacao);
-                                conexao.Execute(AlterarEstoque, produto, transacao);
-                               
+                                conexao.Execute(AlterarEstoque, produto, transacao);                          
+                                                              
                             }
                         if (Pagamento == 1)
                         {
                             var AlterarLimite = @"update Cliente set LimiteRestante -= @TotalLiquido where IdCliente = @IdCliente ";
                             conexao.Execute(AlterarLimite, pedidomodel, transacao);
+                        }
+                        if (produtomodel.Estoque <= 1)
+                        {
+                            var InativarProduto = @"update Produto set Ativo=0 where IdProduto=@IdProduto";
+                            conexao.Execute(InativarProduto, produtomodel, transacao);
                         }
                         transacao.Commit();
                         }
@@ -117,8 +122,7 @@ namespace CrudDesafio.DAO
             var SelecionarEstoque = @"select IdProduto, Quantidade from Pedido_produto where IdPedido=@IdPedido";
 
             var AlterarEstoque = @"update Produto set Estoque -= @Quantidade where IdProduto = @IdProduto";
-            var somarEstoque = @"update Produto set Estoque += @Quantidade where IdProduto = @IdProduto";
-
+            var somarEstoque = @"update Produto set Estoque += @Quantidade where IdProduto = @IdProduto";         
 
 
             try
@@ -133,7 +137,12 @@ namespace CrudDesafio.DAO
 
                         //Estornar estoques dos produtos
                         var produtoantigo = conexao.Query<CarrinhoProduto>(SelecionarEstoque, new { pedidomodel.IdPedido }, transacao).ToList();
+                        //var carrinhoantigo = conexao.Query<CarrinhoProduto>(selecionarCarrinho, new { pedidomodel.IdPedido }, transacao).ToList();
                         
+                        //foreach(var carrinho in carrinhoantigo)
+                        //{
+                            
+                        //}
                        
                         foreach (var produto in produtoantigo)
                         {                                               
@@ -184,13 +193,9 @@ namespace CrudDesafio.DAO
 
         internal void DeletarProdutosDoCarrinho(CarrinhoProduto produto)
         {
-            if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
-                MessageBox.Show("Operação cancelada");
-
-            }
-            else
-            {
+            
+            
+            
                 var deleteProduto_Pedido = "delete from Pedido_produto where IdPedido_produto = @IdPedido_produto";
                 var somarEstoque = @"update Produto set Estoque += @Quantidade where IdProduto = @IdProduto";
 
@@ -218,7 +223,7 @@ namespace CrudDesafio.DAO
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }
+            
         }
 
         internal List<PedidoListagem> Listar()
@@ -366,7 +371,7 @@ namespace CrudDesafio.DAO
             SUM(pp.Lucro) as 'Lucro', SUM(pp.PrecoDeCusto * pp.Quantidade) as 'PrecoDeCusto', (SUM(pp.PrecoLiquido)- SUM(pp.PrecoDeCusto* pp.Quantidade))/SUM(pp.PrecoDeCusto* pp.Quantidade)*100 as 'Lucro em %'from
             Produto p
             inner join Pedido_produto pp on pp.IdProduto = p.IdProduto inner join Pedido pedido on pp.IdPedido = pedido.IdPedido inner join  Cliente c on pedido.IdCliente = c.IdCliente inner join Usuario u on u.Id = c.Id  
-            where p.Ativo = 1 and pedido.Status = 1 and p.NomeProduto like @NomeProduto  and u.Nome like @Nome  and Cast (DataInicial as Date) between @DataInicial and @DataFinal
+            where  pedido.Status = 1 and p.NomeProduto like @NomeProduto  and u.Nome like @Nome  and Cast (DataInicial as Date) between @DataInicial and @DataFinal
             group by p.IdProduto, p.NomeProduto, p.Ativo";
 
             var parametros = new DynamicParameters();
@@ -430,7 +435,7 @@ namespace CrudDesafio.DAO
             where IdPedido=@IdPedido";
 
             var selecionarProdutosSql = @"select pp.IdPedido_produto, pp.IdPedido, pp.IdProduto, p.NomeProduto, pp.PrecoDeCusto, pp.PrecoDeVenda as PrecoVenda, pp.Desconto, pp.Quantidade from 
-            Pedido_Produto pp inner join Produto p on pp.IdProduto = p.IdProduto where IdPedido = @IdPedido;";
+            Pedido_Produto pp inner join Produto p on pp.IdProduto = p.IdProduto where IdPedido = @IdPedido";
 
             try
             {
