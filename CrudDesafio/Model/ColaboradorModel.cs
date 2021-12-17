@@ -17,6 +17,7 @@ namespace CrudDesafio.Model
         public int Agencia { get; set; }
         public int Conta { get; set; }
         public string TipoConta { get; set; }
+        public bool Ativo { get; set; }
 
 
     }

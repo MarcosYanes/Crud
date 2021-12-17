@@ -62,7 +62,6 @@ namespace CrudDesafio.View
             this.txtComissaoColaborador = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
-            this.txtBuscarColaborador = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -84,6 +83,9 @@ namespace CrudDesafio.View
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cbSim = new System.Windows.Forms.CheckBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridColaborador)).BeginInit();
@@ -108,7 +110,7 @@ namespace CrudDesafio.View
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtComplementoColaborador);
-            this.groupBox2.Location = new System.Drawing.Point(21, 170);
+            this.groupBox2.Location = new System.Drawing.Point(21, 243);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -253,6 +255,7 @@ namespace CrudDesafio.View
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox1.Controls.Add(this.cbSim);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.txtCpfColaborador);
@@ -266,9 +269,10 @@ namespace CrudDesafio.View
             this.groupBox1.Controls.Add(this.rbFeminino);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtSalarioColaborador);
+            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtComissaoColaborador);
-            this.groupBox1.Location = new System.Drawing.Point(21, 59);
+            this.groupBox1.Location = new System.Drawing.Point(21, 136);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -278,17 +282,17 @@ namespace CrudDesafio.View
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(48, 14);
-            this.txtId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtId.Location = new System.Drawing.Point(62, 14);
+            this.txtId.Margin = new System.Windows.Forms.Padding(4);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(35, 22);
+            this.txtId.Size = new System.Drawing.Size(105, 22);
             this.txtId.TabIndex = 49;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(8, 14);
+            this.label22.Location = new System.Drawing.Point(8, 10);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(28, 25);
@@ -315,17 +319,17 @@ namespace CrudDesafio.View
             // 
             // txtNomeColaborador
             // 
-            this.txtNomeColaborador.Location = new System.Drawing.Point(281, 16);
+            this.txtNomeColaborador.Location = new System.Drawing.Point(349, 14);
             this.txtNomeColaborador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomeColaborador.Name = "txtNomeColaborador";
-            this.txtNomeColaborador.Size = new System.Drawing.Size(257, 22);
+            this.txtNomeColaborador.Size = new System.Drawing.Size(195, 22);
             this.txtNomeColaborador.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(108, 14);
+            this.label1.Location = new System.Drawing.Point(184, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 25);
             this.label1.TabIndex = 1;
@@ -369,7 +373,7 @@ namespace CrudDesafio.View
             this.rbMasculino.AutoSize = true;
             this.rbMasculino.Checked = true;
             this.rbMasculino.Location = new System.Drawing.Point(1008, 12);
-            this.rbMasculino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbMasculino.Margin = new System.Windows.Forms.Padding(4);
             this.rbMasculino.Name = "rbMasculino";
             this.rbMasculino.Size = new System.Drawing.Size(92, 21);
             this.rbMasculino.TabIndex = 4;
@@ -381,7 +385,7 @@ namespace CrudDesafio.View
             // 
             this.rbFeminino.AutoSize = true;
             this.rbFeminino.Location = new System.Drawing.Point(1008, 41);
-            this.rbFeminino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbFeminino.Margin = new System.Windows.Forms.Padding(4);
             this.rbFeminino.Name = "rbFeminino";
             this.rbFeminino.Size = new System.Drawing.Size(86, 21);
             this.rbFeminino.TabIndex = 6;
@@ -428,12 +432,13 @@ namespace CrudDesafio.View
             // 
             // btnExcluir
             // 
-            this.btnExcluir.BackColor = System.Drawing.Color.Red;
+            this.btnExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Location = new System.Drawing.Point(147, 553);
+            this.btnExcluir.Location = new System.Drawing.Point(147, 753);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(97, 42);
+            this.btnExcluir.Size = new System.Drawing.Size(97, 55);
             this.btnExcluir.TabIndex = 24;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
@@ -441,24 +446,17 @@ namespace CrudDesafio.View
             // 
             // btnAlterar
             // 
-            this.btnAlterar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAlterar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
+            this.btnAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.Location = new System.Drawing.Point(21, 553);
+            this.btnAlterar.Location = new System.Drawing.Point(21, 753);
             this.btnAlterar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(101, 42);
+            this.btnAlterar.Size = new System.Drawing.Size(101, 55);
             this.btnAlterar.TabIndex = 23;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            // 
-            // txtBuscarColaborador
-            // 
-            this.txtBuscarColaborador.Location = new System.Drawing.Point(1059, 110);
-            this.txtBuscarColaborador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBuscarColaborador.Name = "txtBuscarColaborador";
-            this.txtBuscarColaborador.Size = new System.Drawing.Size(91, 22);
-            this.txtBuscarColaborador.TabIndex = 22;
             // 
             // label16
             // 
@@ -503,7 +501,7 @@ namespace CrudDesafio.View
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(1077, 25);
+            this.txtBuscar.Location = new System.Drawing.Point(1073, 104);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(91, 22);
@@ -511,12 +509,13 @@ namespace CrudDesafio.View
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(973, 12);
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(969, 97);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(99, 41);
+            this.btnBuscar.Size = new System.Drawing.Size(99, 35);
             this.btnBuscar.TabIndex = 27;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -524,6 +523,7 @@ namespace CrudDesafio.View
             // 
             // gridColaborador
             // 
+            this.gridColaborador.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridColaborador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridColaborador.Location = new System.Drawing.Point(397, 553);
             this.gridColaborador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -561,7 +561,7 @@ namespace CrudDesafio.View
             this.groupBox3.Controls.Add(this.txtTelefoneColaborador);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Location = new System.Drawing.Point(21, 299);
+            this.groupBox3.Location = new System.Drawing.Point(21, 372);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -571,19 +571,21 @@ namespace CrudDesafio.View
             // 
             // btnLimpar
             // 
+            this.btnLimpar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(273, 553);
+            this.btnLimpar.Location = new System.Drawing.Point(273, 753);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(96, 42);
+            this.btnLimpar.Size = new System.Drawing.Size(96, 55);
             this.btnLimpar.TabIndex = 35;
             this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click_1);
             // 
             // txtTipoConta
             // 
-            this.txtTipoConta.Location = new System.Drawing.Point(756, 60);
+            this.txtTipoConta.Location = new System.Drawing.Point(759, 17);
             this.txtTipoConta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTipoConta.Name = "txtTipoConta";
             this.txtTipoConta.Size = new System.Drawing.Size(100, 22);
@@ -591,7 +593,7 @@ namespace CrudDesafio.View
             // 
             // txtConta
             // 
-            this.txtConta.Location = new System.Drawing.Point(268, 62);
+            this.txtConta.Location = new System.Drawing.Point(271, 19);
             this.txtConta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtConta.Name = "txtConta";
             this.txtConta.Size = new System.Drawing.Size(100, 22);
@@ -599,7 +601,7 @@ namespace CrudDesafio.View
             // 
             // txtAgencia
             // 
-            this.txtAgencia.Location = new System.Drawing.Point(480, 62);
+            this.txtAgencia.Location = new System.Drawing.Point(483, 19);
             this.txtAgencia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAgencia.Name = "txtAgencia";
             this.txtAgencia.Size = new System.Drawing.Size(100, 22);
@@ -607,7 +609,7 @@ namespace CrudDesafio.View
             // 
             // txtBanco
             // 
-            this.txtBanco.Location = new System.Drawing.Point(80, 63);
+            this.txtBanco.Location = new System.Drawing.Point(83, 20);
             this.txtBanco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(100, 22);
@@ -617,7 +619,7 @@ namespace CrudDesafio.View
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(611, 58);
+            this.label21.Location = new System.Drawing.Point(614, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(139, 25);
             this.label21.TabIndex = 39;
@@ -628,7 +630,7 @@ namespace CrudDesafio.View
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(197, 59);
+            this.label20.Location = new System.Drawing.Point(200, 16);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(65, 25);
             this.label20.TabIndex = 40;
@@ -638,7 +640,7 @@ namespace CrudDesafio.View
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(389, 59);
+            this.label19.Location = new System.Drawing.Point(392, 16);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(84, 25);
             this.label19.TabIndex = 41;
@@ -648,7 +650,7 @@ namespace CrudDesafio.View
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(5, 60);
+            this.label18.Location = new System.Drawing.Point(8, 17);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(68, 25);
             this.label18.TabIndex = 42;
@@ -657,7 +659,6 @@ namespace CrudDesafio.View
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.txtTipoConta);
             this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.txtConta);
@@ -666,11 +667,11 @@ namespace CrudDesafio.View
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Controls.Add(this.txtBanco);
             this.groupBox4.Controls.Add(this.label21);
-            this.groupBox4.Location = new System.Drawing.Point(27, 386);
+            this.groupBox4.Location = new System.Drawing.Point(21, 472);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(1139, 100);
+            this.groupBox4.Size = new System.Drawing.Size(1139, 65);
             this.groupBox4.TabIndex = 47;
             this.groupBox4.TabStop = false;
             // 
@@ -678,18 +679,51 @@ namespace CrudDesafio.View
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(487, 0);
+            this.label2.Location = new System.Drawing.Point(501, 445);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(161, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Dados Bancários";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(412, 25);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(386, 36);
+            this.label23.TabIndex = 68;
+            this.label23.Text = "Alteração de Colaboradores";
+            // 
+            // cbSim
+            // 
+            this.cbSim.AutoSize = true;
+            this.cbSim.Location = new System.Drawing.Point(656, 59);
+            this.cbSim.Name = "cbSim";
+            this.cbSim.Size = new System.Drawing.Size(53, 21);
+            this.cbSim.TabIndex = 50;
+            this.cbSim.Text = "Sim";
+            this.cbSim.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(573, 56);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(56, 25);
+            this.label24.TabIndex = 7;
+            this.label24.Text = "Ativo";
+            // 
             // AlterarColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1193, 820);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.groupBox3);
@@ -700,7 +734,6 @@ namespace CrudDesafio.View
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAlterar);
-            this.Controls.Add(this.txtBuscarColaborador);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AlterarColaborador";
             this.Text = "AlterarColaborador";
@@ -748,7 +781,6 @@ namespace CrudDesafio.View
         private System.Windows.Forms.TextBox txtComissaoColaborador;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.TextBox txtBuscarColaborador;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -776,5 +808,8 @@ namespace CrudDesafio.View
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.CheckBox cbSim;
+        private System.Windows.Forms.Label label24;
     }
 }

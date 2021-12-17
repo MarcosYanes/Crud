@@ -24,39 +24,45 @@ namespace CrudDesafio
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (Validar() == true)
-            {              
+            try
+            {
+                if (Validar() == true)
+                {
 
-                clientemodel.Nome = txtNome.Text;
+                    clientemodel.Nome = txtNome.Text;
 
-                if (rbMasculino.Checked == true)
-                    clientemodel.Sexo = "m";
-                else
-                    clientemodel.Sexo = "F";
-               
-                clientemodel.DataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
-                clientemodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpf.Text);
-                clientemodel.Cidade = txtCidade.Text;
-                clientemodel.Cep = txtCep.Text;
-                clientemodel.Rua = txtRua.Text;
-                clientemodel.Bairro = txtBairro.Text;
-                clientemodel.Numero = txtNumero.Text;
-                clientemodel.Uf = txtUf.Text;
-                clientemodel.Complemento = txtComplemento.Text;
-                clientemodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefone.Text);
-                clientemodel.Celular = Funcoes.ObterSomenteNumeros(txtCelular.Text);
-                clientemodel.Email = txtEmail.Text;
-                clientemodel.ValorLimite = double.Parse(txtValorLimite.Text);
+                    if (rbMasculino.Checked == true)
+                        clientemodel.Sexo = "m";
+                    else
+                        clientemodel.Sexo = "F";
 
-                clientecontroller.Inserir(clientemodel);
-                MessageBox.Show("Cadastro Efetuado com Sucesso");
-                this.Close();
+                    clientemodel.DataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
+                    clientemodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpf.Text);
+                    clientemodel.Cidade = txtCidade.Text;
+                    clientemodel.Cep = txtCep.Text;
+                    clientemodel.Rua = txtRua.Text;
+                    clientemodel.Bairro = txtBairro.Text;
+                    clientemodel.Numero = txtNumero.Text;
+                    clientemodel.Uf = txtUf.Text;
+                    clientemodel.Complemento = txtComplemento.Text;
+                    clientemodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefone.Text);
+                    clientemodel.Celular = Funcoes.ObterSomenteNumeros(txtCelular.Text);
+                    clientemodel.Email = txtEmail.Text;
+                    clientemodel.ValorLimite = double.Parse(txtValorLimite.Text);
+                    clientemodel.Ativo = true;
+
+
+                    clientecontroller.Inserir(clientemodel);
+                    MessageBox.Show("Cadastro Efetuado com Sucesso");
+                    this.Close();
+                }
             }
-            //else
-            //{
-            //    MessageBox.Show("Campos Incorretos!");
-            //}
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("Falha no Cadastro" + ex.Message);
+            }
+
+
         }
 
         public bool Validar()

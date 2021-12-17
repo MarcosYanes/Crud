@@ -1,6 +1,7 @@
 ﻿using CrudDesafio.Controller;
 using CrudDesafio.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 
@@ -11,14 +12,18 @@ namespace CrudDesafio.View
 
         ClienteController clientecontroller = new ClienteController();
         ClienteModel clientemodel = new ClienteModel();
+        PedidoModel _pedidoModel = new PedidoModel();
+        PedidoController pedidocontroller = new PedidoController();
         
 
         public AlterarCliente()
         {
             InitializeComponent();
             txtId.Enabled = false;
-        }
 
+           
+
+        }
         public void CarregarDadosParaAlteracao(ClienteModel cliente)
         {
             txtId.Enabled = false;
@@ -48,25 +53,24 @@ namespace CrudDesafio.View
             txtValorLimite.Text = clientemodel.ValorLimite.ToString();
             txtNumero.Text = clientemodel.Numero;
             clientemodel.ValorLimitePreAlteracao = clientemodel.ValorLimite;
+            cbSim.Checked = clientemodel.Ativo;     
+            
 
         }
 
-
-        
-
         private void AlterarCliente_Load(object sender, EventArgs e)
         {
+            
             gridClientes.DataSource = clientecontroller.Listar();
             if (clientemodel.IdCliente != 0)
             {
                 CarregarDadosParaAlteracao(clientemodel);
             }
-            
-            //gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count - 1;
-        }
 
+        }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            
             if (txtId.Text == string.Empty)
             {
 
@@ -74,17 +78,8 @@ namespace CrudDesafio.View
             }
 
             if (Validar() == true)
-            {
-                if (clientemodel.Nome == txtNome.Text && clientemodel.Cidade == txtCidade.Text && clientemodel.Cep == txtCep.Text && clientemodel.Rua == txtRua.Text
-               && clientemodel.Bairro == txtBairro.Text && clientemodel.Numero == txtNumero.Text && clientemodel.Uf == txtUf.Text && clientemodel.Complemento == txtComplemento.Text && clientemodel.Telefone == Funcoes.ObterSomenteNumeros(txtTelefone.Text)
-               && clientemodel.Celular == Funcoes.ObterSomenteNumeros(txtCelular.Text) && clientemodel.Email == txtEmail.Text && clientemodel.ValorLimite == double.Parse(txtValorLimite.Text) && clientemodel.Sexo == (rbMasculino.Checked ? "m" : "F") && clientemodel.Cpf.ToString() == Funcoes.ObterSomenteNumeros(txtCpf.Text) && clientemodel.DataNascimento == Convert.ToDateTime(txtDataNascimento.Text))
-                {
-                    MessageBox.Show("Voce precisa alterar um campo");
-                    return;
-                }
-
-
-              
+            {              
+                
 
                 clientemodel.IdCliente = Convert.ToInt32(txtId.Text);
                 clientemodel.Nome = txtNome.Text;
@@ -107,14 +102,16 @@ namespace CrudDesafio.View
                 clientemodel.Celular = Funcoes.ObterSomenteNumeros(txtCelular.Text);
                 clientemodel.Email = txtEmail.Text;
                 clientemodel.ValorLimite = double.Parse(txtValorLimite.Text);
+                clientemodel.Ativo = cbSim.Checked;
 
                 clientecontroller.Alterar(clientemodel);
-                MessageBox.Show("Cadastro Alterado com Sucesso");
+                MessageBox.Show("Dados Salvos com Sucesso");
 
                 limparTextBoxes(groupBox1.Controls);
                 limparTextBoxes(groupBox2.Controls);
                 limparTextBoxes(groupBox3.Controls);
                 limparTextBoxes(groupBox4.Controls);
+                cbSim.Checked = false;
                 gridClientes.DataSource = clientecontroller.Listar();
             }
         }
@@ -133,7 +130,7 @@ namespace CrudDesafio.View
 
                 return false;
             }
-          
+
             else if (!Validacoes.ValidarCpf(txtCpf.Text.Replace(",", ".")))
             {
                 MessageBox.Show("CPF inválido");
@@ -189,7 +186,7 @@ namespace CrudDesafio.View
                 return false;
 
             }
-            else if(txtTelefone.Text == string.Empty && txtCelular.Text == string.Empty)
+            else if (txtTelefone.Text == string.Empty && txtCelular.Text == string.Empty)
             {
                 MessageBox.Show("Você precisa informar o Número para contato ");
                 return false;
@@ -208,24 +205,48 @@ namespace CrudDesafio.View
 
             return true;
         }
+        public void  BuscarPedido(PedidoModel pedidoModel)
+        {
+            
+        }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
+            //if (pedidoModel.IdCliente != 0){
+            //    MessageBox.Show("errO");
+            //    return;
+            //}
             if (txtId.Text == string.Empty)
             {
-                
+
                 return;
             }
+            if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                MessageBox.Show("Operação cancelada");
 
-            clientecontroller.Excluir(clientemodel);
-            MessageBox.Show("Cliente deletado com sucesso");
+            }
+            else
+            {
+                try
+                {
+                    clientecontroller.Excluir(clientemodel);
+                    MessageBox.Show("Cliente deletado com sucesso");
+                    limparTextBoxes(groupBox1.Controls);
+                    limparTextBoxes(groupBox2.Controls);
+                    limparTextBoxes(groupBox3.Controls);
+                    limparTextBoxes(groupBox4.Controls);
+                    cbSim.Checked = false;
 
-            limparTextBoxes(groupBox1.Controls);
-            limparTextBoxes(groupBox2.Controls);
-            limparTextBoxes(groupBox3.Controls);
-            limparTextBoxes(groupBox4.Controls);
+                }
 
-            gridClientes.DataSource = clientecontroller.Listar();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Falha ao excluir cliente. Erro: " + ex.Message);
+                }
+            }
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -258,7 +279,7 @@ namespace CrudDesafio.View
             }
         }
 
-       
+
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -304,8 +325,9 @@ namespace CrudDesafio.View
             txtCelular.Text = Funcoes.ObterSomenteNumeros(clientemodel.Celular);
             txtEmail.Text = clientemodel.Email;
             txtValorLimite.Text = clientemodel.ValorLimite.ToString();
+            cbSim.Checked = clientemodel.Ativo;
         }
 
-      
+
     }
 }

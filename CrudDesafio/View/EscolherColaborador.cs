@@ -23,7 +23,10 @@ namespace CrudDesafio.View
 
         private void EscolherColaborador_Load(object sender, EventArgs e)
         {
-            gridColaborador.DataSource = colaboradorcontroller.Listar();
+           
+                gridColaborador.DataSource = colaboradorcontroller.ListarColaboradoresAtivos();
+            
+           
         }
 
         public int SelecionarColaboradorModel()

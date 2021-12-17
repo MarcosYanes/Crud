@@ -16,5 +16,6 @@ namespace CrudDesafio.Model
 
         public double Salario { get; set; }
         public string Comissao { get; set; }
+        public bool Ativo { get; set; }
     }
 }

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CrudDesafio.Controller;
 using CrudDesafio.Model;
-using CrudDesafio.Controller;
+using System;
+using System.Windows.Forms;
 
 
 namespace CrudDesafio.View
@@ -37,9 +30,6 @@ namespace CrudDesafio.View
            
 
             txtFabricante.Text = produto.Fabricante;
-
-
-
         }
 
 
@@ -52,14 +42,7 @@ namespace CrudDesafio.View
             }
 
             if (Validar() == true)
-            {
-                if(produtomodel.NomeProduto == txtNomeProduto.Text && produtomodel.CodigoDeBarra == txtCodigoDeBarra.Text && 
-                    produtomodel.PrecoDeCusto == double.Parse(txtPrecoDeCusto.Text)&& produtomodel.PrecoDeVenda == double.Parse(txtPrecoDeVenda.Text) &&
-                    produtomodel.Estoque == int.Parse(txtEstoque.Text) && produtomodel.Fabricante == txtFabricante.Text && produtomodel.Ativo == cbSim.Checked)
-                {
-                    MessageBox.Show("Você precisa alterar algum campo ");
-                    return;
-                }
+            {             
                
                 produtomodel.IdProduto = Convert.ToInt32(txtIdProduto.Text);
                 produtomodel.NomeProduto = txtNomeProduto.Text;
@@ -72,14 +55,15 @@ namespace CrudDesafio.View
                 produtomodel.Fabricante = txtFabricante.Text;
 
                 produtocontroller.Alterar(produtomodel);
-                MessageBox.Show("Produto Alterado com Sucesso");
+                MessageBox.Show("Dados Salvos com Sucesso");
                 LimparCampos();
+                gridProdutos.DataSource = produtocontroller.Listar();
             }
         }
 
         private void AlterarProduto_Load(object sender, EventArgs e)
         {
-
+            gridProdutos.DataSource = produtocontroller.Listar();
         }
 
         private void txtBuscar_Click(object sender, EventArgs e)
@@ -112,8 +96,6 @@ namespace CrudDesafio.View
             cbSim.Checked = produtomodel.Ativo;
             txtFabricante.Text = produtomodel.Fabricante;
 
-
-
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -136,6 +118,8 @@ namespace CrudDesafio.View
 
                 produtocontroller.Excluir(produtomodel);
                 MessageBox.Show("Produto Deletado  com Sucesso");
+                LimparCampos();
+                gridProdutos.DataSource = produtocontroller.Listar();
             }
         }
 
@@ -186,9 +170,12 @@ namespace CrudDesafio.View
             txtEstoque.Text = "";
             cbSim.Checked = false;
             txtFabricante.Text = "";
+            txtBusca.Text = "";
         }
 
-
-
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
     }
 }

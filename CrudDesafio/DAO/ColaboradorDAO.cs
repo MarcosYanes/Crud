@@ -20,7 +20,7 @@ namespace CrudDesafio.DAO
         {
 
             var insertUsuario = "insert into Usuario(Nome, Sexo, DataNascimento, Cpf, Cidade, Cep, Rua, Bairro, Numero, Uf, Complemento, Telefone, Celular, Email)output inserted.Id values (@Nome, @Sexo, @DataNascimento, @Cpf, @Cidade, @Cep, @Rua, @Bairro, @Numero, @Uf, @Complemento, @Telefone, @Celular, @Email)";
-            var insertColaborador = "insert into Colaborador(Id, Salario, Comissao, Banco, Agencia, Conta, TipoConta)output inserted.IdColaborador values(@Id, @Salario, @Comissao, @Banco, @Agencia, @Conta, @TipoConta)";
+            var insertColaborador = "insert into Colaborador(Id, Salario, Comissao, Banco, Agencia, Conta, TipoConta, Ativo)output inserted.IdColaborador values(@Id, @Salario, @Comissao, @Banco, @Agencia, @Conta, @TipoConta, @Ativo)";
 
             try
             {
@@ -32,22 +32,25 @@ namespace CrudDesafio.DAO
 
                     using (var transacao = conexao.BeginTransaction())
                     {
-                        int id = conexao.ExecuteScalar<int>(insertUsuario, new {
-                            Id = colaboradormodel.Id,
-                            Nome = colaboradormodel.Nome,
-                            DataNascimento = colaboradormodel.DataNascimento,
-                            Sexo = colaboradormodel.Sexo,
+                        int id = conexao.ExecuteScalar<int>(insertUsuario, new
+                        {
+                            colaboradormodel.Id,
+                            colaboradormodel.Nome,
+                            colaboradormodel.DataNascimento,
+                            colaboradormodel.Sexo,
                             Cpf = colaboradormodel.Cpf.ObterSomenteNumeros(),
-                            Cidade = colaboradormodel.Cidade,
-                            Cep = colaboradormodel.Cep,
-                            Rua = colaboradormodel.Rua,
-                            Bairro = colaboradormodel.Bairro,
-                            Numero = colaboradormodel.Numero,
-                            Uf = colaboradormodel.Uf,
-                            Complemento = colaboradormodel.Complemento,
-                            Telefone = colaboradormodel.Telefone,
-                            Celular = colaboradormodel.Celular,
-                            Email = colaboradormodel.Email,
+                            colaboradormodel.Cidade,
+                            colaboradormodel.Cep,
+                            colaboradormodel.Rua,
+                            colaboradormodel.Bairro,
+                            colaboradormodel.Numero,
+                            colaboradormodel.Uf,
+                            colaboradormodel.Complemento,
+                            colaboradormodel.Telefone,
+                            colaboradormodel.Celular,
+                            colaboradormodel.Email,
+                            
+
                         }, transacao);
 
                         colaboradormodel.Id = id;
@@ -60,7 +63,7 @@ namespace CrudDesafio.DAO
                         // conexao.Execute(strSql, clientemodel);
                     }
                 }
-               
+
 
 
             }
@@ -74,7 +77,7 @@ namespace CrudDesafio.DAO
         internal ColaboradorModel Buscar(int idColaborador)
         {
 
-            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
             u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
             inner join Colaborador c on u.Id = c.Id where IdColaborador=@IdColaborador";
 
@@ -117,7 +120,7 @@ namespace CrudDesafio.DAO
                         
                         where Id=@Id";
 
-            var updateColaborador = @"update Colaborador set Salario=@Salario, Comissao=Comissao, Banco=Banco, Agencia=@Agencia, Conta=@Conta, TipoConta=@TipoConta where Id=@Id";
+            var updateColaborador = @"update Colaborador set Salario=@Salario, Comissao=Comissao, Banco=Banco, Agencia=@Agencia, Conta=@Conta, TipoConta=@TipoConta, Ativo=@Ativo where Id=@Id";
 
 
 
@@ -135,21 +138,22 @@ namespace CrudDesafio.DAO
 
                         conexao.Execute(updateUsuario, new
                         {
-                            Id = colaboradormodel.Id,
-                            Nome = colaboradormodel.Nome,
-                            DataNascimento = colaboradormodel.DataNascimento,
-                            Sexo = colaboradormodel.Sexo,
+                            colaboradormodel.Id,
+                            colaboradormodel.Nome,
+                            colaboradormodel.DataNascimento,
+                            colaboradormodel.Sexo,
                             Cpf = colaboradormodel.Cpf.ObterSomenteNumeros(),
-                            Cidade = colaboradormodel.Cidade,
-                            Cep = colaboradormodel.Cep,
-                            Rua = colaboradormodel.Rua,
-                            Bairro = colaboradormodel.Bairro,
-                            Numero = colaboradormodel.Numero,
-                            Uf = colaboradormodel.Uf,
-                            Complemento = colaboradormodel.Complemento,
-                            Telefone = colaboradormodel.Telefone,
-                            Celular = colaboradormodel.Celular,
-                            Email = colaboradormodel.Email,
+                            colaboradormodel.Cidade,
+                            colaboradormodel.Cep,
+                            colaboradormodel.Rua,
+                            colaboradormodel.Bairro,
+                            colaboradormodel.Numero,
+                            colaboradormodel.Uf,
+                            colaboradormodel.Complemento,
+                            colaboradormodel.Telefone,
+                            colaboradormodel.Celular,
+                            colaboradormodel.Email,
+                            colaboradormodel.Ativo,
                         }, transacao);
                         conexao.Execute(updateColaborador, colaboradormodel, transacao);
 
@@ -157,10 +161,10 @@ namespace CrudDesafio.DAO
 
 
 
-                        
+
                     }
                 }
-                
+
 
 
             }
@@ -172,16 +176,38 @@ namespace CrudDesafio.DAO
         }
 
 
-      
 
 
 
-      
+
+
 
         internal List<ColaboradorListagem> Listar()
         {
 
-            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Colaborador c on u.Id = c.Id";
+            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Colaborador c on u.Id = c.Id";
+
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+                    return conexao.Query<ColaboradorListagem>(strSql).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            return new List<ColaboradorListagem>().ToList();
+
+        }
+        internal List<ColaboradorListagem> ListarColaboradoresAtivos()
+        {
+
+            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Colaborador c on u.Id = c.Id where Ativo = 1";
 
             try
             {
@@ -238,7 +264,7 @@ namespace CrudDesafio.DAO
                             // conexao.Execute(strSql, clientemodel);
                         }
                     }
-                   
+
 
 
                 }
@@ -250,11 +276,11 @@ namespace CrudDesafio.DAO
 
         }
 
-       
+
 
         internal List<ColaboradorListagem> BuscarLista(string Nome)
         {
-            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
 u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
 inner join Colaborador c on u.Id = c.Id where Nome like @Nome + '%'";
 

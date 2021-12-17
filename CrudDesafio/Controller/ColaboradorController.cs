@@ -41,6 +41,10 @@ namespace CrudDesafio.Controller
         {
             return colaboradordao.Listar();
         }
+        public List<ColaboradorListagem> ListarColaboradoresAtivos()
+        {
+            return colaboradordao.ListarColaboradoresAtivos();
+        }
 
         public List<ColaboradorListagem> BuscarLista(string Nome)
         {

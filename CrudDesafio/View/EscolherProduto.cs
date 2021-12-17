@@ -25,7 +25,15 @@ namespace CrudDesafio.View
 
         private void EscolherProduto_Load(object sender, EventArgs e)
         {
-            GridProduto.DataSource = produtocontroller.ListarAtivos();
+            if (Application.OpenForms.OfType<RelatorioProdutos>().Count() > 0)
+            {
+                GridProduto.DataSource = produtocontroller.Listar();
+            }
+            else
+            {
+                GridProduto.DataSource = produtocontroller.ListarAtivos();
+            }
+            
         }
 
         public int SelecionarProdutoModel()

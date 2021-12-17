@@ -43,7 +43,13 @@ namespace CrudDesafio.View
         private void clienteToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             AlterarCliente alterarcliente = new AlterarCliente();
-            alterarcliente.ShowDialog();        }
+            alterarcliente.ShowDialog();
+        }
+        //internal void AbrirFormDeAlterarCliente()
+        //{
+        //    var pedido = new Pedido(new PedidoModel());
+        //    pedido.Show();
+        //}
 
         private void colaboradorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -97,10 +103,10 @@ namespace CrudDesafio.View
         }
 
         private void compraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+        {            
             PedidoController pedidocontroller = new PedidoController();
             pedidocontroller.AbrirFormDePedido();
+                      
         }
 
         private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)

@@ -22,6 +22,7 @@ namespace CrudDesafio.View
 
         ClienteController clientecontroller = new ClienteController();
         public ClienteModel clientemodel = new ClienteModel();
+        PedidoModel pedidomodel = new PedidoModel();
 
         //private ClienteDAO clientedao = new ClienteDAO();
         public ListarCliente()

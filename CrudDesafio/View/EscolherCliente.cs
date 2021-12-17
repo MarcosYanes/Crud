@@ -23,8 +23,17 @@ namespace CrudDesafio.View
         }
 
         private void EscolherCliente_Load(object sender, EventArgs e)
-        {
-            gridCliente.DataSource = clientecontroller.Listar();
+        {          
+
+            if(Application.OpenForms.OfType<RelatorioProdutos>().Count()>0|| Application.OpenForms.OfType<RelatorioCliente>().Count() > 0)
+            {
+                gridCliente.DataSource = clientecontroller.Listar();
+            }
+            else
+            {
+                gridCliente.DataSource = clientecontroller.ListarClientesAtivos();
+            }
+           
         }
 
         private void txtAdicionar_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace CrudDesafio.Model
         public string Cidade { get; set; }
         public double ValorLimite { get; set; }
         public double LimiteRestante { get; set; }
+        public bool Ativo { get; set; }
 
     }
 }

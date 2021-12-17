@@ -30,41 +30,46 @@ namespace CrudDesafio.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //double.TryParse(txtSalarioColaborador.Text, out double salario);
-            //int.TryParse(txtConta.Text, out int conta);
-
-            if (Validar())
+            try
             {
-             
-                colaboradormodel.Nome = txtNomeColaborador.Text;
-                if (rbMasculino.Checked == true)
-                    colaboradormodel.Sexo = "m";
-                else
-                    colaboradormodel.Sexo = "F";
+                if (Validar())
+                {
 
-                colaboradormodel.DataNascimento = Convert.ToDateTime(txtDataNascimentoColaborador.Text);
-                colaboradormodel.Salario = double.Parse(txtSalarioColaborador.Text);
-                colaboradormodel.Comissao = txtComissaoColaborador.Text;
-                colaboradormodel.Cep = txtCepColaborador.Text;
-                colaboradormodel.Rua = txtLogradouroColaborador.Text;
-                colaboradormodel.Cidade = txtCidadeColaborador.Text;
-                colaboradormodel.Uf = txtUfColaborador.Text;
-                colaboradormodel.Complemento = txtComplementoColaborador.Text;
-                colaboradormodel.Bairro = txtBairroColaborador.Text;
-                colaboradormodel.Numero = txtNumeroColaborador.Text;
-                colaboradormodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefoneColaborador.Text);
-                colaboradormodel.Celular = Funcoes.ObterSomenteNumeros(txtCelularColaborador.Text);
-                colaboradormodel.Email = txtEmailColaborador.Text;
-                colaboradormodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text);
-                colaboradormodel.Banco = txtBanco.Text;
-                colaboradormodel.Agencia = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtAgencia.Text));
-                colaboradormodel.Conta = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtConta.Text)); 
-                colaboradormodel.TipoConta = txtTipoConta.Text;
+                    colaboradormodel.Nome = txtNomeColaborador.Text;
+                    if (rbMasculino.Checked == true)
+                        colaboradormodel.Sexo = "m";
+                    else
+                        colaboradormodel.Sexo = "F";
+
+                    colaboradormodel.DataNascimento = Convert.ToDateTime(txtDataNascimentoColaborador.Text);
+                    colaboradormodel.Salario = double.Parse(txtSalarioColaborador.Text);
+                    colaboradormodel.Comissao = txtComissaoColaborador.Text;
+                    colaboradormodel.Cep = txtCepColaborador.Text;
+                    colaboradormodel.Rua = txtLogradouroColaborador.Text;
+                    colaboradormodel.Cidade = txtCidadeColaborador.Text;
+                    colaboradormodel.Uf = txtUfColaborador.Text;
+                    colaboradormodel.Complemento = txtComplementoColaborador.Text;
+                    colaboradormodel.Bairro = txtBairroColaborador.Text;
+                    colaboradormodel.Numero = txtNumeroColaborador.Text;
+                    colaboradormodel.Telefone = Funcoes.ObterSomenteNumeros(txtTelefoneColaborador.Text);
+                    colaboradormodel.Celular = Funcoes.ObterSomenteNumeros(txtCelularColaborador.Text);
+                    colaboradormodel.Email = txtEmailColaborador.Text;
+                    colaboradormodel.Cpf = Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text);
+                    colaboradormodel.Banco = txtBanco.Text;
+                    colaboradormodel.Agencia = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtAgencia.Text));
+                    colaboradormodel.Conta = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtConta.Text));
+                    colaboradormodel.TipoConta = txtTipoConta.Text;
+                    colaboradormodel.Ativo = true;
 
 
-                colaboradorcontroller.Inserir(colaboradormodel);
-                MessageBox.Show("Cadastro Efetuado com Sucesso");
-                this.Close();
+                    colaboradorcontroller.Inserir(colaboradormodel);
+                    MessageBox.Show("Cadastro Efetuado com Sucesso");
+                    this.Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Falha no Cadastro" + ex.Message);
             }
 
             
@@ -200,26 +205,6 @@ namespace CrudDesafio.View
             
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-
-        private void txtComissaoColaborador_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtComplementoColaborador_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gridColaborador_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
     }
 }

@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using CrudDesafio.Controller;
+﻿using CrudDesafio.Controller;
 using CrudDesafio.Model;
-using System.Configuration;
-using CrudDesafio.View;
-using System.Text.RegularExpressions;
-using CrudDesafio.ValueObject;
+using System;
+using System.Windows.Forms;
 
 namespace CrudDesafio.View
 {
@@ -26,13 +15,7 @@ namespace CrudDesafio.View
         {
             InitializeComponent();
             txtId.Enabled = false;
-        }
-        //public AlterarColaborador(ColaboradorModel colaborador)
-        //{
-
-        //    InitializeComponent();
-           
-        //}
+        }      
 
         public void CarregarDadosParaAlteracao(ColaboradorModel colaborador)
         {
@@ -69,6 +52,8 @@ namespace CrudDesafio.View
             txtAgencia.Text = colaboradormodel.Agencia.ToString();
             txtConta.Text = colaboradormodel.Conta.ToString();
             txtTipoConta.Text = colaboradormodel.TipoConta;
+            cbSim.Checked = colaboradormodel.Ativo;
+            
 
         }
 
@@ -121,7 +106,8 @@ namespace CrudDesafio.View
             txtAgencia.Text = colaboradormodel.Agencia.ToString();
             txtConta.Text = colaboradormodel.Conta.ToString();
             txtTipoConta.Text = colaboradormodel.TipoConta;
-            
+            cbSim.Checked = colaboradormodel.Ativo;
+
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -137,7 +123,7 @@ namespace CrudDesafio.View
             int.TryParse(txtAgencia.Text, out int agencia);
             int.TryParse(txtConta.Text, out int conta);
 
-            if (colaboradormodel.Nome == txtNomeColaborador.Text && colaboradormodel.DataNascimento == Convert.ToDateTime(txtDataNascimentoColaborador.Text) &&
+            if (colaboradormodel.Ativo == cbSim.Checked && colaboradormodel.Nome == txtNomeColaborador.Text && colaboradormodel.DataNascimento == Convert.ToDateTime(txtDataNascimentoColaborador.Text) &&
                 colaboradormodel.Cpf.ToString() == Funcoes.ObterSomenteNumeros(txtCpfColaborador.Text) && colaboradormodel.Salario == salario &&
                 colaboradormodel.Comissao == txtComissaoColaborador.Text && colaboradormodel.Cep == txtCepColaborador.Text &&
                 colaboradormodel.Rua == txtLogradouroColaborador.Text && colaboradormodel.Cidade == txtCidadeColaborador.Text &&
@@ -150,7 +136,6 @@ namespace CrudDesafio.View
                 MessageBox.Show("Voce precisa alterar um campo");
                 return;
             }
-
 
             if (Validar() == true)
             {
@@ -178,36 +163,13 @@ namespace CrudDesafio.View
                 colaboradormodel.Agencia = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtAgencia.Text));
                 colaboradormodel.Conta = Convert.ToInt32(Funcoes.ObterSomenteNumeros(txtConta.Text));
                 colaboradormodel.TipoConta = txtTipoConta.Text;
-
-
-
+                colaboradormodel.Ativo = cbSim.Checked;
 
                 colaboradorcontroller.Alterar(colaboradormodel);
-                MessageBox.Show("Cadastro Alterado com Sucesso");
+                MessageBox.Show("Dados Salvos Com Sucesso ");
 
 
-                txtNomeColaborador.Text = "";
-                txtDataNascimentoColaborador.Text = "";
-                txtCpfColaborador.Text = "";
-                txtSalarioColaborador.Text = "";
-                txtComissaoColaborador.Text = "";
-                txtCepColaborador.Text = "";
-                txtLogradouroColaborador.Text = "";
-                txtCidadeColaborador.Text = "";
-                txtBairroColaborador.Text = "";
-                txtNumeroColaborador.Text = "";
-                txtComplementoColaborador.Text = "";
-                txtUfColaborador.Text = "";
-                txtTelefoneColaborador.Text = "";
-                txtCepColaborador.Text = "";
-                txtEmailColaborador.Text = "";
-                txtCelularColaborador.Text = "";
-                txtBuscar.Text = "";
-                txtBanco.Text = "";
-                txtAgencia.Text = "";
-                txtConta.Text = "";
-                txtTipoConta.Text = "";
-                txtId.Text = "";
+                LimparTextBox();
                 gridColaborador.DataSource = colaboradorcontroller.Listar();
             }
 
@@ -329,9 +291,7 @@ namespace CrudDesafio.View
             {
                 MessageBox.Show("Informe Algum Meio De Comunicação(Celular ou Telefone)");
                 return false;
-            }
-
-           
+            }          
 
 
             return true;
@@ -348,48 +308,17 @@ namespace CrudDesafio.View
             colaboradorcontroller.Excluir(colaboradormodel);
             MessageBox.Show("Colaborador deletado com sucesso");
 
-            txtNomeColaborador.Text = "";
-            txtDataNascimentoColaborador.Text = "";
-            txtCpfColaborador.Text = "";
-            txtSalarioColaborador.Text = "";
-            txtComissaoColaborador.Text = "";
-            txtCepColaborador.Text = "";
-            txtLogradouroColaborador.Text = "";
-            txtCidadeColaborador.Text = "";
-            txtBairroColaborador.Text = "";
-            txtNumeroColaborador.Text = "";
-            txtComplementoColaborador.Text = "";
-            txtUfColaborador.Text = "";
-            txtTelefoneColaborador.Text = "";
-            txtCepColaborador.Text = "";
-            txtEmailColaborador.Text = "";
-            txtCelularColaborador.Text = "";
-            txtBuscar.Text = "";
-            txtBanco.Text = "";
-            txtAgencia.Text = "";
-            txtConta.Text = "";
-            txtTipoConta.Text = "";
-            txtId.Text = "";
+            LimparTextBox();
             gridColaborador.DataSource = colaboradorcontroller.Listar();
         }
 
         private void AlterarColaborador_Load(object sender, EventArgs e)
         {
             gridColaborador.DataSource = colaboradorcontroller.Listar();
-            //gridColaborador.DataSource = colaboradorcontroller.Listar();
-            //gridColaborador.Columns["SalarioColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["ComissaoColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["Banco"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["Agencia"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["Conta"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["TipoConta"].DisplayIndex = gridColaborador.Columns.Count - 1;
+           
         }
 
-       
-
-        
-
-        private void btnLimpar_Click_1(object sender, EventArgs e)
+       public void LimparTextBox()
         {
             txtNomeColaborador.Text = "";
             txtDataNascimentoColaborador.Text = "";
@@ -413,7 +342,14 @@ namespace CrudDesafio.View
             txtConta.Text = "";
             txtTipoConta.Text = "";
             txtId.Text = "";
+            cbSim.Checked = false;
+        }        
 
-        }
+        private void btnLimpar_Click_1(object sender, EventArgs e)
+        {
+            LimparTextBox();
+
+        }      
+               
     }
 }

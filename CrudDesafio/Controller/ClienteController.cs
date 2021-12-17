@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CrudDesafio.Model;
 using System.Data.SqlClient;
 using CrudDesafio.DAO;
+using CrudDesafio.View;
 
 namespace CrudDesafio.Controller
 {
@@ -22,11 +23,11 @@ namespace CrudDesafio.Controller
 
 
         public ClienteModel Buscar (int IdCliente)
-        {
-           
+        {          
 
             return clientedao.Buscar(IdCliente);
         }
+       
         public List<ClienteListagem> BuscarLista(string Nome)
         {
             var lista = clientedao.BuscarLista(Nome);
@@ -36,6 +37,10 @@ namespace CrudDesafio.Controller
         public List<ClienteListagem> Listar()
         {
             return clientedao.Listar();
+        }
+        public List<ClienteListagem> ListarClientesAtivos()
+        {
+            return clientedao.ListarClientesAtivos();
         }
 
         public void Alterar(ClienteModel clientemodel)
@@ -48,9 +53,8 @@ namespace CrudDesafio.Controller
             clientedao.Excluir(clientemodel);
         }
 
-        internal ClienteModel Buscar(int v, object idCliente)
-        {
-            throw new NotImplementedException();
-        }
+       
+
+
     }
 }

@@ -31,27 +31,20 @@ namespace CrudDesafio.View
             _pedido = pedidoModel;
             clientemodel.IdCliente = pedidoModel.IdCliente;
             clientemodel.Nome = pedidoModel.NomeCliente;
-            colaboradormodel.Nome = pedidoModel.NomeColaborador;                   
+            colaboradormodel.Nome = pedidoModel.NomeColaborador;
             colaboradormodel.IdColaborador = pedidoModel.IdColaborador;
-            
-
-
             btnSalvar.Enabled = false;
             txtQuantidade.Enabled = false;
             txtDesconto.Enabled = false;
         }
-
-
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             EscolherProduto escolherproduto = new EscolherProduto();
             escolherproduto.ShowDialog();
             produtomodel = escolherproduto.produtomodel;
-
             CarregarProduto();
         }
-
         public void CarregarProduto()
         {
             txtQuantidade.Enabled = true;
@@ -60,20 +53,19 @@ namespace CrudDesafio.View
             txtNomeProduto.Text = produtomodel.NomeProduto;
             txtPrecoVenda.Text = produtomodel.PrecoDeVenda.ToString("c");
             txtPrecoDeCusto.Text = produtomodel.PrecoDeCusto.ToString("c");
-
         }
 
         private void Pedido_Load(object sender, EventArgs e)
         {
             if (_pedido.IdPedido != 0)
             {
+
                 _pedido.TotalPreAlteracao = _pedido.TotalLiquido;
                 btnSalvar.Enabled = true;
                 var carrinho = _pedido.Produtos;
 
                 CarregarDadosParaAlteracao(_pedido);
-                AtualizarGrid();                
-                
+                AtualizarGrid();
             }
         }
 
@@ -83,10 +75,7 @@ namespace CrudDesafio.View
             escolhercliente.ShowDialog();
             clientemodel = escolhercliente.clientemodel;
             CarregarCliente();
-            
-            
         }
-
         public void CarregarCliente()
         {
             if (clientemodel.ValidarDataAniversario())
@@ -94,8 +83,7 @@ namespace CrudDesafio.View
             //var Email = clientemodel.Email;
             txtIdCliente.Text = clientemodel.IdCliente.ToString();
             txtNomeCliente.Text = clientemodel.Nome;
-            var valorLimite = clientemodel.ValorLimite;            
-
+            var valorLimite = clientemodel.ValorLimite;
         }
         public bool CarregarValorLimite()
         {
@@ -108,15 +96,12 @@ namespace CrudDesafio.View
                 return false;
             }
             return true;
-
         }
-
         public void CarregarColaborador()
         {
             txtIdColaborador.Text = colaboradormodel.IdColaborador.ToString();
             txtNomeColaborador.Text = colaboradormodel.Nome;
         }
-
         private void BtnSelecionarColaborador_Click(object sender, EventArgs e)
         {
             EscolherColaborador escolhercolaborador = new EscolherColaborador();
@@ -124,9 +109,6 @@ namespace CrudDesafio.View
             colaboradormodel = escolhercolaborador.colaboradormodel;
             CarregarColaborador();
         }
-
-
-
         private void CalcularCusto()
         {
 
@@ -137,14 +119,11 @@ namespace CrudDesafio.View
             txtTotalBrutoProduto.Text = (precoVenda * quantidade).ToString("c");
 
             txtTotal.Text = ((precoVenda * quantidade) - desconto).ToString("c");
-            
-
         }
 
 
         private void TxtTotal_TextChanged(object sender, EventArgs e)
         {
-
             CalcularCusto();
         }
 
@@ -165,15 +144,12 @@ namespace CrudDesafio.View
                 MessageBox.Show("Quantidade não pode ser 0");
                 return false;
             }
-
-
-
             return true;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            
+
             if (produtomodel.Estoque < txtQuantidade.Value)
             {
                 MessageBox.Show("Quantidade No Estoque Indisponível");
@@ -300,9 +276,9 @@ namespace CrudDesafio.View
                 MessageBox.Show("Não Tem Mais Itens Para Remover");
                 return;
             }
-            if(_pedido.Produtos.Count == 1)
+            if (_pedido.Produtos.Count == 1)
             {
-                MessageBox.Show("Escolha um produto antes de remover");
+                MessageBox.Show("A Lista de produtos não pode ser vazia !!!");
                 return;
             }
             var index = gridCarrinho.SelectedRows[0].Index;
@@ -313,114 +289,73 @@ namespace CrudDesafio.View
             _pedido.Produtos.RemoveAt(index);
             AtualizarGrid();
             CalcularTotaisPedido();
-
-
         }
-
-
-
-
-
         private void txtTotalBruto_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void txtQuantidade_ValueChanged(object sender, EventArgs e)
         {
-
             CalcularCusto();
         }
-
-
-
         private void txtQuantidade_KeyUp(object sender, KeyEventArgs e)
         {
             CalcularCusto();
         }
-
-
-
         private void txtTotalLiquido_TextChanged(object sender, EventArgs e)
         {
-
-
-
         }
-
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-
-          
-
-            if (Validar())
+            try
             {
-                
-                if (_pedido.Produtos.Count == 0)
+                if (Validar())
                 {
-                    MessageBox.Show("Não é possível Finalizar Um Pedido Sem Escolher Um Produto!");
-                    return;
-                }
 
-                _pedido.IdCliente = clientemodel.IdCliente;
-                _pedido.IdColaborador = colaboradormodel.IdColaborador;
-                _pedido.FormaPagamento = txtFormaPagamento.Text;
-
-
-                if (_pedido.IdPedido != 0)
-                {
-                    //var index = gridCarrinho.SelectedRows[0].Index;
-                    //if (_pedido.Produtos[index].IdPedido_produto != 0)
-                    //{
-                    //    pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
-                    //}
-
-                    pedidoController.Alterar(_pedido, txtFormaPagamento.SelectedIndex);
-                   
-                    MessageBox.Show("Cadastro Alterado com Sucesso");
-                }
-                else
-                {
-                    if (produtomodel.IdProduto == 0)
+                    if (_pedido.Produtos.Count == 0)
                     {
-                        MessageBox.Show("Escolha um Produto!");
+                        MessageBox.Show("Não é possível Finalizar Um Pedido Sem Escolher Um Produto!");
                         return;
                     }
-
-                    _pedido.DataInicial = DateTime.Now;
-                    pedidoController.Inserir(_pedido, txtFormaPagamento.SelectedIndex, produtomodel );
-
-                    MessageBox.Show("Cadastro Efetuado com Sucesso");
-
-
+                    _pedido.IdCliente = clientemodel.IdCliente;
+                    _pedido.IdColaborador = colaboradormodel.IdColaborador;
+                    _pedido.FormaPagamento = txtFormaPagamento.Text;
+                    if (_pedido.IdPedido != 0)
+                    {
+                        pedidoController.Alterar(_pedido, txtFormaPagamento.SelectedIndex);
+                        MessageBox.Show("Cadastro Alterado com Sucesso");
+                    }
+                    else
+                    {
+                        if (produtomodel.IdProduto == 0)
+                        {
+                            MessageBox.Show("Escolha um Produto!");
+                            return;
+                        }
+                        _pedido.DataInicial = DateTime.Now;
+                        pedidoController.Inserir(_pedido, txtFormaPagamento.SelectedIndex, produtomodel);
+                        MessageBox.Show("Cadastro Efetuado com Sucesso");
+                    }
+                    EnviarEmail();
+                    Imprimir();
+                    this.Close();
                 }
-                EnviarEmail();
-                Imprimir();
-
-                this.Close();
             }
-
-
-
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Falha no Cadastro" + ex.Message);
+            }
         }
 
         public bool Validar()
         {
-            
             if (txtFormaPagamento.Text == "A Prazo")
             {
                 if (CarregarValorLimite() == false)
                 {
                     MessageBox.Show("Essa venda não pode ser realizada, pois o valor ultrapassa o limite de compras a prazo do cliente");
                 }
-                //double valor = Convert.ToDouble(Funcoes.ObterTotalLiquido(txtTotalLiquido.Text));
-                //if (valor >  )
-                //{
-                //    MessageBox.Show("Essa venda não pode ser realizada, pois o valor ultrapassa o limite de compras a prazo do cliente");
-                //    return false;
-                //}
+
             }
             else if (clientemodel.IdCliente == 0)
             {
@@ -443,11 +378,8 @@ namespace CrudDesafio.View
 
         public void CarregarDadosParaAlteracao(PedidoModel pedido)
         {
-            
             gridCarrinho.DataSource = pedido.Produtos;
-            
 
-            //txtIdPedido.Text = pedido.IdPedido.ToString();
             txtIdCliente.Text = pedido.IdCliente.ToString();
             txtNomeCliente.Text = _pedido.NomeCliente.ToString();
             txtNomeColaborador.Text = _pedido.NomeColaborador.ToString();
@@ -457,12 +389,9 @@ namespace CrudDesafio.View
             txtTotalDesconto.Text = pedido.TotalDeDesconto.ToString("c");
             txtTotalLiquido.Text = pedido.TotalLiquido.ToString("c");
             txtLucro.Text = pedido.Lucro.ToString();
-            
             clientemodel.Id = pedido.IdCliente;
             colaboradormodel.Id = pedido.IdColaborador;
             clientemodel = clientecontroller.Buscar(pedido.IdCliente);
-
-
         }
         public void LimparTextBox()
         {
@@ -491,12 +420,10 @@ namespace CrudDesafio.View
             printer.FooterSpacing = 15;
             printer.PrintDataGridView(gridCarrinho);
         }
-
         public void EnviarEmail()
         {
             if (MessageBox.Show("Deseja Enviar E-mail ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
-               
 
             }
             else
@@ -508,21 +435,15 @@ namespace CrudDesafio.View
                 cliente.EnableSsl = true;
                 cliente.DeliveryMethod = SmtpDeliveryMethod.Network;
                 cliente.UseDefaultCredentials = false;
-
                 credenciais.UserName = "marcosjose.moraes1999";
                 credenciais.Password = Conexao.senha;
-
-
                 cliente.Credentials = credenciais;
                 MailMessage mensagem = new MailMessage();
                 mensagem.From = new MailAddress("marcosjose.moraes1999@gmail.com");
                 mensagem.Subject = "Augustu's Fashion";
                 mensagem.IsBodyHtml = true;
                 mensagem.Body = ConstruirCorpoDoEmail();
-
-
                 mensagem.To.Add(clientemodel.Email);
-
                 cliente.Send(mensagem);
                 MessageBox.Show("Email enviado com sucesso");
             }
@@ -539,20 +460,17 @@ namespace CrudDesafio.View
 
             }
             builder.AppendLine("</table>");
-
             builder.AppendLine(" Augustu's Fashion agradece sua preferência, volte sempre ! \n");
             return builder.ToString();
         }
 
         private void txtDesconto_TextChanged_1(object sender, EventArgs e)
         {
-
             CalcularCusto();
         }
-
         private void gridCarrinho_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         //private void textBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)

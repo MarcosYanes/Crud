@@ -36,21 +36,25 @@ namespace CrudDesafio.View
             // 
             // gridCliente
             // 
+            this.gridCliente.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridCliente.Location = new System.Drawing.Point(63, 81);
+            this.gridCliente.Location = new System.Drawing.Point(84, 100);
+            this.gridCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridCliente.Name = "gridCliente";
             this.gridCliente.ReadOnly = true;
+            this.gridCliente.RowHeadersWidth = 51;
             this.gridCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridCliente.Size = new System.Drawing.Size(673, 236);
+            this.gridCliente.Size = new System.Drawing.Size(897, 290);
             this.gridCliente.TabIndex = 0;
             // 
             // txtAdicionar
             // 
-            this.txtAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
+            this.txtAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.txtAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txtAdicionar.Location = new System.Drawing.Point(360, 364);
+            this.txtAdicionar.Location = new System.Drawing.Point(480, 448);
+            this.txtAdicionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAdicionar.Name = "txtAdicionar";
-            this.txtAdicionar.Size = new System.Drawing.Size(75, 23);
+            this.txtAdicionar.Size = new System.Drawing.Size(100, 28);
             this.txtAdicionar.TabIndex = 1;
             this.txtAdicionar.Text = "Adicionar";
             this.txtAdicionar.UseVisualStyleBackColor = false;
@@ -58,11 +62,13 @@ namespace CrudDesafio.View
             // 
             // EscolherCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.txtAdicionar);
             this.Controls.Add(this.gridCliente);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EscolherCliente";
             this.Text = "EscolherCliente";
             this.Load += new System.EventHandler(this.EscolherCliente_Load);

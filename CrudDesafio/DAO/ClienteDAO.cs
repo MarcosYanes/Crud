@@ -22,10 +22,10 @@ namespace CrudDesafio.DAO
 
         internal void Inserir(ClienteModel clientemodel)
         {
-            
+
             var insertUsuario = "insert into Usuario(Nome, Sexo, DataNascimento, Cpf, Cidade, Cep, Rua, Bairro, Numero, Uf, Complemento, Telefone, Celular, Email)output inserted.Id values " +
                 "(@Nome, @Sexo, @DataNascimento, @Cpf, @Cidade, @Cep, @Rua, @Bairro, @Numero, @Uf, @Complemento, @Telefone, @Celular, @Email)";
-            var insertCliente = "insert into Cliente(Id, ValorLimite, LimiteRestante)output inserted.IdCliente values(@Id, @ValorLimite, @LimiteRestante)";
+            var insertCliente = "insert into Cliente(Id, ValorLimite, LimiteRestante, Ativo)output inserted.IdCliente values(@Id, @ValorLimite, @LimiteRestante, @Ativo)";
 
             try
             {
@@ -37,22 +37,24 @@ namespace CrudDesafio.DAO
 
                     using (var transacao = conexao.BeginTransaction())
                     {
-                        int id = conexao.ExecuteScalar<int>(insertUsuario, new { 
-                            Id = clientemodel.Id,
-                            Nome = clientemodel.Nome,
-                            DataNascimento = clientemodel.DataNascimento,
-                            Sexo = clientemodel.Sexo,
+                        int id = conexao.ExecuteScalar<int>(insertUsuario, new
+                        {
+                            clientemodel.Id,
+                            clientemodel.Nome,
+                            clientemodel.DataNascimento,
+                            clientemodel.Sexo,
                             Cpf = clientemodel.Cpf.ObterSomenteNumeros(),
-                            Cidade = clientemodel.Cidade,
-                            Cep = clientemodel.Cep,
-                            Rua = clientemodel.Rua,
-                            Bairro = clientemodel.Bairro,
-                            Numero = clientemodel.Numero,
-                            Uf = clientemodel.Uf,
-                            Complemento = clientemodel.Complemento,
-                            Telefone = clientemodel.Telefone,
-                            Celular = clientemodel.Celular,
-                            Email = clientemodel.Email,
+                            clientemodel.Cidade,
+                            clientemodel.Cep,
+                            clientemodel.Rua,
+                            clientemodel.Bairro,
+                            clientemodel.Numero,
+                            clientemodel.Uf,
+                            clientemodel.Complemento,
+                            clientemodel.Telefone,
+                            clientemodel.Celular,
+                            clientemodel.Email,
+                            
                         }, transacao);
 
                         clientemodel.Id = id;
@@ -60,17 +62,17 @@ namespace CrudDesafio.DAO
                         int idcliente = conexao.ExecuteScalar<int>(insertCliente, clientemodel, transacao);
 
                         transacao.Commit();
-                        
-                        
+
+
 
                         // conexao.Execute(strSql, clientemodel);
                     }
                 }
-                
+
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -80,7 +82,7 @@ namespace CrudDesafio.DAO
         internal ClienteModel Buscar(int idCliente)
         {
 
-            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante,  c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Ativo,  c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
             u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
             inner join Cliente c on u.Id = c.Id where IdCliente=@IdCliente";
 
@@ -103,34 +105,56 @@ namespace CrudDesafio.DAO
 
         }
 
-        
 
-        internal  List<ClienteListagem> Listar()
+
+        internal List<ClienteListagem> Listar()
         {
-            
-            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Cliente c on u.Id = c.Id";
-            
+
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Cliente c on u.Id = c.Id";
+
             try
             {
-                using(conexao = new SqlConnection(strCon))
+                using (conexao = new SqlConnection(strCon))
                 {
                     conexao.Open();
                     return conexao.Query<ClienteListagem>(strSql).ToList();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
 
             return new List<ClienteListagem>().ToList();
-            
+
+        }
+        internal List<ClienteListagem> ListarClientesAtivos()
+        {
+
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Cliente c on u.Id = c.Id where Ativo = 1";
+
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+                    return conexao.Query<ClienteListagem>(strSql).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            return new List<ClienteListagem>().ToList();
+
         }
 
-        internal  List<ClienteListagem> BuscarLista(string Nome)
+        internal List<ClienteListagem> BuscarLista(string Nome)
         {
-            strSql = @"select c.IdCliente, c.ValorLimite, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
             u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
             inner join Cliente c on u.Id = c.Id where Nome like @Nome + '%'";
             //strSql = @"select Id as IdCliente, Nome, Sexo, DataNascimento, Cidade from cliente where Nome like @Nome + '%'";
@@ -156,13 +180,9 @@ namespace CrudDesafio.DAO
         }
 
 
-       
-
-
-
         internal void Alterar(ClienteModel clientemodel)
         {
-            
+
             var updateUsuario = @"update Usuario set
                         Nome=@Nome, 
                         sexo=@sexo, 
@@ -181,7 +201,7 @@ namespace CrudDesafio.DAO
                         
                         where Id=@Id";
 
-            var updateCliente = @"update Cliente set ValorLimite=@ValorLimite, LimiteRestante=@LimiteRestante where Id=@Id";
+            var updateCliente = @"update Cliente set ValorLimite=@ValorLimite, LimiteRestante=@LimiteRestante, Ativo=@Ativo where Id=@Id";
             var valorLimite = @"update Cliente 
                             set LimiteRestante = (ValorLimite - @ValorLimitePreAlteracao) + LimiteRestante
                             where IdCliente = @IdCliente ";
@@ -200,27 +220,29 @@ namespace CrudDesafio.DAO
                     {
 
 
-                        conexao.Execute(updateUsuario, new {
-                            Id = clientemodel.Id,
-                            Nome = clientemodel.Nome,
-                            DataNascimento = clientemodel.DataNascimento,
-                            Sexo = clientemodel.Sexo,
+                        conexao.Execute(updateUsuario, new
+                        {
+                            clientemodel.Id,
+                            clientemodel.Nome,
+                            clientemodel.DataNascimento,
+                            clientemodel.Sexo,
                             Cpf = clientemodel.Cpf.ObterSomenteNumeros(),
-                            Cidade = clientemodel.Cidade,
-                            Cep = clientemodel.Cep,
-                            Rua = clientemodel.Rua,
-                            Bairro = clientemodel.Bairro,
-                            Numero = clientemodel.Numero,
-                            Uf = clientemodel.Uf,
-                            Complemento = clientemodel.Complemento,
-                            Telefone = clientemodel.Telefone,
-                            Celular = clientemodel.Celular,
-                            Email = clientemodel.Email,
+                            clientemodel.Cidade,
+                            clientemodel.Cep,
+                            clientemodel.Rua,
+                            clientemodel.Bairro,
+                            clientemodel.Numero,
+                            clientemodel.Uf,
+                            clientemodel.Complemento,
+                            clientemodel.Telefone,
+                            clientemodel.Celular,
+                            clientemodel.Email,
+                            clientemodel.Ativo,
                         }, transacao);
                         //clientemodel.LimiteRestante = clientemodel.LimiteRestante + valorAcumulado;
                         conexao.Execute(updateCliente, clientemodel, transacao);
                         conexao.Execute(valorLimite, clientemodel, transacao);
-                        
+
 
                         transacao.Commit();
 
@@ -229,7 +251,7 @@ namespace CrudDesafio.DAO
                         // conexao.Execute(strSql, clientemodel);
                     }
                 }
-               
+
 
 
             }
@@ -240,55 +262,49 @@ namespace CrudDesafio.DAO
 
         }
 
-        
+
 
         internal void Excluir(ClienteModel clientemodel)
         {
-            if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
-                MessageBox.Show("Operação cancelada");
 
-            }
-            else
-            {
-                var deletecliente = "delete from Cliente where Id=@Id";
-                var deleteusuario = "delete from Usuario where Id=@Id";
+            var deletecliente = "delete from Cliente where Id=@Id";
+            var deleteusuario = "delete from Usuario where Id=@Id";
 
-                try
+            try
+            {
+
+                using (conexao = new SqlConnection(strCon))
+
+
                 {
+                    conexao.Open();
 
-                    using (conexao = new SqlConnection(strCon))
-
-
+                    using (var transacao = conexao.BeginTransaction())
                     {
-                        conexao.Open();
-
-                        using (var transacao = conexao.BeginTransaction())
-                        {
 
 
-                            conexao.Execute(deletecliente, new { Id = clientemodel.Id }, transacao);
-                            conexao.Execute(deleteusuario, new { Id = clientemodel.Id }, transacao);
-                            
+                        conexao.Execute(deletecliente, new { Id = clientemodel.Id }, transacao);
+                        conexao.Execute(deleteusuario, new { Id = clientemodel.Id }, transacao);
 
-                            transacao.Commit();
+
+                        transacao.Commit();
 
 
 
-                            // conexao.Execute(strSql, clientemodel);
-                        }
+                        // conexao.Execute(strSql, clientemodel);
                     }
-                   
+                }
 
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
-        
+
     }
 }

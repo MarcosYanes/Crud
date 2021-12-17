@@ -36,21 +36,25 @@ namespace CrudDesafio.View
             // 
             // gridColaborador
             // 
+            this.gridColaborador.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridColaborador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridColaborador.Location = new System.Drawing.Point(63, 78);
+            this.gridColaborador.Location = new System.Drawing.Point(84, 96);
+            this.gridColaborador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gridColaborador.Name = "gridColaborador";
             this.gridColaborador.ReadOnly = true;
+            this.gridColaborador.RowHeadersWidth = 51;
             this.gridColaborador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridColaborador.Size = new System.Drawing.Size(673, 257);
+            this.gridColaborador.Size = new System.Drawing.Size(897, 316);
             this.gridColaborador.TabIndex = 0;
             // 
             // btnAdicionarColaborador
             // 
-            this.btnAdicionarColaborador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
+            this.btnAdicionarColaborador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnAdicionarColaborador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionarColaborador.Location = new System.Drawing.Point(358, 377);
+            this.btnAdicionarColaborador.Location = new System.Drawing.Point(477, 464);
+            this.btnAdicionarColaborador.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdicionarColaborador.Name = "btnAdicionarColaborador";
-            this.btnAdicionarColaborador.Size = new System.Drawing.Size(75, 23);
+            this.btnAdicionarColaborador.Size = new System.Drawing.Size(100, 28);
             this.btnAdicionarColaborador.TabIndex = 1;
             this.btnAdicionarColaborador.Text = "Adicionar";
             this.btnAdicionarColaborador.UseVisualStyleBackColor = false;
@@ -58,11 +62,13 @@ namespace CrudDesafio.View
             // 
             // EscolherColaborador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.btnAdicionarColaborador);
             this.Controls.Add(this.gridColaborador);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EscolherColaborador";
             this.Text = "EscolherColaborador";
             this.Load += new System.EventHandler(this.EscolherColaborador_Load);
