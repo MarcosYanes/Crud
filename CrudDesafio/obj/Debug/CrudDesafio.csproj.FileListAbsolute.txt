@@ -606,7 +606,6 @@ C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Vi
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarPedido.resources
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.ListarProduto.resources
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.Pedido.resources
-C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.PedidoAlterar.resources
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.TelaInicial.resources
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.GenerateResource.cache
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.CoreCompileInputs.cache
@@ -645,3 +644,4 @@ C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.Vi
 C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.View.RelatorioCliente.resources
 C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.View.RelatorioCliente.resources
 C:\Users\marco\Desktop\desafio3\Crud\CrudDesafio\obj\Debug\CrudDesafio.csproj.ResolveComReference.cache
+C:\Users\marco\Desktop\Desafio2\CrudDesafio\CrudDesafio\obj\Debug\CrudDesafio.csproj.ResolveComReference.cache

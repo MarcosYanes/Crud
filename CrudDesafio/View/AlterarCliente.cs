@@ -240,9 +240,9 @@ namespace CrudDesafio.View
 
                 }
 
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show("Falha ao excluir cliente. Erro: " + ex.Message);
+                    MessageBox.Show("Você não pode Excluir o Cliente, pois ele está vinculado a uma compra");
                 }
             }
 

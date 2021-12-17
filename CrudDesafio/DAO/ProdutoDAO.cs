@@ -135,32 +135,7 @@ from Produto where IdProduto=@IdProduto";
             return new ProdutoModel();
 
 
-        }
-
-        //internal CarrinhoProduto BuscarCarrinhoProduto(int id)
-        //{
-
-        //    strSql = @"select IdProduto, NomeProduto, PrecoVenda, Quantidade, Desconto from  ";
-
-        //    try
-        //    {
-        //        using (conexao = new SqlConnection(strCon))
-        //        {
-        //            conexao.Open();
-
-        //            return conexao.Query<CarrinhoProduto>(strSql, new { IdProduto = id }).First();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-
-        //    return new CarrinhoProduto();
-
-
-        //}
-
+        }    
 
         internal void Alterar(ProdutoModel produtomodel)
         {
@@ -182,10 +157,7 @@ from Produto where IdProduto=@IdProduto";
                     conexao.Open();
 
                     conexao.Execute(strSql, produtomodel);
-                }
-                
-
-
+                }                
             }
             catch (Exception ex)
             {
@@ -208,14 +180,12 @@ from Produto where IdProduto=@IdProduto";
                         conexao.Open();
 
                         conexao.Execute(strSql, produtomodel );
-                    }
-                   
-
+                    }                 
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                   throw new Exception(ex.Message);
                 }
             
 

@@ -270,7 +270,7 @@ namespace CrudDesafio.DAO
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    throw new Exception(ex.Message);
                 }
             }
 

@@ -101,25 +101,31 @@ namespace CrudDesafio.View
         private void btnExcluir_Click(object sender, EventArgs e)
         {
 
-
-            if (txtIdProduto.Text == string.Empty)
+            try
             {
+                if (txtIdProduto.Text == string.Empty)
+                {
 
-                return;
+                    return;
+                }
+
+                if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    MessageBox.Show("Operação cancelada");
+
+                }
+                else
+                {
+
+                    produtocontroller.Excluir(produtomodel);
+                    MessageBox.Show("Produto Deletado  com Sucesso");
+                    LimparCampos();
+                    gridProdutos.DataSource = produtocontroller.Listar();
+                }
             }
-
-            if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            catch
             {
-                MessageBox.Show("Operação cancelada");
-
-            }
-            else
-            {
-
-                produtocontroller.Excluir(produtomodel);
-                MessageBox.Show("Produto Deletado  com Sucesso");
-                LimparCampos();
-                gridProdutos.DataSource = produtocontroller.Listar();
+                MessageBox.Show("Você não pode excluir esse produto, pois ele está vinculado a uma compra");
             }
         }
 

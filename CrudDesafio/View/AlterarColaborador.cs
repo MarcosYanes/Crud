@@ -299,17 +299,24 @@ namespace CrudDesafio.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (txtId.Text == string.Empty)
+            try
             {
+                if (txtId.Text == string.Empty)
+                {
 
-                return;
+                    return;
+                }
+
+                colaboradorcontroller.Excluir(colaboradormodel);
+                MessageBox.Show("Colaborador deletado com sucesso");
+
+                LimparTextBox();
+                gridColaborador.DataSource = colaboradorcontroller.Listar();
             }
-
-            colaboradorcontroller.Excluir(colaboradormodel);
-            MessageBox.Show("Colaborador deletado com sucesso");
-
-            LimparTextBox();
-            gridColaborador.DataSource = colaboradorcontroller.Listar();
+            catch
+            {
+                MessageBox.Show("Você não pode Excluir esse colaborador, pois ele está vinculado a uma compra");
+            }
         }
 
         private void AlterarColaborador_Load(object sender, EventArgs e)
