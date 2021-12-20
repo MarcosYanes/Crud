@@ -34,6 +34,7 @@ namespace CrudDesafio.Model
         public ClienteModel Cliente { get; set; }
 
         public List<CarrinhoProduto> Produtos { get; set; }
+       
         public double TotalPreAlteracao { get;  set; }
 
         public void AdicionarProduto(CarrinhoProduto carrinhoproduto)

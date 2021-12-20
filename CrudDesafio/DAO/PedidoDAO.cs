@@ -113,11 +113,7 @@ namespace CrudDesafio.DAO
         public void Alterar(PedidoModel pedidomodel, int Pagamento)
         {
             var UpdatePedido = @"update Pedido set IdCliente=@IdCliente, IdColaborador=@IdColaborador, FormaPagamento=@FormaPagamento, TotalBruto=@TotalBruto, 
-            TotalDeDesconto=@TotalDeDesconto, TotalLiquido=@TotalLiquido, Lucro=@Lucro where IdPedido=@IdPedido";
-
-            var UpdatePedido_Produto = @"update Pedido_Produto set IdProduto=@IdProduto, PrecoDeVenda=@PrecoVenda,
-            PrecoLiquido=@PrecoLiquido, 
-            Quantidade=@Quantidade, Desconto=@Desconto, Total=@Total, Lucro=@Lucro where IdPedido_Produto=@IdPedido_Produto";
+            TotalDeDesconto=@TotalDeDesconto, TotalLiquido=@TotalLiquido, Lucro=@Lucro where IdPedido=@IdPedido";            
 
             var InsertPedido_Produto = @"insert into Pedido_Produto (IdPedido, IdProduto, PrecoDeVenda, PrecoLiquido, Quantidade, 
             Desconto, Total, Lucro, PrecoDeCusto)
@@ -135,7 +131,9 @@ namespace CrudDesafio.DAO
                     conexao.Open();
                     using (var transacao = conexao.BeginTransaction())
                     {
-
+                      
+                        conexao.Execute(Delete, new { pedidomodel.IdPedido }, transacao);
+                       
                         conexao.Execute(UpdatePedido, pedidomodel, transacao);
 
                         //Estornar estoques dos produtos
@@ -148,22 +146,16 @@ namespace CrudDesafio.DAO
                             conexao.Execute(somarEstoque, produto, transacao);
                         }
 
-                        conexao.Execute(Delete, produtoantigo, transacao);
-
-
                         foreach (var produto in pedidomodel.Produtos)
                         {
-                            if (produto.IdPedido_produto == 0)
-                            {
+                           
                                 produto.IdPedido = pedidomodel.IdPedido;
                                 conexao.Execute(InsertPedido_Produto, produto, transacao);
                                 conexao.Execute(AlterarEstoque, produto, transacao);
-                            }
-                            else
-                            {
-                                conexao.Execute(UpdatePedido_Produto, produto, transacao);
-                                conexao.Execute(AlterarEstoque, produto, transacao);
-                            }
+                            
+                           
+                                
+                            
                         }
                         if (Pagamento == 1)
                         {
@@ -187,13 +179,8 @@ namespace CrudDesafio.DAO
 
         internal void DeletarProdutosDoCarrinho(CarrinhoProduto produto)
         {
-
-
-
             var deleteProduto_Pedido = "delete from Pedido_produto where IdPedido_produto = @IdPedido_produto";
             var somarEstoque = @"update Produto set Estoque += @Quantidade where IdProduto = @IdProduto";
-
-
             try
             {
                 using (conexao = new SqlConnection(strCon))

@@ -59,7 +59,7 @@ namespace CrudDesafio.View
         {
             if (_pedido.IdPedido != 0)
             {
-
+                
                 _pedido.TotalPreAlteracao = _pedido.TotalLiquido;
                 btnSalvar.Enabled = true;
                 var carrinho = _pedido.Produtos;
@@ -278,18 +278,9 @@ namespace CrudDesafio.View
                 MessageBox.Show("Não Tem Mais Itens Para Remover");
                 return;
             }
-            //if (_pedido.Produtos.Count == 1)
-            //{
-            //    MessageBox.Show("A Lista de produtos não pode ser vazia !!!");
-            //    return;
-            //}
+           
             var index = gridCarrinho.SelectedRows[0].Index;
-            if (_pedido.Produtos[index].IdPedido_produto != 0)
-            {
-                 pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
-
-
-            }
+           
             _pedido.Produtos.RemoveAt(index);
             AtualizarGrid();
             CalcularTotaisPedido();
@@ -326,15 +317,8 @@ namespace CrudDesafio.View
                     _pedido.IdColaborador = colaboradormodel.IdColaborador;
                     _pedido.FormaPagamento = txtFormaPagamento.Text;
                     if (_pedido.IdPedido != 0)
-                    {
-                        var index = gridCarrinho.SelectedRows[0].Index;
-                        var resultado = index;
-                        //if (_pedido.Produtos[index].IdPedido_produto != 0)
-                        //{
-                            
-                        //    //pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
-
-                        //}
+                    {                       
+                      
 
                         pedidoController.Alterar(_pedido, txtFormaPagamento.SelectedIndex);                       
 
