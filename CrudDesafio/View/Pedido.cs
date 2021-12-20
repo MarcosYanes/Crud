@@ -332,7 +332,7 @@ namespace CrudDesafio.View
                             return;
                         }
                         _pedido.DataInicial = DateTime.Now;
-                        pedidoController.Inserir(_pedido, txtFormaPagamento.SelectedIndex, produtomodel);
+                        pedidoController.Inserir(_pedido, txtFormaPagamento.SelectedIndex);
                         MessageBox.Show("Cadastro Efetuado com Sucesso");
                     }
                     EnviarEmail();
@@ -353,6 +353,7 @@ namespace CrudDesafio.View
                 if (CarregarValorLimite() == false)
                 {
                     MessageBox.Show("Essa venda não pode ser realizada, pois o valor ultrapassa o limite de compras a prazo do cliente");
+                    return false;
                 }
 
             }

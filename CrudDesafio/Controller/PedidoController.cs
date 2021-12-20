@@ -13,9 +13,9 @@ namespace CrudDesafio.Controller
         private PedidoDAO pedidodao = new PedidoDAO();
 
 
-        public void Inserir(PedidoModel pedidomodel, int Pagamento, ProdutoModel produtomodel)
+        public void Inserir(PedidoModel pedidomodel, int Pagamento)
         {
-            pedidodao.Inserir(pedidomodel, Pagamento, produtomodel);
+            pedidodao.Inserir(pedidomodel, Pagamento);
 
 
         }

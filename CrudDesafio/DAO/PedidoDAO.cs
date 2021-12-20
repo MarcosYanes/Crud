@@ -17,7 +17,7 @@ namespace CrudDesafio.DAO
         private string strCon = Conexao.connectionString;
         private string selecionarPedidoSql = string.Empty;
 
-        public void Inserir(PedidoModel pedidomodel, int Pagamento, ProdutoModel produtomodel)
+        public void Inserir(PedidoModel pedidomodel, int Pagamento)
         {
 
             var InsertPedido = @"insert into Pedido (IdCliente, IdColaborador, FormaPagamento, TotalBruto, TotalDeDesconto, TotalLiquido, Lucro, DataInicial) output inserted.IdPedido values (@IdCliente, 
@@ -27,10 +27,6 @@ namespace CrudDesafio.DAO
             values (@IdPedido, @IdProduto, @PrecoDeCusto, @PrecoVenda, @PrecoLiquido, @Quantidade, @Desconto, @Total, @Lucro)";
 
             var AlterarEstoque = @"update Produto set Estoque -= @Quantidade where IdProduto = @IdProduto";
-
-
-
-
 
 
             try
@@ -56,11 +52,7 @@ namespace CrudDesafio.DAO
                             var AlterarLimite = @"update Cliente set LimiteRestante -= @TotalLiquido where IdCliente = @IdCliente ";
                             conexao.Execute(AlterarLimite, pedidomodel, transacao);
                         }
-                        if (produtomodel.Estoque <= 1)
-                        {
-                            var InativarProduto = @"update Produto set Ativo=0 where IdProduto=@IdProduto";
-                            conexao.Execute(InativarProduto, produtomodel, transacao);
-                        }
+                       
                         transacao.Commit();
                     }
                 }
