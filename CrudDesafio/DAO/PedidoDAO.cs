@@ -1,5 +1,6 @@
 ﻿using CrudDesafio.Helpers;
 using CrudDesafio.Model;
+using CrudDesafio.View;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -114,8 +115,6 @@ namespace CrudDesafio.DAO
             var UpdatePedido = @"update Pedido set IdCliente=@IdCliente, IdColaborador=@IdColaborador, FormaPagamento=@FormaPagamento, TotalBruto=@TotalBruto, 
             TotalDeDesconto=@TotalDeDesconto, TotalLiquido=@TotalLiquido, Lucro=@Lucro where IdPedido=@IdPedido";
 
-            var Delete = @"delete from Pedido_produto where IdPedido_produto = @IdPedido_produto";
-
             var UpdatePedido_Produto = @"update Pedido_Produto set IdProduto=@IdProduto, PrecoDeVenda=@PrecoVenda,
             PrecoLiquido=@PrecoLiquido, 
             Quantidade=@Quantidade, Desconto=@Desconto, Total=@Total, Lucro=@Lucro where IdPedido_Produto=@IdPedido_Produto";
@@ -125,10 +124,9 @@ namespace CrudDesafio.DAO
             values (@IdPedido, @IdProduto, @PrecoVenda, @PrecoLiquido, @Quantidade, @Desconto, @Total, @Lucro, @PrecoDeCusto)";
 
             var SelecionarEstoque = @"select IdProduto, Quantidade from Pedido_produto where IdPedido=@IdPedido";
-
             var AlterarEstoque = @"update Produto set Estoque -= @Quantidade where IdProduto = @IdProduto";
-            var somarEstoque = @"update Produto set Estoque += @Quantidade where IdProduto = @IdProduto";
-
+            var somarEstoque = @"update Produto set Estoque += @Quantidade where IdProduto = @IdProduto";            
+            var Delete = @"delete  Pedido_produto where IdPedido = @IdPedido";
 
             try
             {
@@ -137,24 +135,20 @@ namespace CrudDesafio.DAO
                     conexao.Open();
                     using (var transacao = conexao.BeginTransaction())
                     {
-                        
+
                         conexao.Execute(UpdatePedido, pedidomodel, transacao);
 
                         //Estornar estoques dos produtos
                         var produtoantigo = conexao.Query<CarrinhoProduto>(SelecionarEstoque, new { pedidomodel.IdPedido }, transacao).ToList();
-                        //var carrinhoantigo = conexao.Query<CarrinhoProduto>(selecionarCarrinho, new { pedidomodel.IdPedido }, transacao).ToList();
 
-                        //foreach(var carrinho in carrinhoantigo)
-                        //{
 
-                        //}
 
                         foreach (var produto in produtoantigo)
                         {
-
                             conexao.Execute(somarEstoque, produto, transacao);
-
                         }
+
+                        conexao.Execute(Delete, produtoantigo, transacao);
 
 
                         foreach (var produto in pedidomodel.Produtos)
@@ -164,20 +158,15 @@ namespace CrudDesafio.DAO
                                 produto.IdPedido = pedidomodel.IdPedido;
                                 conexao.Execute(InsertPedido_Produto, produto, transacao);
                                 conexao.Execute(AlterarEstoque, produto, transacao);
-
                             }
                             else
                             {
-
                                 conexao.Execute(UpdatePedido_Produto, produto, transacao);
                                 conexao.Execute(AlterarEstoque, produto, transacao);
                             }
-
                         }
-
                         if (Pagamento == 1)
                         {
-
                             var AlterarLimite = @"update Cliente 
                             set LimiteRestante = (LimiteRestante + @TotalPreAlteracao) - @TotalLiquido
                             where IdCliente = @IdCliente ";
@@ -214,8 +203,8 @@ namespace CrudDesafio.DAO
 
                     using (var transacao = conexao.BeginTransaction())
                     {
-                        conexao.Execute(somarEstoque, new {  produto.Quantidade, produto.IdProduto }, transacao);
-                        conexao.Execute(deleteProduto_Pedido, new {  produto.IdPedido_produto }, transacao);
+                        conexao.Execute(somarEstoque, new { produto.Quantidade, produto.IdProduto }, transacao);
+                        conexao.Execute(deleteProduto_Pedido, new { produto.IdPedido_produto }, transacao);
 
                         transacao.Commit();
                     }

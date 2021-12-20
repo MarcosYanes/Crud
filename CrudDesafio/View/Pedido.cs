@@ -193,7 +193,7 @@ namespace CrudDesafio.View
             if (produtoJaInserido == null)
             {
                 _pedido.AdicionarProduto(produto);
-               
+
             }
             else
             {
@@ -272,23 +272,24 @@ namespace CrudDesafio.View
 
         private void btnRemoverProduto_Click(object sender, EventArgs e)
         {
+
             if (_pedido.Produtos.Count == 0)
             {
                 MessageBox.Show("Não Tem Mais Itens Para Remover");
                 return;
             }
-            if (_pedido.Produtos.Count == 1)
-            {
-                MessageBox.Show("A Lista de produtos não pode ser vazia !!!");
-                return;
-            }
-            var index = gridCarrinho.SelectedRows[0].Index;
-            //if (_pedido.Produtos[index].IdPedido_produto != 0)
+            //if (_pedido.Produtos.Count == 1)
             //{
-            //    // pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
-                
-               
+            //    MessageBox.Show("A Lista de produtos não pode ser vazia !!!");
+            //    return;
             //}
+            var index = gridCarrinho.SelectedRows[0].Index;
+            if (_pedido.Produtos[index].IdPedido_produto != 0)
+            {
+                 pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
+
+
+            }
             _pedido.Produtos.RemoveAt(index);
             AtualizarGrid();
             CalcularTotaisPedido();
@@ -310,7 +311,8 @@ namespace CrudDesafio.View
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-                try
+            
+            try
             {
                 if (Validar())
                 {
@@ -325,7 +327,17 @@ namespace CrudDesafio.View
                     _pedido.FormaPagamento = txtFormaPagamento.Text;
                     if (_pedido.IdPedido != 0)
                     {
-                        pedidoController.Alterar(_pedido, txtFormaPagamento.SelectedIndex);
+                        var index = gridCarrinho.SelectedRows[0].Index;
+                        var resultado = index;
+                        //if (_pedido.Produtos[index].IdPedido_produto != 0)
+                        //{
+                            
+                        //    //pedidoController.DeletarProdutoCarrinho(_pedido.Produtos[index]);
+
+                        //}
+
+                        pedidoController.Alterar(_pedido, txtFormaPagamento.SelectedIndex);                       
+
                         MessageBox.Show("Cadastro Alterado com Sucesso");
                     }
                     else
@@ -474,7 +486,7 @@ namespace CrudDesafio.View
         private void gridCarrinho_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }                   
+        }
 
         //private void textBox1_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         //{
