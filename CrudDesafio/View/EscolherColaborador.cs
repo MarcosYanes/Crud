@@ -43,5 +43,10 @@ namespace CrudDesafio.View
 
             this.Close();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            gridColaborador.DataSource = colaboradorcontroller.BuscarColaboradoresAtivos(txtBuscar.Text);
+        }
     }
 }

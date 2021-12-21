@@ -41,6 +41,12 @@ namespace CrudDesafio.Controller
             return lista;
         }
 
+        public List<ProdutoModel> BuscarListaAtivos(string NomeProduto)
+        {
+            var lista = produtodao.BuscarListaAtivos(NomeProduto);
+            return lista;
+        }
+
         public ProdutoModel Buscar(int Id)
         {
             return produtodao.Buscar(Id);

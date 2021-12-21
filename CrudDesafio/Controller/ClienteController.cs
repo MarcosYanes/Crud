@@ -33,6 +33,11 @@ namespace CrudDesafio.Controller
             var lista = clientedao.BuscarLista(Nome);
             return lista;
         }
+        public List<ClienteListagem> BuscarClientesAtivos(string Nome)
+        {
+            var lista = clientedao.BuscarClientesAtivos(Nome);
+            return lista;
+        }
 
         public List<ClienteListagem> Listar()
         {

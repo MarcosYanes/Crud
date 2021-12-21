@@ -17,26 +17,20 @@ namespace CrudDesafio.Controller
         public void Inserir(ColaboradorModel colaboradormodel)
         {
             colaboradordao.Inserir(colaboradormodel);
-
-
-        }
-       
+        }     
 
         public ColaboradorModel Buscar(int IdColaborador)
         {
             return colaboradordao.Buscar(IdColaborador);
         }
-
         public void Alterar(ColaboradorModel colaboradormodel)
         {
             colaboradordao.Alterar(colaboradormodel);
         }
-
         public void Excluir(ColaboradorModel colaboradormodel)
         {
             colaboradordao.Excluir(colaboradormodel);
         }
-
         public List<ColaboradorListagem> Listar()
         {
             return colaboradordao.Listar();
@@ -49,6 +43,11 @@ namespace CrudDesafio.Controller
         public List<ColaboradorListagem> BuscarLista(string Nome)
         {
             var lista = colaboradordao.BuscarLista(Nome);
+            return lista;
+        }
+        public List<ColaboradorListagem> BuscarColaboradoresAtivos(string Nome)
+        {
+            var lista = colaboradordao.BuscarColaboradoresAtivos(Nome);
             return lista;
         }
 

@@ -25,8 +25,6 @@ namespace CrudDesafio.DAO
             try
             {
                 using (conexao = new SqlConnection(strCon))
-
-
                 {
                     conexao.Open();
 
@@ -56,16 +54,9 @@ namespace CrudDesafio.DAO
                         colaboradormodel.Id = id;
                         int idcolaborador = conexao.ExecuteScalar<int>(insertColaborador, colaboradormodel, transacao);
 
-                        transacao.Commit();
-
-
-
-                        // conexao.Execute(strSql, clientemodel);
+                        transacao.Commit();                        
                     }
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -76,7 +67,6 @@ namespace CrudDesafio.DAO
 
         internal ColaboradorModel Buscar(int idColaborador)
         {
-
             strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
             u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
             inner join Colaborador c on u.Id = c.Id where IdColaborador=@IdColaborador";
@@ -94,10 +84,7 @@ namespace CrudDesafio.DAO
             {
                 MessageBox.Show(ex.Message);
             }
-
             return new ColaboradorModel();
-
-
         }
 
         internal void Alterar(ColaboradorModel colaboradormodel)
@@ -120,22 +107,16 @@ namespace CrudDesafio.DAO
                         
                         where Id=@Id";
 
-            var updateColaborador = @"update Colaborador set Salario=@Salario, Comissao=Comissao, Banco=Banco, Agencia=@Agencia, Conta=@Conta, TipoConta=@TipoConta, Ativo=@Ativo where Id=@Id";
-
-
+            var updateColaborador = @"update Colaborador set Salario=@Salario, Comissao=Comissao, Banco=Banco, Agencia=@Agencia, Conta=@Conta, 
+                                    TipoConta=@TipoConta, Ativo=@Ativo where Id=@Id";
 
             try
             {
                 using (conexao = new SqlConnection(strCon))
-
-
                 {
                     conexao.Open();
-
                     using (var transacao = conexao.BeginTransaction())
                     {
-
-
                         conexao.Execute(updateUsuario, new
                         {
                             colaboradormodel.Id,
@@ -158,15 +139,8 @@ namespace CrudDesafio.DAO
                         conexao.Execute(updateColaborador, colaboradormodel, transacao);
 
                         transacao.Commit();
-
-
-
-
                     }
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -175,16 +149,8 @@ namespace CrudDesafio.DAO
 
         }
 
-
-
-
-
-
-
-
         internal List<ColaboradorListagem> Listar()
         {
-
             strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Colaborador c on u.Id = c.Id";
 
             try
@@ -199,15 +165,15 @@ namespace CrudDesafio.DAO
             {
                 MessageBox.Show(ex.Message);
             }
-
-
             return new List<ColaboradorListagem>().ToList();
 
         }
         internal List<ColaboradorListagem> ListarColaboradoresAtivos()
         {
 
-            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u inner join Colaborador c on u.Id = c.Id where Ativo = 1";
+            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, 
+            u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, 
+            u.Celular, u.Email from Usuario u inner join Colaborador c on u.Id = c.Id where Ativo = 1";
 
             try
             {
@@ -221,8 +187,29 @@ namespace CrudDesafio.DAO
             {
                 MessageBox.Show(ex.Message);
             }
+            return new List<ColaboradorListagem>().ToList();
 
+        }
+        internal List<ColaboradorListagem> BuscarColaboradoresAtivos(string Nome)
+        {
 
+            strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, 
+            u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, 
+            u.Celular, u.Email from Usuario u inner join Colaborador c on u.Id = c.Id where Ativo = 1 and Nome like @Nome + '%'";
+            var parametros = new DynamicParameters();
+            parametros.Add("@Nome", Nome, System.Data.DbType.String);
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+                    return conexao.Query<ColaboradorListagem>(strSql, parametros).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             return new List<ColaboradorListagem>().ToList();
 
         }
@@ -232,41 +219,24 @@ namespace CrudDesafio.DAO
             if (MessageBox.Show("Deseja realmente excluir?", "cuidado", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 MessageBox.Show("Operação cancelada");
-
             }
             else
             {
-
                 var deletecolaborador = "delete from Colaborador where Id=@Id";
                 var deleteusuario = "delete from Usuario where Id=@Id";
-
                 try
                 {
-
                     using (conexao = new SqlConnection(strCon))
-
-
                     {
                         conexao.Open();
 
                         using (var transacao = conexao.BeginTransaction())
                         {
-
-
                             conexao.Execute(deletecolaborador, new { Id = colaboradormodel.Id }, transacao);
                             conexao.Execute(deleteusuario, new { Id = colaboradormodel.Id }, transacao);
-
-
-                            transacao.Commit();
-
-
-
-                            // conexao.Execute(strSql, clientemodel);
+                            transacao.Commit();                            
                         }
                     }
-
-
-
                 }
                 catch (Exception ex)
                 {
@@ -276,13 +246,11 @@ namespace CrudDesafio.DAO
 
         }
 
-
-
         internal List<ColaboradorListagem> BuscarLista(string Nome)
         {
             strSql = @"select c.IdColaborador, c.Salario, c.Comissao, c.Banco, c.Agencia, c.Conta, c.TipoConta, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, u.Cpf, 
-u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
-inner join Colaborador c on u.Id = c.Id where Nome like @Nome + '%'";
+            u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
+            inner join Colaborador c on u.Id = c.Id where Nome like @Nome + '%'";
 
             var parametros = new DynamicParameters();
             parametros.Add("@Nome", Nome, System.Data.DbType.String);

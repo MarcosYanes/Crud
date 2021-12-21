@@ -32,8 +32,7 @@ namespace CrudDesafio.View
             else
             {
                 GridProduto.DataSource = produtocontroller.ListarAtivos();
-            }
-            
+            }            
         }
 
         public int SelecionarProdutoModel()
@@ -43,8 +42,7 @@ namespace CrudDesafio.View
         }
 
         private void GridProduto_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
+        {           
             var id = SelecionarProdutoModel();
             produtomodel = produtocontroller.Buscar(id);
             //Pedido pedido = new Pedido();
@@ -57,16 +55,15 @@ namespace CrudDesafio.View
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-
-
             var id = SelecionarProdutoModel();
             produtomodel = produtocontroller.Buscar(id);
-            //Pedido pedido = new Pedido();
-
-            //this.Dispose();
+            
             this.Close();
+        }
 
-
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            GridProduto.DataSource = produtocontroller.BuscarListaAtivos(txtBuscar.Text);
         }
     }
 }

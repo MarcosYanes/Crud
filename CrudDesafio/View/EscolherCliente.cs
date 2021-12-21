@@ -39,8 +39,7 @@ namespace CrudDesafio.View
         private void txtAdicionar_Click(object sender, EventArgs e)
         {
             var id = SelecionarClienteModel();
-            clientemodel = clientecontroller.Buscar(id);
-            //Pedido pedido = new Pedido();
+            clientemodel = clientecontroller.Buscar(id);          
 
             this.Close();
         }
@@ -49,6 +48,10 @@ namespace CrudDesafio.View
         {
             var id = Convert.ToInt32(gridCliente.SelectedRows[0].Cells[0].Value);
             return id;
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            gridCliente.DataSource = clientecontroller.BuscarClientesAtivos(txtBuscar.Text);
         }
     }
 }

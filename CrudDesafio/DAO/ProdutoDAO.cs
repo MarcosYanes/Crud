@@ -84,6 +84,29 @@ namespace CrudDesafio.DAO
             return new List<ProdutoModel>().ToList();
 
         }
+        internal List<ProdutoModel> BuscarListaAtivos(string NomeProduto)
+        {
+            // List<ProdutoModel> teste = new List<ProdutoModel>();
+            strSql = @"select IdProduto, NomeProduto, PrecoDeVenda, PrecoDeCusto, Estoque, Ativo,  Fabricante, CodigoDeBarra from Produto where Ativo=1 and  NomeProduto like @NomeProduto + '%'";
+            var parametros = new DynamicParameters();
+            parametros.Add("@NomeProduto", NomeProduto, System.Data.DbType.String);
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+
+                    return conexao.Query<ProdutoModel>(strSql, parametros).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return new List<ProdutoModel>().ToList();
+
+        }
 
         internal List<ProdutoModel> BuscarLista(string NomeProduto)
         {

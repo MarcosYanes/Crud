@@ -151,6 +151,32 @@ namespace CrudDesafio.DAO
             return new List<ClienteListagem>().ToList();
 
         }
+        internal List<ClienteListagem> BuscarClientesAtivos(string Nome)
+        {
+
+            strSql = @"select c.IdCliente, c.ValorLimite, c.LimiteRestante, c.Ativo, c.Id, u.Id, u.Nome, u.Sexo, u.DataNascimento, 
+            u.Cpf, u.Cidade, u.Cep, u.Rua, u.Bairro, u.Numero, u.Uf, u.Complemento, u.Telefone, u.Celular, u.Email from Usuario u 
+            inner join Cliente c on u.Id = c.Id where Ativo = 1 and Nome like @Nome + '%' ";
+            var parametros = new DynamicParameters();
+            parametros.Add("@Nome", Nome, System.Data.DbType.String);
+            try
+            {
+                using (conexao = new SqlConnection(strCon))
+                {
+                    conexao.Open();
+                    return conexao.Query<ClienteListagem>(strSql, parametros).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            return new List<ClienteListagem>().ToList();
+
+        }
+
 
         internal List<ClienteListagem> BuscarLista(string Nome)
         {
