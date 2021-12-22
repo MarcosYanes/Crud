@@ -42,34 +42,36 @@ namespace CrudDesafio.View
             // 
             this.gridColaborador.BackgroundColor = System.Drawing.SystemColors.Control;
             this.gridColaborador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridColaborador.Location = new System.Drawing.Point(95, 263);
-            this.gridColaborador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridColaborador.Location = new System.Drawing.Point(71, 214);
+            this.gridColaborador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gridColaborador.Name = "gridColaborador";
             this.gridColaborador.ReadOnly = true;
             this.gridColaborador.RowHeadersWidth = 51;
             this.gridColaborador.RowTemplate.Height = 24;
             this.gridColaborador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridColaborador.Size = new System.Drawing.Size(1021, 377);
+            this.gridColaborador.Size = new System.Drawing.Size(766, 306);
             this.gridColaborador.TabIndex = 13;
-            this.gridColaborador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridColaborador_CellContentClick);
-            this.gridColaborador.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridColaborador_CellContentDoubleClick);
+            
+            
+            this.gridColaborador.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridColaborador_CellDoubleClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(421, 25);
+            this.label1.Location = new System.Drawing.Point(316, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(369, 39);
+            this.label1.Size = new System.Drawing.Size(294, 31);
             this.label1.TabIndex = 14;
             this.label1.Text = "Lista de Colaboradores";
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(392, 138);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBuscar.Location = new System.Drawing.Point(294, 112);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(121, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(92, 20);
             this.txtBuscar.TabIndex = 15;
             // 
             // btnBuscar
@@ -77,10 +79,10 @@ namespace CrudDesafio.View
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(519, 132);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBuscar.Location = new System.Drawing.Point(389, 107);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(107, 32);
+            this.btnBuscar.Size = new System.Drawing.Size(80, 26);
             this.btnBuscar.TabIndex = 16;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -89,10 +91,10 @@ namespace CrudDesafio.View
             // btnLimparFiltro
             // 
             this.btnLimparFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparFiltro.Location = new System.Drawing.Point(632, 132);
-            this.btnLimparFiltro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLimparFiltro.Location = new System.Drawing.Point(474, 107);
+            this.btnLimparFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLimparFiltro.Name = "btnLimparFiltro";
-            this.btnLimparFiltro.Size = new System.Drawing.Size(171, 32);
+            this.btnLimparFiltro.Size = new System.Drawing.Size(128, 26);
             this.btnLimparFiltro.TabIndex = 17;
             this.btnLimparFiltro.Text = "Limpar Filtro";
             this.btnLimparFiltro.UseVisualStyleBackColor = true;
@@ -103,10 +105,9 @@ namespace CrudDesafio.View
             this.btnAtualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(162)))), ((int)(((byte)(230)))));
             this.btnAtualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizar.Location = new System.Drawing.Point(534, 646);
-            this.btnAtualizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAtualizar.Location = new System.Drawing.Point(400, 525);
             this.btnAtualizar.Name = "btnAtualizar";
-            this.btnAtualizar.Size = new System.Drawing.Size(133, 39);
+            this.btnAtualizar.Size = new System.Drawing.Size(100, 32);
             this.btnAtualizar.TabIndex = 18;
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = false;
@@ -114,17 +115,17 @@ namespace CrudDesafio.View
             // 
             // ListarColaborador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1193, 820);
+            this.ClientSize = new System.Drawing.Size(895, 666);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.btnLimparFiltro);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gridColaborador);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ListarColaborador";
             this.Text = "ListarColaborador";
             this.Load += new System.EventHandler(this.ListarColaborador_Load);

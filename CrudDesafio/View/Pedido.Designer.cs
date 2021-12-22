@@ -59,11 +59,9 @@ namespace CrudDesafio.View
             this.txtPrecoVenda = new System.Windows.Forms.TextBox();
             this.txtPrecoDeCusto = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtLucro = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtIdProduto = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.Lucro = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -109,7 +107,7 @@ namespace CrudDesafio.View
             this.gridCarrinho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridCarrinho.Size = new System.Drawing.Size(673, 235);
             this.gridCarrinho.TabIndex = 19;
-            this.gridCarrinho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarrinho_CellContentClick);
+            
             this.gridCarrinho.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridCarrinho_CellDoubleClick);
             // 
             // btnSalvar
@@ -221,7 +219,7 @@ namespace CrudDesafio.View
             this.txtTotalLiquido.ReadOnly = true;
             this.txtTotalLiquido.Size = new System.Drawing.Size(137, 20);
             this.txtTotalLiquido.TabIndex = 21;
-            this.txtTotalLiquido.TextChanged += new System.EventHandler(this.txtTotalLiquido_TextChanged);
+           
             // 
             // txtTotalDesconto
             // 
@@ -239,7 +237,7 @@ namespace CrudDesafio.View
             this.txtTotalBruto.Size = new System.Drawing.Size(137, 20);
             this.txtTotalBruto.TabIndex = 21;
             this.txtTotalBruto.Text = "0";
-            this.txtTotalBruto.TextChanged += new System.EventHandler(this.txtTotalBruto_TextChanged);
+            
             // 
             // label10
             // 
@@ -409,16 +407,6 @@ namespace CrudDesafio.View
             this.label15.TabIndex = 16;
             this.label15.Text = "Quantidade";
             // 
-            // txtLucro
-            // 
-            this.txtLucro.Location = new System.Drawing.Point(13, 481);
-            this.txtLucro.Margin = new System.Windows.Forms.Padding(2);
-            this.txtLucro.Name = "txtLucro";
-            this.txtLucro.ReadOnly = true;
-            this.txtLucro.Size = new System.Drawing.Size(100, 20);
-            this.txtLucro.TabIndex = 38;
-            this.txtLucro.Visible = false;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -448,18 +436,6 @@ namespace CrudDesafio.View
             this.label12.Size = new System.Drawing.Size(45, 17);
             this.label12.TabIndex = 16;
             this.label12.Text = "Nome";
-            // 
-            // Lucro
-            // 
-            this.Lucro.AutoSize = true;
-            this.Lucro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lucro.Location = new System.Drawing.Point(10, 462);
-            this.Lucro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Lucro.Name = "Lucro";
-            this.Lucro.Size = new System.Drawing.Size(44, 17);
-            this.Lucro.TabIndex = 39;
-            this.Lucro.Text = "Lucro";
-            this.Lucro.Visible = false;
             // 
             // label13
             // 
@@ -512,11 +488,9 @@ namespace CrudDesafio.View
             this.groupBox4.Controls.Add(this.btnBuscar);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.Lucro);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.txtIdProduto);
             this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.txtLucro);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.txtPrecoDeCusto);
             this.groupBox4.Controls.Add(this.txtPrecoVenda);
@@ -683,11 +657,9 @@ namespace CrudDesafio.View
         private System.Windows.Forms.TextBox txtPrecoVenda;
         private System.Windows.Forms.TextBox txtPrecoDeCusto;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox txtLucro;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtIdProduto;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label Lucro;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnBuscar;

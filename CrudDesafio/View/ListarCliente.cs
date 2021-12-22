@@ -33,24 +33,17 @@ namespace CrudDesafio.View
         private void ListarCliente_Load(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();
-            //gridClientes.Columns["ValorLimite"].DisplayIndex = gridClientes.Columns.Count-1;
-            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.BuscarLista(txtBuscar.Text);
-            
         }
 
         private void btnLimparFiltro_Click(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();
         }
-
-
-
-      
 
         private void gridClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -59,20 +52,15 @@ namespace CrudDesafio.View
             AlterarCliente alterarcliente = new AlterarCliente();
             alterarcliente.Show();
 
-           alterarcliente.CarregarDadosParaAlteracao(cliente);
+            alterarcliente.CarregarDadosParaAlteracao(cliente);
 
             alterarcliente.Show();
-
-
-
         }
-
         public int SelecionarClienteModel()
         {
             var id = Convert.ToInt32(gridClientes.SelectedRows[0].Cells[0].Value);
             return id;
         }
-
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             gridClientes.DataSource = clientecontroller.Listar();

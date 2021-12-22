@@ -54,7 +54,7 @@ namespace CrudDesafio
 
                     clientecontroller.Inserir(clientemodel);
                     MessageBox.Show("Cadastro Efetuado com Sucesso");
-                    this.Close();
+                    Close();
                 }
             }
             catch (Exception ex)

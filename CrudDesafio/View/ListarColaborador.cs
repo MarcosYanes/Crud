@@ -26,27 +26,29 @@ namespace CrudDesafio.View
 
         private void ListarColaborador_Load(object sender, EventArgs e)
         {
-            gridColaborador.DataSource = colaboradorcontroller.Listar();
-            //gridColaborador.Columns["SalarioColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["ComissaoColaborador"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["Banco"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["Agencia"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["Conta"].DisplayIndex = gridColaborador.Columns.Count - 1;
-            //gridColaborador.Columns["TipoConta"].DisplayIndex = gridColaborador.Columns.Count - 1;
+            gridColaborador.DataSource = colaboradorcontroller.Listar();            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            gridColaborador.DataSource = colaboradorcontroller.BuscarLista(txtBuscar.Text);
-            
+            gridColaborador.DataSource = colaboradorcontroller.BuscarLista(txtBuscar.Text);            
         }
 
         private void btnLimparFiltro_Click(object sender, EventArgs e)
         {
             gridColaborador.DataSource = colaboradorcontroller.Listar();
+        }        
+        public int SelecionarColaboradorModel()
+        {
+            var id = Convert.ToInt32(gridColaborador.SelectedRows[0].Cells[0].Value);
+            return id;
+        }      
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            gridColaborador.DataSource = colaboradorcontroller.Listar();
         }
 
-        private void gridColaborador_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void gridColaborador_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = SelecionarColaboradorModel();
             var colaborador = colaboradorcontroller.Buscar(id);
@@ -56,23 +58,6 @@ namespace CrudDesafio.View
             alterarcolaborador.CarregarDadosParaAlteracao(colaborador);
 
             alterarcolaborador.Show();
-
-        }
-
-        public int SelecionarColaboradorModel()
-        {
-            var id = Convert.ToInt32(gridColaborador.SelectedRows[0].Cells[0].Value);
-            return id;
-        }
-
-        private void gridColaborador_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnAtualizar_Click(object sender, EventArgs e)
-        {
-            gridColaborador.DataSource = colaboradorcontroller.Listar();
         }
     }
 }

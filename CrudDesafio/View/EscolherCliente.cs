@@ -21,9 +21,8 @@ namespace CrudDesafio.View
         {
             InitializeComponent();
         }
-
         private void EscolherCliente_Load(object sender, EventArgs e)
-        {          
+        {       
 
             if(Application.OpenForms.OfType<RelatorioProdutos>().Count()>0|| Application.OpenForms.OfType<RelatorioCliente>().Count() > 0)
             {
@@ -32,14 +31,13 @@ namespace CrudDesafio.View
             else
             {
                 gridCliente.DataSource = clientecontroller.ListarClientesAtivos();
-            }
-           
+            }           
         }
 
         private void txtAdicionar_Click(object sender, EventArgs e)
         {
             var id = SelecionarClienteModel();
-            clientemodel = clientecontroller.Buscar(id);          
+            clientemodel = clientecontroller.Buscar(id);         
 
             this.Close();
         }
